@@ -1,0 +1,150 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Secao from '~/components/Secao.astro';
+import Foto from '~/components/Foto.astro';
+import ChamadaFinal from '~/components/ChamadaFinal.astro';
+
+import { CONTATO, IDIOMAS_FALADOS, SITE } from '~/config/site';
+import { imagem, fotoOlivia } from '~/lib/imagens';
+import { dicionario, NOME_IDIOMA, type Idioma } from '~/i18n/config';
+
+interface Props {
+  lang: Idioma;
+}
+
+const { lang } = Astro.props;
+const t = dicionario(lang);
+
+const retrato = fotoOlivia();
+const fotoEquipe = imagem('fotos', 'equipe');
+
+const idiomasFalados = IDIOMAS_FALADOS.map((codigo) => NOME_IDIOMA[codigo]).join(', ');
+
+// Pagina sobre a autora: vale declarar a pessoa por tras do negocio.
+const schemaPessoa = {
+  '@type': 'Person',
+  '@id': `${SITE.url}/#olivia`,
+  name: SITE.autora,
+  jobTitle: t.home.hero.sobretitulo,
+  worksFor: { '@id': `${SITE.url}/#negocio` },
+  knowsLanguage: [...IDIOMAS_FALADOS],
+};
+---
+
+<BaseLayout
+  lang={lang}
+  titulo={t.meta.sobre.titulo}
+  descricao={t.meta.sobre.descricao}
+  secaoAtiva="sobre"
+  schemaExtra={[schemaPessoa]}
+>
+  <!-- --------------------------------------------------------- Abertura -->
+  <section class="bg-nevoa pb-20 pt-14 md:pb-28 md:pt-20">
+    <div class="container-site">
+      <div class="grid items-end gap-12 md:grid-cols-[1.1fr_1fr] md:gap-16">
+        <div class="revelar">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pedra">
+            {t.sobre.sobretitulo}
+          </p>
+          <h1 class="mt-4 text-titulo-pagina text-balance text-atlantico">
+            {t.sobre.titulo}
+          </h1>
+          <div class="prosa mt-8">
+            <p class="text-pedra">{t.sobre.p1}</p>
+            <p class="text-pedra">{t.sobre.p2}</p>
+            <p class="text-pedra">{t.sobre.p3}</p>
+          </div>
+        </div>
+
+        <div class="revelar">
+          <Foto
+            src={retrato}
+            alt={`${SITE.autora}, ${t.home.hero.sobretitulo}`}
+            proporcao="4 / 5"
+            sizes="(min-width: 768px) 42vw, 100vw"
+            class="rounded-sm"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------ Apresentacao -->
+  <Secao>
+    <div class="prosa revelar">
+      <h2 class="text-titulo-secao text-balance text-atlantico">
+        {t.home.apresentacao.titulo}
+      </h2>
+      <p class="mt-7 text-pedra">{t.home.apresentacao.p1}</p>
+      <p class="text-pedra">{t.home.apresentacao.p2}</p>
+    </div>
+  </Secao>
+
+  <!-- ------------------------------------------------------------ Equipe -->
+  <Secao fundo="nevoa">
+    <div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+      <div class="revelar">
+        <Foto
+          src={fotoEquipe}
+          alt={t.sobre.equipe.titulo}
+          proporcao="3 / 2"
+          sizes="(min-width: 768px) 48vw, 100vw"
+          class="rounded-sm"
+        />
+      </div>
+
+      <div class="revelar">
+        <h2 class="text-titulo-secao text-balance text-atlantico">
+          {t.sobre.equipe.titulo}
+        </h2>
+        <div class="prosa mt-7">
+          <p class="text-pedra">{t.sobre.equipe.p1}</p>
+          <p class="text-pedra">{t.sobre.equipe.p2}</p>
+        </div>
+      </div>
+    </div>
+  </Secao>
+
+  <!-- --------------------------------------------- Estrutura e credenciais -->
+  <Secao>
+    <div class="grid gap-14 md:grid-cols-2 md:gap-16">
+      <div class="revelar">
+        <h2 class="text-titulo-secao text-balance text-atlantico">
+          {t.sobre.estrutura.titulo}
+        </h2>
+        <p class="mt-6 max-w-md text-pretty text-pedra">{t.sobre.estrutura.texto}</p>
+      </div>
+
+      <div class="revelar">
+        <h2 class="text-titulo-secao text-atlantico">{t.sobre.credenciais.titulo}</h2>
+
+        <dl class="mt-7 divide-y divide-nevoa-forte border-y border-nevoa-forte">
+          <div class="flex items-baseline justify-between gap-6 py-4">
+            <dt class="text-sm text-pedra">{t.sobre.credenciais.experiencia}</dt>
+            <dd class="font-titulo text-3xl text-atlantico">{SITE.anosDeExperiencia}</dd>
+          </div>
+
+          <div class="flex items-baseline justify-between gap-6 py-4">
+            <dt class="text-sm text-pedra">{t.sobre.credenciais.idiomas}</dt>
+            <dd class="text-right text-sm font-medium text-atlantico">{idiomasFalados}</dd>
+          </div>
+
+          <div class="flex items-baseline justify-between gap-6 py-4">
+            <dt class="text-sm text-pedra">
+              {CONTATO.cadastur
+                ? t.sobre.credenciais.cadastur
+                : t.sobre.credenciais.cadasturSemNumero}
+            </dt>
+            {
+              CONTATO.cadastur && (
+                <dd class="text-right text-sm font-medium text-atlantico">{CONTATO.cadastur}</dd>
+              )
+            }
+          </div>
+        </dl>
+      </div>
+    </div>
+  </Secao>
+
+  <ChamadaFinal lang={lang} />
+</BaseLayout>

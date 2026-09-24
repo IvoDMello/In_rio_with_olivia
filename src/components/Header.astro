@@ -1,0 +1,267 @@
+---
+import Logo from './Logo.astro';
+import Icone from './Icone.astro';
+import SeletorIdioma from './SeletorIdioma.astro';
+import { linkWhatsApp } from '~/config/site';
+import { dicionario, MENU, rota, type Idioma, type Secao } from '~/i18n/config';
+
+interface Props {
+  lang: Idioma;
+  secaoAtiva: Secao | null;
+  alternativas: { lang: Idioma; href: string }[];
+}
+
+const { lang, secaoAtiva, alternativas } = Astro.props;
+const t = dicionario(lang);
+const hrefWhats = linkWhatsApp(t.whatsapp.geral);
+
+const itens = MENU.map((secao) => ({
+  secao,
+  href: rota(secao, lang),
+  rotulo: t.nav[secao],
+  ativo: secao === secaoAtiva,
+}));
+---
+
+<a
+  href="#conteudo"
+  class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60]
+         focus:rounded-full focus:bg-atlantico focus:px-5 focus:py-3 focus:text-sm
+         focus:text-branco"
+>
+  {t.nav.irParaConteudo}
+</a>
+
+<header
+  data-cabecalho
+  class="sticky top-0 z-50 border-b border-transparent bg-branco/85 backdrop-blur-md
+         transition-[border-color,background-color] duration-300
+         data-[rolado=true]:border-nevoa-forte"
+>
+  <div class="container-site flex h-[72px] items-center justify-between gap-4 md:h-20">
+    <a
+      href={rota('home', lang)}
+      class="shrink-0"
+      aria-label={`in Rio with Olivia, ${t.nav.home}`}
+    >
+      <Logo altura={52} class="h-11 w-auto md:h-[52px]" />
+    </a>
+
+    <!-- Navegacao no desktop -->
+    <nav aria-label={t.nav.home} class="hidden lg:block">
+      <ul class="flex items-center gap-7">
+        {
+          itens.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={item.ativo ? 'page' : undefined}
+                class:list={[
+                  'relative py-2 text-[0.95rem] transition-colors duration-200',
+                  'after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left',
+                  'after:scale-x-0 after:bg-sol after:transition-transform after:duration-300',
+                  'hover:after:scale-x-100',
+                  item.ativo ? 'text-atlantico after:scale-x-100' : 'text-pedra hover:text-atlantico',
+                ]}
+              >
+                {item.rotulo}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2 md:gap-3">
+      <SeletorIdioma lang={lang} alternativas={alternativas} class="hidden sm:block" />
+
+      {
+        hrefWhats && (
+          <a
+            href={hrefWhats}
+            target="_blank"
+            rel="noopener"
+            data-analytics="whatsapp-cabecalho"
+            aria-label={t.whatsapp.aria}
+            class="hidden h-10 w-10 items-center justify-center rounded-full bg-nevoa
+                   text-atlantico transition-colors duration-200 hover:bg-sol lg:flex"
+          >
+            <Icone nome="whatsapp" tamanho={19} />
+          </a>
+        )
+      }
+
+      <button
+        type="button"
+        data-abrir-menu
+        aria-expanded="false"
+        aria-controls="menu-painel"
+        class="flex h-10 w-10 items-center justify-center rounded-full text-atlantico
+               transition-colors duration-200 hover:bg-nevoa lg:hidden"
+      >
+        <span class="sr-only">{t.nav.abrirMenu}</span>
+        <Icone nome="menu" tamanho={22} />
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Painel lateral do celular -->
+<div
+  id="menu-painel"
+  data-painel
+  hidden
+  class="fixed inset-0 z-[55] lg:hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label={t.nav.abrirMenu}
+>
+  <div data-fundo class="absolute inset-0 bg-atlantico/35 backdrop-blur-[2px]"></div>
+
+  <div
+    data-gaveta
+    class="absolute right-0 top-0 flex h-full w-[min(20rem,85vw)] flex-col bg-branco
+           shadow-[-8px_0_40px_rgba(18,58,69,0.12)]"
+    style="padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);"
+  >
+    <div class="flex h-[72px] items-center justify-between px-5">
+      <Logo altura={44} class="h-11 w-auto" />
+      <button
+        type="button"
+        data-fechar-menu
+        class="flex h-10 w-10 items-center justify-center rounded-full text-atlantico
+               transition-colors duration-200 hover:bg-nevoa"
+      >
+        <span class="sr-only">{t.nav.fecharMenu}</span>
+        <Icone nome="fechar" tamanho={22} />
+      </button>
+    </div>
+
+    <nav aria-label={t.nav.home} class="flex-1 overflow-y-auto px-5 py-4">
+      <ul class="flex flex-col">
+        {
+          itens.map((item) => (
+            <li class="border-b border-nevoa last:border-0">
+              <a
+                href={item.href}
+                aria-current={item.ativo ? 'page' : undefined}
+                class:list={[
+                  'block py-4 font-titulo text-2xl transition-colors duration-200',
+                  item.ativo ? 'text-atlantico' : 'text-pedra hover:text-atlantico',
+                ]}
+              >
+                {item.rotulo}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="border-t border-nevoa px-5 py-5">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-pedra">
+        {t.nav.idioma}
+      </p>
+      <SeletorIdioma lang={lang} alternativas={alternativas} />
+
+      {
+        hrefWhats && (
+          <a
+            href={hrefWhats}
+            target="_blank"
+            rel="noopener"
+            data-analytics="whatsapp-menu"
+            class="mt-5 flex items-center justify-center gap-2.5 rounded-full bg-atlantico
+                   px-6 py-3 text-[0.95rem] font-medium text-branco transition-colors
+                   duration-200 hover:bg-sol hover:text-atlantico"
+          >
+            <Icone nome="whatsapp" tamanho={18} />
+            {t.botoes.whatsapp}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  const cabecalho = document.querySelector<HTMLElement>('[data-cabecalho]');
+  const painel = document.querySelector<HTMLElement>('[data-painel]');
+  const gaveta = painel?.querySelector<HTMLElement>('[data-gaveta]');
+  const fundo = painel?.querySelector<HTMLElement>('[data-fundo]');
+  const abrir = document.querySelector<HTMLButtonElement>('[data-abrir-menu]');
+  const fechar = painel?.querySelector<HTMLButtonElement>('[data-fechar-menu]');
+
+  // Linha sutil no cabecalho assim que a pagina sai do topo.
+  if (cabecalho) {
+    const aoRolar = () => {
+      cabecalho.dataset.rolado = String(window.scrollY > 8);
+    };
+    aoRolar();
+    window.addEventListener('scroll', aoRolar, { passive: true });
+  }
+
+  if (painel && gaveta && abrir && fechar) {
+    let ultimoFoco: HTMLElement | null = null;
+
+    const focaveis = () =>
+      Array.from(
+        gaveta.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'),
+      ).filter((el) => el.offsetParent !== null);
+
+    const abrirMenu = () => {
+      ultimoFoco = document.activeElement as HTMLElement;
+      painel.hidden = false;
+      abrir.setAttribute('aria-expanded', 'true');
+      document.documentElement.style.overflow = 'hidden';
+      requestAnimationFrame(() => focaveis()[0]?.focus());
+    };
+
+    const fecharMenu = () => {
+      painel.hidden = true;
+      abrir.setAttribute('aria-expanded', 'false');
+      document.documentElement.style.overflow = '';
+      ultimoFoco?.focus();
+    };
+
+    abrir.addEventListener('click', abrirMenu);
+    fechar.addEventListener('click', fecharMenu);
+    fundo?.addEventListener('click', fecharMenu);
+
+    // Fecha ao navegar, util quando o link leva a uma ancora da mesma pagina.
+    gaveta.querySelectorAll('a[href]').forEach((link) => {
+      link.addEventListener('click', fecharMenu);
+    });
+
+    document.addEventListener('keydown', (evento) => {
+      if (painel.hidden) return;
+
+      if (evento.key === 'Escape') {
+        fecharMenu();
+        return;
+      }
+
+      // Mantem o foco preso dentro do painel enquanto ele estiver aberto.
+      if (evento.key === 'Tab') {
+        const lista = focaveis();
+        if (lista.length === 0) return;
+
+        const primeiro = lista[0]!;
+        const ultimo = lista[lista.length - 1]!;
+
+        if (evento.shiftKey && document.activeElement === primeiro) {
+          evento.preventDefault();
+          ultimo.focus();
+        } else if (!evento.shiftKey && document.activeElement === ultimo) {
+          evento.preventDefault();
+          primeiro.focus();
+        }
+      }
+    });
+
+    // Volta ao estado normal se a janela crescer com o painel aberto.
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', (evento) => {
+      if (evento.matches && !painel.hidden) fecharMenu();
+    });
+  }
+</script>

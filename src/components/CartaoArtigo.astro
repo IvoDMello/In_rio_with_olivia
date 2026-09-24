@@ -1,0 +1,70 @@
+---
+import Foto from './Foto.astro';
+import { imagem } from '~/lib/imagens';
+import { LOCALE_DATA, dicionario, rotaArtigo, type Idioma } from '~/i18n/config';
+import { partes, type Artigo } from '~/lib/dicas';
+
+interface Props {
+  artigo: Artigo;
+  lang: Idioma;
+  destaque?: boolean;
+  /**
+   * Nivel do titulo. No indice de dicas os artigos vem logo abaixo do h1 da
+   * pagina, entao precisam ser h2. Dentro de uma secao com titulo proprio,
+   * como na home, o h3 e o nivel correto.
+   */
+  nivel?: 'h2' | 'h3';
+}
+
+const { artigo, lang, destaque = false, nivel = 'h3' } = Astro.props;
+const Titulo = nivel;
+const t = dicionario(lang);
+
+const { slug } = partes(artigo);
+const href = rotaArtigo(slug, lang);
+const foto = imagem('artigos', artigo.data.imagem);
+
+const data = artigo.data.data.toLocaleDateString(LOCALE_DATA[lang], {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<article class="revelar group">
+  <a href={href} class="block">
+    <Foto
+      src={foto}
+      alt={artigo.data.alt ?? artigo.data.titulo}
+      proporcao={destaque ? '16 / 10' : '4 / 3'}
+      sizes={destaque ? '(min-width: 768px) 60vw, 100vw' : '(min-width: 768px) 33vw, 100vw'}
+      class="rounded-sm"
+      classeImagem="transition-transform duration-700 ease-[cubic-bezier(0.2,0,0,1)] motion-safe:group-hover:scale-[1.04]"
+    />
+
+    <p class="mt-5 text-xs uppercase tracking-[0.12em] text-pedra">
+      <time datetime={artigo.data.data.toISOString()}>{data}</time>
+    </p>
+
+    <Titulo
+      class:list={[
+        'mt-2.5 text-atlantico transition-colors duration-200',
+        'group-hover:text-atlantico-claro group-hover:underline',
+        'group-hover:decoration-sol group-hover:underline-offset-[6px]',
+        destaque ? 'text-titulo-secao' : 'text-titulo-cartao',
+      ]}
+    >
+      {artigo.data.titulo}
+    </Titulo>
+
+    <p class="mt-3 max-w-prose text-sm leading-relaxed text-pedra">
+      {artigo.data.resumo}
+    </p>
+
+    <span
+      class="mt-4 inline-block border-b border-sol pb-0.5 text-sm font-medium text-atlantico"
+    >
+      {t.botoes.lerMais}
+    </span>
+  </a>
+</article>

@@ -1,0 +1,98 @@
+---
+/**
+ * Moldura de secao: cuida do espacamento vertical, do fundo alternado e do
+ * cabecalho (sobretitulo, titulo e texto de apoio). Usar sempre esta em vez
+ * de repetir paddings pelas paginas mantem o ritmo da pagina igual.
+ */
+interface Props {
+  id?: string;
+  sobretitulo?: string;
+  titulo?: string;
+  texto?: string;
+  fundo?: 'branco' | 'nevoa' | 'atlantico';
+  /** Centraliza o cabecalho da secao. */
+  centralizado?: boolean;
+  /** Nivel do titulo. Cada pagina tem um unico h1. */
+  nivel?: 'h1' | 'h2';
+  espacamento?: 'normal' | 'compacto';
+  class?: string;
+}
+
+const {
+  id,
+  sobretitulo,
+  titulo,
+  texto,
+  fundo = 'branco',
+  centralizado = false,
+  nivel = 'h2',
+  espacamento = 'normal',
+  class: classe = '',
+} = Astro.props;
+
+const Titulo = nivel;
+
+const fundos = {
+  branco: 'bg-branco',
+  nevoa: 'bg-nevoa',
+  atlantico: 'fundo-escuro bg-atlantico text-nevoa',
+};
+
+const escura = fundo === 'atlantico';
+const temCabecalho = Boolean(sobretitulo || titulo || texto);
+---
+
+<section
+  id={id}
+  class:list={[
+    fundos[fundo],
+    espacamento === 'compacto' ? 'py-14 md:py-20' : 'py-20 md:py-28',
+    classe,
+  ]}
+>
+  <div class="container-site">
+    {
+      temCabecalho && (
+        <div class:list={['revelar', centralizado && 'mx-auto max-w-2xl text-center']}>
+          {sobretitulo && (
+            <p
+              class:list={[
+                'mb-4 text-xs font-semibold uppercase tracking-[0.16em]',
+                escura ? 'text-sol' : 'text-pedra',
+              ]}
+            >
+              {sobretitulo}
+            </p>
+          )}
+
+          {titulo && (
+            <Titulo
+              class:list={[
+                'text-titulo-secao text-balance',
+                escura ? 'text-branco' : 'text-atlantico',
+              ]}
+            >
+              {titulo}
+            </Titulo>
+          )}
+
+          {texto && (
+            <p
+              class:list={[
+                'mt-5 text-pretty',
+                centralizado ? 'mx-auto max-w-xl' : 'max-w-xl',
+                escura ? 'text-nevoa/75' : 'text-pedra',
+              ]}
+            >
+              {texto}
+            </p>
+          )}
+        </div>
+      )
+    }
+
+    <div class:list={[temCabecalho && 'mt-12 md:mt-16']}>
+      <slot />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,121 @@
+---
+/**
+ * Conjunto de icones do site. Tracado leve, para combinar com a tipografia.
+ * O icone do WhatsApp e preenchido porque e um simbolo reconhecivel e perde
+ * legibilidade quando desenhado so com contorno.
+ *
+ * Sao decorativos por padrao (aria-hidden). Quem usa o icone e responsavel
+ * pelo texto acessivel do botao ou do link.
+ */
+export type NomeDoIcone =
+  | 'whatsapp'
+  | 'instagram'
+  | 'email'
+  | 'menu'
+  | 'fechar'
+  | 'seta'
+  | 'globo'
+  | 'estrela'
+  | 'aspas';
+
+interface Props {
+  nome: NomeDoIcone;
+  tamanho?: number;
+  class?: string;
+}
+
+const { nome, tamanho = 20, class: classe = '' } = Astro.props;
+
+const comum = {
+  width: tamanho,
+  height: tamanho,
+  viewBox: '0 0 24 24',
+  'aria-hidden': 'true',
+  focusable: 'false',
+  class: classe,
+} as const;
+
+const traco = {
+  fill: 'none',
+  stroke: 'currentColor',
+  'stroke-width': 1.5,
+  'stroke-linecap': 'round' as const,
+  'stroke-linejoin': 'round' as const,
+};
+---
+
+{
+  nome === 'whatsapp' && (
+    <svg {...comum} fill="currentColor">
+      <path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 5L2 22l5.2-1.36a9.9 9.9 0 0 0 4.84 1.24h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.88 9.88 0 0 0 12.04 2Zm0 1.84c2.17 0 4.2.84 5.73 2.38a8.07 8.07 0 0 1 2.38 5.74c0 4.5-3.66 8.16-8.16 8.16a8.2 8.2 0 0 1-4.15-1.14l-.3-.18-3.08.8.82-3-.19-.31a8.14 8.14 0 0 1-1.25-4.34c0-4.5 3.66-8.11 8.2-8.11Zm-3.1 4.05c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.2.87 2.35.99 2.51.12.17 1.7 2.6 4.14 3.65.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.59 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.66-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.95-1.2-.72-.64-1.2-1.44-1.35-1.68-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.17.04-.31-.02-.43-.06-.12-.54-1.32-.75-1.8-.2-.47-.4-.41-.55-.42h-.45Z" />
+    </svg>
+  )
+}
+
+{
+  nome === 'instagram' && (
+    <svg {...comum} {...traco}>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+{
+  nome === 'email' && (
+    <svg {...comum} {...traco}>
+      <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
+      <path d="m3.5 7 7.5 5.4a2 2 0 0 0 2 0L20.5 7" />
+    </svg>
+  )
+}
+
+{
+  nome === 'menu' && (
+    <svg {...comum} {...traco}>
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  )
+}
+
+{
+  nome === 'fechar' && (
+    <svg {...comum} {...traco}>
+      <path d="m6 6 12 12M18 6 6 18" />
+    </svg>
+  )
+}
+
+{
+  nome === 'seta' && (
+    <svg {...comum} {...traco}>
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  )
+}
+
+{
+  nome === 'globo' && (
+    <svg {...comum} {...traco}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z" />
+    </svg>
+  )
+}
+
+{
+  nome === 'estrela' && (
+    <svg {...comum} fill="currentColor">
+      <path d="m12 3 2.6 5.5 5.9.83-4.3 4.2 1.03 6.04L12 16.7l-5.23 2.87L7.8 13.53 3.5 9.33l5.9-.83L12 3Z" />
+    </svg>
+  )
+}
+
+{
+  nome === 'aspas' && (
+    <svg {...comum} fill="currentColor">
+      <path d="M9.2 6C6.6 7.3 5 9.7 5 12.7V18h5.4v-5.4H8c0-1.9.9-3.3 2.6-4.2L9.2 6Zm9 0c-2.6 1.3-4.2 3.7-4.2 6.7V18h5.4v-5.4H17c0-1.9.9-3.3 2.6-4.2L18.2 6Z" />
+    </svg>
+  )
+}

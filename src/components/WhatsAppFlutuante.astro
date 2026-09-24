@@ -1,0 +1,87 @@
+---
+import Icone from './Icone.astro';
+import { linkWhatsApp } from '~/config/site';
+import { dicionario, type Idioma } from '~/i18n/config';
+
+/**
+ * Botao flutuante presente em todas as paginas.
+ *
+ * No celular ele fica acima da area de gestos do sistema (safe-area) e some
+ * enquanto a pagina esta no topo, para nao cobrir o hero. Reaparece assim que
+ * a pessoa comeca a rolar.
+ */
+interface Props {
+  lang: Idioma;
+}
+
+const { lang } = Astro.props;
+const t = dicionario(lang);
+const href = linkWhatsApp(t.whatsapp.geral);
+---
+
+{
+  href && (
+    <aside aria-label={t.whatsapp.aria}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener"
+        data-analytics="whatsapp-flutuante"
+        data-whatsapp-flutuante
+        aria-label={t.whatsapp.aria}
+        title={t.botoes.whatsapp}
+        class="fixed right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full
+               bg-atlantico text-branco shadow-[0_4px_20px_rgba(18,58,69,0.28)]
+               transition-[background-color,color,opacity,transform] duration-300
+               ease-[cubic-bezier(0.2,0,0,1)] hover:bg-sol hover:text-atlantico
+               sm:right-6 sm:h-15 sm:w-15"
+        style="bottom: calc(1rem + env(safe-area-inset-bottom, 0px));"
+      >
+        <Icone nome="whatsapp" tamanho={27} />
+      </a>
+    </aside>
+  )
+}
+
+<style>
+  [data-whatsapp-flutuante] {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+  }
+
+  [data-whatsapp-flutuante][data-visivel='true'] {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  /* Sem JavaScript, ou com animacao reduzida, o botao fica sempre visivel. */
+  @media (prefers-reduced-motion: reduce) {
+    [data-whatsapp-flutuante] {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const botao = document.querySelector<HTMLElement>('[data-whatsapp-flutuante]');
+
+  if (botao) {
+    const atualiza = () => {
+      botao.dataset.visivel = String(window.scrollY > 320);
+    };
+    atualiza();
+    window.addEventListener('scroll', atualiza, { passive: true });
+  }
+</script>
+
+<noscript>
+  <style>
+    [data-whatsapp-flutuante] {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+  </style>
+</noscript>

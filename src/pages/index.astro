@@ -1,0 +1,109 @@
+---
+import { IDIOMAS, IDIOMA_PADRAO, SECOES } from '~/i18n/config';
+import { SITE } from '~/config/site';
+
+/**
+ * Raiz do site.
+ *
+ * O site e estatico, entao a escolha do idioma acontece no navegador:
+ *  1. Se a pessoa ja escolheu um idioma antes, respeita a escolha.
+ *  2. Senao, tenta o idioma do navegador.
+ *  3. Se nada bater, vai para o ingles, que e o padrao.
+ *
+ * Quem chegar com JavaScript desligado, ou com um robo de busca, ve os tres
+ * links e a tag canonical apontando para o ingles. Nada fica inalcancavel.
+ */
+const destinoPadrao = `/${IDIOMA_PADRAO}`;
+const links = IDIOMAS.map((lang) => ({
+  lang,
+  href: `/${lang}`,
+  rotulo: { en: 'English', pt: 'Portugues', es: 'Espanol' }[lang],
+}));
+---
+
+<!doctype html>
+<html lang={IDIOMA_PADRAO}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{SITE.nome}</title>
+    <link rel="canonical" href={new URL(destinoPadrao, SITE.url).href} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    {
+      IDIOMAS.map((lang) => (
+        <link
+          rel="alternate"
+          hreflang={lang === 'pt' ? 'pt-BR' : lang}
+          href={new URL(`/${lang}`, SITE.url).href}
+        />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={new URL(destinoPadrao, SITE.url).href} />
+
+    <meta http-equiv="refresh" content={`0; url=${destinoPadrao}`} />
+
+    <script is:inline define:vars={{ IDIOMAS, IDIOMA_PADRAO, SECOES }}>
+      (function () {
+        var escolhido = null;
+
+        try {
+          var guardado = localStorage.getItem('idioma');
+          if (guardado && IDIOMAS.indexOf(guardado) !== -1) escolhido = guardado;
+        } catch (erro) {
+          // Navegacao privada. Segue pela deteccao do navegador.
+        }
+
+        if (!escolhido) {
+          var preferidos = navigator.languages || [navigator.language || ''];
+          for (var i = 0; i < preferidos.length && !escolhido; i++) {
+            var base = String(preferidos[i]).toLowerCase().split('-')[0];
+            if (IDIOMAS.indexOf(base) !== -1) escolhido = base;
+          }
+        }
+
+        var destino = '/' + (escolhido || IDIOMA_PADRAO);
+
+        // A pessoa pode ter chegado em / com uma ancora ou parametros.
+        location.replace(destino + location.search + location.hash);
+      })();
+    </script>
+
+    <style>
+      body {
+        margin: 0;
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        font-family: system-ui, sans-serif;
+        background: #eef2f0;
+        color: #123a45;
+      }
+      ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        padding: 0;
+      }
+      a {
+        color: #123a45;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href} hreflang={link.lang}>
+                {link.rotulo}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </body>
+</html>

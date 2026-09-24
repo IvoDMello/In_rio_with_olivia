@@ -1,0 +1,91 @@
+---
+/**
+ * Logo em SVG embutido, e nao como <img src>.
+ *
+ * O motivo e a tipografia: a palavra "Olivia" usa Instrument Serif. Um SVG
+ * carregado por <img> roda isolado e nao enxerga as fontes da pagina, entao
+ * cairia sempre no Georgia. Embutido, ele usa a fonte que o site ja carregou.
+ *
+ * SOBRE AS PROPORCOES
+ * A altura desenhada na tela e dividida pela altura da viewBox, entao toda
+ * margem vazia dentro da viewBox rouba tamanho das letras. Aqui a caixa esta
+ * apertada em volta do desenho (120 de altura, sem sobra), e o simbolo foi
+ * reduzido para 88 por cento, para o bloco de texto ocupar mais da altura.
+ *
+ * Os corpos de 74 e 27 nao sao arbitrarios: medidos no navegador com as
+ * fontes reais, "Olivia" fica com 148px e "in Rio with" com 150px, ou seja,
+ * as duas linhas tem praticamente a mesma largura e o bloco fecha alinhado.
+ * Ao mexer em um dos dois, meca o outro de novo.
+ *
+ * Os arquivos em /public/brand seguem as mesmas medidas, para uso fora do
+ * site (assinatura de e-mail, TripAdvisor, redes).
+ */
+interface Props {
+  /** 'escura' inverte as cores para uso sobre fundo Atlantico. */
+  variante?: 'clara' | 'escura';
+  /** Apenas o simbolo, sem a palavra. */
+  simbolo?: boolean;
+  /** Altura em pixels. A largura acompanha. */
+  altura?: number;
+  class?: string;
+}
+
+const { variante = 'clara', simbolo = false, altura = 48, class: classe = '' } = Astro.props;
+
+const escura = variante === 'escura';
+const corTexto = escura ? '#FFFFFF' : '#123A45';
+const corSobretitulo = escura ? '#EEF2F0' : '#6B7775';
+const corTraco = escura ? '#EEF2F0' : '#123A45';
+const corFundo = escura ? '#1C5060' : '#EEF2F0';
+
+const viewBox = simbolo ? '0 0 120 120' : '0 0 278 120';
+const largura = simbolo ? altura : Math.round((altura * 278) / 120);
+---
+
+<svg
+  width={largura}
+  height={altura}
+  viewBox={viewBox}
+  class={classe}
+  role="img"
+  aria-label="in Rio with Olivia"
+  focusable="false"
+>
+  <g transform={simbolo ? undefined : 'translate(0, 7.2) scale(0.88)'}>
+    <circle cx="60" cy="60" r="58" fill={corFundo}></circle>
+    <circle cx="40" cy="42" r="7" fill="#E9A23B"></circle>
+    <path
+      d="M14 84 C 24 72, 34 70, 44 78 C 50 58, 60 32, 76 32 C 92 32, 100 58, 106 84"
+      fill="none"
+      stroke={corTraco}
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+    <path
+      d="M22 94 q 6 -5 12 0 t 12 0 t 12 0 t 12 0 t 12 0 t 12 0"
+      fill="none"
+      stroke={corTraco}
+      stroke-width="3"
+      stroke-linecap="round"></path>
+  </g>
+
+  {
+    !simbolo && (
+      <>
+        <text
+          x="126"
+          y="39"
+          fill={corSobretitulo}
+          font-family="var(--font-texto)"
+          font-size="27"
+          letter-spacing="2.2"
+        >
+          in Rio with
+        </text>
+        <text x="122" y="101" fill={corTexto} font-family="var(--font-titulo)" font-size="74">
+          Olivia
+        </text>
+      </>
+    )
+  }
+</svg>

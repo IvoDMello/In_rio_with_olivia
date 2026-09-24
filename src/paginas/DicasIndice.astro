@@ -1,0 +1,65 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CartaoArtigo from '~/components/CartaoArtigo.astro';
+import ChamadaFinal from '~/components/ChamadaFinal.astro';
+
+import { artigosDe } from '~/lib/dicas';
+import { dicionario, type Idioma } from '~/i18n/config';
+
+interface Props {
+  lang: Idioma;
+}
+
+const { lang } = Astro.props;
+const t = dicionario(lang);
+
+const artigos = await artigosDe(lang);
+const [primeiro, ...demais] = artigos;
+---
+
+<BaseLayout
+  lang={lang}
+  titulo={t.meta.dicas.titulo}
+  descricao={t.meta.dicas.descricao}
+  secaoAtiva="dicas"
+>
+  <section class="bg-nevoa pb-20 pt-14 md:pb-24 md:pt-20">
+    <div class="container-site">
+      <div class="revelar max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pedra">
+          {t.dicas.sobretitulo}
+        </p>
+        <h1 class="mt-4 text-titulo-pagina text-balance text-atlantico">{t.dicas.titulo}</h1>
+        <p class="mt-6 text-pretty text-pedra">{t.dicas.intro}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="container-site">
+      {
+        artigos.length === 0 ? (
+          <p class="text-pedra">{t.dicas.vazio}</p>
+        ) : (
+          <div class="space-y-16 md:space-y-20">
+            {primeiro && (
+              <div class="md:max-w-3xl">
+                <CartaoArtigo artigo={primeiro} lang={lang} destaque nivel="h2" />
+              </div>
+            )}
+
+            {demais.length > 0 && (
+              <div class="grid gap-x-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                {demais.map((artigo) => (
+                  <CartaoArtigo artigo={artigo} lang={lang} nivel="h2" />
+                ))}
+              </div>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <ChamadaFinal lang={lang} />
+</BaseLayout>

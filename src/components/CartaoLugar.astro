@@ -1,0 +1,36 @@
+---
+import Foto from './Foto.astro';
+import { imagem } from '~/lib/imagens';
+
+/**
+ * Cartao de um lugar que pode entrar no roteiro.
+ *
+ * Nao e um link: nenhum lugar tem pagina propria, porque eles nao sao passeios
+ * vendidos separadamente e sim pecas que a Olivia usa para montar o tour.
+ */
+interface Props {
+  id: string;
+  nome: string;
+  resumo: string;
+  /** Nome do grupo, usado apenas no texto alternativo da foto. */
+  prioridade?: boolean;
+}
+
+const { id, nome, resumo, prioridade = false } = Astro.props;
+const foto = imagem('lugares', id);
+---
+
+<article class="revelar group">
+  <Foto
+    src={foto}
+    alt={nome}
+    proporcao="4 / 3"
+    prioridade={prioridade}
+    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+    class="rounded-sm"
+    classeImagem="transition-transform duration-700 ease-[cubic-bezier(0.2,0,0,1)] motion-safe:group-hover:scale-[1.04]"
+  />
+
+  <h3 class="mt-5 text-titulo-cartao text-atlantico">{nome}</h3>
+  <p class="mt-2 text-sm leading-relaxed text-pedra">{resumo}</p>
+</article>

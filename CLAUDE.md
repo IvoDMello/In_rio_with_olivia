@@ -1,0 +1,214 @@
+# In Rio with Olivia: documento de fundação do projeto
+
+Este arquivo é a referência principal do projeto. Leia inteiro antes de escrever qualquer código e siga as decisões aqui registradas. Quando algo não estiver definido, pergunte antes de inventar.
+
+## 1. Visão geral
+
+Site institucional de Olivia, guia de turismo no Rio de Janeiro. O objetivo principal do site é transformar visitantes em conversas no WhatsApp. Objetivos secundários: passar confiança (avaliações do TripAdvisor, Instagram, credenciais) e inspirar o visitante com experiências e ideias de roteiro.
+
+- Domínio: inriowitholivia.com.br (ainda será registrado)
+- Público: turistas estrangeiros e brasileiros de outras cidades, majoritariamente no celular
+- Idiomas: inglês (padrão), português e espanhol
+- Tamanho: site médio, poucas páginas, conteúdo bem cuidado
+- Tom: pessoal, acolhedor e direto. Olivia fala em primeira pessoa.
+
+## 2. Identidade visual
+
+Estética minimalista: muito espaço em branco, poucas cores, fotografia como protagonista, tipografia elegante. Nada de gradientes, sombras pesadas ou animações em todo lugar.
+
+### Paleta
+
+| Nome | Hex | Uso |
+|---|---|---|
+| Branco | #FFFFFF | Fundo principal |
+| Névoa | #EEF2F0 | Fundos de seção alternados, cartões |
+| Atlântico | #123A45 | Títulos, textos fortes, rodapé, botões principais |
+| Pedra | #6B7775 | Texto secundário, legendas |
+| Sol | #E9A23B | Destaque pontual (botão do WhatsApp em hover, detalhes). Usar com parcimônia. |
+
+Verificar contraste AA: texto Pedra só sobre Branco ou Névoa, nunca em tamanho pequeno sobre Sol.
+
+### Tipografia (Google Fonts)
+
+- Títulos: Instrument Serif (400, normal e itálico)
+- Textos e interface: Manrope (400, 500, 600)
+- Escala sugerida: 16px base, títulos de seção 36 a 48px no desktop, 28 a 32px no mobile
+- Linhas de texto com no máximo 70 caracteres
+
+### Logo
+
+Arquivos na pasta `/brand`:
+
+- `logo-horizontal.svg`: versão principal (símbolo + "in Rio with Olivia")
+- `logo-horizontal-escuro.svg`: versão para fundo Atlântico (rodapé)
+- `logo-simbolo.svg`: símbolo isolado, usar como favicon e ícone de redes
+
+O símbolo mostra o contorno do Pão de Açúcar, o sol e a onda do calçadão. Antes de publicar, converter os textos dos SVGs em contornos (outline) para não depender da fonte instalada.
+
+## 3. Stack técnica
+
+- Framework: Astro (site estático, rápido e ótimo para SEO)
+- Estilo: Tailwind CSS com os tokens da paleta acima configurados no tema
+- Internacionalização: roteamento nativo do Astro com prefixo de idioma (`/en`, `/pt`, `/es`)
+- Conteúdo: Astro Content Collections (arquivos Markdown/JSON por idioma) para experiências e inspirações
+- Imagens: componente `<Image />` do Astro, formatos AVIF/WebP, lazy loading
+- Hospedagem: Vercel ou Netlify (plano gratuito atende)
+- Formulário (opcional): Netlify Forms ou Formspree
+- Analytics: Plausible ou GA4 com eventos de clique no WhatsApp, Instagram e TripAdvisor
+
+JavaScript só onde for necessário (menu mobile, seletor de idioma, galeria). Nada de bibliotecas pesadas.
+
+## 4. Estrutura de páginas
+
+### Home (`/`)
+1. Hero: foto grande do Rio (ou da Olivia em um mirante), frase curta de apresentação e botão "Falar no WhatsApp"
+2. Apresentação curta da Olivia: foto, 2 ou 3 frases e link para "Sobre mim"
+3. Experiências em destaque: 3 a 6 cartões com foto, título, duração e link
+4. Inspirações para o seu tour: mosaico de 3 a 4 textos ou ideias de roteiro
+5. Experiências especiais: bloco de destaque para roteiros personalizados, privados ou temáticos
+6. Avaliações: 3 depoimentos reais do TripAdvisor com link "Ver todas no TripAdvisor"
+7. Instagram: faixa com 6 fotos (imagens estáticas atualizadas manualmente, sem widget pesado) e link para o perfil
+8. Chamada final: "Vamos planejar seu dia no Rio?" com botão do WhatsApp
+
+### Sobre mim (`/sobre`)
+História da Olivia, por que ela é guia, idiomas que fala, credenciais (Cadastur, formação, anos de experiência), fotos e chamada para o WhatsApp.
+
+### Experiências (`/experiencias` e `/experiencias/[slug]`)
+Lista em grade e uma página por experiência com: fotos, descrição, duração, ponto de encontro, o que está incluído, o que levar, melhor horário, idiomas disponíveis e botão "Reservar pelo WhatsApp" com mensagem pré-preenchida citando o nome do tour.
+
+Preços: o site não exibe valores em nenhum lugar. Cada experiência mostra "Valor sob consulta" logo acima do botão, e o botão abre o WhatsApp com a mensagem pré-preenchida pedindo orçamento (ex.: "Olá, Olivia! Gostaria de saber o valor do tour Pão de Açúcar ao pôr do sol para [número] pessoas em [data]."). Não incluir campo de preço no modelo de dados nem `offers` com valor no schema.org.
+
+Sugestões iniciais (validar com a Olivia): Cristo Redentor e Santa Teresa, Pão de Açúcar ao pôr do sol, Centro Histórico e Pequena África, Praias da Zona Sul, Trilhas (Morro Dois Irmãos, Pedra Bonita), Jardim Botânico e Parque Lage, Rio gastronômico, tour personalizado.
+
+### Inspirações (`/inspiracoes` e `/inspiracoes/[slug]`)
+Pequeno blog com dicas e roteiros ("Rio em 3 dias", "O que fazer quando chove", "Melhores pores do sol"). Ajuda no SEO e no Google.
+
+### Contato (`/contato`)
+WhatsApp, Instagram, TripAdvisor, e-mail, formulário simples (nome, e-mail, datas, número de pessoas, mensagem) e perguntas frequentes (como pedir um orçamento, o que influencia o valor, formas de pagamento, cancelamento, pontos de encontro, segurança, crianças).
+
+## 5. Componentes globais
+
+- Header fixo e discreto: logo à esquerda; menu (Home, Sobre mim, Experiências, Inspirações, Contato); seletor de idioma (EN / PT / ES) e ícone do WhatsApp à direita. No mobile, menu em painel lateral.
+- Botão flutuante do WhatsApp no canto inferior direito, visível em todas as páginas, sem cobrir conteúdo importante no mobile.
+- Links de WhatsApp no formato `https://wa.me/55XXXXXXXXXXX?text=...` com mensagem pré-preenchida no idioma ativo.
+- Rodapé em Atlântico: logo claro, links de navegação, Instagram, TripAdvisor, WhatsApp, e-mail, Cadastur e ano.
+
+## 6. Tradução
+
+- O seletor de idioma troca a rota mantendo a página atual (ex.: `/en/experiences/sugarloaf` para `/pt/experiencias/pao-de-acucar`).
+- Textos de interface em `src/i18n/en.json`, `pt.json`, `es.json`. Nada de texto fixo nos componentes.
+- Conteúdos longos (experiências, inspirações, sobre) em arquivos separados por idioma.
+- Tradução feita por arquivo, não por tradutor automático no navegador.
+- Detectar o idioma do navegador apenas na primeira visita à raiz e lembrar a escolha do usuário.
+- Tags `hreflang` e `lang` corretas em todas as páginas.
+
+## 7. SEO e desempenho
+
+- Título e descrição únicos por página e idioma, Open Graph e Twitter Card com imagem
+- Dados estruturados schema.org (`LocalBusiness`/`TouristTrip`) e `Review` quando houver avaliações
+- `sitemap.xml` com todas as rotas e idiomas, `robots.txt`
+- Meta Lighthouse: 90+ em Performance, Acessibilidade, Boas práticas e SEO no mobile
+- Imagens com `alt` descritivo em cada idioma
+
+## 8. Acessibilidade e qualidade
+
+- Responsivo a partir de 360px de largura
+- Foco visível no teclado, contraste AA, navegação por teclado no menu e no seletor de idioma
+- Respeitar `prefers-reduced-motion`
+- Banner de cookies (LGPD) somente se usar GA4; com Plausible não é necessário
+
+## 9. Estrutura de pastas sugerida
+
+```
+/public/brand          logos e favicon
+/src/components        Header, Footer, WhatsAppButton, LanguageSwitcher, TourCard, ReviewCard
+/src/layouts           BaseLayout
+/src/pages/[lang]/     páginas por idioma
+/src/content/tours     experiências (md por idioma)
+/src/content/inspiracoes
+/src/i18n              en.json, pt.json, es.json, utilitários
+/src/config/site.ts    WhatsApp, Instagram, TripAdvisor, e-mail, Cadastur
+```
+
+Todos os contatos e links externos ficam em `site.ts` para serem trocados em um só lugar.
+
+## 10. Informações pendentes (preencher antes de publicar)
+
+- [x] Número do WhatsApp
+- [x] Link do perfil do Instagram
+- [x] Link da página do TripAdvisor
+- [ ] 3 avaliações escolhidas do TripAdvisor (colar em `src/data/reviews.ts`)
+- [ ] E-mail de contato
+- [ ] Número do Cadastur
+- [ ] Idiomas que a Olivia fala (assumido português, inglês e espanhol, confirmar)
+- [x] Lista de lugares que podem entrar no roteiro
+- [ ] Fotos em alta resolução (Olivia, equipe e passeios)
+- [x] Textos em português, a partir de `textos.txt`, com tradução para inglês e espanhol
+- [ ] Revisão final dos textos pela Olivia, em especial as respostas de pagamento e
+      cancelamento no FAQ, que foram escritas como rascunho
+
+## 11. Decisões tomadas na implementação
+
+Registradas aqui porque mudam o que as seções acima descrevem. Todas foram aprovadas
+antes de escrever o código.
+
+### Experiências não são produtos separados
+
+Os textos da Olivia deixam claro que ela trabalha com tours privados e personalizados,
+e que a lista de lugares é um cardápio para montar o roteiro, não um catálogo de
+passeios vendidos um a um. Por isso **não existe `/experiencias/[slug]`**. A página
+`/experiencias` mostra os 19 lugares em grade, agrupados em quatro categorias, mais
+os blocos de Experiências especiais e Rio by Night.
+
+Se um dia fizer sentido dar página própria a um lugar muito buscado, o conteúdo já
+está estruturado para isso em `src/content/lugares.json`.
+
+### O blog mudou de nome
+
+"Inspirações" passou a nomear a lista de lugares, seguindo o texto da Olivia
+("Inspirações para o seu tour"). Para não haver duas coisas com o mesmo nome, o blog
+virou **Dicas / Tips / Consejos**, nas rotas `/pt/dicas`, `/en/tips` e `/es/consejos`.
+
+### Pedra ficou um tom mais escura
+
+A seção 2 registra Pedra como `#6B7775`. Esse tom dá contraste de 4.11:1 sobre Névoa,
+abaixo do mínimo AA de 4.5:1 que a seção 8 exige. O valor em uso é **`#63706E`**, o
+ajuste mínimo que passa nos dois fundos: 5.15:1 sobre Branco e 4.56:1 sobre Névoa.
+A diferença visual é imperceptível.
+
+Pelo mesmo motivo, **Sol nunca é usado como cor de texto sobre fundo claro** (daria
+2.17:1). Em fundo claro ele aparece só em bordas, sublinhados e detalhes. Como texto,
+apenas sobre Atlântico.
+
+### Nada é inventado
+
+Onde falta informação real, o bloco não aparece, em vez de exibir conteúdo de exemplo:
+
+- Sem número de WhatsApp, nenhum botão de conversa é renderizado
+- Sem avaliações reais em `src/data/reviews.ts`, a seção de avaliações e o
+  `aggregateRating` do schema.org ficam de fora
+- Sem provedor de formulário, o formulário aparece desativado com aviso
+
+O `npm run build` lista o que ainda falta ao terminar.
+
+## 12. Plano de execução para o Claude Code
+
+1. Criar o projeto Astro com Tailwind, configurar tokens de cor e fontes
+2. Configurar i18n (rotas, arquivos JSON, seletor de idioma)
+3. Criar layout base, Header, Footer e botão flutuante do WhatsApp
+4. Montar a Home com conteúdo provisório
+5. Criar coleções de conteúdo e páginas de Experiências
+6. Criar Sobre mim, Inspirações e Contato
+7. Aplicar SEO, schema, sitemap e favicon
+8. Revisar acessibilidade e responsividade, rodar Lighthouse
+9. Substituir textos provisórios pelos textos reais e traduções
+10. Publicar na Vercel ou Netlify e conectar o domínio .com.br
+
+Ao final de cada etapa, mostrar o que foi feito e aguardar aprovação antes de seguir.
+
+## 13. Regras de escrita
+
+- Não usar travessão nos textos do site
+- Não usar emojis
+- Frases curtas, em primeira pessoa quando for a voz da Olivia
+- Botões dizem exatamente o que acontece ("Falar no WhatsApp", "Ver experiência")

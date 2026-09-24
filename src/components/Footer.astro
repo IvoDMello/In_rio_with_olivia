@@ -1,0 +1,148 @@
+---
+import Logo from './Logo.astro';
+import Icone from './Icone.astro';
+import { CONTATO, SITE, linkWhatsApp, whatsappLegivel } from '~/config/site';
+import { dicionario, MENU, rota, type Idioma } from '~/i18n/config';
+
+interface Props {
+  lang: Idioma;
+}
+
+const { lang } = Astro.props;
+const t = dicionario(lang);
+
+const hrefWhats = linkWhatsApp(t.whatsapp.geral);
+const numero = whatsappLegivel();
+const ano = new Date().getFullYear();
+
+type Rede = {
+  href: string;
+  rotulo: string;
+  icone: 'instagram' | 'estrela';
+  analytics: string;
+};
+
+const redes: Rede[] = [
+  CONTATO.instagram && {
+    href: CONTATO.instagram,
+    rotulo: t.contato.canais.instagram,
+    icone: 'instagram' as const,
+    analytics: 'instagram-rodape',
+  },
+  CONTATO.tripadvisor && {
+    href: CONTATO.tripadvisor,
+    rotulo: t.contato.canais.tripadvisor,
+    icone: 'estrela' as const,
+    analytics: 'tripadvisor-rodape',
+  },
+].filter(Boolean) as Rede[];
+
+/** Enquanto nenhum canal estiver configurado, a coluna inteira fica de fora. */
+const temContato = Boolean(hrefWhats || CONTATO.email || redes.length);
+---
+
+<footer class="fundo-escuro bg-atlantico text-nevoa">
+  <div class="container-site py-14 md:py-20">
+    <div
+      class:list={[
+        'grid gap-12 md:gap-10',
+        temContato ? 'md:grid-cols-[1.4fr_1fr_1fr]' : 'md:grid-cols-[1.6fr_1fr]',
+      ]}
+    >
+      <div>
+        <Logo variante="escura" altura={54} class="h-[54px] w-auto" />
+        <p class="mt-6 max-w-xs text-sm leading-relaxed text-nevoa/70">
+          {t.rodape.sobre}
+        </p>
+      </div>
+
+      <nav aria-label={t.rodape.navegacao}>
+        <h2 class="font-texto text-xs font-semibold uppercase tracking-[0.14em] text-nevoa/65">
+          {t.rodape.navegacao}
+        </h2>
+        <ul class="mt-5 space-y-3">
+          {
+            MENU.map((secao) => (
+              <li>
+                <a
+                  href={rota(secao, lang)}
+                  class="text-sm text-nevoa/80 transition-colors duration-200 hover:text-sol"
+                >
+                  {t.nav[secao]}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class:list={[!temContato && 'hidden']}>
+        <h2 class="font-texto text-xs font-semibold uppercase tracking-[0.14em] text-nevoa/65">
+          {t.rodape.contato}
+        </h2>
+        <ul class="mt-5 space-y-3">
+          {
+            hrefWhats && (
+              <li>
+                <a
+                  href={hrefWhats}
+                  target="_blank"
+                  rel="noopener"
+                  data-analytics="whatsapp-rodape"
+                  class="inline-flex items-center gap-2.5 text-sm text-nevoa/80
+                         transition-colors duration-200 hover:text-sol"
+                >
+                  <Icone nome="whatsapp" tamanho={17} />
+                  {numero || t.contato.canais.whatsapp}
+                </a>
+              </li>
+            )
+          }
+
+          {
+            CONTATO.email && (
+              <li>
+                <a
+                  href={`mailto:${CONTATO.email}`}
+                  class="inline-flex items-center gap-2.5 text-sm text-nevoa/80
+                         transition-colors duration-200 hover:text-sol"
+                >
+                  <Icone nome="email" tamanho={17} />
+                  {CONTATO.email}
+                </a>
+              </li>
+            )
+          }
+
+          {
+            redes.map((rede) => (
+              <li>
+                <a
+                  href={rede.href}
+                  target="_blank"
+                  rel="noopener"
+                  data-analytics={rede.analytics}
+                  class="inline-flex items-center gap-2.5 text-sm text-nevoa/80
+                         transition-colors duration-200 hover:text-sol"
+                >
+                  <Icone nome={rede.icone} tamanho={17} />
+                  {rede.rotulo}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-14 flex flex-col gap-3 border-t border-nevoa/15 pt-7 text-xs text-nevoa/65
+             sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>
+        {ano} {SITE.nome}. {t.rodape.direitos}
+      </p>
+      {CONTATO.cadastur && <p>{t.rodape.cadastur} {CONTATO.cadastur}</p>}
+    </div>
+  </div>
+</footer>

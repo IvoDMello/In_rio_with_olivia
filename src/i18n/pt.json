@@ -1,0 +1,260 @@
+{
+  "meta": {
+    "home": {
+      "titulo": "Guia de turismo no Rio de Janeiro",
+      "descricao": "Tours privados e personalizados no Rio de Janeiro com a Olivia, guia de turismo há 22 anos. Monte o seu roteiro e fale comigo no WhatsApp."
+    },
+    "sobre": {
+      "titulo": "Sobre mim",
+      "descricao": "Sou a Olivia, guia de turismo no Rio de Janeiro há 22 anos. Trabalho com tours privados e personalizados, de viajantes individuais a grandes grupos."
+    },
+    "experiencias": {
+      "titulo": "Experiências no Rio",
+      "descricao": "Cristo Redentor, Pão de Açúcar, Santa Teresa, praias, trilhas e muito mais. Escolha o que você gosta e eu monto o roteiro do seu jeito."
+    },
+    "dicas": {
+      "titulo": "Dicas do Rio",
+      "descricao": "Roteiros, ideias e conselhos de quem guia no Rio de Janeiro há 22 anos. O que fazer, quando ir e como aproveitar melhor a cidade."
+    },
+    "contato": {
+      "titulo": "Contato",
+      "descricao": "Fale comigo no WhatsApp para planejar o seu dia no Rio de Janeiro. Eu respondo pessoalmente."
+    },
+    "naoEncontrado": {
+      "titulo": "Página não encontrada",
+      "descricao": "Esta página não existe."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "sobre": "Sobre mim",
+    "experiencias": "Experiências",
+    "dicas": "Dicas",
+    "contato": "Contato",
+    "abrirMenu": "Abrir menu",
+    "fecharMenu": "Fechar menu",
+    "idioma": "Idioma",
+    "escolherIdioma": "Escolher idioma",
+    "irParaConteudo": "Ir para o conteúdo"
+  },
+  "botoes": {
+    "whatsapp": "Falar no WhatsApp",
+    "whatsappCurto": "WhatsApp",
+    "orcamento": "Pedir um orçamento",
+    "planejarNoite": "Planejar a minha noite",
+    "verNoite": "Ver o Rio by Night",
+    "consultar": "Consultar valores",
+    "verExperiencias": "Ver experiências",
+    "verTodas": "Ver todas as inspirações",
+    "verDicas": "Ver todas as dicas",
+    "minhaHistoria": "Conhecer a minha história",
+    "tripadvisor": "Ver todas no TripAdvisor",
+    "instagram": "Seguir no Instagram",
+    "voltar": "Voltar",
+    "enviar": "Enviar mensagem",
+    "lerMais": "Ler"
+  },
+  "home": {
+    "hero": {
+      "sobretitulo": "Guia de turismo no Rio de Janeiro",
+      "titulo": "O seu Rio, do seu jeito",
+      "subtitulo": "Tours privados e personalizados, planejados de acordo com os seus interesses e o seu ritmo."
+    },
+    "apresentacao": {
+      "titulo": "É um prazer conhecê-lo. Eu sou a Olivia.",
+      "p1": "Há 22 anos tenho o privilégio de trabalhar como guia de turismo no Rio de Janeiro, uma profissão que exerço com muita paixão, dedicação e responsabilidade.",
+      "p2": "Acredito que um ótimo passeio vai muito além de visitar os principais pontos turísticos. Quero que você se sinta tão à vontade e bem recebido conosco que, ao final do dia, nos despeçamos com um abraço, como velhos amigos."
+    },
+    "comoFunciona": {
+      "titulo": "Como funciona",
+      "passos": [
+        {
+          "titulo": "Diga-me do que você gosta",
+          "texto": "Natureza, vida urbana, atrações turísticas, cultura ou experiências locais. E quanto tempo você tem no Rio."
+        },
+        {
+          "titulo": "Eu monto o seu roteiro",
+          "texto": "Um tour pensado só para você, no seu ritmo, com as paradas que fazem sentido para a sua viagem."
+        },
+        {
+          "titulo": "Nós cuidamos do resto",
+          "texto": "Guia, transporte e reservas. Atendemos de viajantes individuais a grandes grupos, com carros privados, vans e ônibus."
+        }
+      ]
+    },
+    "inspiracoes": {
+      "titulo": "Inspirações para o seu tour",
+      "texto": "Podemos usar algumas das sugestões abaixo para criar um roteiro que caiba no tempo que você tem no Rio."
+    },
+    "avaliacoes": {
+      "titulo": "O que dizem os viajantes",
+      "texto": "Avaliações de quem já passou o dia comigo."
+    },
+    "instagram": {
+      "titulo": "No Instagram",
+      "texto": "Um pouco do meu dia a dia guiando pela cidade."
+    },
+    "final": {
+      "titulo": "Vamos planejar o seu dia no Rio?",
+      "texto": "Me conte quando você chega e o que gostaria de ver. Eu respondo pessoalmente."
+    }
+  },
+  "sobre": {
+    "sobretitulo": "Sobre mim",
+    "titulo": "O seu Rio, do seu jeito",
+    "p1": "Eu trabalho principalmente com tours privados e personalizados, planejados de acordo com os seus interesses, o seu ritmo e o tipo de experiência que você deseja viver no Rio.",
+    "p2": "Você não precisa escolher um roteiro pronto. Diga-me do que você gosta: natureza, vida urbana, atrações turísticas, cultura ou experiências locais. Diga também quanto tempo tem disponível. Eu monto um tour especialmente para você.",
+    "p3": "Cada viajante é diferente, e acredito que a experiência de cada pessoa no Rio também deve ser.",
+    "equipe": {
+      "titulo": "A minha equipe",
+      "p1": "Ao longo dessa trajetória, construí uma pequena equipe de guias que trabalham comigo. São pessoas que escolhi com cuidado, porque reconheci nelas as mesmas qualidades que considero essenciais no meu trabalho: comprometimento, responsabilidade, acolhimento e, acima de tudo, uma verdadeira paixão por receber pessoas e compartilhar nossa cidade com elas.",
+      "p2": "São profissionais em quem confio plenamente e que compartilham a mesma forma de trabalhar, com carinho, atenção e um verdadeiro compromisso em tornar cada experiência especial."
+    },
+    "estrutura": {
+      "titulo": "Para grupos de qualquer tamanho",
+      "texto": "Atendemos desde viajantes individuais até grandes grupos, com carros privados, vans e ônibus, sempre escolhendo a melhor estrutura para cada experiência."
+    },
+    "credenciais": {
+      "titulo": "Credenciais",
+      "experiencia": "anos guiando no Rio de Janeiro",
+      "idiomas": "Idiomas",
+      "cadastur": "Guia cadastrada no Cadastur",
+      "cadasturSemNumero": "Guia de turismo cadastrada no Ministério do Turismo"
+    }
+  },
+  "experiencias": {
+    "sobretitulo": "Experiências",
+    "titulo": "Inspirações para o seu tour",
+    "intro": "Podemos usar algumas das sugestões abaixo para criar um roteiro que caiba no número de horas do seu passeio.",
+    "extra": "Além dessas sugestões, temos passeios para outras cidades e também alguns roteiros secretos que eu posso descrever para você.",
+    "grupos": {
+      "classicos": "Os clássicos",
+      "historia": "História e cultura",
+      "natureza": "Natureza",
+      "praias": "Praias e o Rio menos conhecido"
+    },
+    "especiais": {
+      "titulo": "Experiências especiais",
+      "texto": "Interessou-se por alguma dessas experiências? É só me avisar. Eu verifico valores e disponibilidade e cuido de toda a reserva para você."
+    },
+    "noite": {
+      "titulo": "Rio by Night",
+      "subtitulo": "A noite carioca do seu jeito",
+      "texto": "Um passeio privativo para conhecer a vida noturna do Rio, com transporte e acompanhamento de guia. Podemos montar a noite de acordo com o seu perfil.",
+      "opcoes": [
+        "Shows de samba",
+        "Roxy Dinner Show",
+        "Bares e restaurantes",
+        "Espetáculos e eventos",
+        "Passeios noturnos pela cidade",
+        "Casas de música e dança"
+      ]
+    },
+    "valor": {
+      "rotulo": "Valor sob consulta",
+      "texto": "O valor depende do tamanho do grupo, da duração e do transporte escolhido. Me diga o que você tem em mente e eu faço um orçamento."
+    }
+  },
+  "dicas": {
+    "sobretitulo": "Dicas",
+    "titulo": "Dicas do Rio",
+    "intro": "Ideias de roteiro e conselhos práticos de quem guia nesta cidade há 22 anos.",
+    "vazio": "Em breve, os primeiros textos.",
+    "publicadoEm": "Publicado em",
+    "leituraMin": "min de leitura",
+    "outrasDicas": "Outras dicas",
+    "ctaTitulo": "Quer montar isso com a minha ajuda?",
+    "ctaTexto": "Eu adapto qualquer uma dessas ideias ao tempo que você tem e ao seu ritmo."
+  },
+  "contato": {
+    "sobretitulo": "Contato",
+    "titulo": "Vamos conversar",
+    "intro": "O WhatsApp é o jeito mais rápido de falar comigo. Eu respondo pessoalmente, normalmente no mesmo dia.",
+    "canais": {
+      "titulo": "Onde me encontrar",
+      "whatsapp": "WhatsApp",
+      "instagram": "Instagram",
+      "tripadvisor": "TripAdvisor",
+      "email": "E-mail"
+    },
+    "formulario": {
+      "titulo": "Ou me escreva por aqui",
+      "nome": "Nome",
+      "email": "E-mail",
+      "datas": "Datas no Rio",
+      "datasDica": "Por exemplo: 12 a 16 de março",
+      "pessoas": "Número de pessoas",
+      "mensagem": "O que você gostaria de fazer?",
+      "enviar": "Enviar mensagem",
+      "obrigatorio": "obrigatório",
+      "sucesso": "Mensagem enviada. Eu respondo em breve.",
+      "indisponivel": "O formulário ainda não está ativo. Me chame no WhatsApp ou por e-mail."
+    },
+    "faq": {
+      "titulo": "Perguntas frequentes",
+      "itens": [
+        {
+          "pergunta": "Como peço um orçamento?",
+          "resposta": "Me chame no WhatsApp com as datas da sua viagem, o número de pessoas e o que gostaria de conhecer. Com essas informações eu monto uma proposta de roteiro e envio o valor."
+        },
+        {
+          "pergunta": "O que influencia o valor do passeio?",
+          "resposta": "O tamanho do grupo, a duração do passeio, o transporte escolhido e os ingressos das atrações que entrarem no roteiro. Por isso eu prefiro fazer um orçamento para cada viagem em vez de publicar uma tabela."
+        },
+        {
+          "pergunta": "Os ingressos estão incluídos?",
+          "resposta": "Eu informo no orçamento o que está incluído e o que é pago à parte. Atrações como o Cristo Redentor e o Pão de Açúcar têm ingresso próprio, e eu cuido da compra quando você preferir."
+        },
+        {
+          "pergunta": "Como funciona o pagamento?",
+          "resposta": "Combinamos tudo pelo WhatsApp antes do passeio. Eu explico as formas de pagamento disponíveis e confirmo a reserva com você."
+        },
+        {
+          "pergunta": "E se eu precisar cancelar?",
+          "resposta": "Me avise o quanto antes. Eu entendo que viagens mudam e procuro sempre encontrar uma solução, seja remarcando a data ou ajustando o roteiro."
+        },
+        {
+          "pergunta": "Onde nos encontramos?",
+          "resposta": "Normalmente eu busco você no hotel ou no endereço onde estiver hospedado. Se preferir outro ponto de encontro, combinamos antes."
+        },
+        {
+          "pergunta": "É seguro passear pelo Rio?",
+          "resposta": "Com planejamento, sim. Eu conheço a cidade, escolho os horários e os caminhos e acompanho você o tempo todo. Essa é uma das razões de fazer o passeio com um guia local."
+        },
+        {
+          "pergunta": "Posso levar crianças?",
+          "resposta": "Claro. Eu adapto o ritmo, as distâncias e as paradas para a idade das crianças. Me diga as idades e eu monto um roteiro que funcione para toda a família."
+        }
+      ]
+    }
+  },
+  "rodape": {
+    "sobre": "Guia de turismo no Rio de Janeiro. Tours privados e personalizados, de viajantes individuais a grandes grupos.",
+    "navegacao": "Navegação",
+    "contato": "Contato",
+    "redes": "Redes",
+    "cadastur": "Cadastur",
+    "direitos": "Todos os direitos reservados."
+  },
+  "avaliacoes": {
+    "em": "no TripAdvisor",
+    "notaDe": "Nota"
+  },
+  "whatsapp": {
+    "aria": "Falar com a Olivia no WhatsApp",
+    "geral": "Olá, Olivia! Encontrei o seu site e gostaria de saber mais sobre os seus tours no Rio.",
+    "orcamento": "Olá, Olivia! Gostaria de saber o valor de um tour privado no Rio para [número] pessoas em [data].",
+    "experiencia": "Olá, Olivia! Gostaria de saber o valor de um tour privado no Rio incluindo {nome}, para [número] pessoas em [data].",
+    "especial": "Olá, Olivia! Tenho interesse na experiência {nome}. Pode me passar valores e disponibilidade?",
+    "noite": "Olá, Olivia! Tenho interesse no Rio by Night. Pode me contar como funciona?",
+    "dica": "Olá, Olivia! Li o texto {nome} no seu site e gostaria de montar um roteiro parecido."
+  },
+  "geral": {
+    "fotoEmBreve": "Foto em breve",
+    "naoEncontrado": {
+      "titulo": "Esta página não existe",
+      "texto": "O endereço pode ter mudado. Vamos recomeçar pela home.",
+      "botao": "Ir para a home"
+    }
+  }
+}

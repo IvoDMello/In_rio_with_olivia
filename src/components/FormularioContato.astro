@@ -1,0 +1,117 @@
+---
+import { FORMULARIO_ENDPOINT } from '~/config/site';
+import { dicionario, TAG_HREFLANG, type Idioma } from '~/i18n/config';
+
+/**
+ * Formulario de contato.
+ *
+ * Funciona de duas formas, sem mudar o HTML:
+ *  - Com FORMULARIO_ENDPOINT preenchido (Formspree), envia para la.
+ *  - Sem endpoint, usa Netlify Forms, que le o atributo data-netlify no build.
+ *
+ * Se o site nao estiver na Netlify e o endpoint estiver vazio, o envio nao
+ * tem para onde ir. Nesse caso o formulario aparece desativado com um aviso
+ * apontando para o WhatsApp, em vez de fingir que enviou.
+ */
+interface Props {
+  lang: Idioma;
+}
+
+const { lang } = Astro.props;
+const t = dicionario(lang);
+
+const usaFormspree = Boolean(FORMULARIO_ENDPOINT);
+const naNetlify = Boolean(import.meta.env['NETLIFY']);
+const ativo = usaFormspree || naNetlify;
+
+const campo =
+  'w-full rounded-sm border border-nevoa-forte bg-branco px-4 py-3 text-[0.95rem] ' +
+  'text-atlantico transition-colors duration-200 placeholder:text-pedra/60 ' +
+  'focus:border-atlantico focus:outline-none';
+
+const rotulo = 'mb-2 block text-sm font-medium text-atlantico';
+---
+
+{
+  !ativo && (
+    <p class="mb-7 rounded-sm border border-sol/40 bg-sol/10 px-5 py-4 text-sm text-atlantico">
+      {t.contato.formulario.indisponivel}
+    </p>
+  )
+}
+
+<form
+  name="contato"
+  method="POST"
+  action={usaFormspree ? FORMULARIO_ENDPOINT : undefined}
+  data-netlify={!usaFormspree ? 'true' : undefined}
+  netlify-honeypot={!usaFormspree ? 'empresa' : undefined}
+  class:list={['space-y-5', !ativo && 'pointer-events-none opacity-50']}
+  aria-disabled={!ativo ? 'true' : undefined}
+>
+  <input type="hidden" name="form-name" value="contato" />
+  <input type="hidden" name="idioma" value={TAG_HREFLANG[lang]} />
+
+  <!-- Armadilha para robos. Fica escondida de quem le a pagina. -->
+  <p class="hidden" aria-hidden="true">
+    <label>
+      Empresa
+      <input type="text" name="empresa" tabindex="-1" autocomplete="off" />
+    </label>
+  </p>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="nome" class={rotulo}>
+        {t.contato.formulario.nome}
+      </label>
+      <input type="text" id="nome" name="nome" required autocomplete="name" class={campo} />
+    </div>
+
+    <div>
+      <label for="email" class={rotulo}>
+        {t.contato.formulario.email}
+      </label>
+      <input type="email" id="email" name="email" required autocomplete="email" class={campo} />
+    </div>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="datas" class={rotulo}>
+        {t.contato.formulario.datas}
+      </label>
+      <input
+        type="text"
+        id="datas"
+        name="datas"
+        placeholder={t.contato.formulario.datasDica}
+        class={campo}
+      />
+    </div>
+
+    <div>
+      <label for="pessoas" class={rotulo}>
+        {t.contato.formulario.pessoas}
+      </label>
+      <input type="number" id="pessoas" name="pessoas" min="1" max="200" class={campo} />
+    </div>
+  </div>
+
+  <div>
+    <label for="mensagem" class={rotulo}>
+      {t.contato.formulario.mensagem}
+    </label>
+    <textarea id="mensagem" name="mensagem" rows="5" required class={campo}></textarea>
+  </div>
+
+  <button
+    type="submit"
+    disabled={!ativo}
+    class="inline-flex items-center justify-center rounded-full bg-atlantico px-7 py-3.5
+           text-[0.95rem] font-medium text-branco transition-colors duration-200
+           hover:bg-sol hover:text-atlantico disabled:cursor-not-allowed"
+  >
+    {t.contato.formulario.enviar}
+  </button>
+</form>

@@ -1,0 +1,56 @@
+---
+import Foto from './Foto.astro';
+import Icone from './Icone.astro';
+import { imagem } from '~/lib/imagens';
+import { linkWhatsApp } from '~/config/site';
+
+/**
+ * Experiencia especial: helicoptero, asa-delta, show, favela tour.
+ * Sao as unicas que a Olivia reserva com parceiros, entao cada cartao leva
+ * direto para uma conversa sobre aquela experiencia especifica.
+ */
+interface Props {
+  id: string;
+  nome: string;
+  resumo: string;
+  /** Modelo de mensagem com {nome} no lugar do nome da experiencia. */
+  modeloMensagem: string;
+  rotuloBotao: string;
+}
+
+const { id, nome, resumo, modeloMensagem, rotuloBotao } = Astro.props;
+const foto = imagem('especiais', id);
+const href = linkWhatsApp(modeloMensagem.replace('{nome}', nome));
+---
+
+<article class="revelar group flex flex-col bg-branco">
+  <Foto
+    src={foto}
+    alt={nome}
+    proporcao="3 / 2"
+    sizes="(min-width: 1024px) 24vw, (min-width: 640px) 45vw, 100vw"
+    class="rounded-sm"
+    classeImagem="transition-transform duration-700 ease-[cubic-bezier(0.2,0,0,1)] motion-safe:group-hover:scale-[1.04]"
+  />
+
+  <h3 class="mt-5 text-titulo-cartao text-atlantico">{nome}</h3>
+  <p class="mt-2 flex-1 text-sm leading-relaxed text-pedra">{resumo}</p>
+
+  {
+    href && (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener"
+        data-analytics="whatsapp-especial"
+        class="mt-5 inline-flex items-center gap-2 self-start text-sm font-medium
+               text-atlantico underline decoration-transparent underline-offset-4
+               transition-colors duration-200 hover:text-atlantico-claro
+               hover:decoration-sol"
+      >
+        <Icone nome="whatsapp" tamanho={16} />
+        <span>{rotuloBotao}</span>
+      </a>
+    )
+  }
+</article>

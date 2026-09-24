@@ -1,0 +1,99 @@
+---
+import BotaoWhatsApp from './BotaoWhatsApp.astro';
+import { CONTATO } from '~/config/site';
+import { dicionario, type Idioma } from '~/i18n/config';
+
+/**
+ * Bloco de fechamento das paginas.
+ *
+ * Existe um unico por pagina, de proposito. Quando a mesma chamada aparece
+ * duas vezes seguidas, ela para de ser um convite e vira ruido, entao o que
+ * antes era uma secao separada de "Valor sob consulta" agora entra aqui pelo
+ * `sobretitulo`, em vez de virar um segundo bloco quase igual logo acima.
+ */
+interface Props {
+  lang: Idioma;
+  /** Linha curta acima do titulo, como "Valor sob consulta". */
+  sobretitulo?: string;
+  titulo?: string;
+  texto?: string;
+  /** Texto do botao. Cada pagina diz o que acontece no seu contexto. */
+  rotulo?: string;
+  /** Mensagem que vai preenchida no WhatsApp. */
+  mensagem?: string;
+  fundo?: 'atlantico' | 'nevoa';
+}
+
+const {
+  lang,
+  sobretitulo,
+  titulo,
+  texto,
+  rotulo,
+  mensagem,
+  fundo = 'atlantico',
+} = Astro.props;
+
+const t = dicionario(lang);
+const escura = fundo === 'atlantico';
+---
+
+<section class:list={[escura ? 'fundo-escuro bg-atlantico' : 'bg-nevoa']}>
+  <div class="container-site py-20 text-center md:py-28">
+    <div class="revelar mx-auto max-w-2xl">
+      {
+        sobretitulo && (
+          <p
+            class:list={[
+              'mb-5 text-xs font-semibold uppercase tracking-[0.16em]',
+              escura ? 'text-sol' : 'text-atlantico',
+            ]}
+          >
+            {sobretitulo}
+          </p>
+        )
+      }
+
+      <h2
+        class:list={[
+          'text-titulo-secao text-balance',
+          escura ? 'text-branco' : 'text-atlantico',
+        ]}
+      >
+        {titulo ?? t.home.final.titulo}
+      </h2>
+
+      <p
+        class:list={[
+          'mx-auto mt-5 max-w-lg text-pretty',
+          escura ? 'text-nevoa/75' : 'text-pedra',
+        ]}
+      >
+        {texto ?? t.home.final.texto}
+      </p>
+
+      <div class="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <BotaoWhatsApp
+          rotulo={rotulo ?? t.botoes.whatsapp}
+          mensagem={mensagem ?? t.whatsapp.geral}
+          variante={escura ? 'claro' : 'principal'}
+          tamanho="grande"
+        />
+
+        {
+          CONTATO.email && (
+            <a
+              href={`mailto:${CONTATO.email}`}
+              class:list={[
+                'text-sm underline decoration-sol underline-offset-4 transition-colors duration-200',
+                escura ? 'text-nevoa/70 hover:text-branco' : 'text-pedra hover:text-atlantico',
+              ]}
+            >
+              {CONTATO.email}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

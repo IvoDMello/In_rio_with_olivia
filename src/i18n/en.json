@@ -1,0 +1,260 @@
+{
+  "meta": {
+    "home": {
+      "titulo": "Private tour guide in Rio de Janeiro",
+      "descricao": "Private, tailor made tours of Rio de Janeiro with Olivia, a licensed guide for 22 years. Tell me what you like and let us plan your day on WhatsApp."
+    },
+    "sobre": {
+      "titulo": "About me",
+      "descricao": "I am Olivia, a tour guide in Rio de Janeiro for 22 years. I work with private, tailor made tours, from solo travelers to large groups."
+    },
+    "experiencias": {
+      "titulo": "Experiences in Rio",
+      "descricao": "Christ the Redeemer, Sugarloaf, Santa Teresa, the beaches, the forest and much more. Choose what you like and I will build the itinerary around you."
+    },
+    "dicas": {
+      "titulo": "Rio tips",
+      "descricao": "Itineraries, ideas and practical advice from someone who has been guiding in Rio de Janeiro for 22 years."
+    },
+    "contato": {
+      "titulo": "Contact",
+      "descricao": "Message me on WhatsApp to plan your day in Rio de Janeiro. I answer personally."
+    },
+    "naoEncontrado": {
+      "titulo": "Page not found",
+      "descricao": "This page does not exist."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "sobre": "About me",
+    "experiencias": "Experiences",
+    "dicas": "Tips",
+    "contato": "Contact",
+    "abrirMenu": "Open menu",
+    "fecharMenu": "Close menu",
+    "idioma": "Language",
+    "escolherIdioma": "Choose language",
+    "irParaConteudo": "Skip to content"
+  },
+  "botoes": {
+    "whatsapp": "Message me on WhatsApp",
+    "whatsappCurto": "WhatsApp",
+    "orcamento": "Ask for a quote",
+    "planejarNoite": "Plan my night out",
+    "verNoite": "See Rio by Night",
+    "consultar": "Ask about prices",
+    "verExperiencias": "See experiences",
+    "verTodas": "See all the ideas",
+    "verDicas": "See all tips",
+    "minhaHistoria": "Read my story",
+    "tripadvisor": "Read all reviews on TripAdvisor",
+    "instagram": "Follow on Instagram",
+    "voltar": "Back",
+    "enviar": "Send message",
+    "lerMais": "Read"
+  },
+  "home": {
+    "hero": {
+      "sobretitulo": "Tour guide in Rio de Janeiro",
+      "titulo": "Your Rio, your way",
+      "subtitulo": "Private, tailor made tours, planned around your interests and your pace."
+    },
+    "apresentacao": {
+      "titulo": "It is a pleasure to meet you. I am Olivia.",
+      "p1": "For 22 years I have had the privilege of working as a tour guide in Rio de Janeiro, a job I do with a great deal of passion, dedication and care.",
+      "p2": "I believe a great tour goes far beyond visiting the main sights. I want you to feel so comfortable and so well looked after that, at the end of the day, we say goodbye with a hug, like old friends."
+    },
+    "comoFunciona": {
+      "titulo": "How it works",
+      "passos": [
+        {
+          "titulo": "Tell me what you enjoy",
+          "texto": "Nature, city life, the famous sights, culture or local experiences. And how much time you have in Rio."
+        },
+        {
+          "titulo": "I build your itinerary",
+          "texto": "A tour planned just for you, at your own pace, with the stops that make sense for your trip."
+        },
+        {
+          "titulo": "We take care of the rest",
+          "texto": "Guide, transport and bookings. We look after everyone from solo travelers to large groups, with private cars, vans and buses."
+        }
+      ]
+    },
+    "inspiracoes": {
+      "titulo": "Ideas for your tour",
+      "texto": "We can use some of the suggestions below to build an itinerary that fits the time you have in Rio."
+    },
+    "avaliacoes": {
+      "titulo": "What travelers say",
+      "texto": "Reviews from people who have spent the day with me."
+    },
+    "instagram": {
+      "titulo": "On Instagram",
+      "texto": "A little of my days out guiding around the city."
+    },
+    "final": {
+      "titulo": "Shall we plan your day in Rio?",
+      "texto": "Tell me when you arrive and what you would like to see. I answer personally."
+    }
+  },
+  "sobre": {
+    "sobretitulo": "About me",
+    "titulo": "Your Rio, your way",
+    "p1": "I work mainly with private, tailor made tours, planned around your interests, your pace and the kind of experience you want to have in Rio.",
+    "p2": "You do not have to pick a ready made itinerary. Tell me what you enjoy: nature, city life, the famous sights, culture or local experiences. Tell me how much time you have as well. I will put together a tour especially for you.",
+    "p3": "Every traveler is different, and I believe everyone's experience of Rio should be different too.",
+    "equipe": {
+      "titulo": "My team",
+      "p1": "Along the way I have built a small team of guides who work with me. I chose each of them carefully, because I recognized in them the same qualities I consider essential in my own work: commitment, responsibility, warmth and, above all, a genuine love of welcoming people and sharing our city with them.",
+      "p2": "They are professionals I trust completely, and they work the way I do, with care, attention and a real commitment to making every experience special."
+    },
+    "estrutura": {
+      "titulo": "For groups of any size",
+      "texto": "We look after everyone from solo travelers to large groups, with private cars, vans and buses, always choosing the right setup for each experience."
+    },
+    "credenciais": {
+      "titulo": "Credentials",
+      "experiencia": "years guiding in Rio de Janeiro",
+      "idiomas": "Languages",
+      "cadastur": "Licensed guide, registered with Cadastur",
+      "cadasturSemNumero": "Tour guide registered with the Brazilian Ministry of Tourism"
+    }
+  },
+  "experiencias": {
+    "sobretitulo": "Experiences",
+    "titulo": "Ideas for your tour",
+    "intro": "We can use some of the suggestions below to build an itinerary that fits the number of hours of your tour.",
+    "extra": "Beyond these suggestions, we also run tours to other cities and a few secret itineraries that I can describe to you.",
+    "grupos": {
+      "classicos": "The classics",
+      "historia": "History and culture",
+      "natureza": "Nature",
+      "praias": "Beaches and the Rio few people see"
+    },
+    "especiais": {
+      "titulo": "Special experiences",
+      "texto": "Interested in any of these? Just let me know. I check prices and availability and take care of the whole booking for you."
+    },
+    "noite": {
+      "titulo": "Rio by Night",
+      "subtitulo": "A carioca night, your way",
+      "texto": "A private night out to discover Rio after dark, with transport and a guide with you. We can shape the evening around what you enjoy.",
+      "opcoes": [
+        "Samba shows",
+        "Roxy Dinner Show",
+        "Bars and restaurants",
+        "Concerts and events",
+        "Night drives through the city",
+        "Music and dance venues"
+      ]
+    },
+    "valor": {
+      "rotulo": "Price on request",
+      "texto": "The price depends on the size of the group, the length of the tour and the transport you choose. Tell me what you have in mind and I will send you a quote."
+    }
+  },
+  "dicas": {
+    "sobretitulo": "Tips",
+    "titulo": "Rio tips",
+    "intro": "Itinerary ideas and practical advice from someone who has been guiding in this city for 22 years.",
+    "vazio": "The first pieces are on their way.",
+    "publicadoEm": "Published on",
+    "leituraMin": "min read",
+    "outrasDicas": "More tips",
+    "ctaTitulo": "Want to do this with me?",
+    "ctaTexto": "I can adapt any of these ideas to the time you have and to your own pace."
+  },
+  "contato": {
+    "sobretitulo": "Contact",
+    "titulo": "Let us talk",
+    "intro": "WhatsApp is the fastest way to reach me. I answer personally, usually the same day.",
+    "canais": {
+      "titulo": "Where to find me",
+      "whatsapp": "WhatsApp",
+      "instagram": "Instagram",
+      "tripadvisor": "TripAdvisor",
+      "email": "Email"
+    },
+    "formulario": {
+      "titulo": "Or write to me here",
+      "nome": "Name",
+      "email": "Email",
+      "datas": "Dates in Rio",
+      "datasDica": "For example: March 12 to 16",
+      "pessoas": "Number of people",
+      "mensagem": "What would you like to do?",
+      "enviar": "Send message",
+      "obrigatorio": "required",
+      "sucesso": "Message sent. I will get back to you shortly.",
+      "indisponivel": "The form is not active yet. Please reach me on WhatsApp or by email."
+    },
+    "faq": {
+      "titulo": "Frequently asked questions",
+      "itens": [
+        {
+          "pergunta": "How do I ask for a quote?",
+          "resposta": "Message me on WhatsApp with the dates of your trip, the number of people and what you would like to see. With that I put together a suggested itinerary and send you the price."
+        },
+        {
+          "pergunta": "What affects the price of a tour?",
+          "resposta": "The size of the group, the length of the tour, the transport you choose and the tickets for the attractions in the itinerary. That is why I prefer to quote each trip individually instead of publishing a price list."
+        },
+        {
+          "pergunta": "Are entrance tickets included?",
+          "resposta": "The quote always says what is included and what is paid separately. Attractions such as Christ the Redeemer and Sugarloaf have their own tickets, and I can buy them for you if you prefer."
+        },
+        {
+          "pergunta": "How does payment work?",
+          "resposta": "We arrange everything on WhatsApp before the tour. I explain the payment options available and confirm the booking with you."
+        },
+        {
+          "pergunta": "What if I need to cancel?",
+          "resposta": "Let me know as early as you can. I understand that travel plans change, and I will always look for a solution, whether that means moving the date or adjusting the itinerary."
+        },
+        {
+          "pergunta": "Where do we meet?",
+          "resposta": "I usually pick you up at your hotel or wherever you are staying. If you prefer another meeting point, we agree on it beforehand."
+        },
+        {
+          "pergunta": "Is it safe to go around Rio?",
+          "resposta": "With planning, yes. I know the city, I choose the times and the routes, and I am with you throughout. That is one of the reasons to see Rio with a local guide."
+        },
+        {
+          "pergunta": "Can I bring children?",
+          "resposta": "Of course. I adapt the pace, the distances and the stops to the age of the children. Tell me their ages and I will build an itinerary that works for the whole family."
+        }
+      ]
+    }
+  },
+  "rodape": {
+    "sobre": "Tour guide in Rio de Janeiro. Private, tailor made tours, from solo travelers to large groups.",
+    "navegacao": "Navigation",
+    "contato": "Contact",
+    "redes": "Social",
+    "cadastur": "Cadastur",
+    "direitos": "All rights reserved."
+  },
+  "avaliacoes": {
+    "em": "on TripAdvisor",
+    "notaDe": "Rating"
+  },
+  "whatsapp": {
+    "aria": "Message Olivia on WhatsApp",
+    "geral": "Hello Olivia! I found your website and I would like to know more about your tours in Rio.",
+    "orcamento": "Hello Olivia! I would like a quote for a private tour in Rio for [number] people on [date].",
+    "experiencia": "Hello Olivia! I would like a quote for a private tour in Rio including {nome}, for [number] people on [date].",
+    "especial": "Hello Olivia! I am interested in the {nome} experience. Could you send me prices and availability?",
+    "noite": "Hello Olivia! I am interested in Rio by Night. Could you tell me how it works?",
+    "dica": "Hello Olivia! I read {nome} on your website and I would like to plan something similar."
+  },
+  "geral": {
+    "fotoEmBreve": "Photo coming soon",
+    "naoEncontrado": {
+      "titulo": "This page does not exist",
+      "texto": "The address may have changed. Let us start again from the home page.",
+      "botao": "Go to the home page"
+    }
+  }
+}

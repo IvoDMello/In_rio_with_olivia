@@ -1,0 +1,24 @@
+---
+// Uma pagina por artigo escrito em es. O slug vem do nome do arquivo em
+// src/content/dicas/es, entao cada idioma tem o seu proprio endereco.
+import type { GetStaticPaths } from 'astro';
+
+import Pagina from '~/paginas/Artigo.astro';
+import { partes, todosOsArtigos, type Artigo } from '~/lib/dicas';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const artigos = await todosOsArtigos();
+
+  return artigos
+    .filter((artigo) => partes(artigo).lang === 'es')
+    .map((artigo) => ({
+      params: { slug: partes(artigo).slug },
+      props: { artigo },
+    }));
+};
+
+// getStaticPaths devolve props sem tipo, entao declaramos o formato aqui.
+const { artigo } = Astro.props as { artigo: Artigo };
+---
+
+<Pagina artigo={artigo} lang="es" />

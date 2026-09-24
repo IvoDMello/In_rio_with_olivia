@@ -1,0 +1,66 @@
+[
+  {
+    "id": "helicoptero",
+    "ordem": 1,
+    "en": {
+      "nome": "Helicopter flight",
+      "resumo": "Rio from above, with Christ the Redeemer, Sugarloaf and the beaches in a single flight."
+    },
+    "pt": {
+      "nome": "Passeio de helicóptero",
+      "resumo": "O Rio visto do alto, com o Cristo, o Pão de Açúcar e as praias em um só voo."
+    },
+    "es": {
+      "nome": "Paseo en helicóptero",
+      "resumo": "Río visto desde el aire, con el Cristo, el Pan de Azúcar y las playas en un solo vuelo."
+    }
+  },
+  {
+    "id": "asa-delta",
+    "ordem": 2,
+    "en": {
+      "nome": "Hang gliding",
+      "resumo": "A tandem flight from Pedra Bonita, landing on São Conrado beach."
+    },
+    "pt": {
+      "nome": "Voo de asa-delta",
+      "resumo": "Salto da Pedra Bonita com pouso na praia de São Conrado, sempre acompanhado por instrutor."
+    },
+    "es": {
+      "nome": "Vuelo en ala delta",
+      "resumo": "Salto desde la Pedra Bonita con aterrizaje en la playa de São Conrado, acompañado por un instructor."
+    }
+  },
+  {
+    "id": "roxy-dinner-show",
+    "ordem": 3,
+    "en": {
+      "nome": "Roxy Dinner Show",
+      "resumo": "Dinner and a samba show, with live music and Brazilian dance."
+    },
+    "pt": {
+      "nome": "Roxy Dinner Show",
+      "resumo": "Jantar e show de samba, com música ao vivo e dança brasileira."
+    },
+    "es": {
+      "nome": "Roxy Dinner Show",
+      "resumo": "Cena y show de samba, con música en vivo y danza brasileña."
+    }
+  },
+  {
+    "id": "favela-tour",
+    "ordem": 4,
+    "en": {
+      "nome": "Favela Tour",
+      "resumo": "A guided visit to a community, with local hosts and time to talk to the people who live there."
+    },
+    "pt": {
+      "nome": "Favela Tour",
+      "resumo": "Visita guiada a uma comunidade, com acompanhamento local e tempo para conversar com quem mora lá."
+    },
+    "es": {
+      "nome": "Favela Tour",
+      "resumo": "Visita guiada a una comunidad, con acompañamiento local y tiempo para conversar con quienes viven allí."
+    }
+  }
+]

@@ -1,0 +1,224 @@
+---
+import { Font } from 'astro:assets';
+
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+import WhatsAppFlutuante from '~/components/WhatsAppFlutuante.astro';
+
+import { CONTATO, E_DOMINIO_FINAL, SITE } from '~/config/site';
+import { AVALIACOES, mediaDasNotas } from '~/data/reviews';
+import {
+  alternativas as alternativasDoCaminho,
+  dicionario,
+  IDIOMA_PADRAO,
+  TAG_HREFLANG,
+  type Idioma,
+  type Secao,
+} from '~/i18n/config';
+
+import '~/styles/global.css';
+
+interface Props {
+  lang: Idioma;
+  titulo: string;
+  descricao: string;
+  secaoAtiva?: Secao | null;
+  /** Sobrescreve os equivalentes de idioma. Usado nas paginas de artigo. */
+  alternativas?: { lang: Idioma; href: string }[];
+  /** Caminho de uma imagem em /public para o compartilhamento. */
+  imagemSocial?: string;
+  /** 'article' nas paginas de artigo. */
+  tipoOg?: 'website' | 'article';
+  /** Blocos extras de dados estruturados. */
+  schemaExtra?: Record<string, unknown>[];
+  /** Tira a pagina do indice, usado no 404. */
+  semIndexacao?: boolean;
+}
+
+const {
+  lang,
+  titulo,
+  descricao,
+  secaoAtiva = null,
+  alternativas,
+  imagemSocial,
+  tipoOg = 'website',
+  schemaExtra = [],
+  semIndexacao = false,
+} = Astro.props;
+
+const t = dicionario(lang);
+
+const caminho = Astro.url.pathname;
+const canonica = new URL(caminho, SITE.url).href;
+const idiomas = alternativas ?? alternativasDoCaminho(caminho);
+
+const tituloCompleto = `${titulo} | ${SITE.nome}`;
+const ogImagem = new URL(imagemSocial ?? `/og-default-${lang}.jpg`, SITE.url).href;
+
+// --------------------------------------------------------------- schema.org
+const media = mediaDasNotas();
+
+const negocio: Record<string, unknown> = {
+  '@type': ['LocalBusiness', 'TravelAgency'],
+  '@id': `${SITE.url}/#negocio`,
+  name: SITE.nome,
+  description: t.rodape.sobre,
+  url: SITE.url,
+  image: ogImagem,
+  founder: { '@type': 'Person', name: SITE.autora },
+  foundingDate: String(SITE.anoDeInicio),
+  areaServed: {
+    '@type': 'City',
+    name: 'Rio de Janeiro',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Rio de Janeiro',
+      addressRegion: 'RJ',
+      addressCountry: 'BR',
+    },
+  },
+  knowsLanguage: ['pt-BR', 'en', 'es'],
+};
+
+if (CONTATO.email) negocio['email'] = CONTATO.email;
+if (CONTATO.whatsapp) negocio['telephone'] = `+${CONTATO.whatsapp}`;
+
+const perfis = [CONTATO.instagram, CONTATO.tripadvisor].filter(Boolean);
+if (perfis.length) negocio['sameAs'] = perfis;
+
+// A nota agregada so entra quando ha avaliacoes reais cadastradas.
+if (media !== null) {
+  negocio['aggregateRating'] = {
+    '@type': 'AggregateRating',
+    ratingValue: media,
+    reviewCount: AVALIACOES.length,
+    bestRating: 5,
+  };
+  negocio['review'] = AVALIACOES.map((a) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: a.autor },
+    datePublished: a.data,
+    reviewBody: a.texto[lang],
+    reviewRating: { '@type': 'Rating', ratingValue: a.nota, bestRating: 5 },
+  }));
+}
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    negocio,
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.url}/#site`,
+      name: SITE.nome,
+      url: SITE.url,
+      inLanguage: TAG_HREFLANG[lang],
+      publisher: { '@id': `${SITE.url}/#negocio` },
+    },
+    ...schemaExtra,
+  ],
+};
+---
+
+<!doctype html>
+<html lang={TAG_HREFLANG[lang]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descricao} />
+    <link rel="canonical" href={canonica} />
+
+    {
+      /* Fora do dominio definitivo, nenhuma pagina entra em buscador. */
+      (semIndexacao || !E_DOMINIO_FINAL) && (
+        <meta name="robots" content="noindex, follow" />
+      )
+    }
+
+    {
+      idiomas.map((alternativa) => (
+        <link
+          rel="alternate"
+          hreflang={TAG_HREFLANG[alternativa.lang]}
+          href={new URL(alternativa.href, SITE.url).href}
+        />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(
+        idiomas.find((a) => a.lang === IDIOMA_PADRAO)?.href ?? `/${IDIOMA_PADRAO}`,
+        SITE.url,
+      ).href}
+    />
+
+    <meta property="og:type" content={tipoOg} />
+    <meta property="og:site_name" content={SITE.nome} />
+    <meta property="og:locale" content={TAG_HREFLANG[lang].replace('-', '_')} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descricao} />
+    <meta property="og:url" content={canonica} />
+    <meta property="og:image" content={ogImagem} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={tituloCompleto} />
+    <meta name="twitter:description" content={descricao} />
+    <meta name="twitter:image" content={ogImagem} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#123A45" />
+
+    <Font cssVariable="--font-titulo" preload />
+    <Font cssVariable="--font-texto" preload />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+  </head>
+
+  <body>
+    <Header lang={lang} secaoAtiva={secaoAtiva} alternativas={idiomas} />
+
+    <main id="conteudo">
+      <slot />
+    </main>
+
+    <Footer lang={lang} />
+    <WhatsAppFlutuante lang={lang} />
+
+    <script>
+      // Revela os blocos conforme eles entram na tela. Quem pediu menos
+      // animacao no sistema ja recebe tudo visivel pelo CSS, entao aqui so
+      // marcamos o estado final sem depender do observador.
+      const alvos = document.querySelectorAll<HTMLElement>('.revelar');
+      const querAnimacao = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+
+      if (!querAnimacao || !('IntersectionObserver' in window)) {
+        alvos.forEach((alvo) => (alvo.dataset.visivel = 'true'));
+      } else {
+        const observador = new IntersectionObserver(
+          (entradas) => {
+            entradas.forEach((entrada) => {
+              if (!entrada.isIntersecting) return;
+              (entrada.target as HTMLElement).dataset.visivel = 'true';
+              observador.unobserve(entrada.target);
+            });
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+        );
+
+        alvos.forEach((alvo, i) => {
+          // Escalona um pouco os itens de uma mesma grade.
+          alvo.style.transitionDelay = `${Math.min(i % 6, 5) * 60}ms`;
+          observador.observe(alvo);
+        });
+      }
+    </script>
+  </body>
+</html>

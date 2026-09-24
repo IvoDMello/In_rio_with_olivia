@@ -1,0 +1,63 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Icone from '~/components/Icone.astro';
+import { dicionario, IDIOMA_PADRAO, MENU, rota } from '~/i18n/config';
+
+/**
+ * Pagina de erro unica, em ingles, que e o idioma padrao.
+ *
+ * Vercel e Netlify servem este arquivo para qualquer endereco desconhecido,
+ * inclusive dentro de /pt e /es. Como nao da para saber o idioma a partir de
+ * um endereco que nao existe, o texto fica no padrao e os links levam de volta
+ * para o site nos tres idiomas.
+ */
+const lang = IDIOMA_PADRAO;
+const t = dicionario(lang);
+---
+
+<BaseLayout
+  lang={lang}
+  titulo={t.meta.naoEncontrado.titulo}
+  descricao={t.meta.naoEncontrado.descricao}
+  semIndexacao
+>
+  <section class="flex min-h-[60vh] items-center py-20">
+    <div class="container-site">
+      <div class="mx-auto max-w-lg text-center">
+        <p class="font-titulo text-6xl text-atlantico">404</p>
+
+        <h1 class="mt-6 text-titulo-secao text-balance text-atlantico">
+          {t.geral.naoEncontrado.titulo}
+        </h1>
+        <p class="mt-5 text-pretty text-pedra">{t.geral.naoEncontrado.texto}</p>
+
+        <a
+          href={rota('home', lang)}
+          class="mt-9 inline-flex items-center gap-2.5 rounded-full bg-atlantico px-7 py-3.5
+                 text-[0.95rem] font-medium text-branco transition-colors duration-200
+                 hover:bg-sol hover:text-atlantico"
+        >
+          {t.geral.naoEncontrado.botao}
+          <Icone nome="seta" tamanho={18} />
+        </a>
+
+        <nav class="mt-12" aria-label={t.nav.home}>
+          <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {
+              MENU.filter((secao) => secao !== 'home').map((secao) => (
+                <li>
+                  <a
+                    href={rota(secao, lang)}
+                    class="text-sm text-pedra transition-colors duration-200 hover:text-atlantico"
+                  >
+                    {t.nav[secao]}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

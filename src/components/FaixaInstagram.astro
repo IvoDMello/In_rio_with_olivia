@@ -1,0 +1,65 @@
+---
+import Foto from './Foto.astro';
+import Icone from './Icone.astro';
+import { CONTATO } from '~/config/site';
+import { fotosInstagram } from '~/lib/imagens';
+import { dicionario, type Idioma } from '~/i18n/config';
+
+/**
+ * Faixa de fotos do Instagram.
+ *
+ * Sao imagens estaticas, atualizadas a mao, e nao um widget. Um widget de
+ * Instagram custa varios segundos de carregamento e derruba o Lighthouse,
+ * o que nao compensa para seis fotos que mudam de vez em quando.
+ *
+ * Coloque os arquivos em src/assets/instagram como 01.jpg ate 06.jpg.
+ */
+interface Props {
+  lang: Idioma;
+}
+
+const { lang } = Astro.props;
+const t = dicionario(lang);
+
+const fotos = fotosInstagram();
+/** Sempre seis espacos, mesmo que algumas fotos ainda nao existam. */
+const espacos = Array.from({ length: 6 }, (_, i) => fotos[i]);
+---
+
+<div>
+  <ul class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-3 lg:grid-cols-6">
+    {
+      espacos.map((foto, i) => (
+        <li>
+          <Foto
+            src={foto}
+            alt={`${t.home.instagram.titulo} ${i + 1}`}
+            proporcao="1 / 1"
+            larguras={[200, 320, 480]}
+            sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
+            class="rounded-sm"
+          />
+        </li>
+      ))
+    }
+  </ul>
+
+  {
+    CONTATO.instagram && (
+      <div class="mt-8 text-center">
+        <a
+          href={CONTATO.instagram}
+          target="_blank"
+          rel="noopener"
+          data-analytics="instagram"
+          class="inline-flex items-center gap-2.5 rounded-full border border-atlantico/25
+                 px-6 py-3 text-[0.95rem] text-atlantico transition-colors duration-200
+                 hover:border-sol hover:bg-sol/10"
+        >
+          <Icone nome="instagram" tamanho={18} />
+          {t.botoes.instagram}
+        </a>
+      </div>
+    )
+  }
+</div>

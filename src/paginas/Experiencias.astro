@@ -1,0 +1,166 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Secao from '~/components/Secao.astro';
+import CartaoLugar from '~/components/CartaoLugar.astro';
+import CartaoEspecial from '~/components/CartaoEspecial.astro';
+import BotaoWhatsApp from '~/components/BotaoWhatsApp.astro';
+import ChamadaFinal from '~/components/ChamadaFinal.astro';
+
+import { SITE } from '~/config/site';
+import { dicionario, TAG_HREFLANG, type Idioma } from '~/i18n/config';
+import { especiais as carregaEspeciais, lugares as carregaLugares } from '~/lib/conteudo';
+
+interface Props {
+  lang: Idioma;
+}
+
+const { lang } = Astro.props;
+const t = dicionario(lang);
+
+const lugares = await carregaLugares();
+const especiais = await carregaEspeciais();
+
+/** Ordem em que os grupos aparecem na pagina. */
+const GRUPOS = ['classicos', 'historia', 'natureza', 'praias'] as const;
+
+const porGrupo = GRUPOS.map((grupo) => ({
+  grupo,
+  titulo: t.experiencias.grupos[grupo],
+  itens: lugares.filter((l) => l.data.grupo === grupo),
+}));
+
+/**
+ * TouristTrip descreve o produto: um tour privado e sob medida no Rio.
+ * Nao tem "offers" com valor, porque o site nao publica preco em lugar nenhum.
+ */
+const schemaTour = {
+  '@type': 'TouristTrip',
+  name: t.experiencias.titulo,
+  description: t.meta.experiencias.descricao,
+  inLanguage: TAG_HREFLANG[lang],
+  provider: { '@id': `${SITE.url}/#negocio` },
+  touristType: t.experiencias.sobretitulo,
+  itinerary: {
+    '@type': 'ItemList',
+    numberOfItems: lugares.length,
+    itemListElement: lugares.map((lugar, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'TouristAttraction',
+        name: lugar.data[lang].nome,
+        description: lugar.data[lang].resumo,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout
+  lang={lang}
+  titulo={t.meta.experiencias.titulo}
+  descricao={t.meta.experiencias.descricao}
+  secaoAtiva="experiencias"
+  schemaExtra={[schemaTour]}
+>
+  <!-- --------------------------------------------------------- Abertura -->
+  <section class="bg-nevoa pb-20 pt-14 md:pb-24 md:pt-20">
+    <div class="container-site">
+      <div class="revelar max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pedra">
+          {t.experiencias.sobretitulo}
+        </p>
+        <h1 class="mt-4 text-titulo-pagina text-balance text-atlantico">
+          {t.experiencias.titulo}
+        </h1>
+        <p class="mt-6 text-pretty text-pedra">{t.experiencias.intro}</p>
+        <p class="mt-4 text-pretty text-pedra">{t.experiencias.extra}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------- Lugares por grupo -->
+  {
+    porGrupo.map((secao, indice) => (
+      <Secao
+        fundo={indice % 2 === 1 ? 'nevoa' : 'branco'}
+        titulo={secao.titulo}
+        espacamento="compacto"
+      >
+        <div class="grid gap-x-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {secao.itens.map((lugar) => (
+            <CartaoLugar
+              id={lugar.id}
+              nome={lugar.data[lang].nome}
+              resumo={lugar.data[lang].resumo}
+            />
+          ))}
+        </div>
+      </Secao>
+    ))
+  }
+
+  <!-- ------------------------------------------- Experiencias especiais -->
+  <Secao
+    id="especiais"
+    fundo={GRUPOS.length % 2 === 0 ? 'nevoa' : 'branco'}
+    titulo={t.experiencias.especiais.titulo}
+    texto={t.experiencias.especiais.texto}
+  >
+    <div class="grid gap-x-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        especiais.map((especial) => (
+          <CartaoEspecial
+            id={especial.id}
+            nome={especial.data[lang].nome}
+            resumo={especial.data[lang].resumo}
+            modeloMensagem={t.whatsapp.especial}
+            rotuloBotao={t.botoes.consultar}
+          />
+        ))
+      }
+    </div>
+  </Secao>
+
+  <!-- ------------------------------------------------------ Rio by Night -->
+  <Secao id="rio-by-night" fundo="atlantico">
+    <div class="grid items-center gap-10 md:grid-cols-[1fr_1.1fr] md:gap-16">
+      <div class="revelar">
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sol">
+          {t.experiencias.noite.subtitulo}
+        </p>
+        <h2 class="mt-4 text-titulo-secao text-branco">{t.experiencias.noite.titulo}</h2>
+        <p class="mt-5 max-w-md text-pretty text-nevoa/75">{t.experiencias.noite.texto}</p>
+
+        <div class="mt-8">
+          <BotaoWhatsApp
+            rotulo={t.botoes.planejarNoite}
+            mensagem={t.whatsapp.noite}
+            variante="claro"
+          />
+        </div>
+      </div>
+
+      <ul class="revelar grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
+        {
+          t.experiencias.noite.opcoes.map((opcao) => (
+            <li class="flex items-start gap-3 text-nevoa/85">
+              <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sol" />
+              <span class="text-[0.95rem]">{opcao}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Secao>
+
+  <!-- ---------------------------------------------------- Fechamento -->
+  <ChamadaFinal
+    lang={lang}
+    sobretitulo={t.experiencias.valor.rotulo}
+    texto={t.experiencias.valor.texto}
+    rotulo={t.botoes.orcamento}
+    mensagem={t.whatsapp.orcamento}
+    fundo="nevoa"
+  />
+</BaseLayout>

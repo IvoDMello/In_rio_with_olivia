@@ -1,0 +1,344 @@
+[
+  {
+    "id": "cristo-redentor",
+    "ordem": 1,
+    "grupo": "classicos",
+    "destaque": true,
+    "en": {
+      "nome": "Christ the Redeemer",
+      "resumo": "The greatest symbol of Rio."
+    },
+    "pt": {
+      "nome": "Cristo Redentor",
+      "resumo": "O maior símbolo do Rio."
+    },
+    "es": {
+      "nome": "Cristo Redentor",
+      "resumo": "El mayor símbolo de Río."
+    }
+  },
+  {
+    "id": "pao-de-acucar",
+    "ordem": 2,
+    "grupo": "classicos",
+    "destaque": true,
+    "en": {
+      "nome": "Sugarloaf Mountain",
+      "resumo": "Unforgettable scenery and one of the finest views in the city."
+    },
+    "pt": {
+      "nome": "Pão de Açúcar",
+      "resumo": "Paisagens inesquecíveis e uma das vistas mais bonitas da cidade."
+    },
+    "es": {
+      "nome": "Pan de Azúcar",
+      "resumo": "Paisajes inolvidables y una de las vistas más bonitas de la ciudad."
+    }
+  },
+  {
+    "id": "escadaria-selaron",
+    "ordem": 3,
+    "grupo": "classicos",
+    "destaque": true,
+    "en": {
+      "nome": "Selarón Steps",
+      "resumo": "Art, mosaics and color."
+    },
+    "pt": {
+      "nome": "Escadaria Selarón",
+      "resumo": "Arte, mosaicos e cores."
+    },
+    "es": {
+      "nome": "Escalera de Selarón",
+      "resumo": "Arte, mosaicos y color."
+    }
+  },
+  {
+    "id": "maracana",
+    "ordem": 4,
+    "grupo": "classicos",
+    "destaque": false,
+    "en": {
+      "nome": "Maracanã Stadium",
+      "resumo": "A dive into the history and the passion of Brazilian football."
+    },
+    "pt": {
+      "nome": "Estádio do Maracanã",
+      "resumo": "Um mergulho na história e na paixão do futebol brasileiro."
+    },
+    "es": {
+      "nome": "Estadio Maracaná",
+      "resumo": "Una inmersión en la historia y la pasión del fútbol brasileño."
+    }
+  },
+  {
+    "id": "mirante-dona-marta",
+    "ordem": 5,
+    "grupo": "classicos",
+    "destaque": false,
+    "en": {
+      "nome": "Dona Marta Viewpoint",
+      "resumo": "A privileged view of Rio, from Christ the Redeemer to the beaches and the bay."
+    },
+    "pt": {
+      "nome": "Mirante Dona Marta",
+      "resumo": "Uma vista privilegiada do Rio, do Cristo às praias e à Baía de Guanabara."
+    },
+    "es": {
+      "nome": "Mirador Dona Marta",
+      "resumo": "Una vista privilegiada de Río, del Cristo a las playas y a la bahía."
+    }
+  },
+  {
+    "id": "catedral-metropolitana",
+    "ordem": 6,
+    "grupo": "historia",
+    "destaque": false,
+    "en": {
+      "nome": "Metropolitan Cathedral",
+      "resumo": "A striking piece of modern architecture in the heart of the old town."
+    },
+    "pt": {
+      "nome": "Catedral Metropolitana",
+      "resumo": "Impressionante construção moderna no coração do centro histórico."
+    },
+    "es": {
+      "nome": "Catedral Metropolitana",
+      "resumo": "Una construcción moderna impresionante en el corazón del centro histórico."
+    }
+  },
+  {
+    "id": "real-gabinete",
+    "ordem": 7,
+    "grupo": "historia",
+    "destaque": false,
+    "en": {
+      "nome": "Royal Portuguese Reading Room",
+      "resumo": "One of the 15 most beautiful libraries in the world."
+    },
+    "pt": {
+      "nome": "Real Gabinete Português de Leitura",
+      "resumo": "Uma das 15 bibliotecas mais bonitas do mundo."
+    },
+    "es": {
+      "nome": "Real Gabinete Portugués de Lectura",
+      "resumo": "Una de las 15 bibliotecas más bonitas del mundo."
+    }
+  },
+  {
+    "id": "mosteiro-sao-bento",
+    "ordem": 8,
+    "grupo": "historia",
+    "destaque": false,
+    "en": {
+      "nome": "São Bento Monastery",
+      "resumo": "One of the most important historic and religious sites in the city."
+    },
+    "pt": {
+      "nome": "Mosteiro de São Bento",
+      "resumo": "Um dos mais importantes conjuntos históricos e religiosos da cidade."
+    },
+    "es": {
+      "nome": "Monasterio de San Benito",
+      "resumo": "Uno de los conjuntos históricos y religiosos más importantes de la ciudad."
+    }
+  },
+  {
+    "id": "morro-da-conceicao",
+    "ordem": 9,
+    "grupo": "historia",
+    "destaque": false,
+    "en": {
+      "nome": "Morro da Conceição",
+      "resumo": "A charming corner of Rio, with history, art and views over Guanabara Bay."
+    },
+    "pt": {
+      "nome": "Morro da Conceição",
+      "resumo": "Um cantinho charmoso do Rio, com história, arte e vistas para a Baía de Guanabara."
+    },
+    "es": {
+      "nome": "Morro da Conceição",
+      "resumo": "Un rincón encantador de Río, con historia, arte y vistas a la Bahía de Guanabara."
+    }
+  },
+  {
+    "id": "santa-teresa",
+    "ordem": 10,
+    "grupo": "historia",
+    "destaque": true,
+    "en": {
+      "nome": "Santa Teresa",
+      "resumo": "One of the oldest neighborhoods in Rio, with a thoroughly bohemian atmosphere."
+    },
+    "pt": {
+      "nome": "Santa Teresa",
+      "resumo": "Um dos bairros mais antigos do Rio, com total atmosfera boêmia."
+    },
+    "es": {
+      "nome": "Santa Teresa",
+      "resumo": "Uno de los barrios más antiguos de Río, con una atmósfera totalmente bohemia."
+    }
+  },
+  {
+    "id": "favela",
+    "ordem": 11,
+    "grupo": "historia",
+    "destaque": false,
+    "en": {
+      "nome": "Favela",
+      "resumo": "A visit to a community, and a different perspective on Rio."
+    },
+    "pt": {
+      "nome": "Favela",
+      "resumo": "Visita a uma comunidade, outra perspectiva do Rio."
+    },
+    "es": {
+      "nome": "Favela",
+      "resumo": "Una visita a una comunidad y otra perspectiva de Río."
+    }
+  },
+  {
+    "id": "jardim-botanico",
+    "ordem": 12,
+    "grupo": "natureza",
+    "destaque": true,
+    "en": {
+      "nome": "Botanical Garden",
+      "resumo": "Lush nature, century old species and one of the loveliest settings in the city."
+    },
+    "pt": {
+      "nome": "Jardim Botânico",
+      "resumo": "Natureza exuberante, espécies centenárias e um dos cenários mais bonitos da cidade."
+    },
+    "es": {
+      "nome": "Jardín Botánico",
+      "resumo": "Naturaleza exuberante, especies centenarias y uno de los escenarios más bonitos de la ciudad."
+    }
+  },
+  {
+    "id": "parque-lage",
+    "ordem": 13,
+    "grupo": "natureza",
+    "destaque": false,
+    "en": {
+      "nome": "Parque Lage",
+      "resumo": "A historic mansion at the foot of Corcovado, surrounded by Atlantic rainforest."
+    },
+    "pt": {
+      "nome": "Parque Lage",
+      "resumo": "Um palacete histórico aos pés do Corcovado, cercado pela Mata Atlântica."
+    },
+    "es": {
+      "nome": "Parque Lage",
+      "resumo": "Un palacete histórico a los pies del Corcovado, rodeado por la Mata Atlántica."
+    }
+  },
+  {
+    "id": "floresta-da-tijuca",
+    "ordem": 14,
+    "grupo": "natureza",
+    "destaque": false,
+    "en": {
+      "nome": "Tijuca Forest",
+      "resumo": "Atlantic rainforest inside the city itself."
+    },
+    "pt": {
+      "nome": "Floresta da Tijuca",
+      "resumo": "Uma imersão na Mata Atlântica dentro da própria cidade."
+    },
+    "es": {
+      "nome": "Bosque de Tijuca",
+      "resumo": "Una inmersión en la Mata Atlántica dentro de la propia ciudad."
+    }
+  },
+  {
+    "id": "lagoa",
+    "ordem": 15,
+    "grupo": "natureza",
+    "destaque": false,
+    "en": {
+      "nome": "Rodrigo de Freitas Lagoon",
+      "resumo": "A perfect place to take in the scenery and everyday life in Rio."
+    },
+    "pt": {
+      "nome": "Lagoa Rodrigo de Freitas",
+      "resumo": "Um lugar perfeito para apreciar a paisagem e o cotidiano carioca."
+    },
+    "es": {
+      "nome": "Laguna Rodrigo de Freitas",
+      "resumo": "Un lugar perfecto para disfrutar del paisaje y de la vida cotidiana carioca."
+    }
+  },
+  {
+    "id": "pantanal-carioca",
+    "ordem": 16,
+    "grupo": "natureza",
+    "destaque": false,
+    "en": {
+      "nome": "Pantanal Carioca",
+      "resumo": "Nature, protected areas and a lesser known side of Rio."
+    },
+    "pt": {
+      "nome": "Pantanal Carioca",
+      "resumo": "Natureza, áreas de preservação e uma face menos conhecida do Rio."
+    },
+    "es": {
+      "nome": "Pantanal Carioca",
+      "resumo": "Naturaleza, áreas de preservación y una cara menos conocida de Río."
+    }
+  },
+  {
+    "id": "praias-zona-sul",
+    "ordem": 17,
+    "grupo": "praias",
+    "destaque": true,
+    "en": {
+      "nome": "South Zone beaches",
+      "resumo": "Copacabana, Ipanema and Leblon."
+    },
+    "pt": {
+      "nome": "Praias da Zona Sul",
+      "resumo": "Copacabana, Ipanema e Leblon."
+    },
+    "es": {
+      "nome": "Playas de la Zona Sur",
+      "resumo": "Copacabana, Ipanema y Leblon."
+    }
+  },
+  {
+    "id": "praias-distantes",
+    "ordem": 18,
+    "grupo": "praias",
+    "destaque": false,
+    "en": {
+      "nome": "Beaches further out",
+      "resumo": "For anyone who wants to go further along the coast and find other scenery."
+    },
+    "pt": {
+      "nome": "Praias distantes",
+      "resumo": "Para quem quer conhecer praias mais afastadas e descobrir outros cenários do litoral carioca."
+    },
+    "es": {
+      "nome": "Playas lejanas",
+      "resumo": "Para quien quiere conocer playas más alejadas y descubrir otros escenarios del litoral carioca."
+    }
+  },
+  {
+    "id": "zona-oeste",
+    "ordem": 19,
+    "grupo": "praias",
+    "destaque": false,
+    "en": {
+      "nome": "West Zone",
+      "resumo": "A different Rio, with nature, beaches, neighborhoods and experiences away from the usual circuit."
+    },
+    "pt": {
+      "nome": "Zona Oeste",
+      "resumo": "Um Rio diferente, com natureza, praias, bairros e experiências fora dos circuitos tradicionais."
+    },
+    "es": {
+      "nome": "Zona Oeste",
+      "resumo": "Un Río diferente, con naturaleza, playas, barrios y experiencias fuera de los circuitos tradicionales."
+    }
+  }
+]

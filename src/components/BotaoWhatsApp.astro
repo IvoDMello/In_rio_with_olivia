@@ -1,0 +1,61 @@
+---
+import Icone from './Icone.astro';
+import { linkWhatsApp } from '~/config/site';
+
+/**
+ * Botao que abre o WhatsApp com a mensagem ja escrita.
+ *
+ * Se o numero ainda nao estiver configurado em src/config/site.ts, o botao
+ * nao vira um link quebrado: ele some. E melhor nao ter botao do que ter um
+ * botao que nao leva a lugar nenhum.
+ */
+interface Props {
+  /** Texto do botao. Deve dizer exatamente o que acontece. */
+  rotulo: string;
+  /** Mensagem que ja vai preenchida na conversa. */
+  mensagem: string;
+  variante?: 'principal' | 'contorno' | 'claro';
+  tamanho?: 'normal' | 'grande';
+  class?: string;
+}
+
+const {
+  rotulo,
+  mensagem,
+  variante = 'principal',
+  tamanho = 'normal',
+  class: classe = '',
+} = Astro.props;
+
+const href = linkWhatsApp(mensagem);
+
+const base =
+  'inline-flex items-center justify-center gap-2.5 rounded-full font-medium ' +
+  'transition-colors duration-200 ease-[cubic-bezier(0.2,0,0,1)]';
+
+const variantes = {
+  principal: 'bg-atlantico text-branco hover:bg-sol hover:text-atlantico',
+  contorno: 'border border-atlantico/25 text-atlantico hover:border-sol hover:bg-sol/10',
+  claro: 'bg-branco text-atlantico hover:bg-sol hover:text-atlantico',
+};
+
+const tamanhos = {
+  normal: 'px-6 py-3 text-[0.95rem]',
+  grande: 'px-7 py-3.5 text-base',
+};
+---
+
+{
+  href && (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener"
+      data-analytics="whatsapp"
+      class={`${base} ${variantes[variante]} ${tamanhos[tamanho]} ${classe}`}
+    >
+      <Icone nome="whatsapp" tamanho={tamanho === 'grande' ? 20 : 18} />
+      <span>{rotulo}</span>
+    </a>
+  )
+}

@@ -1,0 +1,166 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Secao from '~/components/Secao.astro';
+import Icone from '~/components/Icone.astro';
+import Faq from '~/components/Faq.astro';
+import FormularioContato from '~/components/FormularioContato.astro';
+import BotaoWhatsApp from '~/components/BotaoWhatsApp.astro';
+
+import { CONTATO, RECURSOS, linkWhatsApp, whatsappLegivel } from '~/config/site';
+import { dicionario, type Idioma } from '~/i18n/config';
+
+interface Props {
+  lang: Idioma;
+}
+
+const { lang } = Astro.props;
+const t = dicionario(lang);
+
+const hrefWhats = linkWhatsApp(t.whatsapp.geral);
+
+const canais = [
+  hrefWhats && {
+    href: hrefWhats,
+    icone: 'whatsapp' as const,
+    rotulo: t.contato.canais.whatsapp,
+    valor: whatsappLegivel(),
+    externo: true,
+    analytics: 'whatsapp-contato',
+  },
+  CONTATO.email && {
+    href: `mailto:${CONTATO.email}`,
+    icone: 'email' as const,
+    rotulo: t.contato.canais.email,
+    valor: CONTATO.email,
+    externo: false,
+    analytics: 'email',
+  },
+  CONTATO.instagram && {
+    href: CONTATO.instagram,
+    icone: 'instagram' as const,
+    rotulo: t.contato.canais.instagram,
+    valor: CONTATO.instagram.replace(/^https?:\/\/(www\.)?/, ''),
+    externo: true,
+    analytics: 'instagram-contato',
+  },
+  CONTATO.tripadvisor && {
+    href: CONTATO.tripadvisor,
+    icone: 'estrela' as const,
+    rotulo: t.contato.canais.tripadvisor,
+    valor: t.botoes.tripadvisor,
+    externo: true,
+    analytics: 'tripadvisor-contato',
+  },
+].filter(Boolean) as {
+  href: string;
+  icone: 'whatsapp' | 'email' | 'instagram' | 'estrela';
+  rotulo: string;
+  valor: string;
+  externo: boolean;
+  analytics: string;
+}[];
+
+const schemaFaq = {
+  '@type': 'FAQPage',
+  mainEntity: t.contato.faq.itens.map((item) => ({
+    '@type': 'Question',
+    name: item.pergunta,
+    acceptedAnswer: { '@type': 'Answer', text: item.resposta },
+  })),
+};
+---
+
+<BaseLayout
+  lang={lang}
+  titulo={t.meta.contato.titulo}
+  descricao={t.meta.contato.descricao}
+  secaoAtiva="contato"
+  schemaExtra={[schemaFaq]}
+>
+  <section class="bg-nevoa pb-20 pt-14 md:pb-24 md:pt-20">
+    <div class="container-site">
+      <div class="revelar max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pedra">
+          {t.contato.sobretitulo}
+        </p>
+        <h1 class="mt-4 text-titulo-pagina text-balance text-atlantico">{t.contato.titulo}</h1>
+        <p class="mt-6 text-pretty text-pedra">{t.contato.intro}</p>
+
+        {
+          hrefWhats && (
+            <div class="mt-8">
+              <BotaoWhatsApp
+                rotulo={t.botoes.whatsapp}
+                mensagem={t.whatsapp.geral}
+                tamanho="grande"
+              />
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------- Canais e formulario -->
+  <Secao>
+    <div class="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+      <div class="revelar">
+        <h2 class="text-titulo-cartao text-atlantico">{t.contato.canais.titulo}</h2>
+
+        {
+          canais.length > 0 ? (
+            <ul class="mt-7 divide-y divide-nevoa-forte border-y border-nevoa-forte">
+              {canais.map((canal) => (
+                <li>
+                  <a
+                    href={canal.href}
+                    target={canal.externo ? '_blank' : undefined}
+                    rel={canal.externo ? 'noopener' : undefined}
+                    data-analytics={canal.analytics}
+                    class="group flex items-center gap-4 py-4 transition-colors duration-200"
+                  >
+                    <span
+                      class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full
+                             bg-nevoa text-atlantico transition-colors duration-200
+                             group-hover:bg-sol"
+                    >
+                      <Icone nome={canal.icone} tamanho={18} />
+                    </span>
+                    <span class="min-w-0">
+                      <span class="block text-xs uppercase tracking-[0.12em] text-pedra">
+                        {canal.rotulo}
+                      </span>
+                      <span class="block truncate text-[0.95rem] text-atlantico">
+                        {canal.valor}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="mt-7 text-sm text-pedra">{t.contato.formulario.indisponivel}</p>
+          )
+        }
+      </div>
+
+      {
+        RECURSOS.formulario && (
+          <div class="revelar">
+            <h2 class="text-titulo-cartao text-atlantico">{t.contato.formulario.titulo}</h2>
+            <div class="mt-7">
+              <FormularioContato lang={lang} />
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </Secao>
+
+  <!-- ---------------------------------------------------------- Duvidas -->
+  <Secao fundo="nevoa" titulo={t.contato.faq.titulo}>
+    <div class="max-w-3xl">
+      <Faq itens={t.contato.faq.itens} />
+    </div>
+  </Secao>
+</BaseLayout>

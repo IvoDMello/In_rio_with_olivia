@@ -1,0 +1,71 @@
+---
+import { IDIOMAS, NOME_IDIOMA, ROTULO_IDIOMA, type Idioma } from '~/i18n/config';
+
+/**
+ * Seletor de idioma.
+ *
+ * Sao tres links simples, e nao um menu que abre. Com tres opcoes curtas isso
+ * e mais rapido de usar, funciona sem JavaScript e ja vem navegavel pelo
+ * teclado sem nenhum trabalho extra.
+ *
+ * O clique tambem grava a escolha, que e o que a raiz do site le na proxima
+ * visita para nao perguntar de novo.
+ */
+interface Props {
+  lang: Idioma;
+  /** URL equivalente da pagina atual em cada idioma. */
+  alternativas: { lang: Idioma; href: string }[];
+  class?: string;
+}
+
+const { lang, alternativas, class: classe = '' } = Astro.props;
+const porIdioma = new Map(alternativas.map((a) => [a.lang, a.href]));
+---
+
+<nav aria-label={NOME_IDIOMA[lang] ? 'Idioma' : 'Idioma'} class={classe}>
+  <ul class="flex items-center gap-0.5">
+    {
+      IDIOMAS.map((idioma) => {
+        const href = porIdioma.get(idioma);
+        const ativo = idioma === lang;
+
+        if (!href) return null;
+
+        return (
+          <li>
+            <a
+              href={href}
+              hreflang={idioma}
+              lang={idioma}
+              data-idioma={idioma}
+              aria-current={ativo ? 'true' : undefined}
+              class:list={[
+                'block rounded-full px-2.5 py-1.5 text-xs font-semibold tracking-[0.08em]',
+                'transition-colors duration-200',
+                ativo
+                  ? 'bg-atlantico text-branco'
+                  : 'text-pedra hover:bg-nevoa hover:text-atlantico',
+              ]}
+            >
+              <span class="sr-only">{NOME_IDIOMA[idioma]}</span>
+              <span aria-hidden="true">{ROTULO_IDIOMA[idioma]}</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<script>
+  // Guarda a escolha para a proxima visita a raiz do site.
+  document.querySelectorAll<HTMLAnchorElement>('a[data-idioma]').forEach((link) => {
+    link.addEventListener('click', () => {
+      try {
+        localStorage.setItem('idioma', link.dataset.idioma!);
+      } catch {
+        // Navegacao privada ou cookies bloqueados. O site funciona do mesmo jeito.
+      }
+    });
+  });
+</script>
