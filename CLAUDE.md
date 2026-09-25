@@ -30,7 +30,7 @@ Verificar contraste AA: texto Pedra só sobre Branco ou Névoa, nunca em tamanho
 
 ### Tipografia (Google Fonts)
 
-- Títulos: Instrument Serif (400, normal e itálico)
+- Títulos: Lora (500, normal). Substituiu Instrument Serif, ver seção 11
 - Textos e interface: Manrope (400, 500, 600)
 - Escala sugerida: 16px base, títulos de seção 36 a 48px no desktop, 28 a 32px no mobile
 - Linhas de texto com no máximo 70 caracteres
@@ -206,6 +206,28 @@ Por isso o artigo de pôr do sol virou **Os melhores mirantes do Rio** (`mirante
 nos três idiomas) e os textos passaram a dizer que a paisagem compensa a qualquer
 hora e que o encaixe do horário é trabalho da Olivia. Ao escrever conteúdo novo,
 manter essa regra: sugerir lugares, nunca horários obrigatórios.
+
+### Os títulos são Lora, não Instrument Serif
+
+A seção 2 nasceu com Instrument Serif nos títulos. Ela é bonita, mas é a fonte da
+moda em portfólios e revistas online, com contraste alto e ar mais editorial do que
+profissional. Para um serviço que se vende pela confiança, Lora 500 diz melhor o que
+precisa dizer: traço de pincel, contraste moderado, nada de exibição. E, por ser
+desenhada para texto longo em tela, sustenta o título de 48px e o do cartão pequeno
+com o mesmo humor. Manrope continua nos textos, sem mudança.
+
+Só o peso 500 é carregado, e nenhum título usa itálico, então o itálico saiu também.
+
+Isso obrigou a recalibrar o logo. Lora é cerca de 35 por cento mais larga que
+Instrument Serif no mesmo corpo, e o logo depende de "Olivia" e "in Rio with"
+fecharem juntas na direita. Havia duas saídas: encolher o nome 25 por cento para
+caber na largura antiga, ou deixar a marca mais larga. A segunda custa menos, porque
+a altura do logo é fixada pelo símbolo e a largura é livre. O nome ficou praticamente
+do mesmo tamanho (corpo 68, altura de O em 49,8 contra 54,7), a linha de cima subiu
+de 27 para 29 com mais tracking, e a viewBox passou de 278 para 307 de largura. Em
+48px de altura, que é o tamanho no cabeçalho, a marca passou de 111 para 123px de
+largura. As medidas estão no comentário do `Logo.astro` e valem também para os
+arquivos de `/public/brand`.
 
 ### Nada é inventado
 

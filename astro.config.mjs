@@ -28,10 +28,12 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
-      name: 'Instrument Serif',
+      name: 'Lora',
       cssVariable: '--font-titulo',
-      weights: [400],
-      styles: ['normal', 'italic'],
+      // Um peso so. O site nunca usa titulo em italico, e Lora 500 e o peso
+      // que sustenta titulo grande sem ficar pesado no cartao pequeno.
+      weights: [500],
+      styles: ['normal'],
       subsets: ['latin', 'latin-ext'],
       fallbacks: ['Georgia', 'Times New Roman', 'serif'],
     },

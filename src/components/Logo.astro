@@ -2,9 +2,10 @@
 /**
  * Logo em SVG embutido, e nao como <img src>.
  *
- * O motivo e a tipografia: a palavra "Olivia" usa Instrument Serif. Um SVG
- * carregado por <img> roda isolado e nao enxerga as fontes da pagina, entao
- * cairia sempre no Georgia. Embutido, ele usa a fonte que o site ja carregou.
+ * O motivo e a tipografia: a palavra "Olivia" usa Lora, a fonte de titulo do
+ * site. Um SVG carregado por <img> roda isolado e nao enxerga as fontes da
+ * pagina, entao cairia sempre no Georgia. Embutido, ele usa a fonte que o
+ * site ja carregou.
  *
  * SOBRE AS PROPORCOES
  * A altura desenhada na tela e dividida pela altura da viewBox, entao toda
@@ -12,10 +13,18 @@
  * apertada em volta do desenho (120 de altura, sem sobra), e o simbolo foi
  * reduzido para 88 por cento, para o bloco de texto ocupar mais da altura.
  *
- * Os corpos de 74 e 27 nao sao arbitrarios: medidos no navegador com as
- * fontes reais, "Olivia" fica com 148px e "in Rio with" com 150px, ou seja,
- * as duas linhas tem praticamente a mesma largura e o bloco fecha alinhado.
- * Ao mexer em um dos dois, meca o outro de novo.
+ * Os corpos nao sao arbitrarios. Medidos com as fontes reais:
+ *   Lora 500 em 68        "Olivia"      183,1 de avanco, altura de O 49,8
+ *   Manrope 400 em 29     "in Rio with" 135,7 natural, + 4,34 de tracking
+ * O tracking existe para as duas linhas fecharem juntas na direita, em 305,1:
+ * a de baixo comeca em 122, a de cima em 126, e a diferenca compensa a lateral
+ * do O serifado. O tracking nao conta depois da ultima letra, entao o calculo
+ * usa 10 intervalos, nao 11. As linhas de base em 42 e 100 deixam o bloco
+ * centrado na caixa (centro em 60,1) com a mesma folga de antes entre as duas.
+ *
+ * Ao trocar qualquer uma das duas fontes, meca de novo: Lora e cerca de 35 por
+ * cento mais larga que a Instrument Serif que estava aqui antes, e foi por isso
+ * que a caixa passou de 278 para 307 de largura.
  *
  * Os arquivos em /public/brand seguem as mesmas medidas, para uso fora do
  * site (assinatura de e-mail, TripAdvisor, redes).
@@ -38,8 +47,8 @@ const corSobretitulo = escura ? '#EEF2F0' : '#6B7775';
 const corTraco = escura ? '#EEF2F0' : '#123A45';
 const corFundo = escura ? '#1C5060' : '#EEF2F0';
 
-const viewBox = simbolo ? '0 0 120 120' : '0 0 278 120';
-const largura = simbolo ? altura : Math.round((altura * 278) / 120);
+const viewBox = simbolo ? '0 0 120 120' : '0 0 307 120';
+const largura = simbolo ? altura : Math.round((altura * 307) / 120);
 ---
 
 <svg
@@ -74,15 +83,22 @@ const largura = simbolo ? altura : Math.round((altura * 278) / 120);
       <>
         <text
           x="126"
-          y="39"
+          y="42"
           fill={corSobretitulo}
           font-family="var(--font-texto)"
-          font-size="27"
-          letter-spacing="2.2"
+          font-size="29"
+          letter-spacing="4.34"
         >
           in Rio with
         </text>
-        <text x="122" y="101" fill={corTexto} font-family="var(--font-titulo)" font-size="74">
+        <text
+          x="122"
+          y="100"
+          fill={corTexto}
+          font-family="var(--font-titulo)"
+          font-weight="500"
+          font-size="68"
+        >
           Olivia
         </text>
       </>
