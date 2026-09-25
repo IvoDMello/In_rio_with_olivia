@@ -18,7 +18,7 @@ const ano = new Date().getFullYear();
 type Rede = {
   href: string;
   rotulo: string;
-  icone: 'instagram' | 'estrela';
+  icone: 'instagram' | 'tripadvisor';
   analytics: string;
 };
 
@@ -32,7 +32,7 @@ const redes: Rede[] = [
   CONTATO.tripadvisor && {
     href: CONTATO.tripadvisor,
     rotulo: t.contato.canais.tripadvisor,
-    icone: 'estrela' as const,
+    icone: 'tripadvisor' as const,
     analytics: 'tripadvisor-rodape',
   },
 ].filter(Boolean) as Rede[];

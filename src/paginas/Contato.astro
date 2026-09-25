@@ -45,7 +45,7 @@ const canais = [
   },
   CONTATO.tripadvisor && {
     href: CONTATO.tripadvisor,
-    icone: 'estrela' as const,
+    icone: 'tripadvisor' as const,
     rotulo: t.contato.canais.tripadvisor,
     valor: t.botoes.tripadvisor,
     externo: true,
@@ -53,7 +53,7 @@ const canais = [
   },
 ].filter(Boolean) as {
   href: string;
-  icone: 'whatsapp' | 'email' | 'instagram' | 'estrela';
+  icone: 'whatsapp' | 'email' | 'instagram' | 'tripadvisor';
   rotulo: string;
   valor: string;
   externo: boolean;
