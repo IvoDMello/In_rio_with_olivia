@@ -1,17 +1,21 @@
 ---
-import { IDIOMAS, IDIOMA_PADRAO, SECOES } from '~/i18n/config';
+import { IDIOMAS, IDIOMA_PADRAO } from '~/i18n/config';
 import { SITE } from '~/config/site';
 
 /**
  * Raiz do site.
  *
- * O site e estatico, entao a escolha do idioma acontece no navegador:
- *  1. Se a pessoa ja escolheu um idioma antes, respeita a escolha.
- *  2. Senao, tenta o idioma do navegador.
- *  3. Se nada bater, vai para o ingles, que e o padrao.
+ * O ingles e o idioma padrao e a primeira visita vai sempre para /en, mesmo
+ * que o navegador esteja em outro idioma. A deteccao automatica foi retirada
+ * de proposito: o publico principal e estrangeiro e a mensagem do WhatsApp
+ * sai no idioma da pagina, entao abrir em portugues por causa da configuracao
+ * do navegador atrapalhava mais do que ajudava.
+ *
+ * A escolha de quem ja trocou de idioma continua valendo: o seletor guarda o
+ * idioma em localStorage e esta pagina respeita esse valor.
  *
  * Quem chegar com JavaScript desligado, ou com um robo de busca, ve os tres
- * links e a tag canonical apontando para o ingles. Nada fica inalcancavel.
+ * links e o refresh levando ao ingles. Nada fica inalcancavel.
  */
 const destinoPadrao = `/${IDIOMA_PADRAO}`;
 const links = IDIOMAS.map((lang) => ({
@@ -43,7 +47,7 @@ const links = IDIOMAS.map((lang) => ({
 
     <meta http-equiv="refresh" content={`0; url=${destinoPadrao}`} />
 
-    <script is:inline define:vars={{ IDIOMAS, IDIOMA_PADRAO, SECOES }}>
+    <script is:inline define:vars={{ IDIOMAS, IDIOMA_PADRAO }}>
       (function () {
         var escolhido = null;
 
@@ -51,15 +55,7 @@ const links = IDIOMAS.map((lang) => ({
           var guardado = localStorage.getItem('idioma');
           if (guardado && IDIOMAS.indexOf(guardado) !== -1) escolhido = guardado;
         } catch (erro) {
-          // Navegacao privada. Segue pela deteccao do navegador.
-        }
-
-        if (!escolhido) {
-          var preferidos = navigator.languages || [navigator.language || ''];
-          for (var i = 0; i < preferidos.length && !escolhido; i++) {
-            var base = String(preferidos[i]).toLowerCase().split('-')[0];
-            if (IDIOMAS.indexOf(base) !== -1) escolhido = base;
-          }
+          // Navegacao privada. Segue para o idioma padrao.
         }
 
         var destino = '/' + (escolhido || IDIOMA_PADRAO);

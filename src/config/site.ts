@@ -40,11 +40,15 @@ export const SITE = {
   nome: 'in Rio with Olivia',
   autora: 'Olivia',
 
-  /** Anos de experiencia. Usado nos textos de apresentacao. */
-  anosDeExperiencia: 22,
+  /**
+   * Anos de experiencia, arredondados para baixo de proposito.
+   * Os textos do site dizem "mais de 20 anos", que continua verdadeiro sem
+   * precisar de revisao a cada aniversario de carreira.
+   */
+  anosDeExperiencia: 20,
 
-  /** Ano de inicio, para calcular a idade do negocio sem editar textos. */
-  anoDeInicio: new Date().getFullYear() - 22,
+  /** Ano em que a Olivia comecou a guiar. Vai no foundingDate do schema.org. */
+  anoDeInicio: 2004,
 } as const;
 
 /**
@@ -90,10 +94,25 @@ export const CONTATO: Contatos = {
 };
 
 /**
- * Idiomas que a Olivia e a equipe falam nos passeios.
- * PENDENTE: confirmar a lista com a Olivia. Usa os mesmos codigos do site.
+ * Idiomas em que a Olivia e a equipe atendem nos passeios.
+ *
+ * Nao confundir com os idiomas do site (src/i18n/config.ts), que sao tres.
+ * Aqui a lista e maior porque a equipe cobre mais idiomas do que as versoes
+ * traduzidas do site. Os nomes de cada idioma ficam nos arquivos de i18n,
+ * em `idiomasFalados`.
  */
-export const IDIOMAS_FALADOS = ['pt', 'en', 'es'] as const;
+export const IDIOMAS_FALADOS = ['pt', 'en', 'es', 'fr', 'it'] as const;
+
+export type IdiomaFalado = (typeof IDIOMAS_FALADOS)[number];
+
+/** Codigo BCP 47 de cada idioma falado, para o schema.org. */
+export const TAG_IDIOMA_FALADO: Record<IdiomaFalado, string> = {
+  pt: 'pt-BR',
+  en: 'en',
+  es: 'es',
+  fr: 'fr',
+  it: 'it',
+};
 
 /** Ligar somente quando houver avaliacoes reais em src/data/reviews.ts. */
 export const RECURSOS = {

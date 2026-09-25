@@ -4,24 +4,24 @@ resumo: Un itinerario de tres días que cubre los grandes clásicos sin prisa, c
 chave: rio-3-dias
 data: 2026-02-10
 imagem: rio-em-3-dias
-alt: Vista de Río de Janeiro con el Pan de Azúcar al fondo al final de la tarde
+alt: Vista de Río de Janeiro con el Pan de Azúcar al fondo
 ---
 
-Tres días es el tiempo que más escucho de quienes vienen a Río por primera vez. Alcanza para conocer bien la ciudad, siempre que el itinerario respete dos cosas: las distancias y las horas de buena luz. Este es el camino que suelo sugerir, y que después ajusto para cada viajero.
+Tres días es el tiempo que más escucho de quienes vienen a Río por primera vez. Alcanza para conocer bien la ciudad, siempre que el itinerario respete dos cosas: las distancias y tu propio ritmo. Este es el camino que suelo sugerir, y que después ajusto para cada viajero.
 
 ## Primer día: la ciudad desde arriba
 
-Empiezo por el Cristo Redentor, temprano por la mañana. No es solo por la vista. Es porque a esa hora la niebla del Corcovado ya se levantó y la plataforma todavía no está llena. Desde allí se entiende la geografía de todo Río, y el resto del viaje tiene mucho más sentido después.
+Empiezo por el Cristo Redentor. No es solo por la vista. Es porque desde allí se entiende la geografía de todo Río, y el resto del viaje tiene mucho más sentido después. La hora de la subida la elijo contigo, mirando el pronóstico y lo que viene antes y después en el día.
 
 Al bajar paro en Santa Teresa. Es uno de los barrios más antiguos de Río, con calles de piedra, caserones y talleres de artistas. Almorzamos allí. Por la tarde bajamos por la Escalera de Selarón y seguimos al centro histórico, donde están la Catedral Metropolitana, el Real Gabinete Portugués de Lectura y el Monasterio de San Benito. Son tres construcciones muy distintas entre sí, y todas a pocos minutos a pie una de la otra.
 
 ## Segundo día: el mar
 
-El Pan de Azúcar puede ser el plan de la mañana, pero me gusta invertirlo cuando se puede: subir al final de la tarde y ver cómo se enciende la ciudad. Si tienes una sola oportunidad, elige el día más limpio, porque allí arriba la vista es todo.
+El Pan de Azúcar entra aquí, por la mañana o por la tarde, según lo que encaje mejor en tu día. Son dos teleféricos y dos paisajes, y la vista compensa a cualquier hora. Lo que de verdad hace la diferencia es el cielo despejado, y por eso suelo dejar esta subida para el día más abierto de tu viaje.
 
 Después, playa. Copacabana, Ipanema y Leblon son tres playas seguidas, y cada una tiene su público y su ritmo. Caminar por el paseo entre ellas es una de las cosas más cariocas que existen. De vuelta pasamos por la Laguna Rodrigo de Freitas y, si queda tiempo, por el Jardín Botánico.
 
-El final del día es en Arpoador, la piedra entre Ipanema y Copacabana. El sol se pone exactamente detrás de los Dois Irmãos y la gente aplaude. No es una exageración. Pasa todos los días.
+Y Arpoador, la piedra entre Ipanema y Copacabana, cierra bien ese día. Desde allí ves Ipanema de un lado, Copacabana del otro y los Dois Irmãos en el horizonte. Es una parada corta, que encaja en cualquier momento del recorrido.
 
 ## Tercer día: el Río que elijas
 
@@ -31,6 +31,6 @@ Si quieres naturaleza, vamos al Bosque de Tijuca, uno de los bosques urbanos má
 
 ## Qué cambiaría
 
-Si vienes entre diciembre y marzo, invierte las mañanas y las tardes. El calor del mediodía es fuerte y la playa rinde más temprano. Si vienes en invierno, aprovecha que la visibilidad suele ser mejor y deja el Cristo y el Pan de Azúcar para los días más claros.
+Si vienes entre diciembre y marzo, ajusto el orden de las paradas por el calor del mediodía. Si vienes en invierno, aprovecho que la visibilidad suele ser mejor y dejo el Cristo y el Pan de Azúcar para los días más abiertos. No tienes que preocuparte por eso. El encaje lo hago yo.
 
 Y si tres días parecen poco, lo son. Pero puedes irte con la sensación de haber conocido Río, y no solo de haber pasado por él.

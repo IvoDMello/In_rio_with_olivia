@@ -4,9 +4,9 @@ import Secao from '~/components/Secao.astro';
 import Foto from '~/components/Foto.astro';
 import ChamadaFinal from '~/components/ChamadaFinal.astro';
 
-import { CONTATO, IDIOMAS_FALADOS, SITE } from '~/config/site';
+import { CONTATO, IDIOMAS_FALADOS, TAG_IDIOMA_FALADO, SITE } from '~/config/site';
 import { imagem, fotoOlivia } from '~/lib/imagens';
-import { dicionario, NOME_IDIOMA, type Idioma } from '~/i18n/config';
+import { dicionario, type Idioma } from '~/i18n/config';
 
 interface Props {
   lang: Idioma;
@@ -18,7 +18,8 @@ const t = dicionario(lang);
 const retrato = fotoOlivia();
 const fotoEquipe = imagem('fotos', 'equipe');
 
-const idiomasFalados = IDIOMAS_FALADOS.map((codigo) => NOME_IDIOMA[codigo]).join(', ');
+// Os idiomas do atendimento sao os da equipe inteira, nao so os do site.
+const idiomasFalados = IDIOMAS_FALADOS.map((codigo) => t.idiomasFalados[codigo]).join(', ');
 
 // Pagina sobre a autora: vale declarar a pessoa por tras do negocio.
 const schemaPessoa = {
@@ -27,7 +28,7 @@ const schemaPessoa = {
   name: SITE.autora,
   jobTitle: t.home.hero.sobretitulo,
   worksFor: { '@id': `${SITE.url}/#negocio` },
-  knowsLanguage: [...IDIOMAS_FALADOS],
+  knowsLanguage: IDIOMAS_FALADOS.map((codigo) => TAG_IDIOMA_FALADO[codigo]),
 };
 ---
 
@@ -100,6 +101,7 @@ const schemaPessoa = {
         <div class="prosa mt-7">
           <p class="text-pedra">{t.sobre.equipe.p1}</p>
           <p class="text-pedra">{t.sobre.equipe.p2}</p>
+          <p class="text-pedra">{t.sobre.equipe.p3}</p>
         </div>
       </div>
     </div>
@@ -121,7 +123,7 @@ const schemaPessoa = {
         <dl class="mt-7 divide-y divide-nevoa-forte border-y border-nevoa-forte">
           <div class="flex items-baseline justify-between gap-6 py-4">
             <dt class="text-sm text-pedra">{t.sobre.credenciais.experiencia}</dt>
-            <dd class="font-titulo text-3xl text-atlantico">{SITE.anosDeExperiencia}</dd>
+            <dd class="font-titulo text-3xl text-atlantico">{SITE.anosDeExperiencia}+</dd>
           </div>
 
           <div class="flex items-baseline justify-between gap-6 py-4">

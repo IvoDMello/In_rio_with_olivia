@@ -2,11 +2,11 @@
   "meta": {
     "home": {
       "titulo": "Private tour guide in Rio de Janeiro",
-      "descricao": "Private, tailor made tours of Rio de Janeiro with Olivia, a licensed guide for 22 years. Tell me what you like and let us plan your day on WhatsApp."
+      "descricao": "Private, tailor made tours of Rio de Janeiro with Olivia, a licensed guide for over 20 years. Tell me what you like and let us plan your day on WhatsApp."
     },
     "sobre": {
       "titulo": "About me",
-      "descricao": "I am Olivia, a tour guide in Rio de Janeiro for 22 years. I work with private, tailor made tours, from solo travelers to large groups."
+      "descricao": "I am Olivia, a tour guide in Rio de Janeiro for over 20 years. I work with private, tailor made tours, from solo travelers to large groups."
     },
     "experiencias": {
       "titulo": "Experiences in Rio",
@@ -14,7 +14,7 @@
     },
     "dicas": {
       "titulo": "Rio tips",
-      "descricao": "Itineraries, ideas and practical advice from someone who has been guiding in Rio de Janeiro for 22 years."
+      "descricao": "Itineraries, ideas and practical advice from someone who has been guiding in Rio de Janeiro for over 20 years."
     },
     "contato": {
       "titulo": "Contact",
@@ -35,7 +35,8 @@
     "fecharMenu": "Close menu",
     "idioma": "Language",
     "escolherIdioma": "Choose language",
-    "irParaConteudo": "Skip to content"
+    "irParaConteudo": "Skip to content",
+    "tripadvisor": "Read the reviews on TripAdvisor"
   },
   "botoes": {
     "whatsapp": "Message me on WhatsApp",
@@ -62,7 +63,7 @@
     },
     "apresentacao": {
       "titulo": "It is a pleasure to meet you. I am Olivia.",
-      "p1": "For 22 years I have had the privilege of working as a tour guide in Rio de Janeiro, a job I do with a great deal of passion, dedication and care.",
+      "p1": "For over 20 years I have had the privilege of working as a tour guide in Rio de Janeiro, a job I do with a great deal of passion, dedication and care.",
       "p2": "I believe a great tour goes far beyond visiting the main sights. I want you to feel so comfortable and so well looked after that, at the end of the day, we say goodbye with a hug, like old friends."
     },
     "comoFunciona": {
@@ -108,7 +109,8 @@
     "equipe": {
       "titulo": "My team",
       "p1": "Along the way I have built a small team of guides who work with me. I chose each of them carefully, because I recognized in them the same qualities I consider essential in my own work: commitment, responsibility, warmth and, above all, a genuine love of welcoming people and sharing our city with them.",
-      "p2": "They are professionals I trust completely, and they work the way I do, with care, attention and a real commitment to making every experience special."
+      "p2": "They are professionals I trust completely, and they work the way I do, with care, attention and a real commitment to making every experience special.",
+      "p3": "Between me and the team, we welcome travelers in Portuguese, English, Spanish, French and Italian. Tell me which language you would rather be guided in and I will arrange the right person for your day."
     },
     "estrutura": {
       "titulo": "For groups of any size",
@@ -117,7 +119,7 @@
     "credenciais": {
       "titulo": "Credentials",
       "experiencia": "years guiding in Rio de Janeiro",
-      "idiomas": "Languages",
+      "idiomas": "Languages we speak",
       "cadastur": "Licensed guide, registered with Cadastur",
       "cadasturSemNumero": "Tour guide registered with the Brazilian Ministry of Tourism"
     }
@@ -158,7 +160,7 @@
   "dicas": {
     "sobretitulo": "Tips",
     "titulo": "Rio tips",
-    "intro": "Itinerary ideas and practical advice from someone who has been guiding in this city for 22 years.",
+    "intro": "Itinerary ideas and practical advice from someone who has been guiding in this city for over 20 years.",
     "vazio": "The first pieces are on their way.",
     "publicadoEm": "Published on",
     "leituraMin": "min read",
@@ -256,5 +258,12 @@
       "texto": "The address may have changed. Let us start again from the home page.",
       "botao": "Go to the home page"
     }
+  },
+  "idiomasFalados": {
+    "pt": "Portuguese",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "it": "Italian"
   }
 }

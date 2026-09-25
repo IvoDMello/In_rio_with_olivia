@@ -5,7 +5,13 @@ import Header from '~/components/Header.astro';
 import Footer from '~/components/Footer.astro';
 import WhatsAppFlutuante from '~/components/WhatsAppFlutuante.astro';
 
-import { CONTATO, E_DOMINIO_FINAL, SITE } from '~/config/site';
+import {
+  CONTATO,
+  E_DOMINIO_FINAL,
+  IDIOMAS_FALADOS,
+  TAG_IDIOMA_FALADO,
+  SITE,
+} from '~/config/site';
 import { AVALIACOES, mediaDasNotas } from '~/data/reviews';
 import {
   alternativas as alternativasDoCaminho,
@@ -78,7 +84,7 @@ const negocio: Record<string, unknown> = {
       addressCountry: 'BR',
     },
   },
-  knowsLanguage: ['pt-BR', 'en', 'es'],
+  knowsLanguage: IDIOMAS_FALADOS.map((codigo) => TAG_IDIOMA_FALADO[codigo]),
 };
 
 if (CONTATO.email) negocio['email'] = CONTATO.email;

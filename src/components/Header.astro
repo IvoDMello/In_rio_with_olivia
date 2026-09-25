@@ -2,7 +2,7 @@
 import Logo from './Logo.astro';
 import Icone from './Icone.astro';
 import SeletorIdioma from './SeletorIdioma.astro';
-import { linkWhatsApp } from '~/config/site';
+import { CONTATO, linkWhatsApp } from '~/config/site';
 import { dicionario, MENU, rota, type Idioma, type Secao } from '~/i18n/config';
 
 interface Props {
@@ -14,6 +14,11 @@ interface Props {
 const { lang, secaoAtiva, alternativas } = Astro.props;
 const t = dicionario(lang);
 const hrefWhats = linkWhatsApp(t.whatsapp.geral);
+
+// A prova social vale no topo de todas as paginas, nao so no rodape.
+// Fica visivel tambem no celular, porque ali o WhatsApp ja tem o botao
+// flutuante e o TripAdvisor nao tem outro lugar acima da dobra.
+const hrefTripAdvisor = CONTATO.tripadvisor;
 
 const itens = MENU.map((secao) => ({
   secao,
@@ -74,6 +79,23 @@ const itens = MENU.map((secao) => ({
 
     <div class="flex items-center gap-2 md:gap-3">
       <SeletorIdioma lang={lang} alternativas={alternativas} class="hidden sm:block" />
+
+      {
+        hrefTripAdvisor && (
+          <a
+            href={hrefTripAdvisor}
+            target="_blank"
+            rel="noopener"
+            data-analytics="tripadvisor-cabecalho"
+            aria-label={t.nav.tripadvisor}
+            title={t.contato.canais.tripadvisor}
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-nevoa
+                   text-atlantico transition-colors duration-200 hover:bg-sol"
+          >
+            <Icone nome="estrela" tamanho={19} />
+          </a>
+        )
+      }
 
       {
         hrefWhats && (
@@ -177,6 +199,23 @@ const itens = MENU.map((secao) => ({
           >
             <Icone nome="whatsapp" tamanho={18} />
             {t.botoes.whatsapp}
+          </a>
+        )
+      }
+
+      {
+        hrefTripAdvisor && (
+          <a
+            href={hrefTripAdvisor}
+            target="_blank"
+            rel="noopener"
+            data-analytics="tripadvisor-menu"
+            class="mt-3 flex items-center justify-center gap-2.5 rounded-full border
+                   border-atlantico/20 px-6 py-3 text-[0.95rem] font-medium text-atlantico
+                   transition-colors duration-200 hover:border-sol hover:bg-sol/10"
+          >
+            <Icone nome="estrela" tamanho={18} />
+            {t.botoes.tripadvisor}
           </a>
         )
       }

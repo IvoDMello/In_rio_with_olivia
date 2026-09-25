@@ -2,11 +2,11 @@
   "meta": {
     "home": {
       "titulo": "Guia de turismo no Rio de Janeiro",
-      "descricao": "Tours privados e personalizados no Rio de Janeiro com a Olivia, guia de turismo há 22 anos. Monte o seu roteiro e fale comigo no WhatsApp."
+      "descricao": "Tours privados e personalizados no Rio de Janeiro com a Olivia, guia de turismo há mais de 20 anos. Monte o seu roteiro e fale comigo no WhatsApp."
     },
     "sobre": {
       "titulo": "Sobre mim",
-      "descricao": "Sou a Olivia, guia de turismo no Rio de Janeiro há 22 anos. Trabalho com tours privados e personalizados, de viajantes individuais a grandes grupos."
+      "descricao": "Sou a Olivia, guia de turismo no Rio de Janeiro há mais de 20 anos. Trabalho com tours privados e personalizados, de viajantes individuais a grandes grupos."
     },
     "experiencias": {
       "titulo": "Experiências no Rio",
@@ -14,7 +14,7 @@
     },
     "dicas": {
       "titulo": "Dicas do Rio",
-      "descricao": "Roteiros, ideias e conselhos de quem guia no Rio de Janeiro há 22 anos. O que fazer, quando ir e como aproveitar melhor a cidade."
+      "descricao": "Roteiros, ideias e conselhos de quem guia no Rio de Janeiro há mais de 20 anos. O que fazer, quando ir e como aproveitar melhor a cidade."
     },
     "contato": {
       "titulo": "Contato",
@@ -35,7 +35,8 @@
     "fecharMenu": "Fechar menu",
     "idioma": "Idioma",
     "escolherIdioma": "Escolher idioma",
-    "irParaConteudo": "Ir para o conteúdo"
+    "irParaConteudo": "Ir para o conteúdo",
+    "tripadvisor": "Ver as avaliações no TripAdvisor"
   },
   "botoes": {
     "whatsapp": "Falar no WhatsApp",
@@ -62,7 +63,7 @@
     },
     "apresentacao": {
       "titulo": "É um prazer conhecê-lo. Eu sou a Olivia.",
-      "p1": "Há 22 anos tenho o privilégio de trabalhar como guia de turismo no Rio de Janeiro, uma profissão que exerço com muita paixão, dedicação e responsabilidade.",
+      "p1": "Há mais de 20 anos tenho o privilégio de trabalhar como guia de turismo no Rio de Janeiro, uma profissão que exerço com muita paixão, dedicação e responsabilidade.",
       "p2": "Acredito que um ótimo passeio vai muito além de visitar os principais pontos turísticos. Quero que você se sinta tão à vontade e bem recebido conosco que, ao final do dia, nos despeçamos com um abraço, como velhos amigos."
     },
     "comoFunciona": {
@@ -108,7 +109,8 @@
     "equipe": {
       "titulo": "A minha equipe",
       "p1": "Ao longo dessa trajetória, construí uma pequena equipe de guias que trabalham comigo. São pessoas que escolhi com cuidado, porque reconheci nelas as mesmas qualidades que considero essenciais no meu trabalho: comprometimento, responsabilidade, acolhimento e, acima de tudo, uma verdadeira paixão por receber pessoas e compartilhar nossa cidade com elas.",
-      "p2": "São profissionais em quem confio plenamente e que compartilham a mesma forma de trabalhar, com carinho, atenção e um verdadeiro compromisso em tornar cada experiência especial."
+      "p2": "São profissionais em quem confio plenamente e que compartilham a mesma forma de trabalhar, com carinho, atenção e um verdadeiro compromisso em tornar cada experiência especial.",
+      "p3": "Entre mim e a equipe, recebemos viajantes em português, inglês, espanhol, francês e italiano. Me diga em qual idioma você prefere ser guiado e eu escalo a pessoa certa para o seu dia."
     },
     "estrutura": {
       "titulo": "Para grupos de qualquer tamanho",
@@ -117,7 +119,7 @@
     "credenciais": {
       "titulo": "Credenciais",
       "experiencia": "anos guiando no Rio de Janeiro",
-      "idiomas": "Idiomas",
+      "idiomas": "Idiomas da equipe",
       "cadastur": "Guia cadastrada no Cadastur",
       "cadasturSemNumero": "Guia de turismo cadastrada no Ministério do Turismo"
     }
@@ -158,7 +160,7 @@
   "dicas": {
     "sobretitulo": "Dicas",
     "titulo": "Dicas do Rio",
-    "intro": "Ideias de roteiro e conselhos práticos de quem guia nesta cidade há 22 anos.",
+    "intro": "Ideias de roteiro e conselhos práticos de quem guia nesta cidade há mais de 20 anos.",
     "vazio": "Em breve, os primeiros textos.",
     "publicadoEm": "Publicado em",
     "leituraMin": "min de leitura",
@@ -256,5 +258,12 @@
       "texto": "O endereço pode ter mudado. Vamos recomeçar pela home.",
       "botao": "Ir para a home"
     }
+  },
+  "idiomasFalados": {
+    "pt": "Português",
+    "en": "Inglês",
+    "es": "Espanhol",
+    "fr": "Francês",
+    "it": "Italiano"
   }
 }

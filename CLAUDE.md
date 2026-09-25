@@ -88,7 +88,7 @@ WhatsApp, Instagram, TripAdvisor, e-mail, formulário simples (nome, e-mail, dat
 
 ## 5. Componentes globais
 
-- Header fixo e discreto: logo à esquerda; menu (Home, Sobre mim, Experiências, Inspirações, Contato); seletor de idioma (EN / PT / ES) e ícone do WhatsApp à direita. No mobile, menu em painel lateral.
+- Header fixo e discreto: logo à esquerda; menu (Home, Sobre mim, Experiências, Inspirações, Contato); seletor de idioma (EN / PT / ES), ícone do TripAdvisor e ícone do WhatsApp à direita. No mobile, menu em painel lateral, com links de WhatsApp e TripAdvisor no rodapé do painel.
 - Botão flutuante do WhatsApp no canto inferior direito, visível em todas as páginas, sem cobrir conteúdo importante no mobile.
 - Links de WhatsApp no formato `https://wa.me/55XXXXXXXXXXX?text=...` com mensagem pré-preenchida no idioma ativo.
 - Rodapé em Atlântico: logo claro, links de navegação, Instagram, TripAdvisor, WhatsApp, e-mail, Cadastur e ano.
@@ -99,7 +99,7 @@ WhatsApp, Instagram, TripAdvisor, e-mail, formulário simples (nome, e-mail, dat
 - Textos de interface em `src/i18n/en.json`, `pt.json`, `es.json`. Nada de texto fixo nos componentes.
 - Conteúdos longos (experiências, inspirações, sobre) em arquivos separados por idioma.
 - Tradução feita por arquivo, não por tradutor automático no navegador.
-- Detectar o idioma do navegador apenas na primeira visita à raiz e lembrar a escolha do usuário.
+- A primeira visita à raiz vai sempre para o inglês. O idioma do navegador não é consultado. Depois que a pessoa escolhe um idioma no seletor, a escolha fica guardada e passa a valer nas próximas visitas.
 - Tags `hreflang` e `lang` corretas em todas as páginas.
 
 ## 7. SEO e desempenho
@@ -140,7 +140,7 @@ Todos os contatos e links externos ficam em `site.ts` para serem trocados em um 
 - [ ] 3 avaliações escolhidas do TripAdvisor (colar em `src/data/reviews.ts`)
 - [ ] E-mail de contato
 - [ ] Número do Cadastur
-- [ ] Idiomas que a Olivia fala (assumido português, inglês e espanhol, confirmar)
+- [x] Idiomas de atendimento da equipe: português, inglês, espanhol, francês e italiano
 - [x] Lista de lugares que podem entrar no roteiro
 - [ ] Fotos em alta resolução (Olivia, equipe e passeios)
 - [x] Textos em português, a partir de `textos.txt`, com tradução para inglês e espanhol
@@ -179,6 +179,33 @@ A diferença visual é imperceptível.
 Pelo mesmo motivo, **Sol nunca é usado como cor de texto sobre fundo claro** (daria
 2.17:1). Em fundo claro ele aparece só em bordas, sublinhados e detalhes. Como texto,
 apenas sobre Atlântico.
+
+### Os idiomas são da equipe, não só da Olivia
+
+O atendimento acontece em português, inglês, espanhol, francês e italiano, porque a
+Olivia trabalha com uma equipe de guias. Isso não se confunde com os três idiomas do
+site. A lista fica em `IDIOMAS_FALADOS`, em `src/config/site.ts`, e os nomes de cada
+idioma ficam em `idiomasFalados`, nos arquivos de i18n. A página Sobre mim traz a
+lista na tabela de credenciais e um parágrafo no bloco da equipe explicando que o
+idioma do passeio define qual guia acompanha o dia.
+
+### "Mais de 20 anos", não "22 anos"
+
+Os textos falam em mais de 20 anos de profissão. O número exato envelhece e obriga a
+revisar o site todo ano. `SITE.anosDeExperiencia` vale 20 e a tabela de credenciais
+mostra `20+`. O `foundingDate` do schema.org continua com o ano real de início (2004).
+
+### Nenhum texto prende o passeio a um horário do dia
+
+Os primeiros rascunhos do blog recomendavam subir o Pão de Açúcar no fim da tarde,
+ver o Cristo de manhã cedo e fechar o dia no Arpoador no pôr do sol. Isso cria uma
+expectativa que o roteiro real nem sempre consegue cumprir, e trabalha contra a
+própria proposta de montar o dia junto com o viajante.
+
+Por isso o artigo de pôr do sol virou **Os melhores mirantes do Rio** (`mirantes`,
+nos três idiomas) e os textos passaram a dizer que a paisagem compensa a qualquer
+hora e que o encaixe do horário é trabalho da Olivia. Ao escrever conteúdo novo,
+manter essa regra: sugerir lugares, nunca horários obrigatórios.
 
 ### Nada é inventado
 

@@ -2,11 +2,11 @@
   "meta": {
     "home": {
       "titulo": "Guía de turismo en Río de Janeiro",
-      "descricao": "Tours privados y personalizados en Río de Janeiro con Olivia, guía de turismo desde hace 22 años. Arma tu itinerario y escríbeme por WhatsApp."
+      "descricao": "Tours privados y personalizados en Río de Janeiro con Olivia, guía de turismo desde hace más de 20 años. Arma tu itinerario y escríbeme por WhatsApp."
     },
     "sobre": {
       "titulo": "Sobre mí",
-      "descricao": "Soy Olivia, guía de turismo en Río de Janeiro desde hace 22 años. Trabajo con tours privados y personalizados, desde viajeros individuales hasta grupos grandes."
+      "descricao": "Soy Olivia, guía de turismo en Río de Janeiro desde hace más de 20 años. Trabajo con tours privados y personalizados, desde viajeros individuales hasta grupos grandes."
     },
     "experiencias": {
       "titulo": "Experiencias en Río",
@@ -14,7 +14,7 @@
     },
     "dicas": {
       "titulo": "Consejos sobre Río",
-      "descricao": "Itinerarios, ideas y consejos prácticos de quien guía en Río de Janeiro desde hace 22 años."
+      "descricao": "Itinerarios, ideas y consejos prácticos de quien guía en Río de Janeiro desde hace más de 20 años."
     },
     "contato": {
       "titulo": "Contacto",
@@ -35,7 +35,8 @@
     "fecharMenu": "Cerrar menú",
     "idioma": "Idioma",
     "escolherIdioma": "Elegir idioma",
-    "irParaConteudo": "Ir al contenido"
+    "irParaConteudo": "Ir al contenido",
+    "tripadvisor": "Ver las opiniones en TripAdvisor"
   },
   "botoes": {
     "whatsapp": "Escribirme por WhatsApp",
@@ -62,7 +63,7 @@
     },
     "apresentacao": {
       "titulo": "Es un placer conocerte. Soy Olivia.",
-      "p1": "Desde hace 22 años tengo el privilegio de trabajar como guía de turismo en Río de Janeiro, una profesión que ejerzo con mucha pasión, dedicación y responsabilidad.",
+      "p1": "Desde hace más de 20 años tengo el privilegio de trabajar como guía de turismo en Río de Janeiro, una profesión que ejerzo con mucha pasión, dedicación y responsabilidad.",
       "p2": "Creo que un buen paseo va mucho más allá de visitar los principales puntos turísticos. Quiero que te sientas tan a gusto y tan bien recibido que, al final del día, nos despidamos con un abrazo, como viejos amigos."
     },
     "comoFunciona": {
@@ -108,7 +109,8 @@
     "equipe": {
       "titulo": "Mi equipo",
       "p1": "A lo largo de este camino he formado un pequeño equipo de guías que trabajan conmigo. Son personas que elegí con cuidado, porque reconocí en ellas las mismas cualidades que considero esenciales en mi trabajo: compromiso, responsabilidad, calidez y, sobre todo, una verdadera pasión por recibir personas y compartir nuestra ciudad con ellas.",
-      "p2": "Son profesionales en quienes confío plenamente y que comparten mi forma de trabajar, con cariño, atención y un compromiso real para que cada experiencia sea especial."
+      "p2": "Son profesionales en quienes confío plenamente y que comparten mi forma de trabajar, con cariño, atención y un compromiso real para que cada experiencia sea especial.",
+      "p3": "Entre el equipo y yo, recibimos viajeros en portugués, inglés, español, francés e italiano. Dime en qué idioma prefieres que te guíen y yo asigno a la persona indicada para tu día."
     },
     "estrutura": {
       "titulo": "Para grupos de cualquier tamaño",
@@ -117,7 +119,7 @@
     "credenciais": {
       "titulo": "Credenciales",
       "experiencia": "años guiando en Río de Janeiro",
-      "idiomas": "Idiomas",
+      "idiomas": "Idiomas del equipo",
       "cadastur": "Guía registrada en Cadastur",
       "cadasturSemNumero": "Guía de turismo registrada en el Ministerio de Turismo de Brasil"
     }
@@ -158,7 +160,7 @@
   "dicas": {
     "sobretitulo": "Consejos",
     "titulo": "Consejos sobre Río",
-    "intro": "Ideas de itinerario y consejos prácticos de quien guía en esta ciudad desde hace 22 años.",
+    "intro": "Ideas de itinerario y consejos prácticos de quien guía en esta ciudad desde hace más de 20 años.",
     "vazio": "Pronto, los primeros textos.",
     "publicadoEm": "Publicado el",
     "leituraMin": "min de lectura",
@@ -256,5 +258,12 @@
       "texto": "La dirección puede haber cambiado. Volvamos a empezar por el inicio.",
       "botao": "Ir al inicio"
     }
+  },
+  "idiomasFalados": {
+    "pt": "Portugués",
+    "en": "Inglés",
+    "es": "Español",
+    "fr": "Francés",
+    "it": "Italiano"
   }
 }
