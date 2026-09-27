@@ -249,9 +249,18 @@ uma tem de diferente. O novo H1 é "Cada roteiro é montado do zero" / "Every it
 is built from scratch" / "Cada itinerario se arma desde cero", que é a promessa que o
 primeiro parágrafo da página cumpre.
 
-Fica pendente: a página ainda repete literalmente o bloco de apresentação da Home
-("É um prazer conhecê-lo. Eu sou a Olivia."). Se a Olivia escrever um parágrafo de
-história pessoal, ele entra no lugar dessa repetição.
+A página também repetia palavra por palavra o bloco de apresentação da Home
+("É um prazer conhecê-lo. Eu sou a Olivia."). Esse bloco saiu, em vez de ser trocado
+por outro texto. A apresentação pessoal serve na Home, onde a pessoa ainda não sabe
+quem é a Olivia; aqui ela chega depois de ter clicado em "Ver como eu trabalho", ou
+seja, já apresentada. Os mais de 20 anos continuam na tabela de credenciais. Se um
+dia a Olivia escrever um parágrafo de história pessoal, o lugar dele é a Home ou uma
+página só dele, não esta.
+
+Sem esse bloco, a abertura e a equipe ficariam as duas em Névoa, então os fundos das
+duas seções seguintes trocaram de lugar: equipe em Branco, estrutura e credenciais em
+Névoa. As linhas da tabela de credenciais eram Névoa forte, que só se enxerga sobre
+Branco, e passaram a ser Atlântico a 10 por cento, que funciona nos dois fundos.
 
 ### O seletor de idioma usa bandeira, e um menu no lugar das três siglas
 
