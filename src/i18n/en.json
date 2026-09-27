@@ -4,8 +4,8 @@
       "titulo": "Private tour guide in Rio de Janeiro",
       "descricao": "Private, tailor made tours of Rio de Janeiro with Olivia, a licensed guide for over 20 years. Tell me what you like and let us plan your day on WhatsApp."
     },
-    "sobre": {
-      "titulo": "About me",
+    "comoTrabalho": {
+      "titulo": "How I work",
       "descricao": "I am Olivia, a tour guide in Rio de Janeiro for over 20 years. I work with private, tailor made tours, from solo travelers to large groups."
     },
     "experiencias": {
@@ -27,7 +27,7 @@
   },
   "nav": {
     "home": "Home",
-    "sobre": "About me",
+    "comoTrabalho": "How I work",
     "experiencias": "Experiences",
     "dicas": "Tips",
     "contato": "Contact",
@@ -36,7 +36,8 @@
     "idioma": "Language",
     "escolherIdioma": "Choose language",
     "irParaConteudo": "Skip to content",
-    "tripadvisor": "Read the reviews on TripAdvisor"
+    "tripadvisor": "Read the reviews on TripAdvisor",
+    "instagram": "See Olivia's Instagram"
   },
   "botoes": {
     "whatsapp": "Message me on WhatsApp",
@@ -48,7 +49,7 @@
     "verExperiencias": "See experiences",
     "verTodas": "See all the ideas",
     "verDicas": "See all tips",
-    "minhaHistoria": "Read my story",
+    "comoTrabalho": "See how I work",
     "tripadvisor": "Read all reviews on TripAdvisor",
     "instagram": "Follow on Instagram",
     "voltar": "Back",
@@ -100,9 +101,9 @@
       "texto": "Tell me when you arrive and what you would like to see. I answer personally."
     }
   },
-  "sobre": {
-    "sobretitulo": "About me",
-    "titulo": "Your Rio, your way",
+  "comoTrabalho": {
+    "sobretitulo": "How I work",
+    "titulo": "Every itinerary is built from scratch",
     "p1": "I work mainly with private, tailor made tours, planned around your interests, your pace and the kind of experience you want to have in Rio.",
     "p2": "You do not have to pick a ready made itinerary. Tell me what you enjoy: nature, city life, the famous sights, culture or local experiences. Tell me how much time you have as well. I will put together a tour especially for you.",
     "p3": "Every traveler is different, and I believe everyone's experience of Rio should be different too.",

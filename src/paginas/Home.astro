@@ -105,12 +105,12 @@ const retrato = fotoOlivia();
         </div>
 
         <a
-          href={rota('sobre', lang)}
+          href={rota('comoTrabalho', lang)}
           class="mt-8 inline-flex items-center gap-2 border-b border-sol pb-1 text-[0.95rem]
                  font-medium text-atlantico transition-colors duration-200
                  hover:border-atlantico hover:text-atlantico-claro"
         >
-          {t.botoes.minhaHistoria}
+          {t.botoes.comoTrabalho}
           <Icone nome="seta" tamanho={17} />
         </a>
       </div>
@@ -184,7 +184,7 @@ const retrato = fotoOlivia();
     titulo={t.experiencias.especiais.titulo}
     texto={t.experiencias.especiais.texto}
   >
-    <div class="grid gap-x-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {
         especiais.map((especial) => (
           <CartaoEspecial

@@ -4,8 +4,8 @@
       "titulo": "Guía de turismo en Río de Janeiro",
       "descricao": "Tours privados y personalizados en Río de Janeiro con Olivia, guía de turismo desde hace más de 20 años. Arma tu itinerario y escríbeme por WhatsApp."
     },
-    "sobre": {
-      "titulo": "Sobre mí",
+    "comoTrabalho": {
+      "titulo": "Cómo trabajo",
       "descricao": "Soy Olivia, guía de turismo en Río de Janeiro desde hace más de 20 años. Trabajo con tours privados y personalizados, desde viajeros individuales hasta grupos grandes."
     },
     "experiencias": {
@@ -27,7 +27,7 @@
   },
   "nav": {
     "home": "Inicio",
-    "sobre": "Sobre mí",
+    "comoTrabalho": "Cómo trabajo",
     "experiencias": "Experiencias",
     "dicas": "Consejos",
     "contato": "Contacto",
@@ -36,7 +36,8 @@
     "idioma": "Idioma",
     "escolherIdioma": "Elegir idioma",
     "irParaConteudo": "Ir al contenido",
-    "tripadvisor": "Ver las opiniones en TripAdvisor"
+    "tripadvisor": "Ver las opiniones en TripAdvisor",
+    "instagram": "Ver el Instagram de Olivia"
   },
   "botoes": {
     "whatsapp": "Escribirme por WhatsApp",
@@ -48,7 +49,7 @@
     "verExperiencias": "Ver experiencias",
     "verTodas": "Ver todas las ideas",
     "verDicas": "Ver todos los consejos",
-    "minhaHistoria": "Conocer mi historia",
+    "comoTrabalho": "Ver cómo trabajo",
     "tripadvisor": "Ver todas en TripAdvisor",
     "instagram": "Seguir en Instagram",
     "voltar": "Volver",
@@ -100,9 +101,9 @@
       "texto": "Cuéntame cuándo llegas y qué te gustaría ver. Respondo personalmente."
     }
   },
-  "sobre": {
-    "sobretitulo": "Sobre mí",
-    "titulo": "Tu Río, a tu manera",
+  "comoTrabalho": {
+    "sobretitulo": "Cómo trabajo",
+    "titulo": "Cada itinerario se arma desde cero",
     "p1": "Trabajo principalmente con tours privados y personalizados, planeados según tus intereses, tu ritmo y el tipo de experiencia que quieres vivir en Río.",
     "p2": "No necesitas elegir un itinerario ya hecho. Dime qué te gusta: naturaleza, vida urbana, atracciones turísticas, cultura o experiencias locales. Dime también cuánto tiempo tienes disponible. Yo armo un tour especialmente para ti.",
     "p3": "Cada viajero es diferente, y creo que la experiencia de cada persona en Río también debe serlo.",

@@ -48,7 +48,7 @@ export function dicionario(lang: Idioma): Dicionario {
  */
 export const SECOES = {
   home: { en: '', pt: '', es: '' },
-  sobre: { en: 'about', pt: 'sobre', es: 'sobre-mi' },
+  comoTrabalho: { en: 'how-i-work', pt: 'como-trabalho', es: 'como-trabajo' },
   experiencias: { en: 'experiences', pt: 'experiencias', es: 'experiencias' },
   dicas: { en: 'tips', pt: 'dicas', es: 'consejos' },
   contato: { en: 'contact', pt: 'contato', es: 'contacto' },
@@ -57,9 +57,9 @@ export const SECOES = {
 export type Secao = keyof typeof SECOES;
 
 /** Secoes que aparecem no menu, na ordem. */
-export const MENU: Secao[] = ['home', 'sobre', 'experiencias', 'dicas', 'contato'];
+export const MENU: Secao[] = ['home', 'comoTrabalho', 'experiencias', 'dicas', 'contato'];
 
-/** Caminho absoluto de uma secao em um idioma. Ex.: rota('sobre', 'pt') -> /pt/sobre */
+/** Caminho absoluto de uma secao em um idioma. Ex.: rota('contato', 'pt') -> /pt/contato */
 export function rota(secao: Secao, lang: Idioma): string {
   const slug = SECOES[secao][lang];
   return slug ? `/${lang}/${slug}` : `/${lang}`;

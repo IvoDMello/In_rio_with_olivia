@@ -4,8 +4,8 @@
       "titulo": "Guia de turismo no Rio de Janeiro",
       "descricao": "Tours privados e personalizados no Rio de Janeiro com a Olivia, guia de turismo há mais de 20 anos. Monte o seu roteiro e fale comigo no WhatsApp."
     },
-    "sobre": {
-      "titulo": "Sobre mim",
+    "comoTrabalho": {
+      "titulo": "Como eu trabalho",
       "descricao": "Sou a Olivia, guia de turismo no Rio de Janeiro há mais de 20 anos. Trabalho com tours privados e personalizados, de viajantes individuais a grandes grupos."
     },
     "experiencias": {
@@ -27,7 +27,7 @@
   },
   "nav": {
     "home": "Home",
-    "sobre": "Sobre mim",
+    "comoTrabalho": "Como eu trabalho",
     "experiencias": "Experiências",
     "dicas": "Dicas",
     "contato": "Contato",
@@ -36,7 +36,8 @@
     "idioma": "Idioma",
     "escolherIdioma": "Escolher idioma",
     "irParaConteudo": "Ir para o conteúdo",
-    "tripadvisor": "Ver as avaliações no TripAdvisor"
+    "tripadvisor": "Ver as avaliações no TripAdvisor",
+    "instagram": "Ver o Instagram da Olivia"
   },
   "botoes": {
     "whatsapp": "Falar no WhatsApp",
@@ -48,7 +49,7 @@
     "verExperiencias": "Ver experiências",
     "verTodas": "Ver todas as inspirações",
     "verDicas": "Ver todas as dicas",
-    "minhaHistoria": "Conhecer a minha história",
+    "comoTrabalho": "Ver como eu trabalho",
     "tripadvisor": "Ver todas no TripAdvisor",
     "instagram": "Seguir no Instagram",
     "voltar": "Voltar",
@@ -100,9 +101,9 @@
       "texto": "Me conte quando você chega e o que gostaria de ver. Eu respondo pessoalmente."
     }
   },
-  "sobre": {
-    "sobretitulo": "Sobre mim",
-    "titulo": "O seu Rio, do seu jeito",
+  "comoTrabalho": {
+    "sobretitulo": "Como eu trabalho",
+    "titulo": "Cada roteiro é montado do zero",
     "p1": "Eu trabalho principalmente com tours privados e personalizados, planejados de acordo com os seus interesses, o seu ritmo e o tipo de experiência que você deseja viver no Rio.",
     "p2": "Você não precisa escolher um roteiro pronto. Diga-me do que você gosta: natureza, vida urbana, atrações turísticas, cultura ou experiências locais. Diga também quanto tempo tem disponível. Eu monto um tour especialmente para você.",
     "p3": "Cada viajante é diferente, e acredito que a experiência de cada pessoa no Rio também deve ser.",

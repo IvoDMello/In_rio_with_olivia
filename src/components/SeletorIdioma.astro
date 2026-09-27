@@ -46,8 +46,8 @@ const opcoes = IDIOMAS.map((idioma) => ({
   variante === 'menu' ? (
     <details data-seletor-idioma class:list={['relative', classe]}>
       <summary
-        class="flex h-10 cursor-pointer list-none items-center gap-1 rounded-full bg-nevoa
-               pl-2 pr-1.5 transition-colors duration-200 hover:bg-nevoa-forte"
+        class="flex h-9 cursor-pointer list-none items-center gap-1 rounded-full bg-nevoa
+               pl-2 pr-1.5 transition-colors duration-200 hover:bg-nevoa-forte md:h-10"
       >
         <span class="sr-only">{`${t.nav.escolherIdioma}, ${NOME_IDIOMA[lang]}`}</span>
         <Bandeira idioma={lang} tamanho={22} />

@@ -17,8 +17,11 @@ const hrefWhats = linkWhatsApp(t.whatsapp.geral);
 
 // A prova social vale no topo de todas as paginas, nao so no rodape.
 // Fica visivel tambem no celular, porque ali o WhatsApp ja tem o botao
-// flutuante e o TripAdvisor nao tem outro lugar acima da dobra.
+// flutuante e o TripAdvisor nao tem outro lugar acima da dobra. O Instagram
+// entra pelo mesmo motivo: e onde a Olivia mostra o dia a dia dos passeios,
+// e quem chega pelo perfil espera reencontrar o link no lugar de sempre.
 const hrefTripAdvisor = CONTATO.tripadvisor;
+const hrefInstagram = CONTATO.instagram;
 
 const itens = MENU.map((secao) => ({
   secao,
@@ -77,13 +80,31 @@ const itens = MENU.map((secao) => ({
       </ul>
     </nav>
 
-    <div class="flex items-center gap-2 md:gap-3">
+    <div class="flex items-center gap-1.5 md:gap-3">
       <!--
         O seletor de idioma aparece em qualquer largura. Antes ele sumia abaixo
         de 640px e quem estava no celular tinha que abrir o menu lateral para
         achar a troca de idioma, que e a primeira coisa que um turista procura.
       -->
       <SeletorIdioma lang={lang} alternativas={alternativas} />
+
+      {
+        hrefInstagram && (
+          <a
+            href={hrefInstagram}
+            target="_blank"
+            rel="noopener"
+            data-analytics="instagram-cabecalho"
+            aria-label={t.nav.instagram}
+            title={t.contato.canais.instagram}
+            class="flex h-9 w-9 items-center justify-center rounded-full bg-nevoa
+                   text-atlantico transition-colors duration-200 hover:bg-sol
+                   md:h-10 md:w-10"
+          >
+            <Icone nome="instagram" tamanho={19} />
+          </a>
+        )
+      }
 
       {
         hrefTripAdvisor && (
@@ -94,8 +115,9 @@ const itens = MENU.map((secao) => ({
             data-analytics="tripadvisor-cabecalho"
             aria-label={t.nav.tripadvisor}
             title={t.contato.canais.tripadvisor}
-            class="flex h-10 w-10 items-center justify-center rounded-full bg-nevoa
-                   text-atlantico transition-colors duration-200 hover:bg-sol"
+            class="flex h-9 w-9 items-center justify-center rounded-full bg-nevoa
+                   text-atlantico transition-colors duration-200 hover:bg-sol
+                   md:h-10 md:w-10"
           >
             <Icone nome="tripadvisor" tamanho={21} />
           </a>
@@ -123,8 +145,8 @@ const itens = MENU.map((secao) => ({
         data-abrir-menu
         aria-expanded="false"
         aria-controls="menu-painel"
-        class="flex h-10 w-10 items-center justify-center rounded-full text-atlantico
-               transition-colors duration-200 hover:bg-nevoa lg:hidden"
+        class="flex h-9 w-9 items-center justify-center rounded-full text-atlantico
+               transition-colors duration-200 hover:bg-nevoa md:h-10 md:w-10 lg:hidden"
       >
         <span class="sr-only">{t.nav.abrirMenu}</span>
         <Icone nome="menu" tamanho={22} />
@@ -221,6 +243,23 @@ const itens = MENU.map((secao) => ({
           >
             <Icone nome="tripadvisor" tamanho={20} />
             {t.botoes.tripadvisor}
+          </a>
+        )
+      }
+
+      {
+        hrefInstagram && (
+          <a
+            href={hrefInstagram}
+            target="_blank"
+            rel="noopener"
+            data-analytics="instagram-menu"
+            class="mt-3 flex items-center justify-center gap-2.5 rounded-full border
+                   border-atlantico/20 px-6 py-3 text-[0.95rem] font-medium text-atlantico
+                   transition-colors duration-200 hover:border-sol hover:bg-sol/10"
+          >
+            <Icone nome="instagram" tamanho={20} />
+            {t.botoes.instagram}
           </a>
         )
       }

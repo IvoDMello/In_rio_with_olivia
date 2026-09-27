@@ -8,6 +8,14 @@ import { linkWhatsApp } from '~/config/site';
  * Experiencia especial: helicoptero, asa-delta, show, favela tour.
  * Sao as unicas que a Olivia reserva com parceiros, entao cada cartao leva
  * direto para uma conversa sobre aquela experiencia especifica.
+ *
+ * Diferente do CartaoLugar, que e aberto sobre o fundo da secao, aqui o
+ * cartao e uma peca fechada: foto, texto e acao dentro da mesma moldura.
+ * Antes so o texto tinha fundo branco e a foto ficava fora dele, o que
+ * desenhava um retangulo solto embaixo de cada imagem, com o texto colado
+ * na borda. A moldura resolve os dois problemas de uma vez. A borda fina
+ * em Atlantico existe para o cartao continuar visivel quando a secao vem
+ * com fundo branco, que acontece na pagina de Experiencias.
  */
 interface Props {
   id: string;
@@ -23,34 +31,40 @@ const foto = imagem('especiais', id);
 const href = linkWhatsApp(modeloMensagem.replace('{nome}', nome));
 ---
 
-<article class="revelar group flex flex-col bg-branco">
+<article
+  class="revelar group flex h-full flex-col overflow-hidden rounded-xl border
+         border-atlantico/10 bg-branco transition-[border-color,box-shadow]
+         duration-300 hover:border-atlantico/20
+         hover:shadow-[0_18px_40px_-24px_rgba(18,58,69,0.35)]"
+>
   <Foto
     src={foto}
     alt={nome}
     proporcao="3 / 2"
     sizes="(min-width: 1024px) 24vw, (min-width: 640px) 45vw, 100vw"
-    class="rounded-sm"
     classeImagem="transition-transform duration-700 ease-[cubic-bezier(0.2,0,0,1)] motion-safe:group-hover:scale-[1.04]"
   />
 
-  <h3 class="mt-5 text-titulo-cartao text-atlantico">{nome}</h3>
-  <p class="mt-2 flex-1 text-sm leading-relaxed text-pedra">{resumo}</p>
+  <div class="flex flex-1 flex-col p-6">
+    <h3 class="text-titulo-cartao text-atlantico">{nome}</h3>
+    <p class="mt-2.5 flex-1 text-sm leading-relaxed text-pedra">{resumo}</p>
 
-  {
-    href && (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener"
-        data-analytics="whatsapp-especial"
-        class="mt-5 inline-flex items-center gap-2 self-start text-sm font-medium
-               text-atlantico underline decoration-transparent underline-offset-4
-               transition-colors duration-200 hover:text-atlantico-claro
-               hover:decoration-sol"
-      >
-        <Icone nome="whatsapp" tamanho={16} />
-        <span>{rotuloBotao}</span>
-      </a>
-    )
-  }
+    {
+      href && (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener"
+          data-analytics="whatsapp-especial"
+          class="mt-6 inline-flex items-center gap-2 self-start text-sm font-medium
+                 text-atlantico underline decoration-transparent
+                 underline-offset-4 transition-colors duration-200
+                 hover:text-atlantico-claro hover:decoration-sol"
+        >
+          <Icone nome="whatsapp" tamanho={16} />
+          <span>{rotuloBotao}</span>
+        </a>
+      )
+    }
+  </div>
 </article>

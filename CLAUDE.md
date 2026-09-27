@@ -70,8 +70,8 @@ JavaScript só onde for necessário (menu mobile, seletor de idioma, galeria). N
 7. Instagram: faixa com 6 fotos (imagens estáticas atualizadas manualmente, sem widget pesado) e link para o perfil
 8. Chamada final: "Vamos planejar seu dia no Rio?" com botão do WhatsApp
 
-### Sobre mim (`/sobre`)
-História da Olivia, por que ela é guia, idiomas que fala, credenciais (Cadastur, formação, anos de experiência), fotos e chamada para o WhatsApp.
+### Como eu trabalho (`/como-trabalho`, `/how-i-work`, `/como-trabajo`)
+Como a Olivia monta o roteiro, a equipe de guias, idiomas de atendimento, estrutura para grupos, credenciais (Cadastur, formação, anos de experiência), fotos e chamada para o WhatsApp. Ver seção 11.
 
 ### Experiências (`/experiencias` e `/experiencias/[slug]`)
 Lista em grade e uma página por experiência com: fotos, descrição, duração, ponto de encontro, o que está incluído, o que levar, melhor horário, idiomas disponíveis e botão "Reservar pelo WhatsApp" com mensagem pré-preenchida citando o nome do tour.
@@ -229,6 +229,30 @@ de 27 para 29 com mais tracking, e a viewBox passou de 278 para 307 de largura. 
 largura. As medidas estão no comentário do `Logo.astro` e valem também para os
 arquivos de `/public/brand`.
 
+### "Sobre mim" virou "Como eu trabalho"
+
+A seção 4 chamava a página de Sobre mim, em `/sobre`. Mas o conteúdo que a Olivia
+escreveu para ali não é biografia: é como ela monta o roteiro, quem é a equipe, que
+estrutura atende cada tamanho de grupo e quais são as credenciais. No próprio
+`textos.txt` o bloco está marcado como "ABOUT US", não "about me". Um rótulo que
+promete história pessoal e entrega descrição de serviço desperdiça o clique.
+
+O nome passou a ser **Como eu trabalho / How I work / Cómo trabajo**, nas rotas
+`/pt/como-trabalho`, `/en/how-i-work` e `/es/como-trabajo`. A chave da seção em
+`SECOES`, o bloco de i18n e o componente de página seguiram o mesmo nome
+(`comoTrabalho`, `ComoTrabalho.astro`). O botão da Home que leva até lá diz agora
+"Ver como eu trabalho", no lugar de "Conhecer a minha história".
+
+O H1 da página era "O seu Rio, do seu jeito", exatamente o mesmo H1 da Home. Duas
+páginas com o mesmo título principal disputam a mesma busca e não dizem o que cada
+uma tem de diferente. O novo H1 é "Cada roteiro é montado do zero" / "Every itinerary
+is built from scratch" / "Cada itinerario se arma desde cero", que é a promessa que o
+primeiro parágrafo da página cumpre.
+
+Fica pendente: a página ainda repete literalmente o bloco de apresentação da Home
+("É um prazer conhecê-lo. Eu sou a Olivia."). Se a Olivia escrever um parágrafo de
+história pessoal, ele entra no lugar dessa repetição.
+
 ### O seletor de idioma usa bandeira, e um menu no lugar das três siglas
 
 A seção 5 descreve o seletor como "EN / PT / ES". As siglas foram trocadas por
@@ -250,6 +274,19 @@ acrescenta fechar com Escape e com clique fora.
 No painel lateral do celular o seletor continua aberto, com as três opções em
 lista (`variante="lista"`), porque ali sobra espaço e um menu dentro do menu
 seria um clique a mais.
+
+### O Instagram entrou no cabeçalho
+
+A seção 5 lista TripAdvisor e WhatsApp à direita do cabeçalho. O Instagram entrou
+ao lado deles, com o mesmo botão redondo, porque é onde a Olivia mostra o dia a dia
+dos passeios e quem chega pelo perfil espera reencontrar o link no lugar de sempre.
+Ele também ficou no rodapé do painel lateral do celular, junto do WhatsApp e do
+TripAdvisor.
+
+Com quatro alvos à direita (idioma, Instagram, TripAdvisor e menu), a linha não
+cabia mais em 360px. Os botões passaram a 36px no celular e voltam a 40px a partir
+de 768px; o espaço entre eles caiu de 8 para 6px no celular. O seletor de idioma
+acompanhou a mesma altura.
 
 ### Nada é inventado
 
