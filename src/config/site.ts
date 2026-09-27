@@ -86,8 +86,8 @@ export const CONTATO: Contatos = {
   tripadvisor:
     'https://www.tripadvisor.com.br/Attraction_Review-g303506-d4294013-Reviews-PrivateTourGuideinRio_Tours-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
 
-  /** E-mail de contato. PENDENTE */
-  email: '',
+  /** E-mail de contato. */
+  email: 'privatetourguideoliviaalves@gmail.com',
 
   /** Numero do Cadastur, exibido no rodape. PENDENTE */
   cadastur: '',

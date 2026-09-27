@@ -104,11 +104,13 @@ const temContato = Boolean(hrefWhats || CONTATO.email || redes.length);
               <li>
                 <a
                   href={`mailto:${CONTATO.email}`}
-                  class="inline-flex items-center gap-2.5 text-sm text-nevoa/80
+                  class="inline-flex items-start gap-2.5 text-sm text-nevoa/80
                          transition-colors duration-200 hover:text-sol"
                 >
-                  <Icone nome="email" tamanho={17} />
-                  {CONTATO.email}
+                  <span class="mt-[3px] shrink-0">
+                    <Icone nome="email" tamanho={17} />
+                  </span>
+                  <span class="break-words">{CONTATO.email}</span>
                 </a>
               </li>
             )
