@@ -7,18 +7,15 @@ export type Idioma = (typeof IDIOMAS)[number];
 
 export const IDIOMA_PADRAO: Idioma = 'en';
 
-/** Rotulo curto para o seletor de idioma. */
-export const ROTULO_IDIOMA: Record<Idioma, string> = {
-  en: 'EN',
-  pt: 'PT',
-  es: 'ES',
-};
-
-/** Nome do idioma no proprio idioma, usado no aria-label do seletor. */
+/**
+ * Nome do idioma no proprio idioma. E o rotulo visivel do seletor, ao lado da
+ * bandeira, e tambem o texto acessivel de cada opcao. Com acento, porque e
+ * texto de interface e nao comentario de codigo.
+ */
 export const NOME_IDIOMA: Record<Idioma, string> = {
   en: 'English',
-  pt: 'Portugues',
-  es: 'Espanol',
+  pt: 'Português',
+  es: 'Español',
 };
 
 /** Valor da tag lang e do hreflang. */

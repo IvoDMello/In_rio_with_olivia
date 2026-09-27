@@ -229,6 +229,28 @@ de 27 para 29 com mais tracking, e a viewBox passou de 278 para 307 de largura. 
 largura. As medidas estão no comentário do `Logo.astro` e valem também para os
 arquivos de `/public/brand`.
 
+### O seletor de idioma usa bandeira, e um menu no lugar das três siglas
+
+A seção 5 descreve o seletor como "EN / PT / ES". As siglas foram trocadas por
+bandeiras redondas de 22px: Estados Unidos para o inglês, Brasil para o
+português, Espanha para o espanhol. São desenhos próprios em SVG, em
+`Bandeira.astro`, e não emoji: o Windows não desenha emoji de bandeira e
+mostraria um par de letras no lugar. Os desenhos são simplificados de propósito,
+sem as estrelas da faixa brasileira, sem o escudo espanhol e com nove listras na
+bandeira americana em vez de treze, porque nesse tamanho o detalhe vira sujeira.
+
+As três siglas lado a lado não cabiam no cabeçalho do celular, então ali o
+seletor só aparecia a partir de 640px e quem estava no telefone precisava abrir
+o menu lateral para trocar de idioma. Agora o cabeçalho mostra um botão com a
+bandeira do idioma atual, que abre a lista com o nome de cada idioma por
+extenso. Ocupa a largura de um botão redondo e cabe em 360px. O menu é um
+`<details>`, então abre, fecha e anda pelo teclado sem JavaScript; o script só
+acrescenta fechar com Escape e com clique fora.
+
+No painel lateral do celular o seletor continua aberto, com as três opções em
+lista (`variante="lista"`), porque ali sobra espaço e um menu dentro do menu
+seria um clique a mais.
+
 ### Nada é inventado
 
 Onde falta informação real, o bloco não aparece, em vez de exibir conteúdo de exemplo:

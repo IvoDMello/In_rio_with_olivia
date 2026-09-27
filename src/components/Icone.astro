@@ -15,6 +15,8 @@ export type NomeDoIcone =
   | 'menu'
   | 'fechar'
   | 'seta'
+  | 'chevron'
+  | 'confere'
   | 'globo'
   | 'estrela'
   | 'aspas';
@@ -65,18 +67,33 @@ const traco = {
 
 {
   nome === 'tripadvisor' && (
-    <svg {...comum} fill="none">
+    <svg {...comum} fill="currentColor">
       {/*
-        Coruja do TripAdvisor, redesenhada com o mesmo tracado dos outros
-        icones. Nao e a arte oficial: se um dia o arquivo original entrar em
-        /public/brand, vale trocar por ele.
+        Coruja do TripAdvisor. E marca registrada deles, desenhada aqui na
+        proporcao da arte oficial porque so aparece como link para a pagina
+        da Olivia no TripAdvisor.
+
+        A construcao e toda de arcos tangentes: olhos de raio 5.514 em
+        (6.486, 13.158) e (17.514, 13.158), anel branco de 3.738 e pupila de
+        1.941. A aba de cima e uma faixa concentrica em (12, 17.458),
+        tangente aos olhos por fora (raio 12.505) e aos aneis brancos por
+        dentro (raio 10.73), cortada nas pontas por uma reta horizontal e
+        por uma reta que aponta para o centro do olho. O bico e o losango
+        do meio, que so aparece acima e abaixo dos olhos.
+
+        O preenchimento e nonzero, entao os dois aneis brancos sao os unicos
+        contornos desenhados no sentido contrario: e isso que os torna furo.
       */}
-      <ellipse cx="12" cy="12" rx="10" ry="6.4" {...traco} />
-      <circle cx="7.7" cy="12" r="3.1" {...traco} />
-      <circle cx="16.3" cy="12" r="3.1" {...traco} />
-      <circle cx="7.7" cy="12" r="1.25" fill="currentColor" />
-      <circle cx="16.3" cy="12" r="1.25" fill="currentColor" />
-      <path d="M10.9 5.9h2.2L12 8.7z" fill="currentColor" />
+      <path
+        d="M1 7.148H4.926A12.505 12.505 0 0 1 19.074 7.148H23L20.056 10.373A10.73 10.73 0 0 0 3.944 10.373Z
+           M0.972 13.158A5.514 5.514 0 1 1 12 13.158A5.514 5.514 0 1 1 0.972 13.158Z
+           M12 13.158A5.514 5.514 0 1 1 23.028 13.158A5.514 5.514 0 1 1 12 13.158Z
+           M2.748 13.158A3.738 3.738 0 1 0 10.225 13.158A3.738 3.738 0 1 0 2.748 13.158Z
+           M13.775 13.158A3.738 3.738 0 1 0 21.252 13.158A3.738 3.738 0 1 0 13.775 13.158Z
+           M4.545 13.158A1.941 1.941 0 1 1 8.427 13.158A1.941 1.941 0 1 1 4.545 13.158Z
+           M15.573 13.158A1.941 1.941 0 1 1 19.455 13.158A1.941 1.941 0 1 1 15.573 13.158Z
+           M12 12.662L14.343 16.632L12 19.058L9.657 16.632Z"
+      />
     </svg>
   )
 }
@@ -102,6 +119,22 @@ const traco = {
   nome === 'fechar' && (
     <svg {...comum} {...traco}>
       <path d="m6 6 12 12M18 6 6 18" />
+    </svg>
+  )
+}
+
+{
+  nome === 'chevron' && (
+    <svg {...comum} {...traco}>
+      <path d="M6 9.5 12 15.5 18 9.5" />
+    </svg>
+  )
+}
+
+{
+  nome === 'confere' && (
+    <svg {...comum} {...traco}>
+      <path d="M5 12.5 9.5 17 19 7" />
     </svg>
   )
 }

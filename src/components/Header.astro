@@ -78,7 +78,12 @@ const itens = MENU.map((secao) => ({
     </nav>
 
     <div class="flex items-center gap-2 md:gap-3">
-      <SeletorIdioma lang={lang} alternativas={alternativas} class="hidden sm:block" />
+      <!--
+        O seletor de idioma aparece em qualquer largura. Antes ele sumia abaixo
+        de 640px e quem estava no celular tinha que abrir o menu lateral para
+        achar a troca de idioma, que e a primeira coisa que um turista procura.
+      -->
+      <SeletorIdioma lang={lang} alternativas={alternativas} />
 
       {
         hrefTripAdvisor && (
@@ -184,7 +189,7 @@ const itens = MENU.map((secao) => ({
       <p class="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-pedra">
         {t.nav.idioma}
       </p>
-      <SeletorIdioma lang={lang} alternativas={alternativas} />
+      <SeletorIdioma lang={lang} alternativas={alternativas} variante="lista" />
 
       {
         hrefWhats && (

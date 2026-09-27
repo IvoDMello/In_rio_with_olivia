@@ -1,0 +1,96 @@
+---
+import type { Idioma } from '~/i18n/config';
+
+/**
+ * Bandeira de cada idioma do site, recortada em circulo.
+ *
+ * Sao desenhos proprios em SVG, e nao emoji de bandeira: o Windows nao
+ * desenha emoji de bandeira, e o resultado ali seria um par de letras.
+ *
+ * O recorte redondo e proposital. Em 22px uma bandeira retangular briga com
+ * os botoes redondos do cabecalho e mostra detalhe que ninguem consegue ler.
+ * O circulo guarda so o que identifica: as listras e o canto azul dos Estados
+ * Unidos, o losango do Brasil, as faixas da Espanha. Por isso os desenhos
+ * dispensam as estrelas da faixa brasileira e o escudo espanhol.
+ *
+ * A bandeira americana e a mais simplificada das tres. Sao nove listras em vez
+ * de treze, porque treze dariam 1,7px cada em tela comum e virariam um borrao
+ * rosa, e cinco estrelas soltas em vez de cinquenta. O que identifica a
+ * bandeira em 22px e o ritmo das listras com o retangulo azul no canto, e isso
+ * fica.
+ */
+interface Props {
+  idioma: Idioma;
+  /** Diametro em pixels. */
+  tamanho?: number;
+  class?: string;
+}
+
+const { idioma, tamanho = 22, class: classe = '' } = Astro.props;
+
+const svg = {
+  viewBox: '0 0 24 24',
+  width: tamanho,
+  height: tamanho,
+  'aria-hidden': 'true',
+  focusable: 'false',
+  class: 'block',
+} as const;
+---
+
+<span
+  class:list={['relative inline-block shrink-0 overflow-hidden rounded-full', classe]}
+  style={`width:${tamanho}px;height:${tamanho}px`}
+>
+  {
+    idioma === 'pt' && (
+      <svg {...svg}>
+        <rect width="24" height="24" fill="#009b3a" />
+        <path d="M12 2.4 21.6 12 12 21.6 2.4 12Z" fill="#fedf00" />
+        <circle cx="12" cy="12" r="4.7" fill="#002776" />
+        <path
+          d="M7.75 13.6a7 7 0 0 1 8.5 0"
+          fill="none"
+          stroke="#ffffff"
+          stroke-width="1.3"
+        />
+      </svg>
+    )
+  }
+
+  {
+    idioma === 'en' && (
+      <svg {...svg}>
+        <rect width="24" height="24" fill="#ffffff" />
+        <g fill="#b31942">
+          <rect width="24" height="2.67" />
+          <rect y="5.33" width="24" height="2.67" />
+          <rect y="10.67" width="24" height="2.67" />
+          <rect y="16" width="24" height="2.67" />
+          <rect y="21.33" width="24" height="2.67" />
+        </g>
+        <rect width="11" height="13.33" fill="#0a3161" />
+        <g fill="#ffffff">
+          {/* Longe da quina, que o recorte redondo corta fora. */}
+          <circle cx="4.5" cy="6" r="0.85" />
+          <circle cx="7.6" cy="5" r="0.85" />
+          <circle cx="4" cy="9.6" r="0.85" />
+          <circle cx="7.6" cy="10" r="0.85" />
+          <circle cx="9.9" cy="7.1" r="0.85" />
+        </g>
+      </svg>
+    )
+  }
+
+  {
+    idioma === 'es' && (
+      <svg {...svg}>
+        <rect width="24" height="24" fill="#aa151b" />
+        <rect y="6" width="24" height="12" fill="#f1bf00" />
+      </svg>
+    )
+  }
+
+  <!-- Contorno discreto para a bandeira nao se dissolver no fundo branco. -->
+  <span class="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-atlantico/20"></span>
+</span>
