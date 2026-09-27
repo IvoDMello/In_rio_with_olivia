@@ -137,7 +137,8 @@
     },
     "especiais": {
       "titulo": "Experiencias especiales",
-      "texto": "¿Te interesó alguna de estas experiencias? Solo avísame. Yo consulto precios y disponibilidad y me ocupo de toda la reserva por ti."
+      "texto": "¿Te interesó alguna de estas experiencias? Solo avísame. Yo consulto precios y disponibilidad y me ocupo de toda la reserva por ti.",
+      "fechamento": "Estas son las más pedidas. También organizo paseos en barco o en lancha, paseos para ver la puesta de sol, senderismo y caminatas, tours gastronómicos y reservas de restaurantes durante tu estadía. Si tienes otra idea en mente, cuéntame. Casi siempre se puede incluir en el itinerario."
     },
     "noite": {
       "titulo": "Rio by Night",
