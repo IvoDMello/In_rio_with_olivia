@@ -12,7 +12,9 @@ import { dicionario, type Idioma } from '~/i18n/config';
  * Instagram custa varios segundos de carregamento e derruba o Lighthouse,
  * o que nao compensa para seis fotos que mudam de vez em quando.
  *
- * Coloque os arquivos em src/assets/instagram como 01.jpg ate 06.jpg.
+ * Coloque os arquivos em src/assets/instagram como 01.jpg ate 06.jpg. A descricao
+ * de cada foto fica em fotos.instagram nos arquivos de i18n, na mesma ordem: ao
+ * trocar uma foto, troque tambem a frase dela.
  */
 interface Props {
   lang: Idioma;
@@ -33,7 +35,7 @@ const espacos = Array.from({ length: 6 }, (_, i) => fotos[i]);
         <li>
           <Foto
             src={foto}
-            alt={`${t.home.instagram.titulo} ${i + 1}`}
+            alt={t.fotos.instagram[i] ?? `${t.home.instagram.titulo} ${i + 1}`}
             proporcao="1 / 1"
             larguras={[200, 320, 480]}
             sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"

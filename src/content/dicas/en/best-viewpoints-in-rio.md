@@ -4,7 +4,7 @@ resumo: Rio is a city of hills, and that means views almost everywhere. These ar
 chave: mirantes
 data: 2026-04-18
 imagem: mirantes
-alt: View of the Dois Irmãos peaks from Ipanema beach
+alt: Two travelers sitting on top of Morro Dois Irmãos, looking over Lagoa, Ipanema and Leblon
 ---
 
 Rio has a generous geography. Hills in the middle of the city, the sea on one side, the forest on the other. It means there is almost always a viewpoint nearby, and that the landscape takes care of itself at any hour of the day. These are the five I use most.

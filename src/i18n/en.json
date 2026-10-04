@@ -267,5 +267,39 @@
     "es": "Spanish",
     "fr": "French",
     "it": "Italian"
+  },
+  "fotos": {
+    "hero": "Olivia smiling at the top of Sugarloaf Mountain, with Copacabana and Guanabara Bay below",
+    "retrato": "Olivia, wearing her tour guide badge, in front of Christ the Redeemer",
+    "instagram": [
+      "Olivia hanging from Pedra do Telégrafo, high above the sea in Guaratiba",
+      "Olivia sitting on top of Morro Dois Irmãos, with the Lagoa and Christ the Redeemer behind her",
+      "Olivia and travelers holding two paintings by Selarón, by the sea",
+      "Olivia and two travelers making hearts in front of a Brazilian flag mural",
+      "A group of travelers at the Vidigal viewpoint, with Ipanema and Leblon behind them",
+      "A samba band playing on stage at Rio Scenarium, in Lapa"
+    ],
+    "lugares": {
+      "cristo-redentor": "Olivia and a traveler with Corcovado and Christ the Redeemer behind them",
+      "pao-de-acucar": "Sugarloaf Mountain rising over Guanabara Bay",
+      "escadaria-selaron": "The tiled steps of the Selarón Staircase in yellow, green and blue",
+      "maracana": "Inside Maracanã stadium, with the pitch and the stands",
+      "mirante-dona-marta": "View over Botafogo Bay and Sugarloaf Mountain from above",
+      "catedral-metropolitana": "Stained glass rising to the cross-shaped skylight inside the Metropolitan Cathedral",
+      "mosteiro-sao-bento": "Facade of the São Bento Monastery, with its two towers",
+      "morro-da-conceicao": "A cobbled street lined with colorful houses on Morro da Conceição",
+      "santa-teresa": "The yellow Santa Teresa tram crossing the Lapa Arches",
+      "favela": "A hillside community seen through an open gate",
+      "parque-lage": "The courtyard and pool of Parque Lage, with Corcovado above",
+      "floresta-da-tijuca": "Two marmosets on a tree trunk in Tijuca Forest",
+      "lagoa": "Aerial view of Lagoa Rodrigo de Freitas surrounded by the city",
+      "pantanal-carioca": "A capybara resting on the grass",
+      "praias-zona-sul": "Two travelers looking out over the beaches of Ipanema and Leblon from Vidigal",
+      "praias-distantes": "Olivia and two travelers on the rocks above the sea at Joatinga",
+      "zona-oeste": "People stand up paddling on calm water in the West Zone"
+    },
+    "especiais": {
+      "favela-tour": "Two travelers on a narrow staircase inside a favela"
+    }
   }
 }

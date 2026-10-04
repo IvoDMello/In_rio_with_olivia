@@ -4,7 +4,7 @@ resumo: Río es una ciudad de cerros, y eso da vistas por todas partes. Estos so
 chave: mirantes
 data: 2026-04-18
 imagem: mirantes
-alt: Vista del Morro Dois Irmãos desde la playa de Ipanema
+alt: Dos viajeras sentadas en la cima del Morro Dois Irmãos, frente a la Lagoa, Ipanema y Leblon
 ---
 
 Río tiene una geografía generosa. Cerros en medio de la ciudad, el mar de un lado y el bosque del otro. Eso significa que casi siempre hay un mirador cerca y que el paisaje se resuelve solo, a cualquier hora del día. Estos son los cinco que más uso.

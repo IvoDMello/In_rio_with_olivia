@@ -17,3 +17,6 @@ node_modules/
 Thumbs.db
 *.log
 npm-debug.log*
+
+# fotos originais da cliente (triagem, fora do build)
+fotos-cliente/

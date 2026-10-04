@@ -4,7 +4,7 @@ resumo: Rain does not ruin a trip to Rio. It changes the itinerary. These are th
 chave: chuva
 data: 2026-03-04
 imagem: quando-chove
-alt: A street in the historic center of Rio de Janeiro on a rainy day
+alt: Olivia and a traveler under the roof of the Museum of Tomorrow, with Guanabara Bay behind
 ---
 
 People who come to Rio tend to pack for the sun. But it does rain here, sometimes heavily, above all between December and March. When the day starts out grey, I do not cancel anything. I change the itinerary.

@@ -21,12 +21,14 @@ interface Props {
   id: string;
   nome: string;
   resumo: string;
+  /** Descricao da foto. Sem ela, o nome do lugar faz as vezes. */
+  alt?: string;
   /** Modelo de mensagem com {nome} no lugar do nome da experiencia. */
   modeloMensagem: string;
   rotuloBotao: string;
 }
 
-const { id, nome, resumo, modeloMensagem, rotuloBotao } = Astro.props;
+const { id, nome, resumo, alt, modeloMensagem, rotuloBotao } = Astro.props;
 const foto = imagem('especiais', id);
 const href = linkWhatsApp(modeloMensagem.replace('{nome}', nome));
 ---
@@ -39,7 +41,7 @@ const href = linkWhatsApp(modeloMensagem.replace('{nome}', nome));
 >
   <Foto
     src={foto}
-    alt={nome}
+    alt={alt ?? nome}
     proporcao="3 / 2"
     sizes="(min-width: 1024px) 24vw, (min-width: 640px) 45vw, 100vw"
     classeImagem="transition-transform duration-700 ease-[cubic-bezier(0.2,0,0,1)] motion-safe:group-hover:scale-[1.04]"

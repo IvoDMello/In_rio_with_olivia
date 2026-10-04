@@ -4,7 +4,7 @@ resumo: Chuva no Rio não estraga a viagem. Ela muda o roteiro. Estes são os lu
 chave: chuva
 data: 2026-03-04
 imagem: quando-chove
-alt: Rua do centro histórico do Rio de Janeiro em dia de chuva
+alt: Olivia e uma viajante sob a cobertura do Museu do Amanhã, com a Baía de Guanabara ao fundo
 ---
 
 Quem vem ao Rio costuma se preparar para o sol. Mas chove, e às vezes chove forte, principalmente entre dezembro e março. Quando o dia acorda fechado, eu não cancelo nada. Eu troco o roteiro.

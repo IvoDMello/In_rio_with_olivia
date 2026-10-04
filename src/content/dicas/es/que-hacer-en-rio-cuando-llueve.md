@@ -4,7 +4,7 @@ resumo: La lluvia no arruina el viaje a Río. Cambia el itinerario. Estos son lo
 chave: chuva
 data: 2026-03-04
 imagem: quando-chove
-alt: Calle del centro histórico de Río de Janeiro en un día de lluvia
+alt: Olivia y una viajera bajo la cubierta del Museo del Mañana, con la Bahía de Guanabara al fondo
 ---
 
 Quien viene a Río suele prepararse para el sol. Pero llueve, y a veces llueve fuerte, sobre todo entre diciembre y marzo. Cuando el día amanece cerrado, no cancelo nada. Cambio el itinerario.

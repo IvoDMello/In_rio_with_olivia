@@ -4,7 +4,7 @@ resumo: Um roteiro de três dias que dá conta dos cartões-postais sem correria
 chave: rio-3-dias
 data: 2026-02-10
 imagem: rio-em-3-dias
-alt: Vista do Rio de Janeiro com o Pão de Açúcar ao fundo
+alt: Olivia e uma viajante no mirante do Vidigal, com o Leblon e o mar ao fundo
 ---
 
 Três dias é o tempo que mais recebo de quem vem ao Rio pela primeira vez. Dá para conhecer bem a cidade, desde que o roteiro respeite duas coisas: as distâncias e o seu ritmo. Este é o caminho que eu costumo sugerir, e que depois ajusto para cada viajante.

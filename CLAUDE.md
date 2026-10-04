@@ -308,6 +308,19 @@ Onde falta informação real, o bloco não aparece, em vez de exibir conteúdo d
 
 O `npm run build` lista o que ainda falta ao terminar.
 
+### Fotos de banco nos cartões de lugar, até a Olivia mandar as dela
+
+As fotos enviadas pela cliente cobriam só 7 dos 19 lugares; as demais eram capturas
+de imagens da internet ou montagens geradas por IA, e ficaram de fora. Para a grade
+não parecer inacabada, 11 lugares usam fotos provisórias do Wikimedia Commons, todas
+em domínio público ou CC0. A lista e a origem de cada uma estão em
+`src/assets/places/CREDITOS.md`. A regra vale só para os cartões de lugar: o topo
+da Home, o retrato, a equipe e o Instagram usam apenas fotos da própria Olivia.
+O Jardim Botânico ficou sem foto, porque só havia fotos antigas em preto e branco.
+
+As descrições das fotos (`alt`) ficam em `fotos`, nos arquivos de i18n. Ao trocar
+uma foto, trocar também a frase dela.
+
 ## 12. Plano de execução para o Claude Code
 
 1. Criar o projeto Astro com Tailwind, configurar tokens de cor e fontes

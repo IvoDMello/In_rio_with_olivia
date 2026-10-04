@@ -20,6 +20,10 @@ const t = dicionario(lang);
 const lugares = await carregaLugares();
 const especiais = await carregaEspeciais();
 
+// Descricao de cada foto, por id. Nem todo lugar tem foto, entao a chave pode faltar.
+const altLugar: Record<string, string | undefined> = t.fotos.lugares;
+const altEspecial: Record<string, string | undefined> = t.fotos.especiais;
+
 /** Ordem em que os grupos aparecem na pagina. */
 const GRUPOS = ['classicos', 'historia', 'natureza', 'praias'] as const;
 
@@ -91,6 +95,7 @@ const schemaTour = {
           {secao.itens.map((lugar) => (
             <CartaoLugar
               id={lugar.id}
+              alt={altLugar[lugar.id]}
               nome={lugar.data[lang].nome}
               resumo={lugar.data[lang].resumo}
             />
@@ -112,6 +117,7 @@ const schemaTour = {
         especiais.map((especial) => (
           <CartaoEspecial
             id={especial.id}
+            alt={altEspecial[especial.id]}
             nome={especial.data[lang].nome}
             resumo={especial.data[lang].resumo}
             modeloMensagem={t.whatsapp.especial}

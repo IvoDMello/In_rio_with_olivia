@@ -27,6 +27,10 @@ const t = dicionario(lang);
 
 const destaques = (await carregaLugares()).filter((l) => l.data.destaque);
 const especiais = await carregaEspeciais();
+
+// Descricao de cada foto, por id. Nem todo lugar tem foto, entao a chave pode faltar.
+const altLugar: Record<string, string | undefined> = t.fotos.lugares;
+const altEspecial: Record<string, string | undefined> = t.fotos.especiais;
 const artigos = (await artigosDe(lang)).slice(0, 3);
 
 const hero = fotoHero();
@@ -43,7 +47,8 @@ const retrato = fotoOlivia();
   <section class="relative isolate">
     <Foto
       src={hero}
-      alt={t.home.hero.titulo}
+      alt={t.fotos.hero}
+      posicao="78% 8%"
       proporcao="4 / 5"
       prioridade
       reservado="escuro"
@@ -118,7 +123,7 @@ const retrato = fotoOlivia();
       <div class="revelar order-1 md:order-2">
         <Foto
           src={retrato}
-          alt={`${SITE.autora}, ${t.home.hero.sobretitulo}`}
+          alt={t.fotos.retrato}
           proporcao="4 / 5"
           sizes="(min-width: 768px) 45vw, 100vw"
           class="rounded-sm"
@@ -158,6 +163,7 @@ const retrato = fotoOlivia();
         destaques.map((lugar) => (
           <CartaoLugar
             id={lugar.id}
+            alt={altLugar[lugar.id]}
             nome={lugar.data[lang].nome}
             resumo={lugar.data[lang].resumo}
           />
@@ -189,6 +195,7 @@ const retrato = fotoOlivia();
         especiais.map((especial) => (
           <CartaoEspecial
             id={especial.id}
+            alt={altEspecial[especial.id]}
             nome={especial.data[lang].nome}
             resumo={especial.data[lang].resumo}
             modeloMensagem={t.whatsapp.especial}

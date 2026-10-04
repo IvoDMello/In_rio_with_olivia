@@ -4,7 +4,7 @@ resumo: A three day itinerary that covers the famous sights without rushing, lea
 chave: rio-3-dias
 data: 2026-02-10
 imagem: rio-em-3-dias
-alt: View of Rio de Janeiro with Sugarloaf Mountain in the background
+alt: Olivia and a traveler at the Vidigal viewpoint, with Leblon and the sea behind them
 ---
 
 Three days is the length of stay I hear most often from people coming to Rio for the first time. It is enough to get to know the city properly, as long as the itinerary respects two things: the distances and your own pace. This is the route I usually suggest, and then adjust for each traveler.

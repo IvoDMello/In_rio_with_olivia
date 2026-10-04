@@ -4,7 +4,7 @@ resumo: O Rio é uma cidade de morros, e isso rende vistas por toda parte. Estes
 chave: mirantes
 data: 2026-04-18
 imagem: mirantes
-alt: Vista do Morro Dois Irmãos a partir da praia de Ipanema
+alt: Duas viajantes sentadas no alto do Morro Dois Irmãos, de frente para a Lagoa, Ipanema e o Leblon
 ---
 
 O Rio tem uma geografia generosa. Morros no meio da cidade, mar de um lado, floresta do outro. Isso significa que quase sempre existe um mirante por perto e que a paisagem se resolve sozinha, a qualquer hora do dia. Estes são os cinco que eu mais uso.

@@ -4,7 +4,7 @@ resumo: Un itinerario de tres días que cubre los grandes clásicos sin prisa, c
 chave: rio-3-dias
 data: 2026-02-10
 imagem: rio-em-3-dias
-alt: Vista de Río de Janeiro con el Pan de Azúcar al fondo
+alt: Olivia y una viajera en el mirador de Vidigal, con Leblon y el mar al fondo
 ---
 
 Tres días es el tiempo que más escucho de quienes vienen a Río por primera vez. Alcanza para conocer bien la ciudad, siempre que el itinerario respete dos cosas: las distancias y tu propio ritmo. Este es el camino que suelo sugerir, y que después ajusto para cada viajero.

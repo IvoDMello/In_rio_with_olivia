@@ -267,5 +267,39 @@
     "es": "Espanhol",
     "fr": "Francês",
     "it": "Italiano"
+  },
+  "fotos": {
+    "hero": "Olivia sorrindo no alto do Pão de Açúcar, com Copacabana e a Baía de Guanabara lá embaixo",
+    "retrato": "Olivia, com o crachá de guia de turismo, em frente ao Cristo Redentor",
+    "instagram": [
+      "Olivia pendurada na Pedra do Telégrafo, bem acima do mar, em Guaratiba",
+      "Olivia sentada no alto do Morro Dois Irmãos, com a Lagoa e o Cristo ao fundo",
+      "Olivia e viajantes segurando dois quadros do Selarón, à beira-mar",
+      "Olivia e dois viajantes fazendo coração diante de um mural da bandeira do Brasil",
+      "Um grupo de viajantes no mirante do Vidigal, com Ipanema e o Leblon ao fundo",
+      "Uma roda de samba no palco do Rio Scenarium, na Lapa"
+    ],
+    "lugares": {
+      "cristo-redentor": "Olivia e uma viajante com o Corcovado e o Cristo Redentor ao fundo",
+      "pao-de-acucar": "O Pão de Açúcar sobre a Baía de Guanabara",
+      "escadaria-selaron": "Os degraus de azulejo da Escadaria Selarón em amarelo, verde e azul",
+      "maracana": "O interior do Maracanã, com o gramado e as arquibancadas",
+      "mirante-dona-marta": "Vista do alto sobre a enseada de Botafogo e o Pão de Açúcar",
+      "catedral-metropolitana": "Vitrais que sobem até a claraboia em cruz, dentro da Catedral Metropolitana",
+      "mosteiro-sao-bento": "Fachada do Mosteiro de São Bento, com as duas torres",
+      "morro-da-conceicao": "Rua de pedra com casas coloridas no Morro da Conceição",
+      "santa-teresa": "O bondinho amarelo de Santa Teresa atravessando os Arcos da Lapa",
+      "favela": "Uma comunidade no morro vista através de um portão aberto",
+      "parque-lage": "O pátio e a piscina do Parque Lage, com o Corcovado acima",
+      "floresta-da-tijuca": "Dois saguis num tronco de árvore na Floresta da Tijuca",
+      "lagoa": "Vista aérea da Lagoa Rodrigo de Freitas cercada pela cidade",
+      "pantanal-carioca": "Uma capivara descansando na grama",
+      "praias-zona-sul": "Dois viajantes olhando as praias de Ipanema e do Leblon a partir do Vidigal",
+      "praias-distantes": "Olivia e dois viajantes nas pedras sobre o mar, na Joatinga",
+      "zona-oeste": "Pessoas remando de stand up paddle em águas calmas na Zona Oeste"
+    },
+    "especiais": {
+      "favela-tour": "Dois viajantes numa escadaria estreita dentro de uma favela"
+    }
   }
 }

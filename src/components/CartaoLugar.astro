@@ -12,18 +12,20 @@ interface Props {
   id: string;
   nome: string;
   resumo: string;
+  /** Descricao da foto. Sem ela, o nome do lugar faz as vezes. */
+  alt?: string;
   /** Nome do grupo, usado apenas no texto alternativo da foto. */
   prioridade?: boolean;
 }
 
-const { id, nome, resumo, prioridade = false } = Astro.props;
+const { id, nome, resumo, alt, prioridade = false } = Astro.props;
 const foto = imagem('lugares', id);
 ---
 
 <article class="revelar group">
   <Foto
     src={foto}
-    alt={nome}
+    alt={alt ?? nome}
     proporcao="4 / 3"
     prioridade={prioridade}
     sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
