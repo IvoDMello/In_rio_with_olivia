@@ -255,6 +255,11 @@
   },
   "geral": {
     "fotoEmBreve": "Foto em breve",
+    "galeria": {
+      "rotulo": "Fotos de {nome}",
+      "anterior": "Foto anterior",
+      "proxima": "Próxima foto"
+    },
     "naoEncontrado": {
       "titulo": "Esta página não existe",
       "texto": "O endereço pode ter mudado. Vamos recomeçar pela home.",
@@ -269,7 +274,7 @@
     "it": "Italiano"
   },
   "fotos": {
-    "hero": "Olivia sorrindo no alto do Pão de Açúcar, com Copacabana e a Baía de Guanabara lá embaixo",
+    "hero": "Silhueta do Cristo Redentor no alto do Corcovado, contra o céu alaranjado do fim de tarde",
     "retrato": "Olivia, com o crachá de guia de turismo, em frente ao Cristo Redentor",
     "instagram": [
       "Olivia pendurada na Pedra do Telégrafo, bem acima do mar, em Guaratiba",
@@ -290,11 +295,12 @@
       "morro-da-conceicao": "Rua de pedra com casas coloridas no Morro da Conceição",
       "santa-teresa": "O bondinho amarelo de Santa Teresa atravessando os Arcos da Lapa",
       "favela": "Uma comunidade no morro vista através de um portão aberto",
+      "favela-2": "Dois viajantes no alto do Vidigal, com as casas da comunidade e as praias do Leblon e de Ipanema lá embaixo",
       "parque-lage": "O pátio e a piscina do Parque Lage, com o Corcovado acima",
       "floresta-da-tijuca": "Dois saguis num tronco de árvore na Floresta da Tijuca",
       "lagoa": "Vista aérea da Lagoa Rodrigo de Freitas cercada pela cidade",
       "pantanal-carioca": "Uma capivara descansando na grama",
-      "praias-zona-sul": "Dois viajantes olhando as praias de Ipanema e do Leblon a partir do Vidigal",
+      "praias-zona-sul": "A praia de Copacabana cheia de gente, vista do alto, com os prédios da orla",
       "praias-distantes": "Olivia e dois viajantes nas pedras sobre o mar, na Joatinga",
       "zona-oeste": "Pessoas remando de stand up paddle em águas calmas na Zona Oeste"
     },

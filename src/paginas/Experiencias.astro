@@ -21,7 +21,6 @@ const lugares = await carregaLugares();
 const especiais = await carregaEspeciais();
 
 // Descricao de cada foto, por id. Nem todo lugar tem foto, entao a chave pode faltar.
-const altLugar: Record<string, string | undefined> = t.fotos.lugares;
 const altEspecial: Record<string, string | undefined> = t.fotos.especiais;
 
 /** Ordem em que os grupos aparecem na pagina. */
@@ -95,7 +94,7 @@ const schemaTour = {
           {secao.itens.map((lugar) => (
             <CartaoLugar
               id={lugar.id}
-              alt={altLugar[lugar.id]}
+              lang={lang}
               nome={lugar.data[lang].nome}
               resumo={lugar.data[lang].resumo}
             />

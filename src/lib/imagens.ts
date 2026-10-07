@@ -9,6 +9,7 @@ import type { ImageMetadata } from 'astro';
  * enquanto ela nao existir, mostra um espaco reservado discreto no lugar.
  *
  *   src/assets/places/<id-do-lugar>.jpg      ex.: cristo-redentor.jpg
+ *   src/assets/places/<id-do-lugar>-2.jpg    fotos extras, em ordem: -2, -3...
  *   src/assets/specials/<id-da-experiencia>.jpg
  *   src/assets/dicas/<nome-no-frontmatter>.jpg
  *   src/assets/instagram/01.jpg ate 06.jpg
@@ -77,6 +78,21 @@ export type GrupoDeImagem = keyof typeof IMAGENS;
 export function imagem(grupo: GrupoDeImagem, nome: string | undefined): ImageMetadata | undefined {
   if (!nome) return undefined;
   return IMAGENS[grupo][nome];
+}
+
+/**
+ * Todas as fotos de um lugar, em ordem: <id>.jpg, depois <id>-2.jpg, <id>-3.jpg
+ * e assim por diante. A contagem para no primeiro numero que faltar, entao
+ * pular do -2 para o -4 deixa o -4 de fora.
+ *
+ * Cada foto vem com o nome do arquivo, que e a chave da descricao dela em
+ * `fotos.lugares`, nos arquivos de i18n.
+ */
+export function fotosLugar(id: string): { nome: string; src: ImageMetadata }[] {
+  const mapa = IMAGENS.lugares;
+  const nomes = [id];
+  for (let n = 2; mapa[`${id}-${n}`]; n++) nomes.push(`${id}-${n}`);
+  return nomes.filter((nome) => mapa[nome]).map((nome) => ({ nome, src: mapa[nome]! }));
 }
 
 /** Fotos da faixa do Instagram, em ordem de nome de arquivo. */

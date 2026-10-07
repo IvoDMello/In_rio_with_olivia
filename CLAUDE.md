@@ -312,14 +312,44 @@ O `npm run build` lista o que ainda falta ao terminar.
 
 As fotos enviadas pela cliente cobriam só 7 dos 19 lugares; as demais eram capturas
 de imagens da internet ou montagens geradas por IA, e ficaram de fora. Para a grade
-não parecer inacabada, 11 lugares usam fotos provisórias do Wikimedia Commons, todas
+não parecer inacabada, 12 lugares usam fotos provisórias do Wikimedia Commons, todas
 em domínio público ou CC0. A lista e a origem de cada uma estão em
 `src/assets/places/CREDITOS.md`. A regra vale só para os cartões de lugar: o topo
 da Home, o retrato, a equipe e o Instagram usam apenas fotos da própria Olivia.
 O Jardim Botânico ficou sem foto, porque só havia fotos antigas em preto e branco.
 
-As descrições das fotos (`alt`) ficam em `fotos`, nos arquivos de i18n. Ao trocar
-uma foto, trocar também a frase dela.
+A Olivia pediu para tirar das Praias da Zona Sul a foto do mirante do Vidigal, que
+mostra a praia de cima da favela. Ela virou a segunda foto da Favela, que a Olivia
+pediu que tivesse mais de uma, e as praias receberam uma foto provisória de
+Copacabana até ela escolher as dela.
+
+Um lugar pode ter várias fotos: `favela.jpg`, `favela-2.jpg`, `favela-3.jpg` e assim
+por diante. Com mais de uma, o cartão vira uma galeria que desliza para o lado, com
+botões de anterior e próxima. É CSS de rolagem com encaixe (`scroll-snap`), então
+funciona com o dedo e o teclado mesmo sem JavaScript.
+
+As descrições das fotos (`alt`) ficam em `fotos`, nos arquivos de i18n, pelo nome do
+arquivo (`favela-2` tem a sua). Ao trocar uma foto, trocar também a frase dela.
+
+### O topo da Home é o Cristo ao entardecer, não a selfie da Olivia
+
+A foto do topo era uma selfie da Olivia no alto do Pão de Açúcar. Foram testadas
+três substitutas: uma foto aérea do Cristo, que era captura de tela com 866 px de
+largura e não ficou boa nem ampliada por IA; uma vista de Ipanema a partir do
+Arpoador, que no celular deixava o texto sobre prédios e cactos; e a escolhida
+pela cliente, a silhueta do Cristo no Corcovado contra o céu laranja. Ela tem
+4000 × 6000 px e o texto fica sobre céu liso em todas as telas. A Olivia continua
+aparecendo logo abaixo, no bloco de apresentação, com o retrato dela.
+
+A foto fica em `src/assets/fotos/hero.jpg`, o nome que `fotoHero()` procura. É
+vertical e o Cristo é pequeno nela, enquanto a moldura do topo muda com a tela
+(4:5 no celular, 16:10 no tablet, 2:1 no desktop). Por isso o recorte vem em
+classes por tamanho de tela, em `recorteHero`, no `Home.astro`: no celular a foto
+desce até o fim, para a estátua ficar acima do texto. Trocando a foto, refazer o
+recorte.
+
+A selfie e as outras candidatas ficaram em `fotos-cliente/`, fora do git. A selfie
+também continua no histórico do repositório.
 
 ## 12. Plano de execução para o Claude Code
 

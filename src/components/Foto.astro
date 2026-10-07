@@ -26,19 +26,16 @@ interface Props {
   /** Verdadeiro apenas para a imagem principal do hero. */
   prioridade?: boolean;
   class?: string;
-  /** Classe aplicada a propria imagem, para efeitos de hover do cartao. */
+  /**
+   * Classe aplicada a propria imagem: efeitos de hover do cartao ou o recorte
+   * (object-position) quando o assunto nao esta no centro, como no hero.
+   */
   classeImagem?: string;
   /**
    * Cor do espaco reservado. 'escuro' e para areas com texto branco por cima,
    * como o hero: sem foto, um fundo claro deixaria o texto ilegivel.
    */
   reservado?: 'claro' | 'escuro';
-  /**
-   * Ponto da foto que fica visivel quando a moldura corta a imagem, no formato
-   * do CSS object-position. So e preciso quando o assunto nao esta no centro,
-   * como o rosto da Olivia no hero, que fica a direita.
-   */
-  posicao?: string;
 }
 
 const {
@@ -51,7 +48,6 @@ const {
   class: classe = '',
   classeImagem = '',
   reservado = 'claro',
-  posicao,
 } = Astro.props;
 
 const escuro = reservado === 'escuro';
@@ -76,7 +72,6 @@ const corReservado = escuro ? '#EEF2F0' : '#123A45';
         fetchpriority={prioridade ? 'high' : 'auto'}
         pictureAttributes={{ class: 'block h-full w-full' }}
         class:list={['h-full w-full object-cover', classeImagem]}
-        style={posicao ? `object-position: ${posicao};` : undefined}
       />
     ) : (
       <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">

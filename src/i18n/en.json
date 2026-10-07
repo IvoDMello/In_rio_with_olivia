@@ -255,6 +255,11 @@
   },
   "geral": {
     "fotoEmBreve": "Photo coming soon",
+    "galeria": {
+      "rotulo": "Photos of {nome}",
+      "anterior": "Previous photo",
+      "proxima": "Next photo"
+    },
     "naoEncontrado": {
       "titulo": "This page does not exist",
       "texto": "The address may have changed. Let us start again from the home page.",
@@ -269,7 +274,7 @@
     "it": "Italian"
   },
   "fotos": {
-    "hero": "Olivia smiling at the top of Sugarloaf Mountain, with Copacabana and Guanabara Bay below",
+    "hero": "Silhouette of Christ the Redeemer on top of Corcovado against an orange evening sky",
     "retrato": "Olivia, wearing her tour guide badge, in front of Christ the Redeemer",
     "instagram": [
       "Olivia hanging from Pedra do Telégrafo, high above the sea in Guaratiba",
@@ -290,11 +295,12 @@
       "morro-da-conceicao": "A cobbled street lined with colorful houses on Morro da Conceição",
       "santa-teresa": "The yellow Santa Teresa tram crossing the Lapa Arches",
       "favela": "A hillside community seen through an open gate",
+      "favela-2": "Two travelers high up in Vidigal, with the community's houses and the beaches of Leblon and Ipanema below",
       "parque-lage": "The courtyard and pool of Parque Lage, with Corcovado above",
       "floresta-da-tijuca": "Two marmosets on a tree trunk in Tijuca Forest",
       "lagoa": "Aerial view of Lagoa Rodrigo de Freitas surrounded by the city",
       "pantanal-carioca": "A capybara resting on the grass",
-      "praias-zona-sul": "Two travelers looking out over the beaches of Ipanema and Leblon from Vidigal",
+      "praias-zona-sul": "Copacabana beach full of people, seen from above, with the seafront buildings",
       "praias-distantes": "Olivia and two travelers on the rocks above the sea at Joatinga",
       "zona-oeste": "People stand up paddling on calm water in the West Zone"
     },

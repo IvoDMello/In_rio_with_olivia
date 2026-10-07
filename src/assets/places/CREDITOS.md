@@ -17,3 +17,9 @@ saber o que trocar quando a Olivia enviar as fotos dela.
 | floresta-da-tijuca.jpg | [Marmosets in Parque Nacional da Tijuca.jpg](https://commons.wikimedia.org/wiki/File:Marmosets_in_Parque_Nacional_da_Tijuca.jpg) | Tserton | CC0 |
 | pantanal-carioca.jpg | [Hydrochoeris hydrochaeris in Brazil in Petrópolis, Rio de Janeiro, Brazil 09.jpg](https://commons.wikimedia.org/wiki/File:Hydrochoeris_hydrochaeris_in_Brazil_in_Petr%C3%B3polis,_Rio_de_Janeiro,_Brazil_09.jpg) | Wilfredor | CC0 |
 | mosteiro-sao-bento.jpg | [Rio-SaoBentoMonastery1.JPG](https://commons.wikimedia.org/wiki/File:Rio-SaoBentoMonastery1.JPG) | Fulviusbsas | Dominio publico |
+| praias-zona-sul.jpg | [Copacabana, Rio de Janeiro, Brazil.jpg](https://commons.wikimedia.org/wiki/File:Copacabana,_Rio_de_Janeiro,_Brazil.jpg) | Wilfredor | CC0 |
+
+A foto de praias-zona-sul.jpg entrou em outubro de 2026 no lugar da foto da
+Olivia no mirante do Vidigal, que ela pediu para tirar do cartao de praias
+(agora e a segunda foto da favela, favela-2.jpg). A Olivia disse que vai
+escolher outras fotos de praia para mandar.

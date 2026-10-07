@@ -29,12 +29,20 @@ const destaques = (await carregaLugares()).filter((l) => l.data.destaque);
 const especiais = await carregaEspeciais();
 
 // Descricao de cada foto, por id. Nem todo lugar tem foto, entao a chave pode faltar.
-const altLugar: Record<string, string | undefined> = t.fotos.lugares;
 const altEspecial: Record<string, string | undefined> = t.fotos.especiais;
 const artigos = (await artigosDe(lang)).slice(0, 3);
 
 const hero = fotoHero();
 const retrato = fotoOlivia();
+
+/**
+ * Recorte da foto do hero, o Cristo ao entardecer. A foto e vertical e o Cristo
+ * e pequeno nela, enquanto a moldura muda com a tela: 4:5 no celular, 16:10 no
+ * tablet e 2:1 no desktop. No celular o recorte desce ate o fim, para a estatua
+ * subir acima do texto; do tablet em diante, a faixa visivel fica em torno dela.
+ * Trocando a foto, refazer o recorte.
+ */
+const recorteHero = 'object-[50%_100%] sm:object-[50%_58%] lg:object-[50%_47%]';
 ---
 
 <BaseLayout
@@ -48,7 +56,7 @@ const retrato = fotoOlivia();
     <Foto
       src={hero}
       alt={t.fotos.hero}
-      posicao="78% 8%"
+      classeImagem={recorteHero}
       proporcao="4 / 5"
       prioridade
       reservado="escuro"
@@ -163,7 +171,7 @@ const retrato = fotoOlivia();
         destaques.map((lugar) => (
           <CartaoLugar
             id={lugar.id}
-            alt={altLugar[lugar.id]}
+            lang={lang}
             nome={lugar.data[lang].nome}
             resumo={lugar.data[lang].resumo}
           />
