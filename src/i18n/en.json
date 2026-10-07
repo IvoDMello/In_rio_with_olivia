@@ -269,7 +269,7 @@
     "it": "Italian"
   },
   "fotos": {
-    "hero": "Olivia smiling at the top of Sugarloaf Mountain, with Copacabana and Guanabara Bay below",
+    "hero": "Sugarloaf Mountain and Botafogo Bay full of boats, with Guanabara Bay and Niterói behind, seen from Corcovado",
     "retrato": "Olivia, wearing her tour guide badge, in front of Christ the Redeemer",
     "instagram": [
       "Olivia hanging from Pedra do Telégrafo, high above the sea in Guaratiba",
@@ -291,6 +291,7 @@
       "santa-teresa": "The yellow Santa Teresa tram crossing the Lapa Arches",
       "favela": "A hillside community seen through an open gate",
       "parque-lage": "The courtyard and pool of Parque Lage, with Corcovado above",
+      "jardim-botanico": "Palm trees and an ivy-covered arch in the Botanical Garden, with Christ the Redeemer on top of Corcovado",
       "floresta-da-tijuca": "Two marmosets on a tree trunk in Tijuca Forest",
       "lagoa": "Aerial view of Lagoa Rodrigo de Freitas surrounded by the city",
       "pantanal-carioca": "A capybara resting on the grass",
@@ -299,6 +300,8 @@
       "zona-oeste": "People stand up paddling on calm water in the West Zone"
     },
     "especiais": {
+      "helicoptero": "A helicopter over Botafogo Bay, with Corcovado and Christ the Redeemer behind it",
+      "asa-delta": "An instructor and a passenger on a tandem hang gliding flight over the forest, with São Conrado and the sea below",
       "favela-tour": "Two travelers on a narrow staircase inside a favela"
     }
   }

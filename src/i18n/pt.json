@@ -269,7 +269,7 @@
     "it": "Italiano"
   },
   "fotos": {
-    "hero": "Olivia sorrindo no alto do Pão de Açúcar, com Copacabana e a Baía de Guanabara lá embaixo",
+    "hero": "O Pão de Açúcar e a enseada de Botafogo cheia de barcos, com a Baía de Guanabara e Niterói ao fundo, vistos do Corcovado",
     "retrato": "Olivia, com o crachá de guia de turismo, em frente ao Cristo Redentor",
     "instagram": [
       "Olivia pendurada na Pedra do Telégrafo, bem acima do mar, em Guaratiba",
@@ -291,6 +291,7 @@
       "santa-teresa": "O bondinho amarelo de Santa Teresa atravessando os Arcos da Lapa",
       "favela": "Uma comunidade no morro vista através de um portão aberto",
       "parque-lage": "O pátio e a piscina do Parque Lage, com o Corcovado acima",
+      "jardim-botanico": "Palmeiras e um arco coberto de hera no Jardim Botânico, com o Cristo Redentor no alto do Corcovado",
       "floresta-da-tijuca": "Dois saguis num tronco de árvore na Floresta da Tijuca",
       "lagoa": "Vista aérea da Lagoa Rodrigo de Freitas cercada pela cidade",
       "pantanal-carioca": "Uma capivara descansando na grama",
@@ -299,6 +300,8 @@
       "zona-oeste": "Pessoas remando de stand up paddle em águas calmas na Zona Oeste"
     },
     "especiais": {
+      "helicoptero": "Um helicóptero sobre a enseada de Botafogo, com o Corcovado e o Cristo Redentor ao fundo",
+      "asa-delta": "Instrutor e passageiro em um voo duplo de asa-delta sobre a mata, com São Conrado e o mar ao fundo",
       "favela-tour": "Dois viajantes numa escadaria estreita dentro de uma favela"
     }
   }

@@ -312,11 +312,23 @@ O `npm run build` lista o que ainda falta ao terminar.
 
 As fotos enviadas pela cliente cobriam só 7 dos 19 lugares; as demais eram capturas
 de imagens da internet ou montagens geradas por IA, e ficaram de fora. Para a grade
-não parecer inacabada, 11 lugares usam fotos provisórias do Wikimedia Commons, todas
+não parecer inacabada, 12 lugares usam fotos provisórias do Wikimedia Commons, todas
 em domínio público ou CC0. A lista e a origem de cada uma estão em
-`src/assets/places/CREDITOS.md`. A regra vale só para os cartões de lugar: o topo
-da Home, o retrato, a equipe e o Instagram usam apenas fotos da própria Olivia.
-O Jardim Botânico ficou sem foto, porque só havia fotos antigas em preto e branco.
+`src/assets/places/CREDITOS.md`. A regra vale para os cartões de lugar e para os
+cartões de experiências especiais (helicóptero e asa-delta também usam foto de
+banco) e para o topo da Home. O retrato, a equipe e o Instagram usam apenas fotos
+da própria Olivia. Uma foto de banco com pessoas desconhecidas no bloco da equipe
+apresentaria estranhos como guias dela.
+
+O Roxy Dinner Show ficou sem foto, porque não existe imagem livre do show e uma
+foto de samba de outro lugar mostraria outro produto.
+
+O topo da Home usa uma vista do Corcovado sobre o Pão de Açúcar e a Baía de
+Guanabara, em CC0, no lugar da foto da Olivia no Pão de Açúcar. A primeira tela
+passa a vender o Rio, e a Olivia aparece logo abaixo, no bloco de apresentação.
+A ideia era uma foto com o Cristo, a baía e o Pão de Açúcar juntos, mas não
+existe foto livre com os três. A foto da Olivia continua em
+`src/assets/fotos/olivia-pao-de-acucar.jpg`.
 
 As descrições das fotos (`alt`) ficam em `fotos`, nos arquivos de i18n. Ao trocar
 uma foto, trocar também a frase dela.

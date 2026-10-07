@@ -17,3 +17,25 @@ saber o que trocar quando a Olivia enviar as fotos dela.
 | floresta-da-tijuca.jpg | [Marmosets in Parque Nacional da Tijuca.jpg](https://commons.wikimedia.org/wiki/File:Marmosets_in_Parque_Nacional_da_Tijuca.jpg) | Tserton | CC0 |
 | pantanal-carioca.jpg | [Hydrochoeris hydrochaeris in Brazil in Petrópolis, Rio de Janeiro, Brazil 09.jpg](https://commons.wikimedia.org/wiki/File:Hydrochoeris_hydrochaeris_in_Brazil_in_Petr%C3%B3polis,_Rio_de_Janeiro,_Brazil_09.jpg) | Wilfredor | CC0 |
 | mosteiro-sao-bento.jpg | [Rio-SaoBentoMonastery1.JPG](https://commons.wikimedia.org/wiki/File:Rio-SaoBentoMonastery1.JPG) | Fulviusbsas | Dominio publico |
+| jardim-botanico.jpg | [Вид на статую Христа Искупителя из Ботанического сада Рио.jpg](https://commons.wikimedia.org/wiki/File:%D0%92%D0%B8%D0%B4_%D0%BD%D0%B0_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%8E_%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%B0_%D0%98%D1%81%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8F_%D0%B8%D0%B7_%D0%91%D0%BE%D1%82%D0%B0%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D1%81%D0%B0%D0%B4%D0%B0_%D0%A0%D0%B8%D0%BE.jpg) | Lucien Semenovitch | CC0 |
+
+## Experiencias especiais (src/assets/specials)
+
+| Arquivo | Original | Autor | Licenca |
+|---|---|---|---|
+| helicoptero.jpg | [Bell 206L-4 LongRanger IV over Botafogo Bay, Rio de Janeiro.jpg](https://commons.wikimedia.org/wiki/File:Bell_206L-4_LongRanger_IV_over_Botafogo_Bay,_Rio_de_Janeiro.jpg) | Wilfredor | CC0 |
+| asa-delta.jpg | [Tandem hang gliding.jpg](https://commons.wikimedia.org/wiki/File:Tandem_hang_gliding.jpg) | Konrad22 at English Wikipedia | Dominio publico |
+
+O Roxy Dinner Show continua sem foto: nao ha imagem livre do show, e uma foto
+de samba de outro lugar venderia outra coisa. A foto deve vir da Olivia ou do
+material de divulgacao do Roxy, com autorizacao.
+
+## Topo da Home (src/assets/fotos/hero.jpg)
+
+| Arquivo | Original | Autor | Licenca |
+|---|---|---|---|
+| hero.jpg | [Rio de Janeiro. Unsplash 7F65HDP0-E0.jpg](https://commons.wikimedia.org/wiki/File:Rio_de_Janeiro._Unsplash_7F65HDP0-E0.jpg) | Agustín Diaz Gargiulo | CC0 (publicada no Unsplash em janeiro de 2017, antes da troca de licenca) |
+
+A foto anterior do topo, da Olivia no Pao de Acucar, continua guardada como
+`olivia-pao-de-acucar.jpg`. Para volta-la ao topo, basta renomea-la para `hero.jpg`
+e trocar `posicao` no hero de `Home.astro` de volta para "78% 8%".
