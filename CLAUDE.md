@@ -139,7 +139,7 @@ Todos os contatos e links externos ficam em `site.ts` para serem trocados em um 
 - [x] Link da página do TripAdvisor
 - [ ] 3 avaliações escolhidas do TripAdvisor (colar em `src/data/reviews.ts`)
 - [x] E-mail de contato
-- [ ] Número do Cadastur
+- [x] Número do Cadastur
 - [x] Idiomas de atendimento da equipe: português, inglês, espanhol, francês e italiano
 - [x] Lista de lugares que podem entrar no roteiro
 - [ ] Fotos em alta resolução (Olivia, equipe e passeios)
