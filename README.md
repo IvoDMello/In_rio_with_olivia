@@ -104,14 +104,17 @@ dados estruturados.
 
 ## Publicar
 
-Funciona nos dois serviços sem configuração extra. Os arquivos
-[`vercel.json`](vercel.json) e [`netlify.toml`](netlify.toml) já estão prontos, e cada
-serviço ignora o do outro.
+O site vai para a Netlify, com o domínio `inriowitholivia.com` registrado na
+Cloudflare. O [`vercel.json`](vercel.json) continua no repositório caso um dia
+seja preciso trocar de serviço, mas o arquivo que vale é o [`netlify.toml`](netlify.toml).
 
 1. Suba o repositório para o GitHub
-2. Conecte na Vercel ou na Netlify (build `npm run build`, pasta `dist`)
-3. Aponte o domínio `inriowitholivia.com.br`
-4. Confira se `SITE.url` em `src/config/site.ts` bate com o domínio final
+2. Na Netlify, importe o repositório (build `npm run build`, pasta `dist`)
+3. Em **Domain management**, adicione `inriowitholivia.com`
+4. Na Cloudflare, crie os registros de DNS que a Netlify indicar, com a nuvem
+   cinza (DNS only), para a Netlify emitir o certificado HTTPS
+5. Confira se `SITE.url` em `src/config/site.ts` bate com o domínio final. Na
+   Netlify ele vem sozinho do endereço principal do site
 
 O formulário de contato precisa de um dos dois:
 
@@ -146,7 +149,6 @@ e passe o Lighthouse em `http://localhost:4321/pt`.
 - [ ] Confirmar os idiomas que a Olivia e a equipe falam (hoje: português, inglês, espanhol)
 - [ ] Escolher 3 avaliações do TripAdvisor e colar em `src/data/reviews.ts`
 - [ ] Fotos em alta resolução
-- [ ] Endpoint do formulário, se for publicar na Vercel
 - [ ] Revisão dos textos pela Olivia, principalmente as respostas sobre pagamento e
       cancelamento em `src/i18n/*.json`, que foram escritas como rascunho
 - [ ] Converter os textos dos SVGs em `public/brand/` para contornos antes de distribuir

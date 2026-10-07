@@ -8,18 +8,17 @@
  */
 
 /** Endereco definitivo, depois que o dominio estiver registrado e apontado. */
-const DOMINIO_FINAL = 'https://inriowitholivia.com.br';
+const DOMINIO_FINAL = 'https://inriowitholivia.com';
 
 /**
  * Descobre o endereco do site no momento do build.
  *
- * Ordem: SITE_URL definido a mao, depois o dominio que a Vercel fornece,
- * depois o dominio definitivo. Sem isso, um deploy de validacao geraria
- * URLs canonicas, sitemap e imagens de compartilhamento apontando para um
- * dominio que ainda nao existe.
- *
- * Quando o dominio proprio estiver no ar, basta definir a variavel de
- * ambiente SITE_URL na Vercel com o endereco final.
+ * Ordem: SITE_URL definido a mao, depois o endereco principal que a
+ * Netlify fornece (o dominio proprio, quando estiver conectado, ou o
+ * .netlify.app antes disso), depois o da Vercel, depois o dominio
+ * definitivo. Sem isso, um deploy de validacao geraria URLs canonicas,
+ * sitemap e imagens de compartilhamento apontando para um dominio que
+ * ainda nao existe.
  */
 function enderecoDoSite(): string {
   const env =
@@ -28,6 +27,8 @@ function enderecoDoSite(): string {
       : {};
 
   if (env['SITE_URL']) return env['SITE_URL'].replace(/\/+$/, '');
+
+  if (env['NETLIFY'] && env['URL']) return env['URL'].replace(/\/+$/, '');
 
   const vercel = env['VERCEL_PROJECT_PRODUCTION_URL'] ?? env['VERCEL_URL'];
   if (vercel) return `https://${vercel}`;

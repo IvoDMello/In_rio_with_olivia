@@ -6,7 +6,7 @@ Este arquivo é a referência principal do projeto. Leia inteiro antes de escrev
 
 Site institucional de Olivia, guia de turismo no Rio de Janeiro. O objetivo principal do site é transformar visitantes em conversas no WhatsApp. Objetivos secundários: passar confiança (avaliações do TripAdvisor, Instagram, credenciais) e inspirar o visitante com experiências e ideias de roteiro.
 
-- Domínio: inriowitholivia.com.br (ainda será registrado)
+- Domínio: inriowitholivia.com (ver seção 11)
 - Público: turistas estrangeiros e brasileiros de outras cidades, majoritariamente no celular
 - Idiomas: inglês (padrão), português e espanhol
 - Tamanho: site médio, poucas páginas, conteúdo bem cuidado
@@ -321,6 +321,29 @@ O Jardim Botânico ficou sem foto, porque só havia fotos antigas em preto e bra
 As descrições das fotos (`alt`) ficam em `fotos`, nos arquivos de i18n. Ao trocar
 uma foto, trocar também a frase dela.
 
+### Domínio .com na Cloudflare, hospedagem na Netlify
+
+A seção 1 previa `inriowitholivia.com.br`. O domínio principal passou a ser
+**`inriowitholivia.com`**, porque o público é sobretudo estrangeiro e é o .com que
+um turista digita por reflexo. O .com.br estava livre em outubro de 2026 e pode ser
+registrado depois no registro.br, só para redirecionar ao .com.
+
+O domínio é registrado na **Cloudflare Registrar**, que cobra preço de custo sem
+aumento na renovação e inclui privacidade do WHOIS. O titular é a Olivia, não quem
+desenvolve o site.
+
+A hospedagem é a **Netlify**, no plano gratuito, por dois motivos. O plano gratuito
+da Vercel só permite uso não comercial, e este site vende um serviço. E o formulário
+de contato funciona na Netlify sem conta extra, pelo Netlify Forms, enquanto na
+Vercel dependeria do Formspree. O `vercel.json` ficou no repositório para o caso de
+uma troca futura.
+
+Na Cloudflare, os registros de DNS que apontam para a Netlify ficam com a nuvem
+cinza (DNS only). Com o proxy ligado, a Netlify não consegue emitir o certificado.
+
+`SITE.url` lê a variável `URL` da Netlify, que é o domínio próprio quando ele está
+conectado e o endereço `.netlify.app` antes disso.
+
 ## 12. Plano de execução para o Claude Code
 
 1. Criar o projeto Astro com Tailwind, configurar tokens de cor e fontes
@@ -332,7 +355,7 @@ uma foto, trocar também a frase dela.
 7. Aplicar SEO, schema, sitemap e favicon
 8. Revisar acessibilidade e responsividade, rodar Lighthouse
 9. Substituir textos provisórios pelos textos reais e traduções
-10. Publicar na Vercel ou Netlify e conectar o domínio .com.br
+10. Publicar na Netlify e conectar o domínio .com
 
 Ao final de cada etapa, mostrar o que foi feito e aguardar aprovação antes de seguir.
 
