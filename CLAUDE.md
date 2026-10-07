@@ -139,7 +139,7 @@ Todos os contatos e links externos ficam em `site.ts` para serem trocados em um 
 - [x] Link da página do TripAdvisor
 - [ ] 3 avaliações escolhidas do TripAdvisor (colar em `src/data/reviews.ts`)
 - [x] E-mail de contato
-- [ ] Número do Cadastur
+- [x] Número do Cadastur
 - [x] Idiomas de atendimento da equipe: português, inglês, espanhol, francês e italiano
 - [x] Lista de lugares que podem entrar no roteiro
 - [ ] Fotos em alta resolução (Olivia, equipe e passeios)
@@ -323,15 +323,43 @@ apresentaria estranhos como guias dela.
 O Roxy Dinner Show ficou sem foto, porque não existe imagem livre do show e uma
 foto de samba de outro lugar mostraria outro produto.
 
-O topo da Home usa uma vista do Corcovado sobre o Pão de Açúcar e a Baía de
-Guanabara, em CC0, no lugar da foto da Olivia no Pão de Açúcar. A primeira tela
-passa a vender o Rio, e a Olivia aparece logo abaixo, no bloco de apresentação.
-A ideia era uma foto com o Cristo, a baía e o Pão de Açúcar juntos, mas não
-existe foto livre com os três. A foto da Olivia continua em
-`src/assets/fotos/olivia-pao-de-acucar.jpg`.
+A Olivia pediu para tirar das Praias da Zona Sul a foto do mirante do Vidigal, que
+mostra a praia de cima da favela. Ela virou a segunda foto da Favela, que a Olivia
+pediu que tivesse mais de uma, e as praias receberam uma foto provisória de
+Copacabana até ela escolher as dela.
 
-As descrições das fotos (`alt`) ficam em `fotos`, nos arquivos de i18n. Ao trocar
-uma foto, trocar também a frase dela.
+Um lugar pode ter várias fotos: `favela.jpg`, `favela-2.jpg`, `favela-3.jpg` e assim
+por diante. Com mais de uma, o cartão vira uma galeria que desliza para o lado, com
+botões de anterior e próxima. É CSS de rolagem com encaixe (`scroll-snap`), então
+funciona com o dedo e o teclado mesmo sem JavaScript.
+
+As descrições das fotos (`alt`) ficam em `fotos`, nos arquivos de i18n, pelo nome do
+arquivo (`favela-2` tem a sua). Ao trocar uma foto, trocar também a frase dela.
+
+### O topo da Home é o Pão de Açúcar visto do Corcovado
+
+A foto do topo era uma selfie da Olivia no alto do Pão de Açúcar. Foram testadas
+três substitutas: uma foto aérea do Cristo, que era captura de tela com 866 px de
+largura e não ficou boa nem ampliada por IA; uma vista de Ipanema a partir do
+Arpoador, que no celular deixava o texto sobre prédios e cactos; e a silhueta do
+Cristo no Corcovado contra o céu laranja, que a cliente escolheu e ficou no ar
+por um tempo.
+
+A foto atual é a vista clássica do Corcovado: o Pão de Açúcar, a enseada de
+Botafogo cheia de barcos e a Baía de Guanabara com Niterói ao fundo, em CC0 (ver
+`CREDITOS.md`). O pedido era uma foto de drone com o Cristo, a baía e o Pão de
+Açúcar juntos, mas não existe foto livre com os três; esta é tirada do pé do
+Cristo e mostra os outros dois. A Olivia continua aparecendo logo abaixo, no bloco
+de apresentação, com o retrato dela.
+
+A foto fica em `src/assets/fotos/hero.jpg`, o nome que `fotoHero()` procura. A
+moldura do topo muda com a tela (4:5 no celular, 16:10 no tablet, 2:1 no
+desktop), e o recorte fica em `recorteHero`, no `Home.astro`. Trocando a foto,
+refazer o recorte.
+
+A selfie, a silhueta do Cristo e as outras candidatas ficaram em `fotos-cliente/`,
+fora do git (`hero-olivia-pao-de-acucar.jpg` e `hero-cristo-entardecer.jpg`).
+Todas continuam no histórico do repositório.
 
 ### Domínio .com na Cloudflare, hospedagem na Netlify
 

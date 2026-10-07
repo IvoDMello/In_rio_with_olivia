@@ -6,15 +6,15 @@
     "destaque": true,
     "en": {
       "nome": "Christ the Redeemer",
-      "resumo": "The greatest symbol of Rio."
+      "resumo": "Christ the Redeemer is considered the largest Art Deco monument in the world and one of Brazil's foremost national symbols."
     },
     "pt": {
       "nome": "Cristo Redentor",
-      "resumo": "O maior símbolo do Rio."
+      "resumo": "O Cristo Redentor é considerado o maior monumento em estilo Art Déco do mundo e um dos principais símbolos nacionais do Brasil."
     },
     "es": {
       "nome": "Cristo Redentor",
-      "resumo": "El mayor símbolo de Río."
+      "resumo": "El Cristo Redentor es considerado el mayor monumento de estilo art déco del mundo y uno de los principales símbolos nacionales de Brasil."
     }
   },
   {
@@ -24,15 +24,15 @@
     "destaque": true,
     "en": {
       "nome": "Sugarloaf Mountain",
-      "resumo": "Unforgettable scenery and one of the finest views in the city."
+      "resumo": "Opened in 1912, the Sugarloaf cable car was the first in Brazil and offers one of the most beautiful views of Rio."
     },
     "pt": {
       "nome": "Pão de Açúcar",
-      "resumo": "Paisagens inesquecíveis e uma das vistas mais bonitas da cidade."
+      "resumo": "Inaugurado em 1912, o bondinho do Pão de Açúcar foi o primeiro teleférico do Brasil e oferece uma das mais belas vistas do Rio."
     },
     "es": {
       "nome": "Pan de Azúcar",
-      "resumo": "Paisajes inolvidables y una de las vistas más bonitas de la ciudad."
+      "resumo": "Inaugurado en 1912, el teleférico del Pan de Azúcar fue el primero de Brasil y ofrece una de las vistas más bellas de Río."
     }
   },
   {
@@ -42,15 +42,15 @@
     "destaque": true,
     "en": {
       "nome": "Selarón Steps",
-      "resumo": "Art, mosaics and color."
+      "resumo": "Created by Chilean artist Jorge Selarón, the Selarón Steps are an open-air work of art, a colorful mosaic of tiles that brightens up Lapa."
     },
     "pt": {
       "nome": "Escadaria Selarón",
-      "resumo": "Arte, mosaicos e cores."
+      "resumo": "Criada pelo artista chileno Jorge Selarón, a Escadaria Selarón é uma obra de arte a céu aberto, formada por um colorido mosaico de azulejos que embeleza a Lapa."
     },
     "es": {
       "nome": "Escalera de Selarón",
-      "resumo": "Arte, mosaicos y color."
+      "resumo": "Creada por el artista chileno Jorge Selarón, la Escalera de Selarón es una obra de arte a cielo abierto, formada por un colorido mosaico de azulejos que embellece el barrio de Lapa."
     }
   },
   {
@@ -60,15 +60,15 @@
     "destaque": false,
     "en": {
       "nome": "Maracanã Stadium",
-      "resumo": "A dive into the history and the passion of Brazilian football."
+      "resumo": "Known around the world as the temple of the gods of football."
     },
     "pt": {
       "nome": "Estádio do Maracanã",
-      "resumo": "Um mergulho na história e na paixão do futebol brasileiro."
+      "resumo": "Conhecido mundialmente como o templo dos deuses do futebol."
     },
     "es": {
       "nome": "Estadio Maracaná",
-      "resumo": "Una inmersión en la historia y la pasión del fútbol brasileño."
+      "resumo": "Conocido en todo el mundo como el templo de los dioses del fútbol."
     }
   },
   {
@@ -96,15 +96,15 @@
     "destaque": false,
     "en": {
       "nome": "Metropolitan Cathedral",
-      "resumo": "A striking piece of modern architecture in the heart of the old town."
+      "resumo": "The Metropolitan Cathedral stands out for its modern, cone-shaped architecture and its huge stained glass windows."
     },
     "pt": {
       "nome": "Catedral Metropolitana",
-      "resumo": "Impressionante construção moderna no coração do centro histórico."
+      "resumo": "A Catedral Metropolitana se destaca pela arquitetura moderna, de forma cônica, e pelos enormes vitrais coloridos."
     },
     "es": {
       "nome": "Catedral Metropolitana",
-      "resumo": "Una construcción moderna impresionante en el corazón del centro histórico."
+      "resumo": "La Catedral Metropolitana destaca por su arquitectura moderna, de forma cónica, y por sus enormes vitrales de colores."
     }
   },
   {
@@ -168,15 +168,15 @@
     "destaque": true,
     "en": {
       "nome": "Santa Teresa",
-      "resumo": "One of the oldest neighborhoods in Rio, with a thoroughly bohemian atmosphere."
+      "resumo": "Santa Teresa is a historic, bohemian Rio neighborhood with a strong artistic and cultural atmosphere, full of art studios, bars, old mansions and narrow streets."
     },
     "pt": {
       "nome": "Santa Teresa",
-      "resumo": "Um dos bairros mais antigos do Rio, com total atmosfera boêmia."
+      "resumo": "Santa Teresa é um bairro histórico e boêmio do Rio, com forte atmosfera artística e cultural, repleto de ateliês, bares, casarões antigos e ruas estreitas."
     },
     "es": {
       "nome": "Santa Teresa",
-      "resumo": "Uno de los barrios más antiguos de Río, con una atmósfera totalmente bohemia."
+      "resumo": "Santa Teresa es un barrio histórico y bohemio de Río, con una fuerte atmósfera artística y cultural, lleno de talleres de artistas, bares, casonas antiguas y calles estrechas."
     }
   },
   {
@@ -186,15 +186,15 @@
     "destaque": false,
     "en": {
       "nome": "Favela",
-      "resumo": "A visit to a community, and a different perspective on Rio."
+      "resumo": "Favelas are urban communities that are part of Rio's history and identity. They are neighborhoods where thousands of people live, with their own shops, culture and a very strong community life."
     },
     "pt": {
       "nome": "Favela",
-      "resumo": "Visita a uma comunidade, outra perspectiva do Rio."
+      "resumo": "As favelas são comunidades urbanas que fazem parte da história e da identidade do Rio. São bairros onde vivem milhares de pessoas, com comércio, cultura e uma vida comunitária muito forte."
     },
     "es": {
       "nome": "Favela",
-      "resumo": "Una visita a una comunidad y otra perspectiva de Río."
+      "resumo": "Las favelas son comunidades urbanas que forman parte de la historia y de la identidad de Río. Son barrios donde viven miles de personas, con comercio, cultura y una vida comunitaria muy fuerte."
     }
   },
   {
@@ -204,15 +204,15 @@
     "destaque": true,
     "en": {
       "nome": "Botanical Garden",
-      "resumo": "Lush nature, century old species and one of the loveliest settings in the city."
+      "resumo": "Founded in 1808 by Dom João, Prince Regent of Portugal, the Botanical Garden brings together lush nature, century-old species and one of the most beautiful green spaces in the city."
     },
     "pt": {
       "nome": "Jardim Botânico",
-      "resumo": "Natureza exuberante, espécies centenárias e um dos cenários mais bonitos da cidade."
+      "resumo": "Fundado em 1808 por D. João, príncipe regente de Portugal, o Jardim Botânico reúne natureza exuberante, espécies centenárias e um dos mais belos espaços verdes da cidade."
     },
     "es": {
       "nome": "Jardín Botánico",
-      "resumo": "Naturaleza exuberante, especies centenarias y uno de los escenarios más bonitos de la ciudad."
+      "resumo": "Fundado en 1808 por don Juan, príncipe regente de Portugal, el Jardín Botánico reúne naturaleza exuberante, especies centenarias y uno de los espacios verdes más bellos de la ciudad."
     }
   },
   {
@@ -294,15 +294,15 @@
     "destaque": true,
     "en": {
       "nome": "South Zone beaches",
-      "resumo": "Copacabana, Ipanema and Leblon."
+      "resumo": "Copacabana, Ipanema and Leblon are the city's most famous beaches, symbols of the Rio way of life, with a seafront that is always buzzing."
     },
     "pt": {
       "nome": "Praias da Zona Sul",
-      "resumo": "Copacabana, Ipanema e Leblon."
+      "resumo": "Copacabana, Ipanema e Leblon são as praias mais famosas da cidade, símbolos do estilo de vida carioca, com a orla sempre movimentada."
     },
     "es": {
       "nome": "Playas de la Zona Sur",
-      "resumo": "Copacabana, Ipanema y Leblon."
+      "resumo": "Copacabana, Ipanema y Leblon son las playas más famosas de la ciudad, símbolos del estilo de vida carioca, con un paseo marítimo siempre animado."
     }
   },
   {

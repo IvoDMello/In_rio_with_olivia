@@ -17,7 +17,13 @@ saber o que trocar quando a Olivia enviar as fotos dela.
 | floresta-da-tijuca.jpg | [Marmosets in Parque Nacional da Tijuca.jpg](https://commons.wikimedia.org/wiki/File:Marmosets_in_Parque_Nacional_da_Tijuca.jpg) | Tserton | CC0 |
 | pantanal-carioca.jpg | [Hydrochoeris hydrochaeris in Brazil in Petrópolis, Rio de Janeiro, Brazil 09.jpg](https://commons.wikimedia.org/wiki/File:Hydrochoeris_hydrochaeris_in_Brazil_in_Petr%C3%B3polis,_Rio_de_Janeiro,_Brazil_09.jpg) | Wilfredor | CC0 |
 | mosteiro-sao-bento.jpg | [Rio-SaoBentoMonastery1.JPG](https://commons.wikimedia.org/wiki/File:Rio-SaoBentoMonastery1.JPG) | Fulviusbsas | Dominio publico |
+| praias-zona-sul.jpg | [Copacabana, Rio de Janeiro, Brazil.jpg](https://commons.wikimedia.org/wiki/File:Copacabana,_Rio_de_Janeiro,_Brazil.jpg) | Wilfredor | CC0 |
 | jardim-botanico.jpg | [Вид на статую Христа Искупителя из Ботанического сада Рио.jpg](https://commons.wikimedia.org/wiki/File:%D0%92%D0%B8%D0%B4_%D0%BD%D0%B0_%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%8E_%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%B0_%D0%98%D1%81%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8F_%D0%B8%D0%B7_%D0%91%D0%BE%D1%82%D0%B0%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D1%81%D0%B0%D0%B4%D0%B0_%D0%A0%D0%B8%D0%BE.jpg) | Lucien Semenovitch | CC0 |
+
+A foto de praias-zona-sul.jpg entrou em outubro de 2026 no lugar da foto da
+Olivia no mirante do Vidigal, que ela pediu para tirar do cartao de praias
+(agora e a segunda foto da favela, favela-2.jpg). A Olivia disse que vai
+escolher outras fotos de praia para mandar.
 
 ## Experiencias especiais (src/assets/specials)
 
@@ -36,6 +42,6 @@ material de divulgacao do Roxy, com autorizacao.
 |---|---|---|---|
 | hero.jpg | [Rio de Janeiro. Unsplash 7F65HDP0-E0.jpg](https://commons.wikimedia.org/wiki/File:Rio_de_Janeiro._Unsplash_7F65HDP0-E0.jpg) | Agustín Diaz Gargiulo | CC0 (publicada no Unsplash em janeiro de 2017, antes da troca de licenca) |
 
-A foto anterior do topo, da Olivia no Pao de Acucar, continua guardada como
-`olivia-pao-de-acucar.jpg`. Para volta-la ao topo, basta renomea-la para `hero.jpg`
-e trocar `posicao` no hero de `Home.astro` de volta para "78% 8%".
+As fotos anteriores do topo, a selfie da Olivia no Pao de Acucar e a silhueta do
+Cristo ao entardecer, ficaram em `fotos-cliente/`, fora do git, como
+`hero-olivia-pao-de-acucar.jpg` e `hero-cristo-entardecer.jpg`.

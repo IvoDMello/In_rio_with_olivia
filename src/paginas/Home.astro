@@ -29,12 +29,21 @@ const destaques = (await carregaLugares()).filter((l) => l.data.destaque);
 const especiais = await carregaEspeciais();
 
 // Descricao de cada foto, por id. Nem todo lugar tem foto, entao a chave pode faltar.
-const altLugar: Record<string, string | undefined> = t.fotos.lugares;
 const altEspecial: Record<string, string | undefined> = t.fotos.especiais;
 const artigos = (await artigosDe(lang)).slice(0, 3);
 
 const hero = fotoHero();
 const retrato = fotoOlivia();
+
+/**
+ * Recorte da foto do hero, o Pao de Acucar visto do Corcovado. A foto e
+ * horizontal (3:2) e o morro fica um pouco a direita do centro, enquanto a
+ * moldura muda com a tela: 4:5 no celular, 16:10 no tablet e 2:1 no desktop.
+ * No celular so a largura e cortada, e 72% deixa o morro inteiro; nas telas
+ * largas so a altura, e 40% tira ceu sem cortar o topo do morro. O texto fica
+ * sobre a baia. Trocando a foto, refazer o recorte.
+ */
+const recorteHero = 'object-[72%_40%]';
 ---
 
 <BaseLayout
@@ -48,7 +57,7 @@ const retrato = fotoOlivia();
     <Foto
       src={hero}
       alt={t.fotos.hero}
-      posicao="72% 40%"
+      classeImagem={recorteHero}
       proporcao="4 / 5"
       prioridade
       reservado="escuro"
@@ -163,7 +172,7 @@ const retrato = fotoOlivia();
         destaques.map((lugar) => (
           <CartaoLugar
             id={lugar.id}
-            alt={altLugar[lugar.id]}
+            lang={lang}
             nome={lugar.data[lang].nome}
             resumo={lugar.data[lang].resumo}
           />

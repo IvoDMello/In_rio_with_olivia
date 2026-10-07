@@ -90,8 +90,8 @@ export const CONTATO: Contatos = {
   /** E-mail de contato. */
   email: 'privatetourguideoliviaalves@gmail.com',
 
-  /** Numero do Cadastur, exibido no rodape. PENDENTE */
-  cadastur: '',
+  /** Numero do Cadastur, exibido no rodape e nas credenciais de Como eu trabalho. */
+  cadastur: '19.385243.50-7',
 };
 
 /**
