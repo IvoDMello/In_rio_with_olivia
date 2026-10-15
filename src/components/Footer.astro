@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import Icone from './Icone.astro';
-import { CONTATO, SITE, linkWhatsApp, whatsappLegivel } from '~/config/site';
+import { CONTATO, SELO_KAYAK, SITE, linkWhatsApp, whatsappLegivel } from '~/config/site';
 import { dicionario, MENU, rota, type Idioma } from '~/i18n/config';
 
 interface Props {
@@ -54,6 +54,33 @@ const temContato = Boolean(hrefWhats || CONTATO.email || redes.length);
         <p class="mt-6 max-w-xs text-sm leading-relaxed text-nevoa/70">
           {t.rodape.sobre}
         </p>
+
+        {
+          /*
+           * Selo oficial do KAYAK. Sem noreferrer de proposito: o KAYAK
+           * precisa ver de onde veio o clique para reconhecer o selo.
+           * A altura fica reservada antes de a imagem carregar.
+           */
+          SELO_KAYAK.link && (
+            <a
+              href={SELO_KAYAK.link}
+              target="_blank"
+              rel="noopener"
+              data-analytics="kayak-rodape"
+              class="mt-8 block w-fit rounded-md transition-opacity duration-200 hover:opacity-85"
+            >
+              <img
+                src={SELO_KAYAK.imagem}
+                alt={t.rodape.kayak}
+                height={SELO_KAYAK.altura}
+                loading="lazy"
+                decoding="async"
+                class="block w-auto"
+                style={`height: ${SELO_KAYAK.altura}px`}
+              />
+            </a>
+          )
+        }
       </div>
 
       <nav aria-label={t.rodape.navegacao}>

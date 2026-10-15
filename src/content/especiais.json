@@ -62,5 +62,37 @@
       "nome": "Favela Tour",
       "resumo": "Visita guiada a una comunidad, con acompañamiento local y tiempo para conversar con quienes viven allí."
     }
+  },
+  {
+    "id": "ensaio-samba",
+    "ordem": 5,
+    "en": {
+      "nome": "Samba school rehearsal",
+      "resumo": "Carnival in the making, with the drum section, the dancers and the whole school community rehearsing together."
+    },
+    "pt": {
+      "nome": "Ensaio de escola de samba",
+      "resumo": "Os preparativos do Carnaval de perto, com a bateria, os passistas e toda a comunidade da escola ensaiando juntos."
+    },
+    "es": {
+      "nome": "Ensayo de escuela de samba",
+      "resumo": "Los preparativos del Carnaval de cerca, con la batería, los pasistas y toda la comunidad de la escuela ensayando juntos."
+    }
+  },
+  {
+    "id": "futebol",
+    "ordem": 6,
+    "en": {
+      "nome": "Football match",
+      "resumo": "A game at the Maracanã or another stadium in the city, right in the middle of the Rio crowd."
+    },
+    "pt": {
+      "nome": "Partida de futebol",
+      "resumo": "Um jogo no Maracanã ou em outro estádio da cidade, no meio da torcida carioca."
+    },
+    "es": {
+      "nome": "Partido de fútbol",
+      "resumo": "Un partido en el Maracaná o en otro estadio de la ciudad, en medio de la hinchada carioca."
+    }
   }
 ]

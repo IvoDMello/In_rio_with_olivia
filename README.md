@@ -45,7 +45,7 @@ Enquanto a foto não existe, aparece um espaço reservado discreto com o símbol
 | `src/assets/fotos/` | `olivia.jpg` | Retrato na home e no Sobre mim |
 | `src/assets/fotos/` | `equipe.jpg` | Seção da equipe no Sobre mim |
 | `src/assets/places/` | `cristo-redentor.jpg` e os outros ids | Cartões das experiências |
-| `src/assets/specials/` | `helicoptero.jpg`, `asa-delta.jpg`, `roxy-dinner-show.jpg`, `favela-tour.jpg` | Experiências especiais |
+| `src/assets/specials/` | `helicoptero.jpg`, `asa-delta.jpg`, `roxy-dinner-show.jpg`, `favela-tour.jpg`, `ensaio-samba.jpg`, `futebol.jpg` | Experiências especiais |
 | `src/assets/dicas/` | nome indicado no `imagem:` do artigo | Capa dos artigos |
 | `src/assets/instagram/` | `01.jpg` até `06.jpg` | Faixa do Instagram na home |
 

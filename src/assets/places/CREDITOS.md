@@ -31,17 +31,29 @@ escolher outras fotos de praia para mandar.
 |---|---|---|---|
 | helicoptero.jpg | [Bell 206L-4 LongRanger IV over Botafogo Bay, Rio de Janeiro.jpg](https://commons.wikimedia.org/wiki/File:Bell_206L-4_LongRanger_IV_over_Botafogo_Bay,_Rio_de_Janeiro.jpg) | Wilfredor | CC0 |
 | asa-delta.jpg | [Tandem hang gliding.jpg](https://commons.wikimedia.org/wiki/File:Tandem_hang_gliding.jpg) | Konrad22 at English Wikipedia | Dominio publico |
+| ensaio-samba.jpg | [2015-02-15 - Acadêmicos de Vigário Geral (24).JPG](https://commons.wikimedia.org/wiki/File:2015-02-15_-_Acad%C3%AAmicos_de_Vig%C3%A1rio_Geral_(24).JPG) | Q3 - 011 | CC0 |
+| futebol.jpg | [FFCxCCP16052024.jpg](https://commons.wikimedia.org/wiki/File:FFCxCCP16052024.jpg) | Alexandre M. B. Berwanger | CC0 |
+
+As duas ultimas foram recortadas em 3:2. A do ensaio nao e de ensaio: e a bateria
+da Academicos de Vigario Geral desfilando na Intendente Magalhaes, no Carnaval de
+2015. Fotos de ensaio de verdade so existem com licenca CC BY, que exige credito,
+ou em fotos amadoras escuras demais. A do futebol e Fluminense x Cerro Porteno no
+Maracana, pela Libertadores de 2024.
 
 O Roxy Dinner Show continua sem foto: nao ha imagem livre do show, e uma foto
 de samba de outro lugar venderia outra coisa. A foto deve vir da Olivia ou do
-material de divulgacao do Roxy, com autorizacao.
+material de divulgacao do Roxy, com autorizacao. Em outubro de 2026 foi testada
+a fachada do antigo Cine Roxy de 2017 (Commons, CC0), e a cliente recusou porque
+nao e o Roxy do show.
 
 ## Topo da Home (src/assets/fotos/hero.jpg)
 
-| Arquivo | Original | Autor | Licenca |
-|---|---|---|---|
-| hero.jpg | [Rio de Janeiro. Unsplash 7F65HDP0-E0.jpg](https://commons.wikimedia.org/wiki/File:Rio_de_Janeiro._Unsplash_7F65HDP0-E0.jpg) | Agustín Diaz Gargiulo | CC0 (publicada no Unsplash em janeiro de 2017, antes da troca de licenca) |
+Desde outubro de 2026 o topo usa uma foto da propria Olivia, um grupo de clientes
+ao lado de mototaxis, e nao ha credito a registrar.
 
-As fotos anteriores do topo, a selfie da Olivia no Pao de Acucar e a silhueta do
-Cristo ao entardecer, ficaram em `fotos-cliente/`, fora do git, como
+A foto de banco anterior, o Pao de Acucar visto do Corcovado
+([Rio de Janeiro. Unsplash 7F65HDP0-E0.jpg](https://commons.wikimedia.org/wiki/File:Rio_de_Janeiro._Unsplash_7F65HDP0-E0.jpg),
+de Agustín Diaz Gargiulo, CC0), ficou em `fotos-cliente/`, fora do git, como
+`hero-pao-de-acucar-corcovado.jpg`. As anteriores a ela, a selfie da Olivia no
+Pao de Acucar e a silhueta do Cristo ao entardecer, ficaram na mesma pasta como
 `hero-olivia-pao-de-acucar.jpg` e `hero-cristo-entardecer.jpg`.

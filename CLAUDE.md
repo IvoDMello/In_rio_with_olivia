@@ -297,6 +297,22 @@ cabia mais em 360px. Os botões passaram a 36px no celular e voltam a 40px a par
 de 768px; o espaço entre eles caiu de 8 para 6px no celular. O seletor de idioma
 acompanhou a mesma altura.
 
+### O selo do KAYAK fica no rodapé
+
+A Olivia pediu o selo "Find us on KAYAK Guides" no site para ganhar as vantagens de
+parceira do KAYAK. Ele entrou no rodapé, embaixo do texto curto ao lado do logo:
+assim aparece em todas as páginas, e o laranja do selo funciona como credencial
+sobre o Atlântico sem disputar atenção com o botão do WhatsApp. É a única cor fora
+da paleta no site, e foi aceita por ser a marca de terceiros.
+
+O link e a imagem são os do código de incorporação oficial, sem mudança, e ficam em
+`SELO_KAYAK`, no `site.ts`. O tamanho é o médio do painel do KAYAK, com 150px de
+altura, no lugar do pequeno, de 50px, usado antes. A imagem é carregada do servidor do KAYAK, e não da
+pasta do site, porque o CDN deles recusa downloads fora do navegador e porque é o
+selo oficial que eles reconhecem. O link não leva `noreferrer`, para o KAYAK saber
+de onde veio o clique. Os textos alternativos ficam em `rodape.kayak`, nos arquivos
+de i18n.
+
 ### Nada é inventado
 
 Onde falta informação real, o bloco não aparece, em vez de exibir conteúdo de exemplo:
@@ -315,13 +331,21 @@ de imagens da internet ou montagens geradas por IA, e ficaram de fora. Para a gr
 não parecer inacabada, 12 lugares usam fotos provisórias do Wikimedia Commons, todas
 em domínio público ou CC0. A lista e a origem de cada uma estão em
 `src/assets/places/CREDITOS.md`. A regra vale para os cartões de lugar e para os
-cartões de experiências especiais (helicóptero e asa-delta também usam foto de
-banco) e para o topo da Home. O retrato, a equipe e o Instagram usam apenas fotos
-da própria Olivia. Uma foto de banco com pessoas desconhecidas no bloco da equipe
-apresentaria estranhos como guias dela.
+cartões de experiências especiais (helicóptero, asa-delta, ensaio de escola de
+samba e futebol também usam foto de banco). O topo da Home, o retrato, a equipe e
+o Instagram usam apenas fotos da própria Olivia. Uma foto de banco com pessoas
+desconhecidas no bloco da equipe apresentaria estranhos como guias dela.
 
 O Roxy Dinner Show ficou sem foto, porque não existe imagem livre do show e uma
 foto de samba de outro lugar mostraria outro produto.
+
+Em outubro de 2026 as experiências especiais ganharam o ensaio de escola de samba
+e a partida de futebol, e passaram de quatro para seis. A grade foi de quatro para
+três colunas no desktop, para fechar duas linhas cheias em vez de deixar dois
+buracos. Não existe foto livre de ensaio de quadra com qualidade para o site, então
+o cartão usa a bateria de uma escola do Rio desfilando na Intendente Magalhães, e a
+descrição da foto fala de ritmistas, não de ensaio. É a foto mais fraca do bloco e
+a primeira a trocar quando a Olivia tiver uma de ensaio.
 
 A Olivia pediu para tirar das Praias da Zona Sul a foto do mirante do Vidigal, que
 mostra a praia de cima da favela. Ela virou a segunda foto da Favela, que a Olivia
@@ -336,30 +360,36 @@ funciona com o dedo e o teclado mesmo sem JavaScript.
 As descrições das fotos (`alt`) ficam em `fotos`, nos arquivos de i18n, pelo nome do
 arquivo (`favela-2` tem a sua). Ao trocar uma foto, trocar também a frase dela.
 
-### O topo da Home é o Pão de Açúcar visto do Corcovado
+### O topo da Home é um grupo de clientes da Olivia
 
 A foto do topo era uma selfie da Olivia no alto do Pão de Açúcar. Foram testadas
 três substitutas: uma foto aérea do Cristo, que era captura de tela com 866 px de
 largura e não ficou boa nem ampliada por IA; uma vista de Ipanema a partir do
 Arpoador, que no celular deixava o texto sobre prédios e cactos; e a silhueta do
 Cristo no Corcovado contra o céu laranja, que a cliente escolheu e ficou no ar
-por um tempo.
+por um tempo. Depois veio a vista clássica do Corcovado, com o Pão de Açúcar e a
+enseada de Botafogo, em CC0.
 
-A foto atual é a vista clássica do Corcovado: o Pão de Açúcar, a enseada de
-Botafogo cheia de barcos e a Baía de Guanabara com Niterói ao fundo, em CC0 (ver
-`CREDITOS.md`). O pedido era uma foto de drone com o Cristo, a baía e o Pão de
-Açúcar juntos, mas não existe foto livre com os três; esta é tirada do pé do
-Cristo e mostra os outros dois. A Olivia continua aparecendo logo abaixo, no bloco
-de apresentação, com o retrato dela.
+Em outubro de 2026 a cliente trocou a foto de banco por uma foto dela: um grupo
+de viajantes de capacete, ao lado de mototáxis, numa rua de favela. É quadrada,
+com 1600 px. Foi testada também uma foto de grupo no calçadão do Arpoador, que
+tinha só 960 px e saiu borrada no computador.
+
+Ficaram registrados três pontos contra a foto atual: o grupo grande contrasta com
+a promessa de tour privado do título, o texto do topo cai sobre a fila da frente,
+e aparecem moradores (mototaxistas e pessoas numa janela), cujo uso da imagem
+depende de autorização. Se a Olivia mandar outra foto, procurar uma
+com espaço livre para o texto.
 
 A foto fica em `src/assets/fotos/hero.jpg`, o nome que `fotoHero()` procura. A
 moldura do topo muda com a tela (4:5 no celular, 16:10 no tablet, 2:1 no
 desktop), e o recorte fica em `recorteHero`, no `Home.astro`. Trocando a foto,
-refazer o recorte.
+refazer o recorte e a descrição `fotos.hero` nos arquivos de i18n.
 
-A selfie, a silhueta do Cristo e as outras candidatas ficaram em `fotos-cliente/`,
-fora do git (`hero-olivia-pao-de-acucar.jpg` e `hero-cristo-entardecer.jpg`).
-Todas continuam no histórico do repositório.
+As candidatas ficaram em `fotos-cliente/`, fora do git:
+`hero-pao-de-acucar-corcovado.jpg`, `turistas1.jpeg` (a do Arpoador) e
+`turistas2.jpeg` (o original da atual). As anteriores continuam no histórico do
+repositório.
 
 ### Domínio .com na Cloudflare, hospedagem na Netlify
 

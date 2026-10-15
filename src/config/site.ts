@@ -95,6 +95,22 @@ export const CONTATO: Contatos = {
 };
 
 /**
+ * Selo "Find us on KAYAK Guides", exibido no rodape de todas as paginas.
+ *
+ * Copiado do codigo de incorporacao que o KAYAK fornece, sem mudar o link nem
+ * a imagem, porque e o selo oficial apontando para a pagina deles que conta
+ * para as vantagens de parceiro. A imagem fica no servidor do KAYAK: o CDN
+ * deles recusa downloads feitos fora do navegador. Deixe `link` vazio para
+ * tirar o selo do site.
+ */
+export const SELO_KAYAK: { link: string; imagem: string; altura: number } = {
+  link: 'https://www.kayak.com.br/Rio-de-Janeiro.24146.guide',
+  imagem: 'https://content.r9cdn.net/frontier/assets/D3QWX7t9ZP.png',
+  /** Em px. Tamanho "Medio" escolhido no painel do KAYAK. */
+  altura: 150,
+};
+
+/**
  * Idiomas em que a Olivia e a equipe atendem nos passeios.
  *
  * Nao confundir com os idiomas do site (src/i18n/config.ts), que sao tres.

@@ -36,14 +36,15 @@ const hero = fotoHero();
 const retrato = fotoOlivia();
 
 /**
- * Recorte da foto do hero, o Pao de Acucar visto do Corcovado. A foto e
- * horizontal (3:2) e o morro fica um pouco a direita do centro, enquanto a
- * moldura muda com a tela: 4:5 no celular, 16:10 no tablet e 2:1 no desktop.
- * No celular so a largura e cortada, e 72% deixa o morro inteiro; nas telas
- * largas so a altura, e 40% tira ceu sem cortar o topo do morro. O texto fica
- * sobre a baia. Trocando a foto, refazer o recorte.
+ * Recorte da foto do hero, o grupo de clientes de capacete ao lado dos
+ * mototaxis. A foto e quadrada e os rostos ficam um pouco acima do meio,
+ * enquanto a moldura muda com a tela: 4:5 no celular, 16:10 no tablet e 2:1
+ * no desktop. No celular so a largura e cortada, e 50% mantem o grupo no
+ * centro; nas telas largas so a altura, e 55% guarda o braco erguido e os
+ * capacetes do fundo, cortando o alto das casas e as pernas. O texto fica
+ * sobre a fila da frente. Trocando a foto, refazer o recorte.
  */
-const recorteHero = 'object-[72%_40%]';
+const recorteHero = 'object-[50%_55%]';
 ---
 
 <BaseLayout
@@ -199,7 +200,7 @@ const recorteHero = 'object-[72%_40%]';
     titulo={t.experiencias.especiais.titulo}
     texto={t.experiencias.especiais.texto}
   >
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
         especiais.map((especial) => (
           <CartaoEspecial

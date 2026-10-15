@@ -238,7 +238,8 @@
     "contato": "Contacto",
     "redes": "Redes",
     "cadastur": "Cadastur",
-    "direitos": "Todos los derechos reservados."
+    "direitos": "Todos los derechos reservados.",
+    "kayak": "Encuéntranos en KAYAK Guides"
   },
   "avaliacoes": {
     "em": "en TripAdvisor",
@@ -274,7 +275,7 @@
     "it": "Italiano"
   },
   "fotos": {
-    "hero": "El Pan de Azúcar y la ensenada de Botafogo llena de barcos, con la Bahía de Guanabara y Niterói al fondo, vistos desde el Corcovado",
+    "hero": "Un grupo de viajeros con casco sonriendo a la cámara junto a mototaxis, en una calle de una favela de Río",
     "retrato": "Olivia, con su credencial de guía de turismo, frente al Cristo Redentor",
     "instagram": [
       "Olivia colgada de la Pedra do Telégrafo, muy por encima del mar, en Guaratiba",
@@ -308,7 +309,9 @@
     "especiais": {
       "helicoptero": "Un helicóptero sobre la ensenada de Botafogo, con el Corcovado y el Cristo Redentor al fondo",
       "asa-delta": "Instructor y pasajero en un vuelo doble de ala delta sobre el bosque, con São Conrado y el mar al fondo",
-      "favela-tour": "Dos viajeros en una escalera estrecha dentro de una favela"
+      "favela-tour": "Dos viajeros en una escalera estrecha dentro de una favela",
+      "ensaio-samba": "Ritmistas de una escuela de samba de Río, con camisa a rayas y sombrero blanco, tocando tamborim",
+      "futebol": "El Maracaná lleno durante un partido, con el césped y las gradas repletas"
     }
   }
 }
