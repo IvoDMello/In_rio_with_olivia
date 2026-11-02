@@ -16,8 +16,9 @@ import { IDIOMAS, NOME_IDIOMA, dicionario, type Idioma } from '~/i18n/config';
  *   sem JavaScript. O script so acrescenta fechar com Escape ou com um clique
  *   fora, que o elemento nativo nao faz.
  *
- * - `lista` (painel lateral do celular): as tres opcoes abertas, ja que ali
- *   sobra espaco e um menu dentro de outro menu seria um clique a mais.
+ * - `lista` (painel lateral do celular): uma linha com o idioma atual que,
+ *   ao ser tocada, abre os outros dois logo abaixo. As tres opcoes sempre
+ *   abertas ocupavam tanto espaco que o ultimo item do menu ficava cortado.
  *
  * O clique tambem grava a escolha, que e o que a raiz do site le na proxima
  * visita para nao perguntar de novo.
@@ -86,32 +87,38 @@ const opcoes = IDIOMAS.map((idioma) => ({
       </div>
     </details>
   ) : (
-    <nav aria-label={t.nav.idioma} class={classe}>
-      <ul role="list" class="flex flex-col gap-0.5">
-        {opcoes.map((opcao) => (
-          <li>
-            <a
-              href={opcao.href}
-              hreflang={opcao.idioma}
-              lang={opcao.idioma}
-              data-idioma={opcao.idioma}
-              aria-current={opcao.ativo ? 'true' : undefined}
-              class:list={[
-                'flex items-center gap-3 rounded-xl px-2.5 py-2.5 text-[0.95rem]',
-                'transition-colors duration-200',
-                opcao.ativo
-                  ? 'bg-nevoa font-medium text-atlantico'
-                  : 'text-pedra hover:bg-nevoa hover:text-atlantico',
-              ]}
-            >
-              <Bandeira idioma={opcao.idioma} tamanho={24} />
-              <span>{opcao.nome}</span>
-              {opcao.ativo && <Icone nome="confere" tamanho={16} class="ml-auto text-atlantico" />}
-            </a>
-          </li>
-        ))}
+    <details data-seletor-idioma class={classe}>
+      <summary
+        class="flex cursor-pointer list-none items-center gap-3 rounded-xl bg-nevoa px-2.5 py-2.5
+               text-[0.95rem] font-medium text-atlantico transition-colors duration-200
+               hover:bg-nevoa-forte"
+      >
+        <span class="sr-only">{`${t.nav.escolherIdioma}, `}</span>
+        <Bandeira idioma={lang} tamanho={24} />
+        <span>{NOME_IDIOMA[lang]}</span>
+        <Icone nome="chevron" tamanho={16} class="seta-idioma ml-auto text-atlantico/70 transition-transform duration-200" />
+      </summary>
+
+      <ul role="list" data-lista-idiomas class="mt-0.5 flex flex-col gap-0.5">
+        {opcoes
+          .filter((opcao) => !opcao.ativo)
+          .map((opcao) => (
+            <li>
+              <a
+                href={opcao.href}
+                hreflang={opcao.idioma}
+                lang={opcao.idioma}
+                data-idioma={opcao.idioma}
+                class="flex items-center gap-3 rounded-xl px-2.5 py-2.5 text-[0.95rem] text-pedra
+                       transition-colors duration-200 hover:bg-nevoa hover:text-atlantico"
+              >
+                <Bandeira idioma={opcao.idioma} tamanho={24} />
+                <span>{opcao.nome}</span>
+              </a>
+            </li>
+          ))}
       </ul>
-    </nav>
+    </details>
   )
 }
 
@@ -175,13 +182,22 @@ const opcoes = IDIOMAS.map((idioma) => ({
       });
     });
 
-    document.addEventListener('keydown', (evento) => {
-      if (evento.key !== 'Escape') return;
-      seletores.forEach((seletor) => {
-        if (!seletor.open) return;
-        seletor.open = false;
-        seletor.querySelector('summary')?.focus();
-      });
-    });
+    // Na fase de captura, para que o Escape feche so a lista de idiomas e nao
+    // chegue ao painel lateral, que tambem fecha com Escape.
+    document.addEventListener(
+      'keydown',
+      (evento) => {
+        if (evento.key !== 'Escape') return;
+        let fechou = false;
+        seletores.forEach((seletor) => {
+          if (!seletor.open) return;
+          seletor.open = false;
+          seletor.querySelector('summary')?.focus();
+          fechou = true;
+        });
+        if (fechou) evento.stopPropagation();
+      },
+      true,
+    );
   }
 </script>

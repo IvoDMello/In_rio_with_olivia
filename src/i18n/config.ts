@@ -1,6 +1,7 @@
 import en from './en.json';
 import pt from './pt.json';
 import es from './es.json';
+import { AVALIACOES } from '../data/reviews';
 
 export const IDIOMAS = ['en', 'pt', 'es'] as const;
 export type Idioma = (typeof IDIOMAS)[number];
@@ -50,14 +51,21 @@ export const SECOES = {
   home: { en: '', pt: '', es: '' },
   comoTrabalho: { en: 'how-i-work', pt: 'como-trabalho', es: 'como-trabajo' },
   experiencias: { en: 'experiences', pt: 'experiencias', es: 'experiencias' },
+  depoimentos: { en: 'reviews', pt: 'depoimentos', es: 'testimonios' },
   dicas: { en: 'tips', pt: 'dicas', es: 'consejos' },
   contato: { en: 'contact', pt: 'contato', es: 'contacto' },
 } as const satisfies Record<string, Record<Idioma, string>>;
 
 export type Secao = keyof typeof SECOES;
 
-/** Secoes que aparecem no menu, na ordem. */
-export const MENU: Secao[] = ['home', 'comoTrabalho', 'experiencias', 'dicas', 'contato'];
+/**
+ * Secoes que aparecem no menu, na ordem.
+ * Depoimentos so entra quando houver avaliacoes reais em src/data/reviews.ts:
+ * um item de menu que leva a uma pagina vazia passaria a impressao contraria.
+ */
+export const MENU: Secao[] = (
+  ['home', 'comoTrabalho', 'experiencias', 'depoimentos', 'dicas', 'contato'] as Secao[]
+).filter((secao) => secao !== 'depoimentos' || AVALIACOES.length > 0);
 
 /** Caminho absoluto de uma secao em um idioma. Ex.: rota('contato', 'pt') -> /pt/contato */
 export function rota(secao: Secao, lang: Idioma): string {

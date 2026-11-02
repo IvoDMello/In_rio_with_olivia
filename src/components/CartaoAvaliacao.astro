@@ -1,42 +1,111 @@
 ---
 import Icone from './Icone.astro';
-import type { Avaliacao } from '~/data/reviews';
+import { noIdioma, type Avaliacao } from '~/data/reviews';
 import { LOCALE_DATA, dicionario, type Idioma } from '~/i18n/config';
 
+/**
+ * Cartao de um depoimento do TripAdvisor. Usado na Home, em grade de tres,
+ * e na pagina de Depoimentos, em colunas. Fundo branco: funciona sobre Nevoa.
+ */
 interface Props {
   avaliacao: Avaliacao;
   lang: Idioma;
+  class?: string;
 }
 
-const { avaliacao, lang } = Astro.props;
+const { avaliacao, lang, class: classe = '' } = Astro.props;
 const t = dicionario(lang);
 
+// A data fica em UTC de proposito. '2019-03-01' e meia-noite em UTC, que no
+// fuso do Brasil ainda e 28 de fevereiro, e o cartao mostraria o mes errado.
 const data = new Date(avaliacao.data).toLocaleDateString(LOCALE_DATA[lang], {
   month: 'long',
   year: 'numeric',
+  timeZone: 'UTC',
 });
+
+const titulo = avaliacao.titulo ? noIdioma(avaliacao.titulo, lang) : '';
+const texto = noIdioma(avaliacao.texto, lang);
+
+const outroIdioma = Boolean(avaliacao.idioma) && avaliacao.idioma !== lang;
+
+// Com uma versao por idioma, a desta pagina e traducao sempre que o viajante
+// escreveu em outro idioma, e o cartao diz isso.
+const traduzidoDe: Record<string, string | undefined> = t.avaliacoes.traduzidoDe;
+const rotuloTraducao =
+  outroIdioma && typeof avaliacao.texto !== 'string'
+    ? (traduzidoDe[avaliacao.idioma!] ?? t.avaliacoes.traduzido)
+    : '';
+
+// Com uma string so, o original aparece sem traducao: marca o idioma do
+// trecho para o leitor de tela pronunciar certo.
+const langTrecho =
+  outroIdioma && typeof avaliacao.texto === 'string' ? avaliacao.idioma : undefined;
+
+const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[lang]);
 ---
 
-<figure class="revelar flex h-full flex-col bg-branco p-7 md:p-8">
-  <Icone nome="aspas" tamanho={26} class="text-sol" />
-
-  <blockquote class="mt-5 flex-1">
-    <p class="text-pretty leading-relaxed text-atlantico">{avaliacao.texto[lang]}</p>
-  </blockquote>
-
-  <figcaption class="mt-7 border-t border-nevoa pt-5">
-    <div class="flex items-center gap-2">
-      <div class="flex items-center gap-1 text-sol" aria-hidden="true">
-        {Array.from({ length: avaliacao.nota }).map(() => <Icone nome="estrela" tamanho={14} />)}
-      </div>
-      <span class="text-xs font-semibold text-atlantico">
-        <span class="sr-only">{t.avaliacoes.notaDe}: </span>{avaliacao.nota}/5
-      </span>
+<figure class:list={['revelar flex flex-col bg-branco p-6 sm:p-7 md:p-8', classe]}>
+  <div class="flex items-center justify-between gap-4">
+    <div class="flex items-center gap-1 text-sol" aria-hidden="true">
+      {Array.from({ length: avaliacao.nota }).map(() => <Icone nome="estrela" tamanho={15} />)}
     </div>
+    <span class="text-xs font-semibold text-atlantico">
+      <span class="sr-only">{t.avaliacoes.notaDe}: </span>{avaliacao.nota}/5
+    </span>
+  </div>
 
-    <p class="mt-3 text-sm font-medium text-atlantico">{avaliacao.autor}</p>
-    <p class="mt-0.5 text-xs text-pedra">
-      {avaliacao.origem ? `${avaliacao.origem} · ` : ''}{data}
-    </p>
+  <div class="mt-6 flex-1">
+    <blockquote lang={langTrecho}>
+      {
+        titulo && (
+          <p class="font-titulo text-titulo-cartao text-pretty text-atlantico">{titulo}</p>
+        )
+      }
+      <p
+        class:list={[
+          'whitespace-pre-line text-pretty text-[0.95rem] leading-relaxed text-atlantico',
+          titulo && 'mt-3',
+        ]}
+      >
+        {texto}
+      </p>
+    </blockquote>
+
+    {rotuloTraducao && <p class="mt-4 text-xs text-pedra">{rotuloTraducao}</p>}
+  </div>
+
+  <figcaption class="mt-7 flex items-center gap-3.5 border-t border-nevoa pt-5">
+    <span
+      class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-nevoa
+             font-titulo text-lg text-atlantico"
+      aria-hidden="true"
+    >
+      {inicial}
+    </span>
+
+    <span class="min-w-0 flex-1">
+      <span class="block text-sm font-medium text-atlantico">{avaliacao.autor}</span>
+      <span class="mt-0.5 block text-xs text-pedra">
+        {avaliacao.origem ? `${noIdioma(avaliacao.origem, lang)} · ` : ''}{data}
+      </span>
+    </span>
+
+    {
+      avaliacao.url && (
+        <a
+          href={avaliacao.url}
+          target="_blank"
+          rel="noopener"
+          data-analytics="tripadvisor-avaliacao"
+          aria-label={t.avaliacoes.lerDeAutor.replace('{nome}', avaliacao.autor)}
+          title={t.avaliacoes.lerNoTripadvisor}
+          class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-atlantico
+                 transition-colors duration-200 hover:bg-nevoa"
+        >
+          <Icone nome="tripadvisor" tamanho={20} />
+        </a>
+      )
+    }
   </figcaption>
 </figure>

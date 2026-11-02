@@ -31,8 +31,8 @@ export function avisoPendencias(): AstroIntegration {
 
         if (AVALIACOES.length === 0) {
           pendencias.push(
-            'Avaliacoes: a secao fica oculta ate haver depoimentos reais ' +
-              'em src/data/reviews.ts.',
+            'Avaliacoes: a secao da Home fica oculta e a pagina de Depoimentos ' +
+              'sai do menu ate haver depoimentos reais em src/data/reviews.ts.',
           );
         }
 

@@ -12,7 +12,7 @@ import {
   TAG_IDIOMA_FALADO,
   SITE,
 } from '~/config/site';
-import { AVALIACOES, mediaDasNotas } from '~/data/reviews';
+import { AVALIACOES, mediaDasNotas, noIdioma } from '~/data/reviews';
 import {
   alternativas as alternativasDoCaminho,
   dicionario,
@@ -105,7 +105,7 @@ if (media !== null) {
     '@type': 'Review',
     author: { '@type': 'Person', name: a.autor },
     datePublished: a.data,
-    reviewBody: a.texto[lang],
+    reviewBody: noIdioma(a.texto, lang),
     reviewRating: { '@type': 'Rating', ratingValue: a.nota, bestRating: 5 },
   }));
 }

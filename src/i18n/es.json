@@ -12,6 +12,10 @@
       "titulo": "Experiencias en Río",
       "descricao": "Cristo Redentor, Pan de Azúcar, Santa Teresa, playas, naturaleza y mucho más. Elige lo que te gusta y yo armo el itinerario a tu manera."
     },
+    "depoimentos": {
+      "titulo": "Testimonios de viajeros",
+      "descricao": "Opiniones reales de TripAdvisor de viajeros que hicieron un tour privado conmigo en Río de Janeiro."
+    },
     "dicas": {
       "titulo": "Consejos sobre Río",
       "descricao": "Itinerarios, ideas y consejos prácticos de quien guía en Río de Janeiro desde hace más de 20 años."
@@ -29,6 +33,7 @@
     "home": "Inicio",
     "comoTrabalho": "Cómo trabajo",
     "experiencias": "Experiencias",
+    "depoimentos": "Testimonios",
     "dicas": "Consejos",
     "contato": "Contacto",
     "abrirMenu": "Abrir menú",
@@ -51,6 +56,7 @@
     "verDicas": "Ver todos los consejos",
     "comoTrabalho": "Ver cómo trabajo",
     "tripadvisor": "Ver todas en TripAdvisor",
+    "verDepoimentos": "Ver más testimonios",
     "instagram": "Seguir en Instagram",
     "voltar": "Volver",
     "enviar": "Enviar mensaje",
@@ -159,6 +165,11 @@
       "texto": "El precio depende del tamaño del grupo, la duración y el transporte elegido. Dime qué tienes en mente y te preparo un presupuesto."
     }
   },
+  "depoimentos": {
+    "sobretitulo": "Testimonios",
+    "titulo": "En palabras de quienes viajaron conmigo",
+    "texto": "Opiniones que los viajeros dejaron en TripAdvisor después de pasar el día conmigo en Río."
+  },
   "dicas": {
     "sobretitulo": "Consejos",
     "titulo": "Consejos sobre Río",
@@ -243,7 +254,19 @@
   },
   "avaliacoes": {
     "em": "en TripAdvisor",
-    "notaDe": "Puntuación"
+    "notaDe": "Puntuación",
+    "lerNoTripadvisor": "Leer en TripAdvisor",
+    "lerDeAutor": "Leer la opinión de {nome} en TripAdvisor",
+    "traduzido": "Traducción",
+    "traduzidoDe": {
+      "en": "Traducido del inglés",
+      "pt": "Traducido del portugués",
+      "es": "Traducido del español",
+      "fr": "Traducido del francés",
+      "it": "Traducido del italiano",
+      "de": "Traducido del alemán",
+      "nl": "Traducido del neerlandés"
+    }
   },
   "whatsapp": {
     "aria": "Escribir a Olivia por WhatsApp",

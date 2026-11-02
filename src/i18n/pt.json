@@ -12,6 +12,10 @@
       "titulo": "Experiências no Rio",
       "descricao": "Cristo Redentor, Pão de Açúcar, Santa Teresa, praias, trilhas e muito mais. Escolha o que você gosta e eu monto o roteiro do seu jeito."
     },
+    "depoimentos": {
+      "titulo": "Depoimentos de viajantes",
+      "descricao": "Avaliações reais do TripAdvisor, deixadas por viajantes que fizeram tours privados comigo no Rio de Janeiro."
+    },
     "dicas": {
       "titulo": "Dicas do Rio",
       "descricao": "Roteiros, ideias e conselhos de quem guia no Rio de Janeiro há mais de 20 anos. O que fazer, quando ir e como aproveitar melhor a cidade."
@@ -29,6 +33,7 @@
     "home": "Home",
     "comoTrabalho": "Como eu trabalho",
     "experiencias": "Experiências",
+    "depoimentos": "Depoimentos",
     "dicas": "Dicas",
     "contato": "Contato",
     "abrirMenu": "Abrir menu",
@@ -51,6 +56,7 @@
     "verDicas": "Ver todas as dicas",
     "comoTrabalho": "Ver como eu trabalho",
     "tripadvisor": "Ver todas no TripAdvisor",
+    "verDepoimentos": "Ver mais depoimentos",
     "instagram": "Seguir no Instagram",
     "voltar": "Voltar",
     "enviar": "Enviar mensagem",
@@ -159,6 +165,11 @@
       "texto": "O valor depende do tamanho do grupo, da duração e do transporte escolhido. Me diga o que você tem em mente e eu faço um orçamento."
     }
   },
+  "depoimentos": {
+    "sobretitulo": "Depoimentos",
+    "titulo": "Nas palavras de quem viajou comigo",
+    "texto": "Avaliações que os viajantes deixaram no TripAdvisor depois de passar o dia comigo no Rio."
+  },
   "dicas": {
     "sobretitulo": "Dicas",
     "titulo": "Dicas do Rio",
@@ -243,7 +254,19 @@
   },
   "avaliacoes": {
     "em": "no TripAdvisor",
-    "notaDe": "Nota"
+    "notaDe": "Nota",
+    "lerNoTripadvisor": "Ler no TripAdvisor",
+    "lerDeAutor": "Ler a avaliação de {nome} no TripAdvisor",
+    "traduzido": "Tradução",
+    "traduzidoDe": {
+      "en": "Traduzido do inglês",
+      "pt": "Traduzido do português",
+      "es": "Traduzido do espanhol",
+      "fr": "Traduzido do francês",
+      "it": "Traduzido do italiano",
+      "de": "Traduzido do alemão",
+      "nl": "Traduzido do holandês"
+    }
   },
   "whatsapp": {
     "aria": "Falar com a Olivia no WhatsApp",

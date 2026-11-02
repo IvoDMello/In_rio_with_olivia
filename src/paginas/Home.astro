@@ -32,6 +32,11 @@ const especiais = await carregaEspeciais();
 const altEspecial: Record<string, string | undefined> = t.fotos.especiais;
 const artigos = (await artigosDe(lang)).slice(0, 3);
 
+// Avaliacoes da Home: as marcadas com `destaque` em reviews.ts, ou as tres
+// primeiras se nenhuma estiver marcada. A pagina de Depoimentos mostra todas.
+const marcadas = AVALIACOES.filter((a) => a.destaque);
+const avaliacoesHome = (marcadas.length > 0 ? marcadas : AVALIACOES).slice(0, 3);
+
 const hero = fotoHero();
 const retrato = fotoOlivia();
 
@@ -267,13 +272,28 @@ const recorteHero = 'object-[50%_55%]';
         centralizado
       >
         <div class="grid gap-7 md:grid-cols-3">
-          {AVALIACOES.slice(0, 3).map((avaliacao) => (
-            <CartaoAvaliacao avaliacao={avaliacao} lang={lang} />
+          {avaliacoesHome.map((avaliacao) => (
+            <CartaoAvaliacao avaliacao={avaliacao} lang={lang} class="h-full" />
           ))}
         </div>
 
-        {CONTATO.tripadvisor && (
-          <div class="revelar mt-12 text-center">
+        <div
+          class="revelar mt-12 flex flex-col items-center justify-center gap-x-10 gap-y-5
+                 sm:flex-row"
+        >
+          {AVALIACOES.length > avaliacoesHome.length && (
+            <a
+              href={rota('depoimentos', lang)}
+              class="inline-flex items-center gap-2.5 rounded-full border border-atlantico/25
+                     px-7 py-3.5 text-[0.95rem] text-atlantico transition-colors duration-200
+                     hover:border-sol hover:bg-sol/10"
+            >
+              {t.botoes.verDepoimentos}
+              <Icone nome="seta" tamanho={18} />
+            </a>
+          )}
+
+          {CONTATO.tripadvisor && (
             <a
               href={CONTATO.tripadvisor}
               target="_blank"
@@ -286,8 +306,8 @@ const recorteHero = 'object-[50%_55%]';
               {t.botoes.tripadvisor}
               <Icone nome="seta" tamanho={17} />
             </a>
-          </div>
-        )}
+          )}
+        </div>
       </Secao>
     )
   }

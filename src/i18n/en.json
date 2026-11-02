@@ -12,6 +12,10 @@
       "titulo": "Experiences in Rio",
       "descricao": "Christ the Redeemer, Sugarloaf, Santa Teresa, the beaches, the forest and much more. Choose what you like and I will build the itinerary around you."
     },
+    "depoimentos": {
+      "titulo": "Traveler reviews",
+      "descricao": "Real TripAdvisor reviews from travelers who took a private tour with me in Rio de Janeiro."
+    },
     "dicas": {
       "titulo": "Rio tips",
       "descricao": "Itineraries, ideas and practical advice from someone who has been guiding in Rio de Janeiro for over 20 years."
@@ -29,6 +33,7 @@
     "home": "Home",
     "comoTrabalho": "How I work",
     "experiencias": "Experiences",
+    "depoimentos": "Reviews",
     "dicas": "Tips",
     "contato": "Contact",
     "abrirMenu": "Open menu",
@@ -51,6 +56,7 @@
     "verDicas": "See all tips",
     "comoTrabalho": "See how I work",
     "tripadvisor": "Read all reviews on TripAdvisor",
+    "verDepoimentos": "See more reviews",
     "instagram": "Follow on Instagram",
     "voltar": "Back",
     "enviar": "Send message",
@@ -159,6 +165,11 @@
       "texto": "The price depends on the size of the group, the length of the tour and the transport you choose. Tell me what you have in mind and I will send you a quote."
     }
   },
+  "depoimentos": {
+    "sobretitulo": "Reviews",
+    "titulo": "In the words of those who traveled with me",
+    "texto": "Reviews that travelers left on TripAdvisor after spending the day with me in Rio."
+  },
   "dicas": {
     "sobretitulo": "Tips",
     "titulo": "Rio tips",
@@ -243,7 +254,19 @@
   },
   "avaliacoes": {
     "em": "on TripAdvisor",
-    "notaDe": "Rating"
+    "notaDe": "Rating",
+    "lerNoTripadvisor": "Read on TripAdvisor",
+    "lerDeAutor": "Read {nome}'s review on TripAdvisor",
+    "traduzido": "Translation",
+    "traduzidoDe": {
+      "en": "Translated from English",
+      "pt": "Translated from Portuguese",
+      "es": "Translated from Spanish",
+      "fr": "Translated from French",
+      "it": "Translated from Italian",
+      "de": "Translated from German",
+      "nl": "Translated from Dutch"
+    }
   },
   "whatsapp": {
     "aria": "Message Olivia on WhatsApp",

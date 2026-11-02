@@ -137,7 +137,9 @@ Todos os contatos e links externos ficam em `site.ts` para serem trocados em um 
 - [x] Número do WhatsApp
 - [x] Link do perfil do Instagram
 - [x] Link da página do TripAdvisor
-- [ ] 3 avaliações escolhidas do TripAdvisor (colar em `src/data/reviews.ts`)
+- [x] Texto das 9 avaliações do TripAdvisor escolhidas pela Olivia, em
+      `src/data/reviews.ts`. Faltam os links das quatro de 2025 (Christa L.,
+      Sandra C., Manuela e Ellen S.), que não dá para deduzir pela data
 - [x] E-mail de contato
 - [x] Número do Cadastur
 - [x] Idiomas de atendimento da equipe: português, inglês, espanhol, francês e italiano
@@ -280,9 +282,14 @@ extenso. Ocupa a largura de um botão redondo e cabe em 360px. O menu é um
 `<details>`, então abre, fecha e anda pelo teclado sem JavaScript; o script só
 acrescenta fechar com Escape e com clique fora.
 
-No painel lateral do celular o seletor continua aberto, com as três opções em
-lista (`variante="lista"`), porque ali sobra espaço e um menu dentro do menu
-seria um clique a mais.
+No painel lateral do celular o seletor mostra só uma linha com o idioma atual
+(`variante="lista"`). Ao tocar nela, os outros dois aparecem logo abaixo. No
+começo as três opções ficavam sempre abertas, mas com seis itens no menu elas
+ocupavam tanto espaço que o último item, Contato, saía cortado no meio.
+
+Pelo mesmo motivo, o menu e os botões de baixo rolam juntos, abaixo do logo. Antes
+só o menu rolava e, em celular baixo, era espremido pelo bloco de baixo. Agora os
+itens do menu aparecem sempre inteiros e, se faltar altura, quem rola é o painel.
 
 ### O Instagram entrou no cabeçalho
 
@@ -296,6 +303,38 @@ Com quatro alvos à direita (idioma, Instagram, TripAdvisor e menu), a linha nã
 cabia mais em 360px. Os botões passaram a 36px no celular e voltam a 40px a partir
 de 768px; o espaço entre eles caiu de 8 para 6px no celular. O seletor de idioma
 acompanhou a mesma altura.
+
+### Os depoimentos ganharam página própria
+
+A seção 4 previa só três avaliações na Home. Em novembro de 2026 a Olivia escolheu
+nove avaliações do TripAdvisor, e elas ganharam uma página: **Depoimentos / Reviews /
+Testimonios**, nas rotas `/pt/depoimentos`, `/en/reviews` e `/es/testimonios`. No
+menu ela fica entre Experiências e Dicas. A página mostra todas, da mais recente
+para a mais antiga. A Home mostra três, as marcadas com `destaque` em `reviews.ts`,
+e ganhou o botão "Ver mais depoimentos", ao lado do link do TripAdvisor. Os
+destaques são escolhidos pelo tamanho parecido, e não pela ordem: na grade da Home
+cada linha fica da altura do cartão maior, e um depoimento de cinco parágrafos ao
+lado de dois curtos deixava dois buracos brancos.
+
+Cada cartão mostra as estrelas, o título que o viajante deu, o texto, o nome com a
+inicial num círculo, a origem e o mês da avaliação, e um ícone que abre a avaliação
+original no TripAdvisor. Na página, os cartões ficam em colunas (mosaico), e não em
+grade, porque os textos têm tamanhos muito diferentes.
+
+A regra de nada inventado continua valendo: com `src/data/reviews.ts` vazio, a
+página sai do menu e a seção some da Home.
+
+Cada depoimento aparece no original na versão do site do idioma em que o viajante
+escreveu, e traduzido nas outras duas, com a linha "Traduzido do inglês" no cartão
+e o link para o original no TripAdvisor. A cliente escolheu assim porque um
+depoimento que a pessoa não consegue ler não convence. A tradução é feita a partir
+do original, não da tradução automática que o TripAdvisor mostra em português, que
+é fraca ("turnê" no lugar de tour). Por isso, ao pedir uma avaliação nova, pedir o
+texto do link "Ver original". No original, só se corrigem erros de digitação
+evidentes, sem trocar palavras.
+
+Com seis itens, o menu não cabia em uma linha em 1024px ("Como eu trabalho" quebrava).
+O espaço entre os itens passou de 28 para 20px entre 1024 e 1280px.
 
 ### O selo do KAYAK fica no rodapé
 
