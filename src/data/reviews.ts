@@ -39,8 +39,6 @@ export type Avaliacao = {
   url?: string;
   /** Fotos enviadas pelo viajante, servidas pela pasta public. */
   fotos?: { src: string; alt: TextoAvaliacao }[];
-  /** Permite navegar entre fotos ampliadas neste depoimento. */
-  navegarFotos?: boolean;
   /**
    * Idioma em que o viajante escreveu, como 'en' ou 'pt'. Nas versoes de
    * outro idioma, o cartao mostra "Traduzido do ..." (ver `traduzidoDe` nos
@@ -164,7 +162,6 @@ export const AVALIACOES: Avaliacao[] = [
     autor: 'Daniel Z.',
     nota: 5,
     destaque: true,
-    navegarFotos: true,
     // O TripAdvisor mostra so o mes da avaliacao (mai. de 2019). O cartao
     // exibe mes e ano, entao o dia 1 e so para completar.
     data: '2019-05-01',
