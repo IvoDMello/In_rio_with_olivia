@@ -88,6 +88,16 @@ const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[l
           data-photo-dialog
           aria-label={lang === 'pt' ? 'Foto ampliada' : lang === 'es' ? 'Foto ampliada' : 'Enlarged photo'}
         >
+          {
+            avaliacao.navegarFotos && (
+              <button
+                type="button"
+                class="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-branco/95 text-3xl leading-none text-atlantico shadow-lg transition hover:scale-105 hover:bg-branco focus-visible:outline-2 focus-visible:outline-sol"
+                data-photo-prev
+                aria-label={lang === 'pt' ? 'Foto anterior' : lang === 'es' ? 'Foto anterior' : 'Previous photo'}
+              >‹</button>
+            )
+          }
           <button
             type="button"
             class="absolute -right-3 -top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-branco text-2xl leading-none text-atlantico shadow-lg"
@@ -96,7 +106,21 @@ const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[l
           >
             ×
           </button>
-          <img data-photo-large alt="" class="max-h-[92dvh] max-w-[94vw] rounded-sm object-contain shadow-2xl" />
+          <img
+            data-photo-large
+            alt=""
+            class="max-h-[92dvh] max-w-[94vw] rounded-sm object-contain shadow-2xl transition-[opacity,transform] duration-300 ease-out"
+          />
+          {
+            avaliacao.navegarFotos && (
+              <button
+                type="button"
+                class="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-branco/95 text-3xl leading-none text-atlantico shadow-lg transition hover:scale-105 hover:bg-branco focus-visible:outline-2 focus-visible:outline-sol"
+                data-photo-next
+                aria-label={lang === 'pt' ? 'Próxima foto' : lang === 'es' ? 'Foto siguiente' : 'Next photo'}
+              >›</button>
+            )
+          }
         </dialog>
       </div>
     )
@@ -163,12 +187,42 @@ const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[l
     const largeImage = gallery.querySelector<HTMLImageElement>('[data-photo-large]');
     if (!dialog || !largeImage) return;
 
-    gallery.querySelectorAll<HTMLButtonElement>('[data-photo-open]').forEach((button) => {
+    const photoButtons = Array.from(gallery.querySelectorAll<HTMLButtonElement>('[data-photo-open]'));
+    let activeIndex = 0;
+    let transitionTimer = 0;
+
+    const showPhoto = (index: number, direction: -1 | 1 = 1) => {
+      activeIndex = (index + photoButtons.length) % photoButtons.length;
+      const button = photoButtons[activeIndex];
+      window.clearTimeout(transitionTimer);
+      largeImage.classList.add('opacity-0', direction > 0 ? 'translate-x-3' : '-translate-x-3');
+      transitionTimer = window.setTimeout(() => {
+        largeImage.src = button.dataset.src ?? '';
+        largeImage.alt = button.dataset.alt ?? '';
+        largeImage.onload = () => {
+          largeImage.classList.remove('opacity-0', 'translate-x-3', '-translate-x-3');
+        };
+        if (largeImage.complete) {
+          largeImage.classList.remove('opacity-0', 'translate-x-3', '-translate-x-3');
+        }
+      }, 140);
+    };
+
+    photoButtons.forEach((button, index) => {
       button.addEventListener('click', () => {
+        activeIndex = index;
+        largeImage.classList.remove('opacity-0', 'translate-x-3', '-translate-x-3');
         largeImage.src = button.dataset.src ?? '';
         largeImage.alt = button.dataset.alt ?? '';
         dialog.showModal();
       });
+    });
+
+    gallery.querySelector('[data-photo-prev]')?.addEventListener('click', () => showPhoto(activeIndex - 1, -1));
+    gallery.querySelector('[data-photo-next]')?.addEventListener('click', () => showPhoto(activeIndex + 1, 1));
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft' && gallery.querySelector('[data-photo-prev]')) showPhoto(activeIndex - 1, -1);
+      if (event.key === 'ArrowRight' && gallery.querySelector('[data-photo-next]')) showPhoto(activeIndex + 1, 1);
     });
 
     gallery.querySelector('[data-photo-close]')?.addEventListener('click', () => dialog.close());
