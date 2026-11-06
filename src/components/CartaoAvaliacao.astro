@@ -84,7 +84,7 @@ const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[l
           ))}
         </ul>
         <dialog
-          class="m-auto max-h-[94dvh] max-w-[94vw] overflow-visible bg-transparent p-0 backdrop:bg-atlantico/90"
+          class="m-auto max-h-[94dvh] w-[min(94vw,72rem)] max-w-[94vw] overflow-visible bg-transparent p-0 backdrop:bg-atlantico/90"
           data-photo-dialog
           aria-label={lang === 'pt' ? 'Foto ampliada' : lang === 'es' ? 'Foto ampliada' : 'Enlarged photo'}
         >
@@ -96,13 +96,15 @@ const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[l
           >
             ×
           </button>
-          <img
-            data-photo-large
-            alt=""
-            class="max-h-[82dvh] max-w-[94vw] rounded-sm object-contain shadow-2xl transition-[opacity,transform] duration-300 ease-out"
-          />
+          <div class="flex h-[min(76dvh,52rem)] w-full items-center justify-center">
+            <img
+              data-photo-large
+              alt=""
+              class="max-h-full max-w-full rounded-sm object-contain shadow-2xl transition-[opacity,transform] duration-300 ease-out"
+            />
+          </div>
           <div
-            class="mt-4 flex items-center justify-center gap-5"
+            class="mt-4 grid w-full grid-cols-3 items-center justify-items-center"
             role="group"
             aria-label={lang === 'pt' ? 'Navegação das fotos' : lang === 'es' ? 'Navegación de fotos' : 'Photo navigation'}
           >
