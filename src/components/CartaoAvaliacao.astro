@@ -55,6 +55,53 @@ const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[l
     </span>
   </div>
 
+  {
+    avaliacao.fotos && avaliacao.fotos.length > 0 && (
+      <div class="mt-5" data-photo-gallery>
+        <ul
+          class="grid grid-flow-col auto-cols-[calc((100%_-_1.25rem)/3)] gap-2.5 overflow-x-auto overscroll-x-contain pb-1 snap-x snap-mandatory"
+          aria-label={lang === 'pt' ? 'Fotos do viajante' : lang === 'es' ? 'Fotos del viajero' : 'Traveler photos'}
+        >
+          {avaliacao.fotos.map((foto) => (
+            <li class="min-w-0 snap-start overflow-hidden rounded-sm bg-nevoa">
+              <button
+                type="button"
+                class="block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sol"
+                data-photo-open
+                data-src={foto.src}
+                data-alt={noIdioma(foto.alt, lang)}
+                aria-label={lang === 'pt' ? `Ampliar foto: ${noIdioma(foto.alt, lang)}` : lang === 'es' ? `Ampliar foto: ${noIdioma(foto.alt, lang)}` : `Enlarge photo: ${noIdioma(foto.alt, lang)}`}
+              >
+                <img
+                  src={foto.src}
+                  alt={noIdioma(foto.alt, lang)}
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-[4/3] w-full object-cover transition-transform duration-300 hover:scale-[1.04]"
+                />
+              </button>
+            </li>
+          ))}
+        </ul>
+        <dialog
+          class="m-auto max-h-[92dvh] max-w-[94vw] overflow-visible bg-transparent p-0 backdrop:bg-atlantico/90"
+          data-photo-dialog
+          aria-label={lang === 'pt' ? 'Foto ampliada' : lang === 'es' ? 'Foto ampliada' : 'Enlarged photo'}
+        >
+          <button
+            type="button"
+            class="absolute -right-3 -top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-branco text-2xl leading-none text-atlantico shadow-lg"
+            data-photo-close
+            aria-label={lang === 'pt' ? 'Fechar foto' : lang === 'es' ? 'Cerrar foto' : 'Close photo'}
+          >
+            ×
+          </button>
+          <img data-photo-large alt="" class="max-h-[92dvh] max-w-[94vw] rounded-sm object-contain shadow-2xl" />
+        </dialog>
+      </div>
+    )
+  }
+
   <div class="mt-6 flex-1">
     <blockquote lang={langTrecho}>
       {
@@ -109,3 +156,24 @@ const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[l
     }
   </figcaption>
 </figure>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-photo-gallery]').forEach((gallery) => {
+    const dialog = gallery.querySelector<HTMLDialogElement>('[data-photo-dialog]');
+    const largeImage = gallery.querySelector<HTMLImageElement>('[data-photo-large]');
+    if (!dialog || !largeImage) return;
+
+    gallery.querySelectorAll<HTMLButtonElement>('[data-photo-open]').forEach((button) => {
+      button.addEventListener('click', () => {
+        largeImage.src = button.dataset.src ?? '';
+        largeImage.alt = button.dataset.alt ?? '';
+        dialog.showModal();
+      });
+    });
+
+    gallery.querySelector('[data-photo-close]')?.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>

@@ -37,6 +37,8 @@ export type Avaliacao = {
   data: string;
   /** Link direto para a avaliacao, opcional. */
   url?: string;
+  /** Fotos enviadas pelo viajante, servidas pela pasta public. */
+  fotos?: { src: string; alt: TextoAvaliacao }[];
   /**
    * Idioma em que o viajante escreveu, como 'en' ou 'pt'. Nas versoes de
    * outro idioma, o cartao mostra "Traduzido do ..." (ver `traduzidoDe` nos
@@ -83,6 +85,11 @@ export const AVALIACOES: Avaliacao[] = [
     // avaliacao. O cartao exibe mes e ano, entao o dia 1 e so para completar.
     data: '2025-08-01',
     idioma: 'en',
+    fotos: [
+      { src: '/fotos-cliente/sandrac1.jpg', alt: { en: 'Sandra enjoying a Rio tour with Olivia', pt: 'Sandra durante um passeio no Rio com Olivia', es: 'Sandra durante un paseo por Río con Olivia' } },
+      { src: '/fotos-cliente/sandrac2.jpg', alt: { en: 'A view from Sandra’s visit to Rio', pt: 'Uma vista da visita de Sandra ao Rio', es: 'Una vista de la visita de Sandra a Río' } },
+      { src: '/fotos-cliente/sandrac3.jpg', alt: { en: 'Sandra exploring Rio de Janeiro', pt: 'Sandra conhecendo o Rio de Janeiro', es: 'Sandra descubriendo Río de Janeiro' } },
+    ],
     titulo: {
       en: 'A Magical Rio Experience with Olivia',
       pt: 'Uma experiência mágica no Rio com a Olivia',
@@ -110,6 +117,12 @@ export const AVALIACOES: Avaliacao[] = [
     // avaliacao. O cartao exibe mes e ano, entao o dia 1 e so para completar.
     data: '2025-04-01',
     idioma: 'en',
+    fotos: [
+      { src: '/fotos-cliente/manuela1.jpg', alt: { en: 'Manuela enjoying a Rio tour with Olivia', pt: 'Manuela durante um passeio no Rio com Olivia', es: 'Manuela durante un paseo por Río con Olivia' } },
+      { src: '/fotos-cliente/manuela2.jpg', alt: { en: 'A view from Manuela’s visit to Rio', pt: 'Uma vista da visita de Manuela ao Rio', es: 'Una vista de la visita de Manuela a Río' } },
+      { src: '/fotos-cliente/manuela3.jpg', alt: { en: 'Manuela exploring Rio de Janeiro', pt: 'Manuela conhecendo o Rio de Janeiro', es: 'Manuela descubriendo Río de Janeiro' } },
+      { src: '/fotos-cliente/manuela4.jpg', alt: { en: 'Manuela on her trip in Rio', pt: 'Manuela em sua viagem pelo Rio', es: 'Manuela durante su viaje por Río' } },
+    ],
     // Sem titulo: a avaliacao dela no TripAdvisor nao tem.
     // Original em ingles, sem nenhuma correcao. Os paragrafos sao os dela.
     texto: {
@@ -125,6 +138,12 @@ export const AVALIACOES: Avaliacao[] = [
     // avaliacao. O cartao exibe mes e ano, entao o dia 1 e so para completar.
     data: '2025-02-01',
     idioma: 'en',
+    fotos: [
+      { src: '/fotos-cliente/ellens1.jpg', alt: { en: 'Ellen enjoying a Rio tour with Olivia', pt: 'Ellen durante um passeio no Rio com Olivia', es: 'Ellen durante un paseo por Río con Olivia' } },
+      { src: '/fotos-cliente/ellens2.jpg', alt: { en: 'A view from Ellen’s Rio visit', pt: 'Uma vista da visita de Ellen ao Rio', es: 'Una vista de la visita de Ellen a Río' } },
+      { src: '/fotos-cliente/ellens3.jpg', alt: { en: 'Ellen exploring Rio de Janeiro', pt: 'Ellen conhecendo o Rio de Janeiro', es: 'Ellen descubriendo Río de Janeiro' } },
+      { src: '/fotos-cliente/ellens4.jpg', alt: { en: 'Ellen on her trip in Rio', pt: 'Ellen em sua viagem pelo Rio', es: 'Ellen durante su viaje por Río' } },
+    ],
     titulo: {
       en: 'A local friend',
       pt: 'Uma amiga local',
@@ -146,6 +165,15 @@ export const AVALIACOES: Avaliacao[] = [
     // O TripAdvisor mostra so o mes da avaliacao (mai. de 2019). O cartao
     // exibe mes e ano, entao o dia 1 e so para completar.
     data: '2019-05-01',
+    fotos: [
+      { src: '/fotos-cliente/danielz1.jpg', alt: { en: 'Daniel on a tour with Olivia in Rio', pt: 'Daniel em um passeio com Olivia no Rio', es: 'Daniel durante un paseo con Olivia en Río' } },
+      { src: '/fotos-cliente/danielz2.jpg', alt: { en: 'A moment from Daniel’s visit to Rio', pt: 'Um momento da visita de Daniel ao Rio', es: 'Un momento de la visita de Daniel a Río' } },
+      { src: '/fotos-cliente/danielz3.jpg', alt: { en: 'Daniel exploring Rio de Janeiro', pt: 'Daniel conhecendo o Rio de Janeiro', es: 'Daniel descubriendo Río de Janeiro' } },
+      { src: '/fotos-cliente/danielz4.jpg', alt: { en: 'Scenery from Daniel’s Rio tour', pt: 'Paisagem do passeio de Daniel pelo Rio', es: 'Paisaje del paseo de Daniel por Río' } },
+      { src: '/fotos-cliente/danielz5.jpg', alt: { en: 'Daniel enjoying the city with his group', pt: 'Daniel aproveitando a cidade com seu grupo', es: 'Daniel disfrutando de la ciudad con su grupo' } },
+      { src: '/fotos-cliente/danielz6.jpg', alt: { en: 'A view from Daniel’s trip in Rio', pt: 'Uma vista da viagem de Daniel pelo Rio', es: 'Una vista del viaje de Daniel por Río' } },
+      { src: '/fotos-cliente/danielz7.jpg', alt: { en: 'Daniel during his Rio experience', pt: 'Daniel durante sua experiência no Rio', es: 'Daniel durante su experiencia en Río' } },
+    ],
     // Link 7 da lista da Olivia, o unico de 2019 alem do 681mat_ass.
     url: 'https://www.tripadvisor.com.br/ShowUserReviews-g303506-d14054801-r676370277-Be_Extremely_happy_in_Rio-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
     idioma: 'en',
@@ -170,6 +198,11 @@ export const AVALIACOES: Avaliacao[] = [
     data: '2018-12-27',
     url: 'https://www.tripadvisor.com.br/ShowUserReviews-g303506-d14787973-r641755976-Discovering_the_secrets_of_Rio-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
     idioma: 'en',
+    fotos: [
+      { src: '/fotos-cliente/olafr1.jpg', alt: { en: 'Olaf and the group during the tour in Rio', pt: 'Olaf e o grupo durante o passeio no Rio', es: 'Olaf y el grupo durante el paseo en Río' } },
+      { src: '/fotos-cliente/olafr2.jpg', alt: { en: 'View of Rio de Janeiro from above', pt: 'Vista do Rio de Janeiro do alto', es: 'Vista de Río de Janeiro desde lo alto' } },
+      { src: '/fotos-cliente/olafr3.jpg', alt: { en: 'Olaf and his family in Rio de Janeiro', pt: 'Olaf e sua família no Rio de Janeiro', es: 'Olaf y su familia en Río de Janeiro' } },
+    ],
     titulo: {
       en: 'Super tour in Rio de Janeiro with Olivia',
       pt: 'Super tour no Rio de Janeiro com a Olivia',
