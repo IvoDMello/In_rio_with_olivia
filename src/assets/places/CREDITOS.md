@@ -40,11 +40,15 @@ da Academicos de Vigario Geral desfilando na Intendente Magalhaes, no Carnaval d
 ou em fotos amadoras escuras demais. A do futebol e Fluminense x Cerro Porteno no
 Maracana, pela Libertadores de 2024.
 
-O Roxy Dinner Show continua sem foto: nao ha imagem livre do show, e uma foto
-de samba de outro lugar venderia outra coisa. A foto deve vir da Olivia ou do
-material de divulgacao do Roxy, com autorizacao. Em outubro de 2026 foi testada
-a fachada do antigo Cine Roxy de 2017 (Commons, CC0), e a cliente recusou porque
-nao e o Roxy do show.
+O Roxy Dinner Show nao usa foto de banco. Em novembro de 2026 a Olivia mandou
+uma foto do proprio show (roxy-dinner-show.jpg): o elenco no palco, com o Cristo
+no telao ao fundo. Tem cara de material de divulgacao do Roxy, entao vale
+confirmar que o uso esta autorizado. O original era uma captura de tela com
+960 x 647 px e uma faixa preta de 20 px no topo, que foi cortada; o arquivo
+ficou com 960 x 627 px. Da para o cartao, mas uma versao maior seria melhor.
+
+Antes disso, em outubro de 2026, foi testada a fachada do antigo Cine Roxy de
+2017 (Commons, CC0), e a cliente recusou porque nao e o Roxy do show.
 
 ## Topo da Home (src/assets/fotos/hero.jpg)
 

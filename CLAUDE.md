@@ -375,8 +375,10 @@ samba e futebol também usam foto de banco). O topo da Home, o retrato, a equipe
 o Instagram usam apenas fotos da própria Olivia. Uma foto de banco com pessoas
 desconhecidas no bloco da equipe apresentaria estranhos como guias dela.
 
-O Roxy Dinner Show ficou sem foto, porque não existe imagem livre do show e uma
-foto de samba de outro lugar mostraria outro produto.
+O Roxy Dinner Show ficou sem foto até novembro de 2026, porque não existe imagem
+livre do show e uma foto de samba de outro lugar mostraria outro produto. Agora
+usa uma foto do próprio show enviada pela Olivia, em
+`src/assets/specials/roxy-dinner-show.jpg`. Os detalhes estão em `CREDITOS.md`.
 
 Em outubro de 2026 as experiências especiais ganharam o ensaio de escola de samba
 e a partida de futebol, e passaram de quatro para seis. A grade foi de quatro para
