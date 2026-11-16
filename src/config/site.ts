@@ -19,6 +19,9 @@ const DOMINIO_FINAL = 'https://inriowitholivia.com';
  * definitivo. Sem isso, um deploy de validacao geraria URLs canonicas,
  * sitemap e imagens de compartilhamento apontando para um dominio que
  * ainda nao existe.
+ *
+ * Na Cloudflare, onde o site esta publicado, nenhuma variavel e necessaria:
+ * o build cai no dominio definitivo.
  */
 function enderecoDoSite(): string {
   const env =

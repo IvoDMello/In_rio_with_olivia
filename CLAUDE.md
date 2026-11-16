@@ -432,28 +432,65 @@ As candidatas ficaram em `fotos-cliente/`, fora do git:
 `turistas2.jpeg` (o original da atual). As anteriores continuam no histórico do
 repositório.
 
-### Domínio .com na Cloudflare, hospedagem na Netlify
+### Domínio .com registrado na KingHost, site na Cloudflare
 
 A seção 1 previa `inriowitholivia.com.br`. O domínio principal passou a ser
 **`inriowitholivia.com`**, porque o público é sobretudo estrangeiro e é o .com que
 um turista digita por reflexo. O .com.br estava livre em outubro de 2026 e pode ser
 registrado depois no registro.br, só para redirecionar ao .com.
 
-O domínio é registrado na **Cloudflare Registrar**, que cobra preço de custo sem
-aumento na renovação e inclui privacidade do WHOIS. O titular é a Olivia, não quem
-desenvolve o site.
+O plano era registrar o domínio na Cloudflare Registrar, pelo preço de custo na
+renovação. Ele acabou registrado na **KingHost**, em 16 de novembro de 2026, e
+vence em 16 de novembro de 2027. A renovação automática precisa ficar ligada. A
+titular deve ser a Olivia, não quem desenvolve o site.
 
-A hospedagem é a **Netlify**, no plano gratuito, por dois motivos. O plano gratuito
-da Vercel só permite uso não comercial, e este site vende um serviço. E o formulário
-de contato funciona na Netlify sem conta extra, pelo Netlify Forms, enquanto na
-Vercel dependeria do Formspree. O `vercel.json` ficou no repositório para o caso de
-uma troca futura.
+A KingHost fica só com o registro do domínio. A hospedagem dela custa R$ 29,90 por
+mês e não foi contratada, porque o site não usa nada que justifique o custo: não
+tem PHP nem banco de dados, e o e-mail da Olivia é um Gmail. O site é publicado na
+**Cloudflare**, no plano gratuito, que não pede cartão e permite uso comercial.
+As outras opções gratuitas foram descartadas em novembro de 2026:
 
-Na Cloudflare, os registros de DNS que apontam para a Netlify ficam com a nuvem
-cinza (DNS only). Com o proxy ligado, a Netlify não consegue emitir o certificado.
+- **Netlify**, o plano original: o plano gratuito passou a ter 300 créditos por
+  mês, sem como comprar mais, e o site sai do ar quando eles acabam. Em 2026 houve
+  também muitos relatos de sites gratuitos pausados por erro do próprio Netlify.
+- **Vercel**: o plano gratuito só permite uso não comercial, e este site vende um
+  serviço.
+- **GitHub Pages**: os termos proíbem usar para um negócio.
 
-`SITE.url` lê a variável `URL` da Netlify, que é o domínio próprio quando ele está
-conectado e o endereço `.netlify.app` antes disso.
+Na Cloudflare, o site é um **Worker só com arquivos estáticos**, e não um projeto
+do Cloudflare Pages. É onde a Cloudflare coloca os sites novos, e tem uma opção
+que o Pages não tem: `html_handling: "drop-trailing-slash"` entrega `/pt/dicas` a
+partir de `pt/dicas/index.html`, sem barra no fim, sem mudar o build do Astro. No
+Pages, seria preciso trocar o build para `build.format: 'file'`. Nenhum código
+roda no servidor, e no plano gratuito esse tipo de acesso não tem limite.
+
+O que isso significa no projeto:
+
+- **Publicação.** A Cloudflare se liga ao repositório do GitHub e, a cada push no
+  `main`, roda `npm run build` e `npx wrangler deploy`. Não há GitHub Action nem
+  segredo para cadastrar. O nome do projeto no painel precisa ser igual ao `name`
+  do `wrangler.jsonc` (`inriowitholivia`), senão a publicação falha. Sem
+  `SITE_URL`, o build usa o domínio definitivo. `.node-version` fixa o Node 22.
+- **Regras do servidor.** `wrangler.jsonc` cuida dos endereços sem barra no fim
+  (`/pt/dicas/` redireciona para `/pt/dicas`, com status 307) e da página 404.
+  `public/_headers` põe o cache de um ano em `/_astro` e os cabeçalhos de
+  segurança. Tudo foi testado com `wrangler dev` antes de subir. Duas regras ficam
+  no painel da Cloudflare, e não no repositório: `www` para o domínio sem `www`
+  (Redirect Rule, porque o arquivo `_redirects` só enxerga o caminho, não o
+  domínio) e `http` para `https` (Always Use HTTPS).
+- **Formulário.** O Netlify Forms não existe fora da Netlify. O formulário usa o
+  Formspree, com o endereço em `FORMULARIO_ENDPOINT`, e o campo escondido contra
+  robôs se chama `_gotcha`, o nome que o Formspree reconhece.
+
+O DNS também fica na Cloudflare: os servidores de DNS do domínio, na KingHost,
+apontam para ela. O certificado HTTPS é emitido e renovado pela Cloudflare, e os
+arquivos saem de servidores perto do visitante, o que ajuda com um público
+estrangeiro.
+
+Antes da Cloudflare, chegou a ser preparada a publicação por FTP na hospedagem da
+KingHost, com `.htaccess` e GitHub Action. Isso saiu antes de ir para o
+repositório. O `netlify.toml` e o `vercel.json` ficaram para o caso de uma troca
+futura. O passo a passo da configuração está em `HOSPEDAGEM.md`.
 
 ## 12. Plano de execução para o Claude Code
 
@@ -466,7 +503,7 @@ conectado e o endereço `.netlify.app` antes disso.
 7. Aplicar SEO, schema, sitemap e favicon
 8. Revisar acessibilidade e responsividade, rodar Lighthouse
 9. Substituir textos provisórios pelos textos reais e traduções
-10. Publicar na Netlify e conectar o domínio .com
+10. Publicar na Cloudflare e conectar o domínio .com
 
 Ao final de cada etapa, mostrar o que foi feito e aguardar aprovação antes de seguir.
 

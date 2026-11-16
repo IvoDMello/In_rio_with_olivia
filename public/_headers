@@ -1,0 +1,17 @@
+# Cabecalhos que a Cloudflare acrescenta as respostas.
+#
+# Este arquivo nao e publicado como pagina: a Cloudflare le as regras e as
+# aplica. Fica em /public para o Astro copiar para dist/ no build.
+#
+# As paginas nao precisam de regra de cache. A Cloudflare ja manda
+# "max-age=0, must-revalidate", e o navegador confere a cada visita se ha
+# versao nova, entao uma publicacao aparece na hora.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Os arquivos de /_astro levam um codigo no nome e nunca mudam: quando a foto
+# ou o estilo muda, o nome muda junto. Por isso podem ficar um ano em cache.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

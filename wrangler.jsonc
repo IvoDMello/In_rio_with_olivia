@@ -1,0 +1,30 @@
+// Publicacao na Cloudflare (Workers, so com arquivos estaticos).
+//
+// A Cloudflare monta o site a cada push no main, com `npm run build`, e
+// publica a pasta dist/ com `npx wrangler deploy`. Nao ha codigo rodando no
+// servidor: todo acesso e entregue direto dos arquivos, e no plano gratuito
+// isso nao tem limite nem custo. O passo a passo esta em HOSPEDAGEM.md.
+{
+  // Precisa ser igual ao nome do projeto no painel da Cloudflare, senao a
+  // publicacao falha.
+  "name": "inriowitholivia",
+  "compatibility_date": "2026-11-01",
+
+  "assets": {
+    "directory": "./dist",
+
+    // Enderecos sem barra no fim, igual ao trailingSlash 'never' do
+    // astro.config.mjs. O Astro grava /pt/dicas como pt/dicas/index.html;
+    // com esta opcao, /pt/dicas entrega esse arquivo e /pt/dicas/ redireciona
+    // para /pt/dicas.
+    "html_handling": "drop-trailing-slash",
+
+    // Endereco desconhecido recebe o 404.html, com status 404.
+    "not_found_handling": "404-page"
+  }
+
+  // O dominio inriowitholivia.com e ligado no painel da Cloudflare (Settings >
+  // Domains & Routes). Se um dia ele sumir depois de uma publicacao, declare
+  // aqui, depois do "assets":
+  //   "routes": [{ "pattern": "inriowitholivia.com", "custom_domain": true }]
+}

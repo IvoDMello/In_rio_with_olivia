@@ -12,6 +12,9 @@ import { dicionario, TAG_HREFLANG, type Idioma } from '~/i18n/config';
  * Se o site nao estiver na Netlify e o endpoint estiver vazio, o envio nao
  * tem para onde ir. Nesse caso o formulario aparece desativado com um aviso
  * apontando para o WhatsApp, em vez de fingir que enviou.
+ *
+ * Na Cloudflare so o Formspree funciona. O campo escondido contra robos muda de
+ * nome conforme o servico, porque o Formspree so reconhece `_gotcha`.
  */
 interface Props {
   lang: Idioma;
@@ -49,14 +52,19 @@ const rotulo = 'mb-2 block text-sm font-medium text-atlantico';
   class:list={['space-y-5', !ativo && 'pointer-events-none opacity-50']}
   aria-disabled={!ativo ? 'true' : undefined}
 >
-  <input type="hidden" name="form-name" value="contato" />
+  {!usaFormspree && <input type="hidden" name="form-name" value="contato" />}
   <input type="hidden" name="idioma" value={TAG_HREFLANG[lang]} />
 
   <!-- Armadilha para robos. Fica escondida de quem le a pagina. -->
   <p class="hidden" aria-hidden="true">
     <label>
       Empresa
-      <input type="text" name="empresa" tabindex="-1" autocomplete="off" />
+      <input
+        type="text"
+        name={usaFormspree ? '_gotcha' : 'empresa'}
+        tabindex="-1"
+        autocomplete="off"
+      />
     </label>
   </p>
 

@@ -104,25 +104,25 @@ dados estruturados.
 
 ## Publicar
 
-O site vai para a Netlify, com o domínio `inriowitholivia.com` registrado na
-Cloudflare. O [`vercel.json`](vercel.json) continua no repositório caso um dia
-seja preciso trocar de serviço, mas o arquivo que vale é o [`netlify.toml`](netlify.toml).
+O site fica na Cloudflare, no plano gratuito, com o domínio `inriowitholivia.com`
+registrado na KingHost. A cada push no `main`, a Cloudflare monta o site e publica
+a pasta `dist`. A configuração está em [`wrangler.jsonc`](wrangler.jsonc)
+(endereços sem barra no fim e página 404) e em [`public/_headers`](public/_headers)
+(cache e cabeçalhos de segurança).
 
-1. Suba o repositório para o GitHub
-2. Na Netlify, importe o repositório (build `npm run build`, pasta `dist`)
-3. Em **Domain management**, adicione `inriowitholivia.com`
-4. Na Cloudflare, crie os registros de DNS que a Netlify indicar, com a nuvem
-   cinza (DNS only), para a Netlify emitir o certificado HTTPS
-5. Confira se `SITE.url` em `src/config/site.ts` bate com o domínio final. Na
-   Netlify ele vem sozinho do endereço principal do site
+O passo a passo completo, da criação da conta à conferência final, está em
+[HOSPEDAGEM.md](HOSPEDAGEM.md).
 
-O formulário de contato precisa de um dos dois:
+Para ver o site do jeito que a Cloudflare entrega, rode `npm run build` e depois
+`npx wrangler dev`.
 
-- **Netlify**: funciona sozinho, o atributo `data-netlify` já está no formulário
-- **Vercel**: crie um formulário no Formspree e cole o endereço em `FORMULARIO_ENDPOINT`
+O formulário de contato usa o Formspree: cole o endereço do formulário em
+`FORMULARIO_ENDPOINT`, em `src/config/site.ts`. Enquanto ele estiver vazio, o
+formulário aparece desativado com um aviso apontando para o WhatsApp, em vez de
+fingir que enviou.
 
-Enquanto nenhum dos dois estiver ativo, o formulário aparece desativado com um aviso
-apontando para o WhatsApp, em vez de fingir que enviou.
+O [`netlify.toml`](netlify.toml) e o [`vercel.json`](vercel.json) continuam no
+repositório para o caso de uma troca de serviço, mas não têm efeito na Cloudflare.
 
 ## Qualidade verificada
 

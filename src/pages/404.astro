@@ -6,7 +6,8 @@ import { dicionario, IDIOMA_PADRAO, MENU, rota } from '~/i18n/config';
 /**
  * Pagina de erro unica, em ingles, que e o idioma padrao.
  *
- * Vercel e Netlify servem este arquivo para qualquer endereco desconhecido,
+ * O servidor entrega este arquivo para qualquer endereco desconhecido (na
+ * Cloudflare, pelo not_found_handling do wrangler.jsonc),
  * inclusive dentro de /pt e /es. Como nao da para saber o idioma a partir de
  * um endereco que nao existe, o texto fica no padrao e os links levam de volta
  * para o site nos tres idiomas.

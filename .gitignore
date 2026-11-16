@@ -22,3 +22,6 @@ npm-debug.log*
 fotos-cliente/
 !public/fotos-cliente/
 !public/fotos-cliente/*.jpg
+
+# cloudflare (wrangler local)
+.wrangler/
