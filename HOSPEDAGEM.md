@@ -5,6 +5,9 @@ está registrado na KingHost (desde 16/11/2026). O site fica na Cloudflare, no
 plano gratuito, que não pede cartão. **Não é preciso contratar a hospedagem da
 KingHost.**
 
+O site entrou no ar assim em 16/11/2026. Os nomes dos botões abaixo são os do
+painel em português naquela data.
+
 Siga na ordem. O site é publicado primeiro num endereço provisório da
 Cloudflare, e o domínio só passa a apontar para ele depois, quando já está tudo
 pronto.
@@ -37,7 +40,7 @@ pronto.
 4. Criar o formulário no Formspree
 5. Adicionar o domínio na Cloudflare
 6. Trocar os servidores de DNS na KingHost
-7. Apagar os registros antigos
+7. Conferir os registros
 8. Ligar o domínio ao site
 9. Configurar o `www` e o HTTPS
 10. Conferir
@@ -114,83 +117,109 @@ aparece no painel do Formspree.
 
 ## 5. Adicionar o domínio na Cloudflare
 
-1. Na página inicial da Cloudflare, clique em **Add a domain** (ou **Onboard a
-   domain**) e digite `inriowitholivia.com`.
-2. Deixe marcada a opção de buscar os registros de DNS existentes (**Quick
-   scan**) e continue.
-3. Na escolha de plano, desça até o fim e escolha **Free**.
-4. A Cloudflare mostra os registros que encontrou. Continue sem mexer: eles são
-   limpos no passo 7.
-5. No fim, ela mostra **dois servidores de DNS**, parecidos com
-   `nome1.ns.cloudflare.com` e `nome2.ns.cloudflare.com`. Anote os dois exatamente
-   como aparecem.
+Aqui o domínio não é comprado de novo: ele continua registrado e pago na
+KingHost. A Cloudflare só passa a cuidar do DNS.
 
-Se a Cloudflare avisar sobre **DNSSEC**, desligue o DNSSEC do domínio na KingHost
-antes do passo 6. Com ele ligado, o domínio para de responder depois da troca.
+1. Na página inicial da Cloudflare, em **Adicionar domínio**, escolha **Conectar
+   um domínio**. Não escolha **Transferir** nem **Comprar**.
+2. Em **Nome do domínio**, digite `inriowitholivia.com`, sem `www`.
+3. Em **Monetizo páginas que exibem anúncios**, deixe desmarcado. Nas políticas
+   de IA, **Pesquisa** precisa ficar em **Permitir**, porque é o que deixa o
+   Google encontrar o site. Treinamento e agentes ficaram em Permitir; dá para
+   mudar depois sem afetar o Google.
+4. Em **Importar registros DNS**, deixe **Automático** e continue.
+5. Na escolha de plano, desça até o fim e escolha **Free**.
+6. Na lista de registros encontrados, exclua os que apontam para o servidor da
+   KingHost com o nome do domínio: os do tipo **A** e **AAAA** com o nome
+   `inriowitholivia.com` e o **A** com o nome `www`. O resto (`ftp`, os CNAME de
+   e-mail, os MX e o TXT) pode ficar: não atrapalha, e o e-mail da Olivia é um
+   Gmail.
+7. Clique em **Continue para ativação**. A Cloudflare mostra **dois servidores de
+   DNS**. Os deste domínio são `frida.ns.cloudflare.com` e
+   `vicky.ns.cloudflare.com`.
+
+A tela diz que o registrador é a **Enom**: é a empresa que a KingHost usa por
+trás para registrar domínios `.com`. A troca é feita no painel da KingHost.
+
+Os avisos de **DNSSEC** e de **permitir apenas IPs da Cloudflare na origem**
+podem ser ignorados. O painel da KingHost não tem DNSSEC ligado para este
+domínio, e o site não tem servidor próprio por trás da Cloudflare.
 
 ## 6. Trocar os servidores de DNS na KingHost
 
-No painel da KingHost, abra **Gerenciar Registro de Domínios**, escolha o
-`inriowitholivia.com` e procure a opção de alterar os servidores de DNS. Apague
-os da KingHost (`dns1.kinghost.com.br` e os seguintes) e coloque só os dois da
-Cloudflare. Salve.
+1. No painel da KingHost, em **Meus planos e serviços contratados**, abra
+   **Registro de Domínio**.
+2. No menu de três pontos ao lado do `inriowitholivia.com`, escolha **Gerenciar
+   DNS**. Na tela do domínio, clique de novo em **Gerenciar DNS**.
+3. Abra a aba **Alterar servidor principal**. Não mexa na aba **Alterar zona
+   DNS**: depois da troca, ela deixa de valer.
+4. Troque o Servidor 1 por `frida.ns.cloudflare.com` e o Servidor 2 por
+   `vicky.ns.cloudflare.com`. Remova os servidores 3 a 6 pela lixeira, que
+   aparece sempre no último. A KingHost recomenda 6 servidores, mas isso vale
+   para quem usa o DNS dela.
+5. Clique em **Salvar alterações**.
+6. Volte à Cloudflare e clique em **Atualizei meus nameservers**.
 
 Se a opção não aparecer, peça ao suporte da KingHost:
 
 > Quero alterar os servidores de DNS do domínio inriowitholivia.com, registrado
-> nesta conta, para estes dois: `nome1.ns.cloudflare.com` e
-> `nome2.ns.cloudflare.com`.
+> nesta conta, para estes dois: frida.ns.cloudflare.com e
+> vicky.ns.cloudflare.com. Os servidores dns1 a dns6.kinghost.com.br devem ser
+> removidos.
 
-(Troque pelos nomes anotados no passo 5.)
+A KingHost avisa que a troca pode levar até 24 horas. Em novembro de 2026 ela
+valeu em minutos. Na Cloudflare, **Verificar nameservers agora** força a
+conferência, e o domínio passa a aparecer como **Ativo** em **Domínios**.
 
-A troca leva de 2 a 24 horas para valer. Não há nada no ar no domínio ainda,
-então ninguém perde nada nesse meio-tempo. A Cloudflare manda um e-mail quando o
-domínio fica **Active**. Para conferir antes, abra o domínio na Cloudflare e
-clique em **Check nameservers**.
+## 7. Conferir os registros
 
-## 7. Apagar os registros antigos
-
-Com o domínio **Active**, abra **DNS → Records** na Cloudflare. Apague os
-registros do tipo **A**, **AAAA** ou **CNAME** que tenham o nome
-`inriowitholivia.com` (às vezes aparece como `@`) ou `www`. Eles vieram da
-KingHost e apontam para um servidor que não tem o site.
-
-Os registros MX e TXT podem ficar: não atrapalham. O e-mail da Olivia é um Gmail
-e não depende deles.
+Se algum registro **A**, **AAAA** ou **CNAME** com o nome `inriowitholivia.com`
+ou `www` tiver ficado para trás no passo 5, apague agora, em **Domínios →
+inriowitholivia.com → DNS → Registros**. O passo 8 recusa o domínio enquanto
+houver um.
 
 ## 8. Ligar o domínio ao site
 
-1. Em **Workers & Pages**, abra o `in-rio-with-olivia`.
-2. Vá em **Settings → Domains & Routes → Add → Custom Domain**.
-3. Digite `inriowitholivia.com` e clique em **Add Custom Domain**.
+1. Em **Computação → Workers e Pages**, abra o `in-rio-with-olivia`. O atalho é
+   digitar o nome na **Pesquisa rápida**.
+2. Na aba **Domínios**, clique em **Adicionar domínio**. Não use **Adicionar
+   rota**, que exige configurar o DNS à mão.
+3. Deixe o **Subdomínio** vazio (vazio quer dizer o próprio
+   `inriowitholivia.com`), com **Habilitar para: Produção**, e clique em
+   **Adicionar domínio**.
 
 A Cloudflare cria o registro de DNS e o certificado HTTPS sozinha. Em alguns
 minutos, `https://inriowitholivia.com` abre o site com cadeado.
 
-Se ela recusar, é porque ainda existe um registro antigo com esse nome: volte ao
-passo 7.
-
 ## 9. Configurar o `www` e o HTTPS
+
+Tudo neste passo fica no menu do domínio: **Domínios → inriowitholivia.com**.
+Nada aqui é feito na KingHost.
 
 **O `www` leva para o domínio sem `www`:**
 
-1. Em **DNS → Records**, clique em **Add record** e crie:
+1. Em **DNS → Registros**, clique em **Adicionar registro** e crie:
 
-| Type | Name | Target | Proxy status |
+| Tipo | Nome | Destino | Status do proxy |
 |---|---|---|---|
-| CNAME | `www` | `inriowitholivia.com` | **Proxied** (nuvem laranja) |
+| CNAME | `www` | `inriowitholivia.com` | **Com proxy** (nuvem laranja) |
 
-2. Em **Rules**, crie uma regra a partir do modelo **Redirect from WWW to root**
-   (fica na lista de modelos, **Templates**) e salve com **Deploy**.
+   Logo depois disso, `www.inriowitholivia.com` mostra o **erro 522** da
+   Cloudflare. É esperado: some quando a regra abaixo é criada.
 
-Se o modelo não aparecer, crie uma **Redirect Rule** à mão: quando o
-**Hostname** for igual a `www.inriowitholivia.com`, redirecionar (tipo
-**Dynamic**) para a expressão
-`concat("https://inriowitholivia.com", http.request.uri.path)`, com o código
-**301** e a opção **Preserve query string** ligada.
+2. Em **Regras**, nos **Modelos de regra**, escolha **Redirecionar de WWW para a
+   raiz** e clique em **Criar a partir do modelo**. Cuidado para não escolher
+   **Redirecionar da raiz para WWW**, que faz o contrário.
+3. O formulário já vem certo (`https://www.*` para `https://${1}`, com **301**).
+   Marque só **Preservar string de consulta**, para links com marcação de origem
+   (`?utm_source=instagram`) chegarem inteiros, e clique em **Implantar**.
+4. A Cloudflare avisa que a regra pode não se aplicar, porque o `www` não estaria
+   com proxy. É um alarme falso, porque o modelo não escreve o nome do domínio.
+   Escolha **Ignorar e implantar regra mesmo assim**. Não crie outro registro.
 
-**Todo acesso vai para `https`:** em **SSL/TLS → Edge Certificates**, ligue
-**Always Use HTTPS**.
+**Todo acesso vai para `https`:** em **SSL/TLS → Certificados de borda**, ligue
+**Sempre usar HTTPS**. Usar a chave é melhor do que o modelo de regra
+**Redirecionar de HTTP para HTTPS**, porque não ocupa uma regra.
 
 ## 10. Conferir
 
@@ -204,23 +233,31 @@ Se o modelo não aparecer, crie uma **Redirect Rule** à mão: quando o
 | `https://inriowitholivia.com/robots.txt` | `Allow: /` e a linha `Sitemap:` |
 | Página de Contato | Enviar uma mensagem de teste e ver se chega no e-mail da Olivia |
 
-Teste também no celular, fora do Wi-Fi.
+Teste também no celular, fora do Wi-Fi. O Chrome esconde o `www` na barra de
+endereço: para saber qual endereço abriu, clique na barra.
 
 ## 11. Ligar a renovação do domínio
 
 O domínio vence em 16/11/2027. Sem renovação, o site sai do ar e o endereço fica
 livre para qualquer pessoa registrar.
 
-No painel da KingHost, em **Gerenciar Registro de Domínios**, ligue a
-**renovação automática** no menu de três pontos ao lado do domínio. Se a opção
-não aparecer, peça ao suporte. Confira também que a titular do domínio é a
+O menu de três pontos do domínio, em **Registro de Domínio**, só tem **Gerenciar
+DNS**, **Ver dados registro** e **Transferir domínio**: a renovação automática
+não está ali. Procure em **Ver todas as assinaturas** ou em **Financeiro** e, se
+não houver, peça ao suporte para ligar a renovação automática do
+`inriowitholivia.com`. Em **Ver dados registro**, confira que a titular é a
 Olivia.
+
+Uma alternativa, a partir de 15/01/2027 (60 dias depois do registro, o prazo
+mínimo das regras de domínio), é transferir o registro para a Cloudflare, em
+**Domínios → Transferências**. Ela cobra o preço de custo na renovação, e o
+domínio passa a ficar todo num lugar só. Não é necessário para o site funcionar.
 
 ## 12. Avisar o Google
 
 1. No [Google Search Console](https://search.google.com/search-console), adicione
    uma propriedade do tipo **Domínio** com `inriowitholivia.com`.
-2. Para verificar, crie na Cloudflare, em **DNS → Records**, o registro TXT que o
+2. Para verificar, crie na Cloudflare, em **DNS → Registros**, o registro TXT que o
    Google mostrar, com o nome `@`. A verificação pode levar algumas horas.
 3. Em **Sitemaps**, envie `sitemap-index.xml`.
 

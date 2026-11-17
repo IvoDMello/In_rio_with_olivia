@@ -486,9 +486,13 @@ O que isso significa no projeto:
   robôs se chama `_gotcha`, o nome que o Formspree reconhece.
 
 O DNS também fica na Cloudflare: os servidores de DNS do domínio, na KingHost,
-apontam para ela. O certificado HTTPS é emitido e renovado pela Cloudflare, e os
-arquivos saem de servidores perto do visitante, o que ajuda com um público
-estrangeiro.
+apontam para ela (`frida.ns.cloudflare.com` e `vicky.ns.cloudflare.com`). O
+certificado HTTPS é emitido e renovado pela Cloudflare, e os arquivos saem de
+servidores perto do visitante, o que ajuda com um público estrangeiro. A zona DNS
+da KingHost deixou de valer: registros novos, como a verificação do Google, vão
+na Cloudflare.
+
+O site entrou no ar em `inriowitholivia.com` em 16 de novembro de 2026.
 
 Antes da Cloudflare, chegou a ser preparada a publicação por FTP na hospedagem da
 KingHost, com `.htaccess` e GitHub Action. Isso saiu antes de ir para o
