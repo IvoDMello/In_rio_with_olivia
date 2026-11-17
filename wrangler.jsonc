@@ -5,9 +5,10 @@
 // servidor: todo acesso e entregue direto dos arquivos, e no plano gratuito
 // isso nao tem limite nem custo. O passo a passo esta em HOSPEDAGEM.md.
 {
-  // Precisa ser igual ao nome do projeto no painel da Cloudflare, senao a
-  // publicacao falha.
-  "name": "inriowitholivia",
+  // Igual ao nome do projeto no painel da Cloudflare. Na publicacao pelo
+  // GitHub vale o nome do painel, mas o `wrangler` rodado no computador usa
+  // este, e com nomes diferentes ele criaria um segundo projeto.
+  "name": "in-rio-with-olivia",
   "compatibility_date": "2026-11-01",
 
   "assets": {

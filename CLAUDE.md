@@ -468,9 +468,12 @@ O que isso significa no projeto:
 
 - **Publicação.** A Cloudflare se liga ao repositório do GitHub e, a cada push no
   `main`, roda `npm run build` e `npx wrangler deploy`. Não há GitHub Action nem
-  segredo para cadastrar. O nome do projeto no painel precisa ser igual ao `name`
-  do `wrangler.jsonc` (`inriowitholivia`), senão a publicação falha. Sem
-  `SITE_URL`, o build usa o domínio definitivo. `.node-version` fixa o Node 22.
+  segredo para cadastrar. O projeto no painel se chama `in-rio-with-olivia`, e o
+  `name` do `wrangler.jsonc` é o mesmo. Na publicação pelo GitHub vale o nome do
+  painel, mas o `wrangler` rodado localmente usa o do arquivo, e com nomes
+  diferentes criaria um segundo projeto. Sem `SITE_URL`, o build usa o domínio
+  definitivo. `.node-version` fixa o Node 22. O endereço provisório é
+  `in-rio-with-olivia.<conta>.workers.dev`.
 - **Regras do servidor.** `wrangler.jsonc` cuida dos endereços sem barra no fim
   (`/pt/dicas/` redireciona para `/pt/dicas`, com status 307) e da página 404.
   `public/_headers` põe o cache de um ano em `/_astro` e os cabeçalhos de

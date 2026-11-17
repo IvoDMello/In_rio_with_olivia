@@ -66,14 +66,15 @@ escolhido por engano: volte e escolha o **Free**.
 
 | Campo | Valor |
 |---|---|
-| Nome do projeto (Project name / Worker name) | `inriowitholivia` |
+| Nome do projeto (Project name / Worker name) | `in-rio-with-olivia` |
 | Branch | `main` |
 | Build command | `npm run build` |
 | Deploy command | `npx wrangler deploy` (é o padrão) |
 | Root directory | deixe em branco |
 
-O nome precisa ser exatamente `inriowitholivia`, igual ao `name` do
-[`wrangler.jsonc`](wrangler.jsonc). Com outro nome, a publicação falha.
+O projeto foi criado em novembro de 2026 com o nome `in-rio-with-olivia`, que é
+também o `name` do [`wrangler.jsonc`](wrangler.jsonc). Se um dia for recriado,
+mantenha os dois iguais.
 
 4. Clique em **Save and Deploy** (ou **Create and deploy**). A primeira
    publicação leva alguns minutos, porque prepara todas as fotos.
@@ -84,7 +85,7 @@ para cadastrar no GitHub.
 ## 3. Conferir no endereço provisório
 
 Quando a publicação terminar, a Cloudflare mostra um endereço do tipo
-`https://inriowitholivia.<nome-da-conta>.workers.dev`. Abra e confira se o site
+`https://in-rio-with-olivia.<nome-da-conta>.workers.dev`. Abra e confira se o site
 aparece em inglês, se o seletor de idioma funciona e se as fotos carregam.
 
 Esse endereço continua funcionando depois que o domínio estiver ligado. Ele não
@@ -159,7 +160,7 @@ e não depende deles.
 
 ## 8. Ligar o domínio ao site
 
-1. Em **Workers & Pages**, abra o `inriowitholivia`.
+1. Em **Workers & Pages**, abra o `in-rio-with-olivia`.
 2. Vá em **Settings → Domains & Routes → Add → Custom Domain**.
 3. Digite `inriowitholivia.com` e clique em **Add Custom Domain**.
 
@@ -229,7 +230,7 @@ Olivia.
 
 - **Publicar:** push no `main`. Em poucos minutos o site está atualizado. O plano
   gratuito permite muito mais publicações do que o site vai precisar.
-- **Ver se deu certo:** na Cloudflare, em **Workers & Pages → inriowitholivia**,
+- **Ver se deu certo:** na Cloudflare, em **Workers & Pages → in-rio-with-olivia**,
   a lista de builds mostra cada publicação, com o registro completo quando
   alguma falha.
 - **Testar uma mudança sem publicar:** um push em outro branch que não o `main`
@@ -248,7 +249,6 @@ Olivia.
 
 | Sintoma | Causa provável | O que fazer |
 |---|---|---|
-| Publicação falha falando do nome do Worker | O nome do projeto na Cloudflare não é `inriowitholivia` | Use o mesmo nome do `wrangler.jsonc`, ver passo 2 |
 | Publicação falha durante o build | Erro no código ou numa foto | Copie o registro da publicação que falhou e traga para o Claude |
 | Domínio fica em **Pending** por mais de um dia | Servidores de DNS não trocados, ou DNSSEC ligado | Passos 5 e 6 |
 | **Add Custom Domain** recusa o domínio | Sobrou um registro A, AAAA ou CNAME com o mesmo nome | Passo 7 |
