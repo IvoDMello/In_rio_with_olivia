@@ -1,5 +1,6 @@
 ---
 import Icone from './Icone.astro';
+import { CONTATO } from '~/config/site';
 import { noIdioma, type Avaliacao } from '~/data/reviews';
 import { LOCALE_DATA, dicionario, type Idioma } from '~/i18n/config';
 
@@ -43,30 +44,90 @@ const langTrecho =
   outroIdioma && typeof avaliacao.texto === 'string' ? avaliacao.idioma : undefined;
 
 const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[lang]);
+
+// Todo cartao tem o icone do TripAdvisor. Com o link da avaliacao, ele abre a
+// avaliacao; sem ele, a pagina da Olivia no TripAdvisor, onde ela tambem esta.
+const linkTripadvisor = avaliacao.url || CONTATO.tripadvisor;
+const rotuloTripadvisor = avaliacao.url
+  ? t.avaliacoes.lerDeAutor.replace('{nome}', avaliacao.autor)
+  : t.nav.tripadvisor;
+
+// Faixa de fotos: no maximo tres a vista. As classes ficam escritas por
+// extenso para o Tailwind encontra-las no codigo.
+const MAX_FOTOS = 3;
+const totalFotos = avaliacao.fotos?.length ?? 0;
+const fotosExtras = Math.max(0, totalFotos - MAX_FOTOS);
+const classeColunasFotos =
+  totalFotos >= 3 ? 'grid-cols-3' : totalFotos === 2 ? 'grid-cols-2' : 'grid-cols-1';
 ---
 
-<figure class:list={['revelar flex flex-col bg-branco p-6 sm:p-7 md:p-8', classe]}>
-  <div class="flex items-center justify-between gap-4">
-    <div class="flex items-center gap-1 text-sol" aria-hidden="true">
-      {Array.from({ length: avaliacao.nota }).map(() => <Icone nome="estrela" tamanho={15} />)}
-    </div>
-    <span class="text-xs font-semibold text-atlantico">
-      <span class="sr-only">{t.avaliacoes.notaDe}: </span>{avaliacao.nota}/5
+{/* Sem a classe revelar: no celular os cartoes sao slides de um carrossel, e
+    cada slide apareceria vazio e depois surgiria ao entrar pelo lado. Quem
+    revela e o carrossel inteiro (CarrosselAvaliacoes.astro). */}
+<figure class:list={['flex flex-col bg-branco p-6 sm:p-7 md:p-8', classe]}>
+  {/* Quem escreveu vem primeiro, como no TripAdvisor. O figcaption pode ser o
+      primeiro filho do figure, entao a semantica continua a mesma. */}
+  <figcaption class="flex items-center gap-3.5">
+    <span
+      class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-nevoa
+             font-titulo text-lg text-atlantico"
+      aria-hidden="true"
+    >
+      {inicial}
     </span>
+
+    <span class="min-w-0 flex-1">
+      <span class="block text-sm font-medium text-atlantico">{avaliacao.autor}</span>
+      {
+        avaliacao.origem && (
+          <span class="mt-0.5 block text-xs text-pedra">{noIdioma(avaliacao.origem, lang)}</span>
+        )
+      }
+    </span>
+
+    {
+      linkTripadvisor && (
+        <a
+          href={linkTripadvisor}
+          target="_blank"
+          rel="noopener"
+          data-analytics="tripadvisor-avaliacao"
+          aria-label={rotuloTripadvisor}
+          title={t.avaliacoes.lerNoTripadvisor}
+          class="-mr-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full
+                 text-atlantico transition-colors duration-200 hover:bg-nevoa"
+        >
+          <Icone nome="tripadvisor" tamanho={22} />
+        </a>
+      )
+    }
+  </figcaption>
+
+  {/* A nota nao aparece escrita (as estrelas ja dizem), mas o leitor de tela
+      precisa dela, porque as estrelas sao so desenho. */}
+  <div class="mt-5 flex items-center gap-1 text-sol">
+    {Array.from({ length: avaliacao.nota }).map(() => <Icone nome="estrela" tamanho={15} />)}
+    <span class="sr-only">{t.avaliacoes.notaDe}: {avaliacao.nota}/5</span>
   </div>
 
   {
     avaliacao.fotos && avaliacao.fotos.length > 0 && (
       <div class="mt-5" data-photo-gallery>
+        {/* Faixa de fotos sempre igual: mesma altura em todos os cartoes e a
+            largura toda, com uma, duas ou tres colunas. A partir da quarta, as
+            fotos ficam escondidas e a terceira mostra "+N"; o visualizador
+            continua passando por todas, porque os botoes escondidos seguem na
+            lista dele. Antes era uma fileira que rolava para o lado, com barra
+            de rolagem aparente no Windows e largura diferente em cada cartao. */}
         <ul
-          class="grid grid-flow-col auto-cols-[calc((100%_-_1.25rem)/3)] gap-2.5 overflow-x-auto overscroll-x-contain pb-1 snap-x snap-mandatory"
+          class:list={['grid gap-2', classeColunasFotos]}
           aria-label={lang === 'pt' ? 'Fotos do viajante' : lang === 'es' ? 'Fotos del viajero' : 'Traveler photos'}
         >
-          {avaliacao.fotos.map((foto) => (
-            <li class="min-w-0 snap-start overflow-hidden rounded-sm bg-nevoa">
+          {avaliacao.fotos.map((foto, i) => (
+            <li class:list={['relative min-w-0 overflow-hidden rounded-sm bg-nevoa', i >= MAX_FOTOS && 'hidden']}>
               <button
                 type="button"
-                class="block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sol"
+                class="relative block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sol"
                 data-photo-open
                 data-src={foto.src}
                 data-alt={noIdioma(foto.alt, lang)}
@@ -77,8 +138,19 @@ const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[l
                   alt={noIdioma(foto.alt, lang)}
                   loading="lazy"
                   decoding="async"
-                  class="aspect-[4/3] w-full object-cover transition-transform duration-300 hover:scale-[1.04]"
+                  class="h-24 w-full object-cover transition-transform duration-300 hover:scale-[1.04] sm:h-28"
                 />
+                {
+                  i === MAX_FOTOS - 1 && fotosExtras > 0 && (
+                    <span
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center
+                             bg-atlantico/55 text-lg font-medium text-branco"
+                      aria-hidden="true"
+                    >
+                      +{fotosExtras}
+                    </span>
+                  )
+                }
               </button>
             </li>
           ))}
@@ -134,52 +206,41 @@ const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[l
           <p class="font-titulo text-titulo-cartao text-pretty text-atlantico">{titulo}</p>
         )
       }
+      {/* O script recolhe os textos longos em 8 linhas, em qualquer tela: e o
+          que deixa os cartoes com a mesma altura. Sem JavaScript o texto
+          aparece inteiro, porque o recorte depende do atributo data-recolhido,
+          que so o script coloca. */}
       <p
         class:list={[
           'whitespace-pre-line text-pretty text-[0.95rem] leading-relaxed text-atlantico',
+          'data-[recolhido]:line-clamp-8',
           titulo && 'mt-3',
         ]}
+        data-texto-avaliacao
       >
         {texto}
       </p>
     </blockquote>
 
+    <button
+      type="button"
+      class="mt-3 self-start text-sm font-medium text-atlantico underline decoration-sol
+             decoration-2 underline-offset-4"
+      aria-expanded="false"
+      data-ler-mais
+      data-mais={t.avaliacoes.lerMais}
+      data-menos={t.avaliacoes.lerMenos}
+      hidden
+    >
+      {t.avaliacoes.lerMais}
+    </button>
+
     {rotuloTraducao && <p class="mt-4 text-xs text-pedra">{rotuloTraducao}</p>}
   </div>
 
-  <figcaption class="mt-7 flex items-center gap-3.5 border-t border-nevoa pt-5">
-    <span
-      class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-nevoa
-             font-titulo text-lg text-atlantico"
-      aria-hidden="true"
-    >
-      {inicial}
-    </span>
-
-    <span class="min-w-0 flex-1">
-      <span class="block text-sm font-medium text-atlantico">{avaliacao.autor}</span>
-      <span class="mt-0.5 block text-xs text-pedra">
-        {avaliacao.origem ? `${noIdioma(avaliacao.origem, lang)} · ` : ''}{data}
-      </span>
-    </span>
-
-    {
-      avaliacao.url && (
-        <a
-          href={avaliacao.url}
-          target="_blank"
-          rel="noopener"
-          data-analytics="tripadvisor-avaliacao"
-          aria-label={t.avaliacoes.lerDeAutor.replace('{nome}', avaliacao.autor)}
-          title={t.avaliacoes.lerNoTripadvisor}
-          class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-atlantico
-                 transition-colors duration-200 hover:bg-nevoa"
-        >
-          <Icone nome="tripadvisor" tamanho={20} />
-        </a>
-      )
-    }
-  </figcaption>
+  <div class="mt-7 border-t border-nevoa pt-5">
+    <time datetime={avaliacao.data.slice(0, 7)} class="text-xs text-pedra">{data}</time>
+  </div>
 </figure>
 
 <script>
@@ -233,5 +294,46 @@ const inicial = avaliacao.autor.trim().charAt(0).toLocaleUpperCase(LOCALE_DATA[l
     dialog.addEventListener('click', (event) => {
       if (event.target === dialog) dialog.close();
     });
+  });
+
+  // "Ler mais". O botao so aparece quando o texto de fato passa das 8 linhas
+  // na largura atual. Recalcula quando a largura muda e quando as fontes
+  // terminam de carregar, porque as duas coisas mudam a quebra das linhas.
+  const prepararTextos = () => {
+    document.querySelectorAll<HTMLButtonElement>('[data-ler-mais]').forEach((botao) => {
+      const texto = botao.closest('figure')?.querySelector<HTMLElement>('[data-texto-avaliacao]');
+      if (!texto || botao.getAttribute('aria-expanded') === 'true') return;
+
+      texto.dataset.recolhido = '';
+      const transborda = texto.scrollHeight > texto.clientHeight + 1;
+      botao.hidden = !transborda;
+      if (!transborda) delete texto.dataset.recolhido;
+    });
+  };
+
+  document.querySelectorAll<HTMLButtonElement>('[data-ler-mais]').forEach((botao) => {
+    botao.addEventListener('click', () => {
+      const texto = botao.closest('figure')?.querySelector<HTMLElement>('[data-texto-avaliacao]');
+      if (!texto) return;
+      const abrir = botao.getAttribute('aria-expanded') !== 'true';
+      if (abrir) delete texto.dataset.recolhido;
+      else texto.dataset.recolhido = '';
+      botao.setAttribute('aria-expanded', String(abrir));
+      botao.textContent = (abrir ? botao.dataset.menos : botao.dataset.mais) ?? '';
+    });
+  });
+
+  prepararTextos();
+  document.fonts?.ready.then(prepararTextos);
+
+  let larguraAnterior = window.innerWidth;
+  let esperaRedimensionar = 0;
+  window.addEventListener('resize', () => {
+    // No celular, a barra do navegador some e aparece ao rolar e dispara
+    // resize so com mudanca de altura. Isso nao muda as linhas.
+    if (window.innerWidth === larguraAnterior) return;
+    larguraAnterior = window.innerWidth;
+    window.clearTimeout(esperaRedimensionar);
+    esperaRedimensionar = window.setTimeout(prepararTextos, 150);
   });
 </script>

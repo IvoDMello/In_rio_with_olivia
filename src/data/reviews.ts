@@ -58,24 +58,32 @@ export type Avaliacao = {
 
 export const AVALIACOES: Avaliacao[] = [
   {
-    autor: 'Christa L.',
+    autor: 'Mary Perlera',
     nota: 5,
-    destaque: true,
-    data: '2025-10-01',
+    // A viagem foi em junho de 2025 e a avaliacao foi escrita em 5 de outubro
+    // de 2025. Aqui o TripAdvisor mostra as duas datas, e vale a da avaliacao.
+    data: '2025-10-05',
+    url: 'https://www.tripadvisor.com.br/ShowUserReviews-g303506-d4294013-r1033546692-PrivateTourGuideinRio_Tours-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
     idioma: 'en',
+    fotos: [
+      { src: '/fotos-cliente/maryp1.jpg', alt: { en: 'Mary’s family with their arms raised in front of Christ the Redeemer', pt: 'A família de Mary de braços erguidos diante do Cristo Redentor', es: 'La familia de Mary con los brazos en alto frente al Cristo Redentor' } },
+      { src: '/fotos-cliente/maryp2.jpg', alt: { en: 'Mary’s family dressed in Carnival costumes in front of a large golden feathered headpiece', pt: 'A família de Mary com fantasias de Carnaval, diante de um grande adereço dourado de penas', es: 'La familia de Mary con disfraces de Carnaval, frente a un gran adorno dorado de plumas' } },
+    ],
+    // O titulo ela escreveu em espanhol e o texto em ingles. O idioma do
+    // cartao e o do texto; o titulo em ingles e traducao.
     titulo: {
-      en: 'Incredible Rio Experience',
-      pt: 'Uma experiência incrível no Rio',
-      es: 'Una experiencia increíble en Río',
+      en: 'Such a spectacular trip, our dream come true',
+      pt: 'Uma viagem tão espetacular, o nosso sonho realizado',
+      es: 'Un viaje tan espectacular, nuestro sueño hecho realidad',
     },
-    // Original em ingles, com dois ajustes: "the very best guides" -> "the
-    // very best guide", e o hifen solto de "family- always" virou virgula,
-    // porque o site nao usa travessao. O "Muito obrigado" em portugues e da
-    // propria viajante e fica nas tres versoes.
+    // Original em ingles, com dois ajustes: "Olvia" -> "Olivia", e o emoji de
+    // beijo do fim saiu, porque o site nao usa emoji. As maiusculas sao dela.
+    // O "Besos y abrazos querida" em espanhol e da propria viajante e fica nas
+    // tres versoes.
     texto: {
-      en: 'Olivia is the very best guide around, her love for Rio is evident and infectious!! Our recent trip to Rio was truly unforgettable. It was the perfect combination of nature, culture and relaxation. She created a tour with breathtaking views, a taste of vibrant city life and local history. She had wonderful recommendations for restaurants, local markets and treats you like family, always willing to go above and beyond. We can’t wait to come back again! Muito obrigado, Olivia!!',
-      pt: 'A Olivia é a melhor guia que existe, e o amor dela pelo Rio é evidente e contagiante! A nossa viagem recente ao Rio foi realmente inesquecível. Foi a combinação perfeita de natureza, cultura e descanso. Ela montou um tour com vistas de tirar o fôlego, um gostinho da vida vibrante da cidade e da história local. Tinha ótimas recomendações de restaurantes e mercados locais, e trata a gente como família, sempre disposta a ir além. Mal podemos esperar para voltar! Muito obrigado, Olivia!',
-      es: '¡Olivia es la mejor guía que existe, y su amor por Río es evidente y contagioso! Nuestro reciente viaje a Río fue realmente inolvidable. Fue la combinación perfecta de naturaleza, cultura y descanso. Armó un tour con vistas que quitan el aliento, una muestra de la vida vibrante de la ciudad y de la historia local. Tenía recomendaciones maravillosas de restaurantes y mercados locales, y te trata como si fueras de la familia, siempre dispuesta a ir más allá. ¡Estamos ansiosos por volver! ¡Muito obrigado, Olivia!',
+      en: 'Such a wonderful trip thanks to the best guide Olivia.... My daughter dreamed of traveling to Rio de Janeiro for her birthday, we were a little afraid, we had planned a family trip and we wanted everything to be wonderful... so I started looking, after several days I found information from several guides, but the one that impressed me the most was a review that a tourist left for Olivia, without thinking twice I wrote to her... she contacted me after two or three days... and yes it was our best choice, Olivia was our guide and everything was absolutely wonderful, our trip was from June 23 to July 2. Olivia is a wonderful lady, full of energy and very respectful, she gives her best so that each tourist gets the best of Rio, that city that is an enchantment... Do not hesitate to look for Olivia, she will give her best so that your trip is spectacular just like the one we had... thank you Olivia, a million thanks I hope that God continues to bless your life, your work and your family YOU ARE WONDERFUL... thank you very much... Sincerely PERLERA FAMILY!!! Besos y abrazos querida',
+      pt: 'Que viagem maravilhosa, graças à melhor guia, a Olivia... A minha filha sonhava em conhecer o Rio de Janeiro no aniversário dela. Estávamos com um pouco de medo, tínhamos planejado uma viagem em família e queríamos que tudo fosse maravilhoso... então comecei a procurar. Depois de vários dias, encontrei informações de vários guias, mas o que mais me impressionou foi uma avaliação que um turista deixou para a Olivia. Sem pensar duas vezes, escrevi para ela... ela entrou em contato comigo depois de dois ou três dias... e sim, foi a nossa melhor escolha. A Olivia foi a nossa guia e tudo foi absolutamente maravilhoso. A nossa viagem foi de 23 de junho a 2 de julho. A Olivia é uma mulher maravilhosa, cheia de energia e muito respeitosa, e dá o seu melhor para que cada turista aproveite o melhor do Rio, essa cidade que é um encanto... Não hesite em procurar a Olivia, ela vai dar o seu melhor para que a sua viagem seja espetacular, como foi a nossa... Olivia, o nosso muito obrigado, um milhão de vezes. Espero que Deus continue abençoando a sua vida, o seu trabalho e a sua família. VOCÊ É MARAVILHOSA... muito obrigado... Com carinho, FAMÍLIA PERLERA! Besos y abrazos querida',
+      es: 'Qué viaje tan maravilloso, gracias a la mejor guía, Olivia... Mi hija soñaba con viajar a Río de Janeiro para su cumpleaños. Teníamos un poco de miedo, habíamos planeado un viaje en familia y queríamos que todo fuera maravilloso... así que empecé a buscar. Después de varios días encontré información de varios guías, pero lo que más me impresionó fue una reseña que un turista le dejó a Olivia. Sin pensarlo dos veces le escribí... se puso en contacto conmigo a los dos o tres días... y sí, fue nuestra mejor elección. Olivia fue nuestra guía y todo fue absolutamente maravilloso. Nuestro viaje fue del 23 de junio al 2 de julio. Olivia es una mujer maravillosa, llena de energía y muy respetuosa, y da lo mejor de sí para que cada turista disfrute lo mejor de Río, esa ciudad que es un encanto... No dudes en buscar a Olivia, ella dará lo mejor de sí para que tu viaje sea espectacular, como lo fue el nuestro... Olivia, gracias, un millón de gracias. Espero que Dios siga bendiciendo tu vida, tu trabajo y tu familia. ERES MARAVILLOSA... muchísimas gracias... Con cariño, ¡FAMILIA PERLERA! Besos y abrazos querida',
     },
   },
   {
@@ -134,6 +142,10 @@ export const AVALIACOES: Avaliacao[] = [
   {
     autor: 'Ellen S.',
     nota: 5,
+    // Na Home desde novembro de 2026, no lugar da Christa L., que saiu junto
+    // com as outras avaliacoes sem foto. E o texto mais curto entre as que
+    // tem foto, mas ainda e mais longo que os de Daniel Z. e Olaf R.
+    destaque: true,
     // O TripAdvisor mostra so o mes da viagem (fev. de 2025), nao o dia da
     // avaliacao. O cartao exibe mes e ano, entao o dia 1 e so para completar.
     data: '2025-02-01',
@@ -217,76 +229,35 @@ export const AVALIACOES: Avaliacao[] = [
     },
   },
   {
-    // Nome de usuario, como o TripAdvisor mostra no layout antigo.
-    autor: '681mat_ass',
+    autor: 'MMK',
     nota: 5,
-    data: '2019-01-18',
-    url: 'https://www.tripadvisor.com.br/ShowUserReviews-g303506-d4294013-r646846841-PrivateTourGuideinRio_Tours-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
-    idioma: 'es',
-    // Original em espanhol, so com acentos que faltavam: "Rio" -> "Río" (no
-    // titulo e no texto), "supero" -> "superó", "autentico" -> "auténtico".
-    titulo: {
-      en: 'Olivia and our unforgettable New Year’s in Rio',
-      pt: 'A Olivia e o nosso fim de ano inesquecível no Rio',
-      es: 'Olivia y nuestro inolvidable fin de año en Río',
-    },
-    texto: {
-      en: 'On our second trip to Rio, this time with the whole family, we once again put our trust in our friend Olivia, and as always she exceeded our expectations. We made the most of every minute, she was flexible when plans changed, and she showed us the most authentic side of Rio. Take good care of yourself, Oli.',
-      pt: 'Na nossa segunda experiência no Rio, desta vez com toda a família, voltamos a confiar na nossa amiga Olivia e, como sempre, ela superou as nossas expectativas. Aproveitamos cada minuto, ela foi flexível quando mudamos os planos e nos mostrou o Rio mais autêntico. Se cuida muito, Oli.',
-      es: 'En nuestra segunda experiencia en Río, esta vez con toda la familia volvimos a confiar en nuestra amiga Olivia y como siempre superó nuestras expectativas. Tiempo aprovechado al máximo, flexible para cambio de planes y enseñándonos el Río más auténtico. Cuídate mucho Oli.',
-    },
-  },
-  {
-    // Nome de usuario, como o TripAdvisor mostra no layout antigo.
-    autor: 'DeniseStadt',
-    origem: {
-      en: 'Graz, Austria',
-      pt: 'Graz, Áustria',
-      es: 'Graz, Austria',
-    },
-    nota: 5,
-    data: '2016-04-10',
-    // Link 8 da lista da Olivia: dos dois de abril de 2016, o de numero menor,
-    // que bate com a data (o 9 e o da divinitylh, de 23 de abril).
-    url: 'https://www.tripadvisor.com.br/ShowUserReviews-g303506-d4294013-r363023996-PrivateTourGuideinRio_Tours-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
+    // A viagem foi em abril de 2019 e a avaliacao foi escrita em 20 de abril
+    // de 2019. O TripAdvisor mostra as duas datas, e vale a da avaliacao.
+    data: '2019-04-20',
+    url: 'https://www.tripadvisor.com.br/ShowUserReviews-g303506-d4294013-r667832478-PrivateTourGuideinRio_Tours-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
     idioma: 'en',
-    // Original em ingles. Os tres hifens soltos (" - ") viraram ponto e
-    // virgula ou virgula, porque o site nao usa travessao, e o ":-)" saiu,
-    // porque o site nao usa emoji. As quebras de linha sao as dela.
+    fotos: [
+      { src: '/fotos-cliente/mmk1.jpg', alt: { en: 'Three women smiling at a café table, in a hall with columns and an ornate iron gate', pt: 'Três mulheres sorrindo numa mesa de café, num salão com colunas e um portão de ferro trabalhado', es: 'Tres mujeres sonriendo en una mesa de café, en un salón con columnas y un portón de hierro labrado' } },
+      { src: '/fotos-cliente/mmk2.jpg', alt: { en: 'Two people with their arms open in front of Christ the Redeemer', pt: 'Duas pessoas de braços abertos diante do Cristo Redentor', es: 'Dos personas con los brazos abiertos frente al Cristo Redentor' } },
+    ],
+    // No titulo, "tourgide" -> "tourguide", como ela mesma escreve no fim do
+    // texto.
     titulo: {
-      en: 'Great experience in Rio, absolutely recommendable',
-      pt: 'Ótima experiência no Rio, totalmente recomendável',
-      es: 'Gran experiencia en Río, totalmente recomendable',
+      en: 'Best tourguide in Rio',
+      pt: 'A melhor guia de turismo do Rio',
+      es: 'La mejor guía turística de Río',
     },
+    // Original em ingles, so com erros de digitacao corrigidos: "possbile",
+    // "Chris the Redeemer", "Suger Loaf", "Paque Lage", "Praça Mauà",
+    // "avaiable", "unfortettable" e "olivia" com minuscula. Os erros de
+    // gramatica ("every possible sightseeing places", "scenic point") e os
+    // nomes sem acento (Niteroi, Portugues) ficam como ela escreveu.
+    // Nas traducoes, "We (two)" virou "Eramos duas pessoas", para nao
+    // supor o genero de quem escreveu.
     texto: {
-      en: 'My boyfriend and I booked Olivia for a 2-days tour in Rio. Those 2 days were amazing! She showed us more than just the tourist-spots of Rio; she also gave us impressions of “the real Rio”.\nShe definitely gave us a perfect idea of the city; we loved the two days!\nShe is a very nice person and tries to do everything, that you feel comfortable.\nWhen I told her that I would love to see “real” crocodiles, she tried to find some to show me, and we found! That was great!\nThank you Olivia, we will never forget the time…',
-      pt: 'Eu e o meu namorado contratamos a Olivia para um tour de 2 dias no Rio. Esses 2 dias foram incríveis! Ela nos mostrou mais do que os pontos turísticos do Rio; também nos deu uma amostra do “Rio de verdade”.\nCom certeza ela nos deu uma ideia perfeita da cidade, e adoramos os dois dias!\nEla é uma pessoa muito simpática e faz de tudo para você se sentir à vontade.\nQuando eu disse que adoraria ver jacarés “de verdade”, ela tentou encontrar alguns para me mostrar, e encontramos! Foi demais!\nObrigada, Olivia, nunca vamos esquecer esses dias…',
-      es: 'Mi novio y yo contratamos a Olivia para un tour de 2 días en Río. ¡Esos 2 días fueron increíbles! Nos mostró más que los lugares turísticos de Río; también nos dio una muestra del “Río de verdad”.\nSin duda nos dio una idea perfecta de la ciudad, ¡y nos encantaron los dos días!\nEs una persona muy agradable y hace todo lo posible para que te sientas cómodo.\nCuando le dije que me encantaría ver cocodrilos “de verdad”, intentó encontrar algunos para mostrármelos, ¡y los encontramos! ¡Fue genial!\nGracias, Olivia, nunca olvidaremos esos días…',
-    },
-  },
-  {
-    // Nome de usuario, como o TripAdvisor mostra.
-    autor: 'divinitylh',
-    // No TripAdvisor aparece "Washington DC, District of Columbia", que repete
-    // o DC. Ficou so a cidade.
-    origem: 'Washington, D.C.',
-    nota: 5,
-    data: '2016-04-23',
-    // Link 9 da lista da Olivia: dos dois de abril de 2016, o de numero maior.
-    url: 'https://www.tripadvisor.com.br/ShowUserReviews-g303506-d4294013-r366670231-PrivateTourGuideinRio_Tours-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
-    idioma: 'en',
-    titulo: {
-      en: 'Best Trip Ever!!!',
-      pt: 'A melhor viagem de todas!',
-      es: '¡El mejor viaje de todos!',
-    },
-    // Original em ingles, com dois ajustes: "giver her" -> "give her", e saiu
-    // o "--" antes de "Brigada Olivia", porque o site nao usa travessao. O
-    // "Brigada" em portugues e da propria viajante e fica nas tres versoes.
-    texto: {
-      en: 'There are no words to describe the hospitality Olivia provided us. She showed us Rio from the eyes of a native and man was it one hell of an experience. We toured the city, tried authentic cuisine and rode on motor scooters. Olivia really made us feel like we were at home and we can’t wait to go back and hire her again. I wish I could give her 10 stars but Trip Advisor only allows 5. She is literally the BEST TOUR GUIDE EVER!!! Brigada Olivia',
-      pt: 'Não há palavras para descrever a hospitalidade que a Olivia nos ofereceu. Ela nos mostrou o Rio pelos olhos de quem é de lá e, cara, que experiência! Conhecemos a cidade, provamos a culinária autêntica e andamos de moto. A Olivia realmente nos fez sentir em casa, e mal podemos esperar para voltar e contratá-la de novo. Queria poder dar 10 estrelas para ela, mas o TripAdvisor só permite 5. Ela é literalmente a MELHOR GUIA DE TURISMO DE TODOS OS TEMPOS! Brigada, Olivia',
-      es: 'No hay palabras para describir la hospitalidad que nos brindó Olivia. Nos mostró Río a través de los ojos de alguien de allí y, vaya, ¡qué experiencia! Recorrimos la ciudad, probamos comida auténtica y anduvimos en moto. Olivia de verdad nos hizo sentir como en casa, y estamos ansiosos por volver y contratarla otra vez. Ojalá pudiera darle 10 estrellas, pero TripAdvisor solo permite 5. ¡Es literalmente la MEJOR GUÍA DE TURISMO DE TODOS LOS TIEMPOS! Brigada, Olivia',
+      en: 'We (two) have booked a three-day private tour with Olivia. This is the best choice to travel in Rio. Olivia is extremely professional and experienced. She is very knowledgeable about the history, culture and development in Rio. You will never be bored with her. Most importantly, she is friendly, flexible and responsible. All three days are very well-planned. We have been to every possible sightseeing places with her including Corcovado (Christ the Redeemer Statue), seeing sunset at Sugar Loaf, Niteroi (Niemeyer Trail), Parque Lage, Santa Teresa, Praça Mauá, Real Gabinete Portugues de Leitura, walking tour in downtown, weekend market, and many other scenic point to see the beauty of the city. Olivia is very flexible to adapt our need and tried to show us the best of Rio. She was also available all the time during those days of our stay in Rio to answer our questions and to give us tips about restaurants and shopping. It was an unforgettable trip with her! Thank you so much Olivia, you are the best!! She is not just a tourguide, she is a dear friend!!',
+      pt: 'Éramos duas pessoas e reservamos um tour privado de três dias com a Olivia. É a melhor escolha para viajar pelo Rio. A Olivia é extremamente profissional e experiente. Ela conhece muito a história, a cultura e o desenvolvimento do Rio. Com ela, você nunca vai se entediar. E o mais importante: ela é simpática, flexível e responsável. Os três dias foram muito bem planejados. Fomos com ela a todos os pontos turísticos possíveis, entre eles o Corcovado (a estátua do Cristo Redentor), o pôr do sol no Pão de Açúcar, Niterói (Caminho Niemeyer), o Parque Lage, Santa Teresa, a Praça Mauá, o Real Gabinete Português de Leitura, um passeio a pé pelo centro, uma feira de fim de semana e muitos outros mirantes para ver a beleza da cidade. A Olivia é muito flexível para se adaptar ao que a gente precisa e tentou nos mostrar o melhor do Rio. Ela também ficou disponível o tempo todo durante aqueles dias da nossa estadia no Rio, para responder às nossas perguntas e nos dar dicas de restaurantes e compras. Foi uma viagem inesquecível com ela! Muito obrigado, Olivia, você é a melhor! Ela não é só uma guia de turismo, é uma amiga querida!',
+      es: 'Éramos dos personas y reservamos un tour privado de tres días con Olivia. Es la mejor opción para viajar por Río. Olivia es extremadamente profesional y tiene mucha experiencia. Sabe muchísimo de la historia, la cultura y el desarrollo de Río. Con ella nunca te vas a aburrir. Y lo más importante: es simpática, flexible y responsable. Los tres días estuvieron muy bien planificados. Fuimos con ella a todos los lugares turísticos posibles, entre ellos el Corcovado (la estatua del Cristo Redentor), el atardecer en el Pan de Azúcar, Niterói (Camino Niemeyer), el Parque Lage, Santa Teresa, la Plaza Mauá, el Real Gabinete Portugués de Lectura, un paseo a pie por el centro, un mercado de fin de semana y muchos otros miradores para ver la belleza de la ciudad. Olivia es muy flexible para adaptarse a lo que necesitábamos y trató de mostrarnos lo mejor de Río. Además, estuvo disponible todo el tiempo durante esos días de nuestra estadía en Río para responder nuestras preguntas y darnos consejos sobre restaurantes y compras. ¡Fue un viaje inolvidable con ella! ¡Muchas gracias, Olivia, eres la mejor! No es solo una guía turística, ¡es una amiga querida!',
     },
   },
   // {

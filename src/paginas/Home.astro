@@ -6,7 +6,7 @@ import Icone from '~/components/Icone.astro';
 import BotaoWhatsApp from '~/components/BotaoWhatsApp.astro';
 import CartaoLugar from '~/components/CartaoLugar.astro';
 import CartaoEspecial from '~/components/CartaoEspecial.astro';
-import CartaoAvaliacao from '~/components/CartaoAvaliacao.astro';
+import CarrosselAvaliacoes from '~/components/CarrosselAvaliacoes.astro';
 import CartaoArtigo from '~/components/CartaoArtigo.astro';
 import FaixaInstagram from '~/components/FaixaInstagram.astro';
 import ChamadaFinal from '~/components/ChamadaFinal.astro';
@@ -271,11 +271,7 @@ const recorteHero = 'object-[50%_55%]';
         texto={t.home.avaliacoes.texto}
         centralizado
       >
-        <div class="grid gap-7 md:grid-cols-3">
-          {avaliacoesHome.map((avaliacao) => (
-            <CartaoAvaliacao avaliacao={avaliacao} lang={lang} class="h-full" />
-          ))}
-        </div>
+        <CarrosselAvaliacoes avaliacoes={avaliacoesHome} lang={lang} />
 
         <div
           class="revelar mt-12 flex flex-col items-center justify-center gap-x-10 gap-y-5

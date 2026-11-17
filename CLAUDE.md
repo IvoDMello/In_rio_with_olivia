@@ -137,9 +137,10 @@ Todos os contatos e links externos ficam em `site.ts` para serem trocados em um 
 - [x] Número do WhatsApp
 - [x] Link do perfil do Instagram
 - [x] Link da página do TripAdvisor
-- [x] Texto das 9 avaliações do TripAdvisor escolhidas pela Olivia, em
-      `src/data/reviews.ts`. Faltam os links das quatro de 2025 (Christa L.,
-      Sandra C., Manuela e Ellen S.), que não dá para deduzir pela data
+- [x] Texto das 7 avaliações do TripAdvisor escolhidas pela Olivia, em
+      `src/data/reviews.ts`. Faltam os links de três de 2025 (Sandra C.,
+      Manuela e Ellen S.), que não dá para deduzir pela data. Enquanto isso,
+      o ícone do TripAdvisor desses cartões abre a página geral da Olivia
 - [x] E-mail de contato
 - [x] Número do Cadastur
 - [x] Idiomas de atendimento da equipe: português, inglês, espanhol, francês e italiano
@@ -316,10 +317,56 @@ destaques são escolhidos pelo tamanho parecido, e não pela ordem: na grade da 
 cada linha fica da altura do cartão maior, e um depoimento de cinco parágrafos ao
 lado de dois curtos deixava dois buracos brancos.
 
-Cada cartão mostra as estrelas, o título que o viajante deu, o texto, o nome com a
-inicial num círculo, a origem e o mês da avaliação, e um ícone que abre a avaliação
-original no TripAdvisor. Na página, os cartões ficam em colunas (mosaico), e não em
-grade, porque os textos têm tamanhos muito diferentes.
+Cada cartão mostra, de cima para baixo: o nome com a inicial num círculo e a origem,
+com o ícone do TripAdvisor ao lado; as estrelas, as fotos do viajante, o título que
+ele deu, o texto e, na linha de baixo, o mês da avaliação. A ordem é a que a Olivia
+pediu em novembro de 2026, a mesma do TripAdvisor: quem escreveu vem primeiro. A nota
+em número ("5/5") saiu a pedido dela; as estrelas já dizem isso, e o número continua
+só para leitor de tela. Todo cartão tem o ícone do TripAdvisor: abre a avaliação
+quando há `url` e, sem ela, a página geral da Olivia no TripAdvisor.
+
+Os cartões seguem um padrão só, em qualquer tela. A faixa de fotos tem sempre a mesma
+altura e ocupa a largura toda, com uma, duas ou três colunas; a partir da quarta foto,
+a terceira mostra "+N", e o visualizador continua passando por todas. O texto fica
+recolhido em 8 linhas, com "Ler mais". No computador, os cartões ficam numa grade de
+três colunas (duas no tablet), cada linha com a altura do cartão maior, e a última
+linha incompleta fica centralizada. Antes, a página usava colunas de mosaico, com cada
+cartão da altura do próprio texto, e a fileira de fotos rolava para o lado, com barra
+de rolagem aparente no Windows. A Olivia achou que os cartões pareciam soltos, sem
+padrão, e isso mudou em novembro de 2026. Na Home, o mesmo recorte resolveu o espaço
+em branco que sobrava embaixo dos depoimentos curtos.
+
+### No celular, os depoimentos são um carrossel
+
+Também a pedido da Olivia, para a página não virar uma fila comprida de cartões. Abaixo
+de 768px, a Home e a página de Depoimentos mostram os cartões em um carrossel lateral
+(`CarrosselAvaliacoes.astro`), no desenho do carrossel de destaques do site da
+Morabilidade: cada cartão ocupa 85 por cento da largura e a ponta do próximo aparece. A
+partir de 768px, os mesmos cartões viram a grade descrita acima.
+
+O carrossel passa sozinho a cada 3 segundos, como ela pediu, e tem setas. Como três
+segundos não dão para ler um depoimento, a troca para sozinha quando a pessoa mostra que
+está lendo: arrasta para o lado, toca num cartão ou chega pelo teclado. Também há um
+botão de pausa, exigido pela WCAG para conteúdo que se move sozinho, e com
+`prefers-reduced-motion` a troca já começa parada. O texto recolhido em 8 linhas também
+ajuda aqui: sem ele, cada cartão teria mais de uma tela de altura no celular. As setas
+ficam no centro, e a pausa na esquerda, porque o canto direito é do botão flutuante do
+WhatsApp.
+
+O carrossel usa a rolagem do próprio navegador, com encaixe, e não uma biblioteca: o
+site da Morabilidade usa Embla, que é de React. Os cartões são renderizados uma vez só,
+e o mesmo HTML vira carrossel ou grade conforme a largura, para não duplicar conteúdo.
+
+Em novembro de 2026 entraram mais duas avaliações, cada uma com duas fotos: a de
+Mary Perlera (2025) e a de MMK (2019), e a página passou a ter onze.
+
+Logo depois, a Olivia pediu para tirar as avaliações sem foto: saíram as de
+Christa L., 681mat_ass, DeniseStadt e divinitylh, e ficaram sete. Os textos e as
+traduções delas continuam no histórico do repositório. A Christa era destaque da
+Home, e a Ellen S. entrou no lugar dela, por ter o texto mais curto entre as que
+têm foto. Ainda assim é mais longa que as de Daniel Z. e Olaf R., mas com o texto
+recolhido em 8 linhas os três cartões ficam do mesmo tamanho. Ao acrescentar
+avaliações, a regra passa a ser: só entra avaliação com foto.
 
 A regra de nada inventado continua valendo: com `src/data/reviews.ts` vazio, a
 página sai do menu e a seção some da Home.
@@ -370,8 +417,8 @@ de imagens da internet ou montagens geradas por IA, e ficaram de fora. Para a gr
 não parecer inacabada, 12 lugares usam fotos provisórias do Wikimedia Commons, todas
 em domínio público ou CC0. A lista e a origem de cada uma estão em
 `src/assets/places/CREDITOS.md`. A regra vale para os cartões de lugar e para os
-cartões de experiências especiais (helicóptero, asa-delta, ensaio de escola de
-samba e futebol também usam foto de banco). O topo da Home, o retrato, a equipe e
+cartões de experiências especiais (helicóptero, asa-delta, Carnaval e futebol
+também usam foto de banco). O topo da Home, o retrato, a equipe e
 o Instagram usam apenas fotos da própria Olivia. Uma foto de banco com pessoas
 desconhecidas no bloco da equipe apresentaria estranhos como guias dela.
 
@@ -387,6 +434,14 @@ buracos. Não existe foto livre de ensaio de quadra com qualidade para o site, e
 o cartão usa a bateria de uma escola do Rio desfilando na Intendente Magalhães, e a
 descrição da foto fala de ritmistas, não de ensaio. É a foto mais fraca do bloco e
 a primeira a trocar quando a Olivia tiver uma de ensaio.
+
+Em novembro de 2026 a Olivia contou que também consegue ingressos para o Carnaval.
+Em vez de um sétimo cartão, que deixaria a última linha da grade com dois buracos,
+o cartão do ensaio virou **Carnaval**: ingressos e, nos meses antes da festa, os
+ensaios das escolas. O id passou de `ensaio-samba` para `carnaval`, e a foto de
+desfile, que antes não combinava com o ensaio, agora combina com o texto. O tipo de
+ingresso (arquibancada, frisa, camarote, baile) ainda não foi confirmado, por isso
+o texto fala só em "ingressos para o Carnaval". Quando ela confirmar, detalhar.
 
 A Olivia pediu para tirar das Praias da Zona Sul a foto do mirante do Vidigal, que
 mostra a praia de cima da favela. Ela virou a segunda foto da Favela, que a Olivia

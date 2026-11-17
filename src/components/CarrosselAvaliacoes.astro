@@ -1,0 +1,275 @@
+---
+import CartaoAvaliacao from './CartaoAvaliacao.astro';
+import Icone from './Icone.astro';
+import type { Avaliacao } from '~/data/reviews';
+import { dicionario, type Idioma } from '~/i18n/config';
+
+/**
+ * Lista de depoimentos. No celular e um carrossel lateral; a partir de 768px
+ * volta a ser o layout de cada pagina, com todos os cartoes a vista.
+ *
+ * No celular, cada cartao ocupa 85 por cento da largura, para a ponta do
+ * proximo aparecer e mostrar que ha mais para o lado (o mesmo desenho do
+ * carrossel de destaques do site da Morabilidade). A rolagem e a do proprio
+ * navegador, com encaixe (scroll-snap): sem JavaScript ja funciona com o dedo.
+ * O script acrescenta as setas, os pontos e a troca automatica a cada
+ * 3 segundos.
+ *
+ * A troca automatica para sozinha quando a pessoa mostra que esta lendo:
+ * arrasta o carrossel para o lado, toca num cartao (fotos, "Ler mais", link)
+ * ou chega nele pelo teclado. O botao de pausa permite parar e retomar, como
+ * pede a WCAG para conteudo que se move sozinho. Com prefers-reduced-motion
+ * ela ja comeca parada. Fora da tela ou com a aba escondida, nao roda.
+ *
+ * A partir de 768px, grade de duas colunas, e de tres a partir de 1024px.
+ * Cada linha tem a altura do cartao mais alto, e como os textos longos ficam
+ * recolhidos em 8 linhas (ver CartaoAvaliacao), os cartoes saem praticamente
+ * do mesmo tamanho. A grade e feita com flex-wrap, e nao com grid, para a
+ * ultima linha incompleta ficar centralizada em vez de encostada na esquerda.
+ * Antes, a pagina usava colunas de mosaico, com cada cartao da altura do
+ * proprio texto, e o conjunto parecia solto, sem padrao.
+ *
+ * Os cartoes sao renderizados uma vez so, e o mesmo HTML vira carrossel ou
+ * grade conforme a largura, para nao duplicar conteudo para o Google nem para
+ * leitores de tela.
+ */
+interface Props {
+  avaliacoes: Avaliacao[];
+  lang: Idioma;
+  class?: string;
+}
+
+const { avaliacoes, lang, class: classe = '' } = Astro.props;
+const t = dicionario(lang);
+const c = t.avaliacoes.carrossel;
+
+const classeBotao =
+  'flex h-10 w-10 items-center justify-center rounded-full border border-atlantico/15 ' +
+  'bg-branco text-atlantico transition-colors duration-200 hover:border-sol hover:bg-sol/10';
+---
+
+<div class:list={['revelar', classe]} data-carrossel-avaliacoes>
+  {/* As margens negativas levam o trilho ate a borda da tela no celular, e o
+      scroll-px devolve o encaixe para a margem do texto (1.25rem, a mesma do
+      container-site). */}
+  <div
+    class:list={[
+      'relative -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto',
+      'overscroll-x-contain px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+      'md:mx-0 md:snap-none md:flex-wrap md:justify-center md:gap-7 md:overflow-visible md:px-0',
+    ]}
+    role="region"
+    aria-label={c.rotulo}
+    data-trilho
+  >
+    {
+      avaliacoes.map((avaliacao) => (
+        <CartaoAvaliacao
+          avaliacao={avaliacao}
+          lang={lang}
+          class="w-[85%] shrink-0 snap-start md:w-[calc((100%_-_1.75rem)/2)] lg:w-[calc((100%_-_3.5rem)/3)]"
+        />
+      ))
+    }
+  </div>
+
+  {/* Setas no centro e pausa na esquerda: o canto direito e do botao flutuante
+      do WhatsApp, que cobria a seta de proximo quando os controles ficavam no
+      pe da tela. */}
+  <div class="relative mt-6 flex items-center justify-center gap-3 md:hidden" data-controles hidden>
+      <button
+        type="button"
+        class:list={[classeBotao, 'absolute left-0']}
+        aria-label={c.pausar}
+        data-pausa
+        data-pausar={c.pausar}
+        data-continuar={c.continuar}
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" data-icone-pausar>
+          <rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"></rect>
+          <rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"></rect>
+        </svg>
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" class="hidden" data-icone-tocar>
+          <path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z" fill="currentColor"></path>
+        </svg>
+      </button>
+      <button type="button" class={classeBotao} aria-label={c.anterior} data-anterior>
+        <Icone nome="chevron" tamanho={18} class="rotate-90" />
+      </button>
+
+      <div class="flex items-center gap-1.5" aria-hidden="true" data-pontos>
+        {
+          avaliacoes.map(() => (
+            <span
+              class="h-1.5 w-1.5 rounded-full bg-atlantico/20 transition-all duration-300
+                     data-[ativo=true]:w-5 data-[ativo=true]:bg-atlantico"
+            />
+          ))
+        }
+      </div>
+
+      <button type="button" class={classeBotao} aria-label={c.proximo} data-proxima>
+        <Icone nome="chevron" tamanho={18} class="-rotate-90" />
+      </button>
+  </div>
+</div>
+
+<script>
+  const INTERVALO = 3000;
+  const celular = window.matchMedia('(max-width: 47.99rem)');
+  const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll<HTMLElement>('[data-carrossel-avaliacoes]').forEach((raiz) => {
+    const trilho = raiz.querySelector<HTMLElement>('[data-trilho]');
+    const controles = raiz.querySelector<HTMLElement>('[data-controles]');
+    if (!trilho || !controles) return;
+
+    // So os cartoes: o Astro renderiza o <script> do CartaoAvaliacao logo depois
+    // do primeiro cartao, dentro do trilho, e ele contaria como um slide.
+    const cartoes = Array.from(trilho.querySelectorAll<HTMLElement>(':scope > figure'));
+    if (cartoes.length < 2) return;
+
+    const pontos = Array.from(raiz.querySelectorAll<HTMLElement>('[data-pontos] > span'));
+    const botaoPausa = raiz.querySelector<HTMLButtonElement>('[data-pausa]');
+
+    let pausadoPelaPessoa = reduzirMovimento.matches;
+    let naTela = false;
+    let tecladoDentro = false;
+    let relogio = 0;
+
+    // O trilho e relative, entao offsetLeft de cada cartao e medido a partir
+    // dele. Subtrair o do primeiro descarta o recuo lateral (px-5).
+    const posicao = (i: number) => cartoes[i]!.offsetLeft - cartoes[0]!.offsetLeft;
+
+    const atual = () => {
+      let maisPerto = 0;
+      let menorDistancia = Infinity;
+      cartoes.forEach((_, i) => {
+        const distancia = Math.abs(posicao(i) - trilho.scrollLeft);
+        if (distancia < menorDistancia) {
+          menorDistancia = distancia;
+          maisPerto = i;
+        }
+      });
+      return maisPerto;
+    };
+
+    // Depois do ultimo vem o primeiro, para nenhuma seta ficar desativada.
+    // scrollTo, e nao scrollIntoView, para nunca mexer na rolagem da pagina.
+    const irPara = (indice: number) => {
+      const total = cartoes.length;
+      trilho.scrollTo({
+        left: posicao(((indice % total) + total) % total),
+        behavior: reduzirMovimento.matches ? 'auto' : 'smooth',
+      });
+    };
+
+    const marcarAtual = () => {
+      const indice = atual();
+      pontos.forEach((ponto, n) => (ponto.dataset.ativo = String(n === indice)));
+    };
+
+    const deveRodar = () =>
+      celular.matches && naTela && !tecladoDentro && !pausadoPelaPessoa && !document.hidden;
+
+    // Recomeca a contagem do zero a cada chamada: depois de uma seta, o
+    // proximo cartao espera os 3 segundos inteiros.
+    const agendar = () => {
+      window.clearInterval(relogio);
+      relogio = deveRodar() ? window.setInterval(() => irPara(atual() + 1), INTERVALO) : 0;
+    };
+
+    const atualizarBotaoPausa = () => {
+      if (!botaoPausa) return;
+      botaoPausa.setAttribute(
+        'aria-label',
+        (pausadoPelaPessoa ? botaoPausa.dataset.continuar : botaoPausa.dataset.pausar) ?? '',
+      );
+      botaoPausa.querySelector('[data-icone-pausar]')?.classList.toggle('hidden', pausadoPelaPessoa);
+      botaoPausa.querySelector('[data-icone-tocar]')?.classList.toggle('hidden', !pausadoPelaPessoa);
+    };
+
+    const pausar = () => {
+      if (pausadoPelaPessoa) return;
+      pausadoPelaPessoa = true;
+      atualizarBotaoPausa();
+      agendar();
+    };
+
+    raiz.querySelector('[data-anterior]')?.addEventListener('click', () => {
+      irPara(atual() - 1);
+      agendar();
+    });
+    raiz.querySelector('[data-proxima]')?.addEventListener('click', () => {
+      irPara(atual() + 1);
+      agendar();
+    });
+    botaoPausa?.addEventListener('click', () => {
+      pausadoPelaPessoa = !pausadoPelaPessoa;
+      atualizarBotaoPausa();
+      agendar();
+    });
+
+    // Arrastar para o lado pausa; rolar a pagina para baixo com o dedo sobre
+    // o carrossel, nao. So conta o gesto mais horizontal que vertical.
+    let toqueX = 0;
+    let toqueY = 0;
+    trilho.addEventListener(
+      'touchstart',
+      (evento) => {
+        toqueX = evento.touches[0]!.clientX;
+        toqueY = evento.touches[0]!.clientY;
+      },
+      { passive: true },
+    );
+    trilho.addEventListener(
+      'touchmove',
+      (evento) => {
+        const dx = Math.abs(evento.touches[0]!.clientX - toqueX);
+        const dy = Math.abs(evento.touches[0]!.clientY - toqueY);
+        if (dx > 10 && dx > dy) pausar();
+      },
+      { passive: true },
+    );
+    trilho.addEventListener(
+      'wheel',
+      (evento) => {
+        if (Math.abs(evento.deltaX) > Math.abs(evento.deltaY)) pausar();
+      },
+      { passive: true },
+    );
+
+    // Tocar dentro de um cartao (fotos, "Ler mais", TripAdvisor) e sinal de
+    // que a pessoa esta lendo aquele depoimento.
+    trilho.addEventListener('click', pausar);
+
+    // Pelo teclado, para enquanto o foco estiver dentro. Toque na seta tambem
+    // da foco ao botao em alguns navegadores, por isso so conta foco visivel.
+    raiz.addEventListener('focusin', (evento) => {
+      if (!(evento.target as HTMLElement).matches(':focus-visible')) return;
+      tecladoDentro = true;
+      agendar();
+    });
+    raiz.addEventListener('focusout', (evento) => {
+      if (raiz.contains(evento.relatedTarget as Node | null)) return;
+      tecladoDentro = false;
+      agendar();
+    });
+
+    trilho.addEventListener('scroll', marcarAtual, { passive: true });
+    document.addEventListener('visibilitychange', agendar);
+    celular.addEventListener('change', agendar);
+
+    new IntersectionObserver(
+      ([entrada]) => {
+        naTela = Boolean(entrada?.isIntersecting);
+        agendar();
+      },
+      { threshold: 0.25 },
+    ).observe(trilho);
+
+    controles.hidden = false;
+    marcarAtual();
+    atualizarBotaoPausa();
+  });
+</script>

@@ -48,7 +48,7 @@
     "whatsapp": "Message me on WhatsApp",
     "whatsappCurto": "WhatsApp",
     "orcamento": "Ask for a quote",
-    "planejarNoite": "Plan my night out",
+    "planejarNoite": "Build your tour here",
     "verNoite": "See Rio by Night",
     "consultar": "Ask about prices",
     "verExperiencias": "See experiences",
@@ -70,7 +70,7 @@
     },
     "apresentacao": {
       "titulo": "It is a pleasure to meet you. I am Olivia.",
-      "p1": "For over 20 years I have had the privilege of working as a tour guide in Rio de Janeiro, a job I do with a great deal of passion, dedication and care.",
+      "p1": "For over 20 years I have had the privilege of working as a tour guide in Rio de Janeiro, a job I do with a great deal of passion, dedication and care. Together with my team, I guide in Portuguese, English, Spanish, French and Italian.",
       "p2": "I believe a great tour goes far beyond visiting the main sights. I want you to feel so comfortable and so well looked after that, at the end of the day, we say goodbye with a hug, like old friends."
     },
     "comoFunciona": {
@@ -257,6 +257,15 @@
     "notaDe": "Rating",
     "lerNoTripadvisor": "Read on TripAdvisor",
     "lerDeAutor": "Read {nome}'s review on TripAdvisor",
+    "lerMais": "Read more",
+    "lerMenos": "Read less",
+    "carrossel": {
+      "rotulo": "Reviews",
+      "anterior": "Previous review",
+      "proximo": "Next review",
+      "pausar": "Pause automatic rotation",
+      "continuar": "Resume automatic rotation"
+    },
     "traduzido": "Translation",
     "traduzidoDe": {
       "en": "Translated from English",
@@ -315,7 +324,8 @@
       "maracana": "Inside Maracanã stadium, with the pitch and the stands",
       "mirante-dona-marta": "View over Botafogo Bay and Sugarloaf Mountain from above",
       "catedral-metropolitana": "Stained glass rising to the cross-shaped skylight inside the Metropolitan Cathedral",
-      "mosteiro-sao-bento": "Facade of the São Bento Monastery, with its two towers",
+      "real-gabinete": "The lit chandelier of the Royal Portuguese Reading Room, above Gothic arches and shelves of old books",
+      "mosteiro-sao-bento": "A gilded carved altar in the São Bento Monastery, with a red curtain, twisted columns and a lamp hanging from the vault",
       "morro-da-conceicao": "A cobbled street lined with colorful houses on Morro da Conceição",
       "santa-teresa": "The yellow Santa Teresa tram crossing the Lapa Arches",
       "favela": "A hillside community seen through an open gate",
@@ -334,7 +344,7 @@
       "asa-delta": "An instructor and a passenger on a tandem hang gliding flight over the forest, with São Conrado and the sea below",
       "roxy-dinner-show": "The Roxy cast on stage in colorful samba costumes, with an image of Christ the Redeemer on the screen behind them and dinner tables in the foreground",
       "favela-tour": "Two travelers on a narrow staircase inside a favela",
-      "ensaio-samba": "Drummers from a Rio samba school in striped shirts and white hats, playing tamborims",
+      "carnaval": "Drummers from a Rio samba school in striped shirts and white hats, playing tamborims",
       "futebol": "A packed Maracanã during a match, with the pitch and the full stands"
     }
   }

@@ -48,7 +48,7 @@
     "whatsapp": "Escribirme por WhatsApp",
     "whatsappCurto": "WhatsApp",
     "orcamento": "Pedir un presupuesto",
-    "planejarNoite": "Planear mi noche",
+    "planejarNoite": "Arma tu tour aquí",
     "verNoite": "Ver el Rio by Night",
     "consultar": "Consultar precios",
     "verExperiencias": "Ver experiencias",
@@ -70,7 +70,7 @@
     },
     "apresentacao": {
       "titulo": "Es un placer conocerte. Soy Olivia.",
-      "p1": "Desde hace más de 20 años tengo el privilegio de trabajar como guía de turismo en Río de Janeiro, una profesión que ejerzo con mucha pasión, dedicación y responsabilidad.",
+      "p1": "Desde hace más de 20 años tengo el privilegio de trabajar como guía de turismo en Río de Janeiro, una profesión que ejerzo con mucha pasión, dedicación y responsabilidad. Junto con mi equipo, atiendo en portugués, inglés, español, francés e italiano.",
       "p2": "Creo que un buen paseo va mucho más allá de visitar los principales puntos turísticos. Quiero que te sientas tan a gusto y tan bien recibido que, al final del día, nos despidamos con un abrazo, como viejos amigos."
     },
     "comoFunciona": {
@@ -257,6 +257,15 @@
     "notaDe": "Puntuación",
     "lerNoTripadvisor": "Leer en TripAdvisor",
     "lerDeAutor": "Leer la opinión de {nome} en TripAdvisor",
+    "lerMais": "Leer más",
+    "lerMenos": "Leer menos",
+    "carrossel": {
+      "rotulo": "Testimonios",
+      "anterior": "Testimonio anterior",
+      "proximo": "Testimonio siguiente",
+      "pausar": "Pausar el cambio automático",
+      "continuar": "Reanudar el cambio automático"
+    },
     "traduzido": "Traducción",
     "traduzidoDe": {
       "en": "Traducido del inglés",
@@ -315,7 +324,8 @@
       "maracana": "El interior del Maracaná, con el campo y las tribunas",
       "mirante-dona-marta": "Vista desde lo alto sobre la ensenada de Botafogo y el Pan de Azúcar",
       "catedral-metropolitana": "Vitrales que suben hasta el tragaluz en forma de cruz, dentro de la Catedral Metropolitana",
-      "mosteiro-sao-bento": "Fachada del Monasterio de San Benito, con sus dos torres",
+      "real-gabinete": "La lámpara encendida del Real Gabinete Portugués de Lectura, sobre los arcos góticos y las estanterías de libros antiguos",
+      "mosteiro-sao-bento": "Un altar de talla dorada en el Monasterio de San Benito, con cortina roja, columnas salomónicas y una lámpara que cuelga de la bóveda",
       "morro-da-conceicao": "Calle empedrada con casas coloridas en el Morro da Conceição",
       "santa-teresa": "El tranvía amarillo de Santa Teresa cruzando los Arcos de Lapa",
       "favela": "Una comunidad en el cerro vista a través de un portón abierto",
@@ -334,7 +344,7 @@
       "asa-delta": "Instructor y pasajero en un vuelo doble de ala delta sobre el bosque, con São Conrado y el mar al fondo",
       "roxy-dinner-show": "El elenco del Roxy en el escenario, con coloridos trajes de samba y una imagen del Cristo Redentor en la pantalla del fondo, y mesas de cena en primer plano",
       "favela-tour": "Dos viajeros en una escalera estrecha dentro de una favela",
-      "ensaio-samba": "Ritmistas de una escuela de samba de Río, con camisa a rayas y sombrero blanco, tocando tamborim",
+      "carnaval": "Ritmistas de una escuela de samba de Río, con camisa a rayas y sombrero blanco, tocando tamborim",
       "futebol": "El Maracaná lleno durante un partido, con el césped y las gradas repletas"
     }
   }

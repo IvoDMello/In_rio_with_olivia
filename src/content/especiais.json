@@ -64,19 +64,19 @@
     }
   },
   {
-    "id": "ensaio-samba",
+    "id": "carnaval",
     "ordem": 5,
     "en": {
-      "nome": "Samba school rehearsal",
-      "resumo": "Carnival in the making, with the drum section, the dancers and the whole school community rehearsing together."
+      "nome": "Carnival",
+      "resumo": "Carnival tickets and, in the months before it, samba school rehearsals with the drum section, the dancers and the whole school community."
     },
     "pt": {
-      "nome": "Ensaio de escola de samba",
-      "resumo": "Os preparativos do Carnaval de perto, com a bateria, os passistas e toda a comunidade da escola ensaiando juntos."
+      "nome": "Carnaval",
+      "resumo": "Ingressos para o Carnaval e, nos meses antes da festa, os ensaios das escolas de samba, com a bateria, os passistas e toda a comunidade da escola."
     },
     "es": {
-      "nome": "Ensayo de escuela de samba",
-      "resumo": "Los preparativos del Carnaval de cerca, con la batería, los pasistas y toda la comunidad de la escuela ensayando juntos."
+      "nome": "Carnaval",
+      "resumo": "Entradas para el Carnaval y, en los meses antes de la fiesta, los ensayos de las escuelas de samba, con la batería, los pasistas y toda la comunidad de la escuela."
     }
   },
   {
