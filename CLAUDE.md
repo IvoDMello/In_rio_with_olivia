@@ -138,9 +138,7 @@ Todos os contatos e links externos ficam em `site.ts` para serem trocados em um 
 - [x] Link do perfil do Instagram
 - [x] Link da página do TripAdvisor
 - [x] Texto das 7 avaliações do TripAdvisor escolhidas pela Olivia, em
-      `src/data/reviews.ts`. Faltam os links de três de 2025 (Sandra C.,
-      Manuela e Ellen S.), que não dá para deduzir pela data. Enquanto isso,
-      o ícone do TripAdvisor desses cartões abre a página geral da Olivia
+      `src/data/reviews.ts`, todas com o link da avaliação original
 - [x] E-mail de contato
 - [x] Número do Cadastur
 - [x] Idiomas de atendimento da equipe: português, inglês, espanhol, francês e italiano

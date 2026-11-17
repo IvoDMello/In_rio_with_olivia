@@ -92,6 +92,7 @@ export const AVALIACOES: Avaliacao[] = [
     // O TripAdvisor mostra so o mes da viagem (ago. de 2025), nao o dia da
     // avaliacao. O cartao exibe mes e ano, entao o dia 1 e so para completar.
     data: '2025-08-01',
+    url: 'https://www.tripadvisor.com.br/ShowUserReviews-g303506-d4294013-r1032957292-PrivateTourGuideinRio_Tours-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
     idioma: 'en',
     fotos: [
       { src: '/fotos-cliente/sandrac1.jpg', alt: { en: 'Sandra enjoying a Rio tour with Olivia', pt: 'Sandra durante um passeio no Rio com Olivia', es: 'Sandra durante un paseo por Río con Olivia' } },
@@ -124,6 +125,7 @@ export const AVALIACOES: Avaliacao[] = [
     // O TripAdvisor mostra so o mes da viagem (abril de 2025), nao o dia da
     // avaliacao. O cartao exibe mes e ano, entao o dia 1 e so para completar.
     data: '2025-04-01',
+    url: 'https://www.tripadvisor.com.br/ShowUserReviews-g303506-d4294013-r1019786438-PrivateTourGuideinRio_Tours-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
     idioma: 'en',
     fotos: [
       { src: '/fotos-cliente/manuela1.jpg', alt: { en: 'Manuela enjoying a Rio tour with Olivia', pt: 'Manuela durante um passeio no Rio com Olivia', es: 'Manuela durante un paseo por Río con Olivia' } },
@@ -149,6 +151,7 @@ export const AVALIACOES: Avaliacao[] = [
     // O TripAdvisor mostra so o mes da viagem (fev. de 2025), nao o dia da
     // avaliacao. O cartao exibe mes e ano, entao o dia 1 e so para completar.
     data: '2025-02-01',
+    url: 'https://www.tripadvisor.com.br/ShowUserReviews-g303506-d4294013-r1035908523-PrivateTourGuideinRio_Tours-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html',
     idioma: 'en',
     fotos: [
       { src: '/fotos-cliente/ellens1.jpg', alt: { en: 'Ellen enjoying a Rio tour with Olivia', pt: 'Ellen durante um passeio no Rio com Olivia', es: 'Ellen durante un paseo por Río con Olivia' } },
