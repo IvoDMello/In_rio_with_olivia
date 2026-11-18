@@ -73,15 +73,21 @@ const schemaPessoa = {
   <!-- ------------------------------------------------------------ Equipe -->
   <Secao>
     <div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-      <div class="revelar">
-        <Foto
-          src={fotoEquipe}
-          alt={t.comoTrabalho.equipe.titulo}
-          proporcao="3 / 2"
-          sizes="(min-width: 768px) 48vw, 100vw"
-          class="rounded-sm"
-        />
-      </div>
+      {/* Sem foto da equipe, o bloco fica so com o texto, sem espaco reservado.
+          Basta soltar src/assets/fotos/equipe.jpg para a foto voltar. */}
+      {
+        fotoEquipe && (
+          <div class="revelar">
+            <Foto
+              src={fotoEquipe}
+              alt={t.comoTrabalho.equipe.titulo}
+              proporcao="3 / 2"
+              sizes="(min-width: 768px) 48vw, 100vw"
+              class="rounded-sm"
+            />
+          </div>
+        )
+      }
 
       <div class="revelar">
         <h2 class="text-titulo-secao text-balance text-atlantico">

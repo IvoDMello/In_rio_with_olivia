@@ -405,6 +405,8 @@ Onde falta informação real, o bloco não aparece, em vez de exibir conteúdo d
 - Sem avaliações reais em `src/data/reviews.ts`, a seção de avaliações e o
   `aggregateRating` do schema.org ficam de fora
 - Sem provedor de formulário, o formulário aparece desativado com aviso
+- Sem foto da equipe (`src/assets/fotos/equipe.jpg`), o bloco da equipe em Como eu
+  trabalho mostra só o texto, sem o espaço reservado que as outras fotos usam
 
 O `npm run build` lista o que ainda falta ao terminar.
 
