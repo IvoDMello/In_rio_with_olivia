@@ -1,6 +1,5 @@
 ---
-import Foto from './Foto.astro';
-import Icone from './Icone.astro';
+import Galeria from './Galeria.astro';
 import { dicionario, type Idioma } from '~/i18n/config';
 import { fotosLugar } from '~/lib/imagens';
 
@@ -11,9 +10,7 @@ import { fotosLugar } from '~/lib/imagens';
  * vendidos separadamente e sim pecas que a Olivia usa para montar o tour.
  *
  * Quando o lugar tem mais de uma foto (favela.jpg, favela-2.jpg...), a moldura
- * vira uma galeria que desliza para o lado. Sem JavaScript ela ja funciona com
- * o dedo, o trackpad e as setas do teclado; o script so acrescenta os botoes
- * de anterior e proxima e os pontos que mostram em qual foto se esta.
+ * vira uma galeria que desliza para o lado (ver Galeria.astro).
  */
 interface Props {
   lang: Idioma;
@@ -30,119 +27,19 @@ const t = dicionario(lang);
 // Descricao de cada foto, pelo nome do arquivo. Sem ela, o nome do lugar faz as vezes.
 const descricoes: Record<string, string | undefined> = t.fotos.lugares;
 const fotos = fotosLugar(id).map((foto) => ({ ...foto, alt: descricoes[foto.nome] ?? nome }));
-
-const sizes = '(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw';
-const classeImagem =
-  'transition-transform duration-700 ease-[cubic-bezier(0.2,0,0,1)] motion-safe:group-hover:scale-[1.04]';
-const classeBotao =
-  'absolute top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full ' +
-  'bg-branco/90 text-atlantico transition-colors duration-200 hover:bg-sol';
 ---
 
 <article class="revelar group">
-  {
-    fotos.length > 1 ? (
-      <div class="relative" data-galeria>
-        <div
-          class="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-sm
-                 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          role="region"
-          aria-label={t.geral.galeria.rotulo.replace('{nome}', nome)}
-          tabindex="0"
-          data-trilho
-        >
-          {fotos.map((foto, i) => (
-            <Foto
-              src={foto.src}
-              alt={foto.alt}
-              proporcao="4 / 3"
-              prioridade={prioridade && i === 0}
-              sizes={sizes}
-              class="w-full shrink-0 snap-start"
-              classeImagem={classeImagem}
-            />
-          ))}
-        </div>
-
-        <button
-          type="button"
-          class:list={[classeBotao, 'left-3']}
-          aria-label={t.geral.galeria.anterior}
-          data-anterior
-          hidden
-        >
-          <Icone nome="chevron" tamanho={18} class="rotate-90" />
-        </button>
-        <button
-          type="button"
-          class:list={[classeBotao, 'right-3']}
-          aria-label={t.geral.galeria.proxima}
-          data-proxima
-          hidden
-        >
-          <Icone nome="chevron" tamanho={18} class="-rotate-90" />
-        </button>
-
-        <div
-          class="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5
-                 rounded-full bg-atlantico/40 px-2 py-1.5"
-          aria-hidden="true"
-          data-pontos
-          hidden
-        >
-          {fotos.map(() => (
-            <span class="h-1.5 w-1.5 rounded-full bg-branco/50 transition-colors data-[ativo=true]:bg-branco" />
-          ))}
-        </div>
-      </div>
-    ) : (
-      <Foto
-        src={fotos[0]?.src}
-        alt={fotos[0]?.alt ?? nome}
-        proporcao="4 / 3"
-        prioridade={prioridade}
-        sizes={sizes}
-        class="rounded-sm"
-        classeImagem={classeImagem}
-      />
-    )
-  }
+  <Galeria
+    lang={lang}
+    fotos={fotos}
+    nome={nome}
+    proporcao="4 / 3"
+    prioridade={prioridade}
+    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+    classeImagem="transition-transform duration-700 ease-[cubic-bezier(0.2,0,0,1)] motion-safe:group-hover:scale-[1.04]"
+  />
 
   <h3 class="mt-5 text-titulo-cartao text-atlantico">{nome}</h3>
   <p class="mt-2 text-sm leading-relaxed text-pedra">{resumo}</p>
 </article>
-
-<script>
-  // Botoes e pontos das galerias. Os botoes dao a volta: depois da ultima foto
-  // vem a primeira. Assim nenhum deles fica desativado e o foco do teclado
-  // nunca se perde no meio da pagina.
-  const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  document.querySelectorAll<HTMLElement>('[data-galeria]').forEach((galeria) => {
-    const trilho = galeria.querySelector<HTMLElement>('[data-trilho]');
-    if (!trilho) return;
-
-    const pontos = galeria.querySelectorAll<HTMLElement>('[data-pontos] > span');
-    const total = trilho.children.length;
-    const atual = () => Math.round(trilho.scrollLeft / trilho.clientWidth);
-
-    const irPara = (indice: number) => {
-      trilho.scrollTo({
-        left: ((indice + total) % total) * trilho.clientWidth,
-        behavior: reduzirMovimento.matches ? 'auto' : 'smooth',
-      });
-    };
-
-    const marcarAtual = () => {
-      const indice = atual();
-      pontos.forEach((ponto, n) => (ponto.dataset.ativo = String(n === indice)));
-    };
-
-    galeria.querySelector('[data-anterior]')?.addEventListener('click', () => irPara(atual() - 1));
-    galeria.querySelector('[data-proxima]')?.addEventListener('click', () => irPara(atual() + 1));
-    trilho.addEventListener('scroll', marcarAtual, { passive: true });
-
-    galeria.querySelectorAll<HTMLElement>('[hidden]').forEach((elemento) => (elemento.hidden = false));
-    marcarAtual();
-  });
-</script>

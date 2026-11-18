@@ -81,18 +81,26 @@ export function imagem(grupo: GrupoDeImagem, nome: string | undefined): ImageMet
 }
 
 /**
- * Todas as fotos de um lugar, em ordem: <id>.jpg, depois <id>-2.jpg, <id>-3.jpg
+ * Todas as fotos de um item, em ordem: <id>.jpg, depois <id>-2.jpg, <id>-3.jpg
  * e assim por diante. A contagem para no primeiro numero que faltar, entao
  * pular do -2 para o -4 deixa o -4 de fora.
  *
  * Cada foto vem com o nome do arquivo, que e a chave da descricao dela em
- * `fotos.lugares`, nos arquivos de i18n.
+ * `fotos.lugares` ou `fotos.especiais`, nos arquivos de i18n.
  */
-export function fotosLugar(id: string): { nome: string; src: ImageMetadata }[] {
-  const mapa = IMAGENS.lugares;
+export function fotosNumeradas(
+  grupo: GrupoDeImagem,
+  id: string,
+): { nome: string; src: ImageMetadata }[] {
+  const mapa = IMAGENS[grupo];
   const nomes = [id];
   for (let n = 2; mapa[`${id}-${n}`]; n++) nomes.push(`${id}-${n}`);
   return nomes.filter((nome) => mapa[nome]).map((nome) => ({ nome, src: mapa[nome]! }));
+}
+
+/** Fotos de um lugar: favela.jpg, favela-2.jpg e assim por diante. */
+export function fotosLugar(id: string): { nome: string; src: ImageMetadata }[] {
+  return fotosNumeradas('lugares', id);
 }
 
 /** Fotos da faixa do Instagram, em ordem de nome de arquivo. */

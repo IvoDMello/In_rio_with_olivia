@@ -58,6 +58,24 @@ ficou com 960 x 627 px. Da para o cartao, mas uma versao maior seria melhor.
 Antes disso, em outubro de 2026, foi testada a fachada do antigo Cine Roxy de
 2017 (Commons, CC0), e a cliente recusou porque nao e o Roxy do show.
 
+## Rio by Night (src/assets/specials/rio-by-night*.jpg)
+
+As cinco fotos da galeria do Rio by Night foram mandadas pela Olivia em
+novembro de 2026, todas no Rio Scenarium, na Lapa:
+
+- rio-by-night.jpg: cantor e dancarino no palco, 465 x 642 px
+- rio-by-night-2.jpg: roda de samba vista do mezanino, 360 x 358 px
+- rio-by-night-3.jpg: palco visto de cima, 359 x 358 px
+- rio-by-night-4.jpg: parede de relogios, 360 x 355 px
+- rio-by-night-5.jpg: salao com as mesas e cristaleiras, 539 x 709 px
+
+Sao copias pequenas e ficam borradas em tela de alta resolucao. As fotos 2, 3 e
+4 foram recortadas de uma colagem; a quarta foto da colagem, da placa do
+Scenarium, ficou de fora porque tem a data impressa no canto. Trocar pelos
+originais assim que a Olivia mandar, como Documento no WhatsApp, mantendo os
+nomes dos arquivos. O dancarino e o centro da primeira foto: vale a Olivia
+confirmar com a casa que o uso esta autorizado.
+
 ## Topo da Home (src/assets/fotos/hero.jpg)
 
 Desde outubro de 2026 o topo usa uma foto da propria Olivia, um grupo de clientes

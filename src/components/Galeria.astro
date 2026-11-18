@@ -1,0 +1,168 @@
+---
+import type { ImageMetadata } from 'astro';
+import Foto from './Foto.astro';
+import Icone from './Icone.astro';
+import { dicionario, type Idioma } from '~/i18n/config';
+
+/**
+ * Moldura de foto que vira galeria quando ha mais de uma imagem.
+ *
+ * Com uma foto so (ou nenhuma, e ai aparece o espaco reservado do <Foto>), e
+ * uma moldura comum. Com duas ou mais, as fotos deslizam para o lado com
+ * rolagem e encaixe (scroll-snap). Sem JavaScript ja funciona com o dedo, o
+ * trackpad e as setas do teclado; o script so acrescenta os botoes de anterior
+ * e proxima e os pontos que mostram em qual foto se esta.
+ *
+ * Usada nos cartoes de lugar e no bloco Rio by Night.
+ *
+ * Os controles tem dois desenhos:
+ * - 'botoes': botoes redondos brancos e pontos embaixo. Nos cartoes pequenos
+ *   da grade, deixam claro que ha mais fotos.
+ * - 'laterais': sem pontos, so uma seta fina e meio apagada, e a area de
+ *   clique ocupa a lateral inteira da foto. Fica mais elegante numa foto
+ *   grande, como a do Rio by Night, a pedido da Olivia. A seta ganha forca ao
+ *   passar o mouse ou com o foco do teclado.
+ */
+interface Props {
+  lang: Idioma;
+  fotos: { src: ImageMetadata; alt: string }[];
+  /** Nome do que as fotos mostram, para o rotulo da galeria no leitor de tela. */
+  nome: string;
+  proporcao?: string;
+  sizes?: string;
+  /** Verdadeiro apenas quando a primeira foto aparece logo no topo da pagina. */
+  prioridade?: boolean;
+  classeImagem?: string;
+  controles?: 'botoes' | 'laterais';
+}
+
+const {
+  lang,
+  fotos,
+  nome,
+  proporcao = '4 / 3',
+  sizes,
+  prioridade = false,
+  classeImagem = '',
+  controles = 'botoes',
+} = Astro.props;
+const t = dicionario(lang);
+
+const laterais = controles === 'laterais';
+
+const classeBotao = laterais
+  ? 'absolute inset-y-0 flex w-1/5 items-center text-branco opacity-60 ' +
+    'transition-[opacity,background-color] duration-300 hover:bg-atlantico/15 hover:opacity-100 ' +
+    'focus-visible:opacity-100 focus-visible:outline-offset-[-4px]'
+  : 'absolute top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full ' +
+    'bg-branco/90 text-atlantico transition-colors duration-200 hover:bg-sol';
+
+// A sombra leve e so para a seta branca nao sumir sobre uma parte clara da foto.
+const tamanhoSeta = laterais ? 34 : 18;
+const classeSeta = laterais ? 'drop-shadow-[0_1px_3px_rgb(0_0_0/0.45)]' : '';
+---
+
+{
+  fotos.length > 1 ? (
+    <div class="relative" data-galeria>
+      <div
+        class="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-sm
+               [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        role="region"
+        aria-label={t.geral.galeria.rotulo.replace('{nome}', nome)}
+        tabindex="0"
+        data-trilho
+      >
+        {fotos.map((foto, i) => (
+          <Foto
+            src={foto.src}
+            alt={foto.alt}
+            proporcao={proporcao}
+            prioridade={prioridade && i === 0}
+            sizes={sizes}
+            class="w-full shrink-0 snap-start"
+            classeImagem={classeImagem}
+          />
+        ))}
+      </div>
+
+      <button
+        type="button"
+        class:list={[classeBotao, laterais ? 'left-0 justify-start rounded-l-sm pl-2' : 'left-3']}
+        aria-label={t.geral.galeria.anterior}
+        data-anterior
+        hidden
+      >
+        <Icone nome="chevron" tamanho={tamanhoSeta} class:list={['rotate-90', classeSeta]} />
+      </button>
+      <button
+        type="button"
+        class:list={[classeBotao, laterais ? 'right-0 justify-end rounded-r-sm pr-2' : 'right-3']}
+        aria-label={t.geral.galeria.proxima}
+        data-proxima
+        hidden
+      >
+        <Icone nome="chevron" tamanho={tamanhoSeta} class:list={['-rotate-90', classeSeta]} />
+      </button>
+
+      {!laterais && (
+        <div
+          class="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5
+                 rounded-full bg-atlantico/40 px-2 py-1.5"
+          aria-hidden="true"
+          data-pontos
+          hidden
+        >
+          {fotos.map(() => (
+            <span class="h-1.5 w-1.5 rounded-full bg-branco/50 transition-colors data-[ativo=true]:bg-branco" />
+          ))}
+        </div>
+      )}
+    </div>
+  ) : (
+    <Foto
+      src={fotos[0]?.src}
+      alt={fotos[0]?.alt ?? nome}
+      proporcao={proporcao}
+      prioridade={prioridade}
+      sizes={sizes}
+      class="rounded-sm"
+      classeImagem={classeImagem}
+    />
+  )
+}
+
+<script>
+  // Botoes e pontos das galerias. Os botoes dao a volta: depois da ultima foto
+  // vem a primeira. Assim nenhum deles fica desativado e o foco do teclado
+  // nunca se perde no meio da pagina.
+  const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll<HTMLElement>('[data-galeria]').forEach((galeria) => {
+    const trilho = galeria.querySelector<HTMLElement>('[data-trilho]');
+    if (!trilho) return;
+
+    const pontos = galeria.querySelectorAll<HTMLElement>('[data-pontos] > span');
+    const total = trilho.children.length;
+    const atual = () => Math.round(trilho.scrollLeft / trilho.clientWidth);
+
+    const irPara = (indice: number) => {
+      trilho.scrollTo({
+        left: ((indice + total) % total) * trilho.clientWidth,
+        behavior: reduzirMovimento.matches ? 'auto' : 'smooth',
+      });
+    };
+
+    const marcarAtual = () => {
+      const indice = atual();
+      pontos.forEach((ponto, n) => (ponto.dataset.ativo = String(n === indice)));
+    };
+
+    galeria.querySelector('[data-anterior]')?.addEventListener('click', () => irPara(atual() - 1));
+    galeria.querySelector('[data-proxima]')?.addEventListener('click', () => irPara(atual() + 1));
+    trilho.addEventListener('scroll', marcarAtual, { passive: true });
+
+    galeria.querySelectorAll<HTMLElement>('[hidden]').forEach((elemento) => (elemento.hidden = false));
+    marcarAtual();
+  });
+</script>

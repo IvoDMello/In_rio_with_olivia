@@ -456,6 +456,29 @@ funciona com o dedo e o teclado mesmo sem JavaScript.
 As descrições das fotos (`alt`) ficam em `fotos`, nos arquivos de i18n, pelo nome do
 arquivo (`favela-2` tem a sua). Ao trocar uma foto, trocar também a frase dela.
 
+### O Rio by Night ganhou galeria na página Experiências
+
+Em novembro de 2026 a Olivia mandou fotos do Rio Scenarium para o bloco Rio by
+Night, que até então era só texto. Na página Experiências, o bloco passou a ter uma
+foto em pé (4:5) à esquerda, com texto, lista e botão à direita. Na Home ele continua
+sem foto, porque ali faz uma pausa entre a grade de experiências especiais e os
+depoimentos, que já têm muitas fotos.
+
+As fotos seguem o padrão dos lugares: `rio-by-night.jpg`, `rio-by-night-2.jpg` e
+assim por diante, em `src/assets/specials`. Com mais de uma, a moldura vira galeria.
+Sem nenhuma, o bloco volta a ser só texto, sem espaço reservado. A galeria que
+existia no cartão de lugar virou o componente `Galeria.astro`, usado pelos dois.
+
+A Olivia pediu a galeria do Rio by Night mais elegante: sem os pontos que contam as
+fotos e com setas discretas. Por isso a `Galeria` tem `controles="laterais"`: seta
+fina e meio apagada, sem fundo, e a área de clique ocupa um quinto de cada lateral da
+foto. Os cartões de lugar continuam com `controles="botoes"`, os botões redondos e os
+pontos, porque num cartão pequeno os pontos avisam que há mais fotos.
+
+As cinco fotos atuais são cópias pequenas (de 360 a 539 px de largura), e três foram
+recortadas de uma colagem. Os detalhes estão em `CREDITOS.md`. Trocar pelos
+originais assim que chegarem.
+
 ### O topo da Home é um grupo de clientes da Olivia
 
 A foto do topo era uma selfie da Olivia no alto do Pão de Açúcar. Foram testadas
