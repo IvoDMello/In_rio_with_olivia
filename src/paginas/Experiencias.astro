@@ -5,10 +5,9 @@ import CartaoLugar from '~/components/CartaoLugar.astro';
 import CartaoEspecial from '~/components/CartaoEspecial.astro';
 import BotaoWhatsApp from '~/components/BotaoWhatsApp.astro';
 import ChamadaFinal from '~/components/ChamadaFinal.astro';
-import Galeria from '~/components/Galeria.astro';
+import RioByNight from '~/components/RioByNight.astro';
 
 import { SITE } from '~/config/site';
-import { fotosNumeradas } from '~/lib/imagens';
 import { dicionario, TAG_HREFLANG, type Idioma } from '~/i18n/config';
 import { especiais as carregaEspeciais, lugares as carregaLugares } from '~/lib/conteudo';
 
@@ -24,14 +23,6 @@ const especiais = await carregaEspeciais();
 
 // Descricao de cada foto, por id. Nem todo lugar tem foto, entao a chave pode faltar.
 const altEspecial: Record<string, string | undefined> = t.fotos.especiais;
-
-// Rio by Night ganha foto quando existir src/assets/specials/rio-by-night.jpg.
-// Com rio-by-night-2.jpg, -3 e assim por diante, a moldura vira galeria.
-// Sem nenhuma, o bloco continua so com texto e lista, sem espaco reservado.
-const fotosNoite = fotosNumeradas('especiais', 'rio-by-night').map((foto) => ({
-  src: foto.src,
-  alt: altEspecial[foto.nome] ?? t.experiencias.noite.titulo,
-}));
 
 /** Ordem em que os grupos aparecem na pagina. */
 const GRUPOS = ['classicos', 'historia', 'natureza', 'praias'] as const;
@@ -145,76 +136,9 @@ const schemaTour = {
   </Secao>
 
   <!-- ------------------------------------------------------ Rio by Night -->
-  <Secao id="rio-by-night" fundo="atlantico">
-    {
-      fotosNoite.length > 0 ? (
-        <div class="grid items-center gap-10 md:grid-cols-[0.85fr_1fr] md:gap-16">
-          <div class="revelar">
-            <Galeria
-              lang={lang}
-              fotos={fotosNoite}
-              nome={t.experiencias.noite.titulo}
-              proporcao="4 / 5"
-              sizes="(min-width: 768px) 42vw, 100vw"
-              controles="laterais"
-            />
-          </div>
-
-          <div class="revelar">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sol">
-              {t.experiencias.noite.subtitulo}
-            </p>
-            <h2 class="mt-4 text-titulo-secao text-branco">{t.experiencias.noite.titulo}</h2>
-            <p class="mt-5 max-w-md text-pretty text-nevoa/75">{t.experiencias.noite.texto}</p>
-
-            <ul class="mt-8 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
-              {t.experiencias.noite.opcoes.map((opcao) => (
-                <li class="flex items-start gap-3 text-nevoa/85">
-                  <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sol" />
-                  <span class="text-[0.95rem]">{opcao}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div class="mt-10">
-              <BotaoWhatsApp
-                rotulo={t.botoes.planejarNoite}
-                mensagem={t.whatsapp.noite}
-                variante="claro"
-              />
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div class="grid items-center gap-10 md:grid-cols-[1fr_1.1fr] md:gap-16">
-          <div class="revelar">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sol">
-              {t.experiencias.noite.subtitulo}
-            </p>
-            <h2 class="mt-4 text-titulo-secao text-branco">{t.experiencias.noite.titulo}</h2>
-            <p class="mt-5 max-w-md text-pretty text-nevoa/75">{t.experiencias.noite.texto}</p>
-
-            <div class="mt-8">
-              <BotaoWhatsApp
-                rotulo={t.botoes.planejarNoite}
-                mensagem={t.whatsapp.noite}
-                variante="claro"
-              />
-            </div>
-          </div>
-
-          <ul class="revelar grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
-            {t.experiencias.noite.opcoes.map((opcao) => (
-              <li class="flex items-start gap-3 text-nevoa/85">
-                <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sol" />
-                <span class="text-[0.95rem]">{opcao}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
-  </Secao>
+  <RioByNight lang={lang} id="rio-by-night">
+    <BotaoWhatsApp rotulo={t.botoes.planejarNoite} mensagem={t.whatsapp.noite} variante="claro" />
+  </RioByNight>
 
   <!-- ---------------------------------------------------- Fechamento -->
   <ChamadaFinal

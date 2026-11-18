@@ -456,13 +456,15 @@ funciona com o dedo e o teclado mesmo sem JavaScript.
 As descrições das fotos (`alt`) ficam em `fotos`, nos arquivos de i18n, pelo nome do
 arquivo (`favela-2` tem a sua). Ao trocar uma foto, trocar também a frase dela.
 
-### O Rio by Night ganhou galeria na página Experiências
+### O Rio by Night ganhou galeria
 
 Em novembro de 2026 a Olivia mandou fotos do Rio Scenarium para o bloco Rio by
-Night, que até então era só texto. Na página Experiências, o bloco passou a ter uma
-foto em pé (4:5) à esquerda, com texto, lista e botão à direita. Na Home ele continua
-sem foto, porque ali faz uma pausa entre a grade de experiências especiais e os
-depoimentos, que já têm muitas fotos.
+Night, que até então era só texto. O bloco passou a ter uma foto em pé (4:5) à
+esquerda, com texto, lista e ação à direita. A primeira versão pôs a galeria só na
+página Experiências, para a Home não ficar mais longa, mas a cliente quis as fotos
+como parte do bloco, nos dois lugares. O bloco virou o componente
+`RioByNight.astro`, usado pela Home e pela Experiências. Só a ação muda, e vem pelo
+slot: na Experiências é o botão do WhatsApp; na Home, o link "Ver o Rio by Night".
 
 As fotos seguem o padrão dos lugares: `rio-by-night.jpg`, `rio-by-night-2.jpg` e
 assim por diante, em `src/assets/specials`. Com mais de uma, a moldura vira galeria.

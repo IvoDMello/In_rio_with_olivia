@@ -1,0 +1,94 @@
+---
+import Secao from './Secao.astro';
+import Galeria from './Galeria.astro';
+import { fotosNumeradas } from '~/lib/imagens';
+import { dicionario, type Idioma } from '~/i18n/config';
+
+/**
+ * Bloco Rio by Night, igual na Home e na pagina Experiencias.
+ *
+ * Com fotos em src/assets/specials (rio-by-night.jpg, rio-by-night-2.jpg...),
+ * a galeria fica a esquerda e o texto, a lista e a acao a direita. Sem
+ * nenhuma, o bloco e so texto e lista, sem espaco reservado.
+ *
+ * A acao vem pelo slot, porque muda com a pagina: na Experiencias e o botao
+ * do WhatsApp; na Home, o link para o bloco na pagina Experiencias.
+ */
+interface Props {
+  lang: Idioma;
+  id?: string;
+  espacamento?: 'normal' | 'compacto';
+}
+
+const { lang, id, espacamento = 'normal' } = Astro.props;
+const t = dicionario(lang);
+
+const descricoes: Record<string, string | undefined> = t.fotos.especiais;
+const fotos = fotosNumeradas('especiais', 'rio-by-night').map((foto) => ({
+  src: foto.src,
+  alt: descricoes[foto.nome] ?? t.experiencias.noite.titulo,
+}));
+---
+
+<Secao id={id} fundo="atlantico" espacamento={espacamento}>
+  {
+    fotos.length > 0 ? (
+      <div class="grid items-center gap-10 md:grid-cols-[0.85fr_1fr] md:gap-16">
+        <div class="revelar">
+          <Galeria
+            lang={lang}
+            fotos={fotos}
+            nome={t.experiencias.noite.titulo}
+            proporcao="4 / 5"
+            sizes="(min-width: 768px) 42vw, 100vw"
+            controles="laterais"
+          />
+        </div>
+
+        <div class="revelar">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sol">
+            {t.experiencias.noite.subtitulo}
+          </p>
+          <h2 class="mt-4 text-titulo-secao text-branco">{t.experiencias.noite.titulo}</h2>
+          <p class="mt-5 max-w-md text-pretty text-nevoa/75">{t.experiencias.noite.texto}</p>
+
+          <ul class="mt-8 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
+            {t.experiencias.noite.opcoes.map((opcao) => (
+              <li class="flex items-start gap-3 text-nevoa/85">
+                <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sol" />
+                <span class="text-[0.95rem]">{opcao}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-10">
+            <slot />
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div class="grid items-center gap-10 md:grid-cols-[1fr_1.1fr] md:gap-16">
+        <div class="revelar">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sol">
+            {t.experiencias.noite.subtitulo}
+          </p>
+          <h2 class="mt-4 text-titulo-secao text-branco">{t.experiencias.noite.titulo}</h2>
+          <p class="mt-5 max-w-md text-pretty text-nevoa/75">{t.experiencias.noite.texto}</p>
+
+          <div class="mt-8">
+            <slot />
+          </div>
+        </div>
+
+        <ul class="revelar grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
+          {t.experiencias.noite.opcoes.map((opcao) => (
+            <li class="flex items-start gap-3 text-nevoa/85">
+              <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sol" />
+              <span class="text-[0.95rem]">{opcao}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+</Secao>
